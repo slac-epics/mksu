@@ -1,0 +1,44 @@
+# Trigger Control Block
+# Please add a comment line between registers
+# Current script can't deal with empty lines, sorry
+record	ao
+name	KLYS:$(AREA):$(LOCATION):WF_TRIG_DELAY_WRITE
+operation	write
+task	0x05
+address	0
+size	1
+DESC	Waveform trigger delay (W) 
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TRIG_DELAY_WRITE
+#
+record	ao
+name	KLYS:$(AREA):$(LOCATION):MOD_TRIG_DELAY_WRITE
+operation	write
+task	0x05
+address	1
+size	1
+DESC	Remote mod trig delay (W)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TRIG_DELAY_WRITE
+#
+record	ai
+name	KLYS:$(AREA):$(LOCATION):WF_TRIG_DELAY_READ
+operation	Read 
+task	0x45
+address	0
+size	1
+DESC	Waveguide trig delay (R)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TRIG_DELAY_READ
+#
+record	ai
+name	KLYS:$(AREA):$(LOCATION):MOD_TRIG_DELAY_READ
+operation	Read 
+task	0x45
+address	1
+size	1
+DESC	Remote mod trig delay (R)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TRIG_DELAY_READ

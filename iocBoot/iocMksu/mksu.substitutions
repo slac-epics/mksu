@@ -1,0 +1,7 @@
+file ../../db/mksu.template
+{
+pattern
+{AREA, LOCATION, PORT, CHANNEL, TIMEOUT, SCAN}
+{IN20, 3130, Mksu, 0, 1, "I/O Intr"}
+#{IN20, 3130, Mksu, 0, 1, "1 second"}
+}

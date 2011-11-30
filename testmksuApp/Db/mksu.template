@@ -1,0 +1,27 @@
+# Database template file generated from MksuRegister.map on Tue, 29 Nov 2011 22:35:07 +0000
+
+record(ao, "KLYS:$(AREA):$(LOCATION):WF_TRIG_DELAY_WRITE") {
+  field(DESC, "Waveform trigger delay (W)")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TRIG_DELAY_WRITE")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):MOD_TRIG_DELAY_WRITE") {
+  field(DESC, "Remote mod trig delay (W)")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TRIG_DELAY_WRITE")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WF_TRIG_DELAY_READ") {
+  field(DESC, "Waveguide trig delay (R)")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TRIG_DELAY_READ")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MOD_TRIG_DELAY_READ") {
+  field(DESC, "Remote mod trig delay (R)")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TRIG_DELAY_READ")
+}

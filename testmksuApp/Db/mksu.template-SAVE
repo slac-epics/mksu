@@ -1,0 +1,25 @@
+record(ao, "KLYS:$(AREA):$(LOCATION):WF_TRIG_DELAY_WRITE") {
+  field(DESC, "Waveform trigger delay (write)")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TRIG_DELAY_WRITE")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):MOD_TRIG_DELAY_WRITE") {
+  field(DESC, "Remote modulator trigger delay (write)")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TRIG_DELAY_WRITE")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WF_TRIG_DELAY_READ") {
+  field(DESC, "Waveguide trigger delay (read)")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TRIG_DELAY_READ")
+  field(SCAN, "$(SCAN)")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MOD_TRIG_DELAY_READ") {
+  field(DESC, "Remote modulator trigger delay (read)")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TRIG_DELAY_READ")
+  field(SCAN, "$(SCAN)")
+}
