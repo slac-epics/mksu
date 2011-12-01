@@ -3,6 +3,7 @@
 #include "MksuParamList.h" // <- Automatically generated
 
 #include <iostream>
+#include <sstream>
 
 #include <epicsTypes.h>
 #include <epicsExport.h>
@@ -15,7 +16,7 @@ MksuDriver::MksuDriver(const char *portName, const char *mksuPortName) :
 		 ASYN_CANBLOCK | ASYN_MULTIDEVICE,                     // asynFlags
 		 1, 0, 0),           // autoConnect, priority, stackSize
   _mksuPortName(mksuPortName),
-  _comm(mksuPortName) {
+  _comm(mksuPortName, &MksuParams[0], MKSU_NUM_PARAMS) {
   Log::getInstance() << Log::flagGeneral << Log::dpInfo << "# Creating MKSU object" << Log::cout;
   for (int i = 0; i < MKSU_NUM_PARAMS; i++) {
     createParam(MksuParams[i].name.c_str(), MksuParams[i].type, &MksuParams[i].id);
@@ -31,23 +32,46 @@ MksuParam *MksuDriver::getParam(int key) {
   if (it == _paramMap.end()) {
     Log::getInstance() << Log::flagAsyn << Log::dpError;
     Log::getInstance() << "ERROR: MksuDriver::getParam(key="
-		       << key << "): invalid key (reason).\n" << Log::dp;
+		       << key << "): invalid key (reason)." << Log::dp;
     return NULL;
   }
 
   return it->second;
 }  
 
+asynStatus MksuDriver::readInt8Array(asynUser *pasynUser, epicsInt8 *value, 
+				     size_t nElements, size_t *nIn) {
+  Log::getInstance() << Log::flagAsyn << Log::dpInfo;
+  Log::getInstance() << "MksuDriver::readInt8Array(reason="
+		     << pasynUser->reason
+		     << ")" << Log::dp;
+  return asynError;
+}
+
+/**
+ * This method is called only when the associated record is processed, i.e.
+ * a `caget PV` will not cause the driver to read the latest value from 
+ * the MKSU. Either the scan field of the record must be set to some periodic
+ * value or one must do a `caput PV.PROC 1`.
+ *
+ * The whole MKSU memory block is updated, but that does not mean all the
+ * PVs get updated. The only PV to get new values is the one that caused
+ * this method to be invoked.
+ * 
+ * @author L.Piccoli
+ */
 asynStatus MksuDriver::readInt32(asynUser *pasynUser, epicsInt32 *value) {
   Log::getInstance() << Log::flagAsyn << Log::dpInfo;
   Log::getInstance() << "MksuDriver::readInt32(reason="
 		     << pasynUser->reason
-		     << ")\n" << Log::dp;
+		     << ")" << Log::dp;
   // First find the parameter in the _paramMap using the reason (key) field
   MksuParam *param = getParam(pasynUser->reason);
   if (param == NULL) {
     return asynError;
   }
+
+  _comm.refresh(param->blockId);
 
   if (_comm.read(param->blockId, param->address, *value)) {
     return asynSuccess;
@@ -61,7 +85,7 @@ asynStatus MksuDriver::writeInt32(asynUser *pasynUser, epicsInt32 value) {
   Log::getInstance() << Log::flagAsyn << Log::dpInfo;
   Log::getInstance() << "MksuDriver::writeInt32(reason="
 		     << pasynUser->reason << ", value=" << value
-		     << ")\n" << Log::dp;
+		     << ")" << Log::dp;
 
   // First find the parameter in the _paramMap using the reason (key) field
   MksuParam *param = getParam(pasynUser->reason);
@@ -77,29 +101,42 @@ asynStatus MksuDriver::writeInt32(asynUser *pasynUser, epicsInt32 value) {
   }
 }
 
-void MksuDriver::report(FILE *fp, int details) {
+void MksuDriver::report(FILE *fp, int reportDetails) {
   fprintf(fp, "%s: driver report - %s\n",
 	  portName, _mksuPortName.c_str());
 
-  Log::getInstance() << Log::flagGeneral << Log::dpInfo
-		     << "\n================== MKSU Parameters ====================\n";
+  std::ostringstream details;
+
+  details << "\n================== MKSU Parameters ====================\n";
   
-  Log::getInstance() << "Name:\t\t\tblockId\taddress\tsize\tid\n";
+  details << "Name:\t\t\tblockId\taddress\tsize\tid\n";
 
   for (ParamMap::iterator it = _paramMap.begin();
        it != _paramMap.end(); it++) {
     MksuParam *param = (*it).second;
-    Log::getInstance() << param->name.c_str() << ":\t"
-		       << param->blockId << "\t"
-		       << param->address << "\t"
-		       << param->size << "\t"
-		       << param->id << "\n";
+    details << param->name.c_str() << ":\t";
+    if (param->name.length() < 12) {
+      details << "\t";
+      if (param->name.length() < 7) {
+	details << "\t";
+      }
+    }
+
+    details << param->blockId << "\t"
+	    << param->address << "\t"
+	    << param->size << "\t"
+	    << param->id << "\t";
+    if (param->size == 1) {
+      epicsInt32 value = -1;
+      if (_comm.read(param->blockId, param->address, value)) {
+	details << " latest read: " << value;
+      }
+    }
+    details << "\n";
   }
 
+  Log::getInstance() << Log::flagGeneral << Log::dpInfo << details.str().c_str() << Log::dp;
 
-  Log::getInstance() << Log::dp;
-  
-
-  asynPortDriver::report(fp, details);
+  asynPortDriver::report(fp, reportDetails);
 }
 

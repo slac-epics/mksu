@@ -5,14 +5,25 @@
 #include <epicsTypes.h>
 #include <epicsExport.h>
 
+int createMksu(const char *portName, const char *mksuPortName) {
+  try {
+    MksuDriver *driver = new MksuDriver(portName, mksuPortName);
+    driver = NULL; // Get rid of compiler warning
+    return asynSuccess;
+  } catch (...) {
+    return asynError;
+  }
+}
+
 extern "C" {
 
 void drvMksu_init(void);
 
 int initMksu(const char *portName, const char *mksuPortName) {
-  MksuDriver *driver = new MksuDriver(portName, mksuPortName);
-  driver = NULL; // Get rid of compiler warning
-  return(asynSuccess);
+  if (createMksu(portName, mksuPortName) == asynError) {
+    printf("####### ERROR: Failed to initialize MKSU #######\n");
+  }
+  return 0;
 }
 
 /* EPICS iocsh shell commands */

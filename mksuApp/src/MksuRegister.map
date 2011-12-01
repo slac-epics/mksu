@@ -23,7 +23,7 @@ OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TRIG_DELAY_WRITE
 #
 record	ai
 name	KLYS:$(AREA):$(LOCATION):WF_TRIG_DELAY_READ
-operation	Read 
+operation	read 
 task	0x45
 address	0
 size	1
@@ -34,7 +34,7 @@ INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TRIG_DELAY_READ
 #
 record	ai
 name	KLYS:$(AREA):$(LOCATION):MOD_TRIG_DELAY_READ
-operation	Read 
+operation	read 
 task	0x45
 address	1
 size	1
@@ -42,3 +42,25 @@ DESC	Remote mod trig delay (R)
 DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TRIG_DELAY_READ
+#
+record	waveform
+name	MKSU:$(AREA):$(LOCATION):SYS_VERSION
+operation	read
+task	0x64
+address	0
+size	8
+DESC	Firmware version
+DTYP	asynInt8Array
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_VERSION
+#
+record	waveform
+name	MKSU:$(AREA):$(LOCATION):SYS_ID
+operation	read
+task	0x64
+address	4
+size	6
+DESC	System ID
+DTYP	asynInt8Array
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_ID

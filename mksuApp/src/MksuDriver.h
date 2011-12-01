@@ -1,10 +1,9 @@
-#include "MksuComm.h"
-
 #include <string>
 #include <map>
 #include <stdio.h>
 #include <asynPortDriver.h>
 #include <MksuParam.h> // <- Automatically generated
+#include "MksuComm.h"
 
 #ifndef MKSUDRIVER_H
 #define MKSUDRIVER_H
@@ -16,6 +15,8 @@ public:
   MksuDriver(const char *portName, const char *mksuPortName);
   virtual ~MksuDriver();
 
+  virtual asynStatus readInt8Array(asynUser *pasynUser, epicsInt8 *value, 
+				   size_t nElements, size_t *nIn);
   virtual asynStatus readInt32(asynUser *pasynUser, epicsInt32 *value);
   virtual asynStatus writeInt32(asynUser *pasynUser, epicsInt32 value);
 
