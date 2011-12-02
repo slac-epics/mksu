@@ -12,4 +12,8 @@
 #
 #
 
+mksu-R1-0-1:
+	* Got Int8Array working
+	* PVs defined to read system info (block 0x64 work)x
+
 mksu-R1-0-0: Initial realease - pretty empty!

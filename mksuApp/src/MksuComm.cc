@@ -1,3 +1,4 @@
+#include <string.h> // memcpy
 #include <iostream>
 
 #include "MksuComm.h"
@@ -49,7 +50,7 @@ void MksuComm::createBlockMap(MksuParam *params, int numParams) {
       if (it == _blockMap.end()) {
 	MksuBlock block;
 	block.memory = new unsigned short[MKSU_MAX_BLOCK_SIZE];
-	block.size = 30;
+	block.size = 100;
 	block.header = reinterpret_cast<MksuUdpHeader *>(block.memory);
 	block.data = reinterpret_cast<unsigned short *>(block.header + 1);
 	_blockMap.insert(std::pair<int, MksuBlock>(blockId, block));
@@ -101,6 +102,29 @@ bool MksuComm::read(int blockId, long address, epicsInt32 &value) {
 
   value = block->data[address];
 
+  return true;
+}
+
+/**
+ * Copies a sequence of values stored at the given address of the
+ * given blockId to the memory area pointed by the parameter value.
+ *
+ * @param blockId the MKSU memory block
+ * @param address starting location of the values to be read
+ * @param value points to the area where values are getting copied
+ * @param size number of items to be copied (of sizeof(epicsInt8))
+ * @return true if block and value were found, false if blockId is
+ * not valid (TODO: check address)
+ * @author L.Piccoli
+ */
+bool MksuComm::read(int blockId, long address, epicsInt8 *value, int size) {
+  MksuBlock *block = getBlock(blockId);
+  if (block == NULL) {
+    return false;
+  }
+
+  memcpy(value, &block->data[address], size * sizeof(epicsInt8));
+  
   return true;
 }
 

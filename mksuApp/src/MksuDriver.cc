@@ -11,9 +11,9 @@
 
 MksuDriver::MksuDriver(const char *portName, const char *mksuPortName) :
   asynPortDriver(portName, 1, MKSU_NUM_PARAMS,
-		 asynInt32Mask | asynInt16ArrayMask | asynDrvUserMask, // interfaceMask
-		 asynInt32Mask | asynInt16ArrayMask,                   // interruptMask
-		 ASYN_CANBLOCK | ASYN_MULTIDEVICE,                     // asynFlags
+		 asynInt32Mask | asynInt16ArrayMask | asynInt8ArrayMask | asynDrvUserMask,   // interfaceMask
+		 asynInt32Mask | asynInt16ArrayMask | asynInt8ArrayMask, // interruptMask
+		 ASYN_CANBLOCK | ASYN_MULTIDEVICE,                       // asynFlags
 		 1, 0, 0),           // autoConnect, priority, stackSize
   _mksuPortName(mksuPortName),
   _comm(mksuPortName, &MksuParams[0], MKSU_NUM_PARAMS) {
@@ -45,7 +45,22 @@ asynStatus MksuDriver::readInt8Array(asynUser *pasynUser, epicsInt8 *value,
   Log::getInstance() << "MksuDriver::readInt8Array(reason="
 		     << pasynUser->reason
 		     << ")" << Log::dp;
-  return asynError;
+
+  // First find the parameter in the _paramMap using the reason (key) field
+  MksuParam *param = getParam(pasynUser->reason);
+  if (param == NULL) {
+    return asynError;
+  }
+
+  _comm.refresh(param->blockId);
+
+  if (_comm.read(param->blockId, param->address, value, param->size)) {
+    *nIn = param->size;
+    return asynSuccess;
+  }
+  else {
+    return asynError;
+  }
 }
 
 /**
@@ -115,7 +130,7 @@ void MksuDriver::report(FILE *fp, int reportDetails) {
        it != _paramMap.end(); it++) {
     MksuParam *param = (*it).second;
     details << param->name.c_str() << ":\t";
-    if (param->name.length() < 12) {
+    if (param->name.length() < 13) {
       details << "\t";
       if (param->name.length() < 7) {
 	details << "\t";
@@ -126,7 +141,7 @@ void MksuDriver::report(FILE *fp, int reportDetails) {
 	    << param->address << "\t"
 	    << param->size << "\t"
 	    << param->id << "\t";
-    if (param->size == 1) {
+    if (param->size == 1 && param->blockId > 0x40) {
       epicsInt32 value = -1;
       if (_comm.read(param->blockId, param->address, value)) {
 	details << " latest read: " << value;

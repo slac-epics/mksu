@@ -1,4 +1,4 @@
-# Database template file generated from MksuRegister.map on Thu, 01 Dec 2011 01:03:49 +0000
+# Database template file generated from MksuRegister.map on Fri, 02 Dec 2011 00:55:38 +0000
 
 record(ao, "KLYS:$(AREA):$(LOCATION):WF_TRIG_DELAY_WRITE") {
   field(DESC, "Waveform trigger delay (W)")
@@ -29,14 +29,35 @@ record(ai, "KLYS:$(AREA):$(LOCATION):MOD_TRIG_DELAY_READ") {
 record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_VERSION") {
   field(DESC, "Firmware version")
   field(DTYP, "asynInt8ArrayIn")
+  field(FTVL, "UCHAR")
+  field(NELM, "8")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_VERSION")
-  field(FTVL, "UCHAR")
 }
 
 record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_ID") {
   field(DESC, "System ID")
   field(DTYP, "asynInt8ArrayIn")
+  field(FTVL, "UCHAR")
+  field(NELM, "6")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_ID")
+}
+
+record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_SUB_TYPE") {
+  field(DESC, "System ID")
+  field(DTYP, "asynInt8ArrayIn")
+  field(FTVL, "UCHAR")
+  field(NELM, "4")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_SUB_TYPE")
+}
+
+record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_DATE") {
+  field(DESC, "System ID")
+  field(DTYP, "asynInt8ArrayIn")
+  field(FTVL, "UCHAR")
+  field(NELM, "8")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_DATE")
 }

@@ -51,7 +51,7 @@ public:
   virtual ~MksuComm();
 
   bool read(int blockId, long address, epicsInt32 &value);
-  bool read(int blockId, long address, epicsInt8 value, int size);
+  bool read(int blockId, long address, epicsInt8 *value, int size);
   bool write(int blockId, long address, epicsInt32 value);
 
   void refresh();

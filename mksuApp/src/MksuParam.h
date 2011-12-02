@@ -1,4 +1,4 @@
-// Header file generated from MksuRegister.map on Thu, 01 Dec 2011 01:03:49 +0000
+// Header file generated from MksuRegister.map on Fri, 02 Dec 2011 00:55:38 +0000
 
 #ifndef MKSUPARAM_H
 #define MKSUPARAM_H
