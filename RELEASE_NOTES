@@ -12,6 +12,22 @@
 #
 #
 
+mksu-R1-0-2:
+	* Got Int16Array working (read/write)
+	* Bits of status control are read/write via several
+	  linked records. A CALC record is used to shift
+	  bits left or right to match the actual MKSU masks.
+	  This may not be the best way to implement these,
+	  but it works.
+	* Renamed a few PVs in the MksuRegister.map file
+	* Added 'operation record' to the generator.py, now
+	  records with that operation are created in the
+	  template file, but not in the c++ header file.
+	  This allows auxiliary records to be added without
+	  having to define another template file.
+	* TODO: make the generate.py script check everything
+	  that is possible to check!
+
 mksu-R1-0-1:
 	* Got Int8Array working
 	* PVs defined to read system info (block 0x64 work)x

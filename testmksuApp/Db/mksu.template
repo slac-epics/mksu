@@ -1,32 +1,284 @@
-# Database template file generated from MksuRegister.map on Fri, 02 Dec 2011 00:55:38 +0000
+# Database template file generated from MksuRegister.map on Sat, 03 Dec 2011 01:45:39 +0000
 
-record(ao, "KLYS:$(AREA):$(LOCATION):WF_TRIG_DELAY_WRITE") {
-  field(DESC, "Waveform trigger delay (W)")
-  field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TRIG_DELAY_WRITE")
+record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
+  field(DESC, "Clear FADC Latch")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FADC_CLR_MASK")
 }
 
-record(ao, "KLYS:$(AREA):$(LOCATION):MOD_TRIG_DELAY_WRITE") {
-  field(DESC, "Remote mod trig delay (W)")
-  field(DTYP, "asynInt32")
-  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TRIG_DELAY_WRITE")
+record(calc, "KLYS:$(AREA):$(LOCATION):FADC_CLR_MASK") {
+  field(DESC, "Clear FADC Latch")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FADC_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FADC_SET")
+  field(CALC, "A << 10")
 }
 
-record(ai, "KLYS:$(AREA):$(LOCATION):WF_TRIG_DELAY_READ") {
-  field(DESC, "Waveguide trig delay (R)")
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FADC_SET") {
+  field(DESC, "MKSU Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FADC_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FADC_SET")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):CLCKD_CLR") {
+  field(DESC, "Clear Clck PLL Latch")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKD_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):CLCKD_CLR_MASK") {
+  field(DESC, "Clear FADC Latch")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):CLCKD_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_CLCKD_SET")
+  field(CALC, "A << 11")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_CLCKD_SET") {
+  field(DESC, "MKSU Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):CLCKD_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_CLCKD_SET")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):STATUS") {
+  field(DESC, "MKSU Status")
   field(DTYP, "asynInt32")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TRIG_DELAY_READ")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):PERMIT_MASK")
 }
 
-record(ai, "KLYS:$(AREA):$(LOCATION):MOD_TRIG_DELAY_READ") {
-  field(DESC, "Remote mod trig delay (R)")
+record(calc, "KLYS:$(AREA):$(LOCATION):PERMIT_MASK") {
+  field(DESC, "Permit Status")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):PERMIT")
+  field(CALC, "A & 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):PERMIT") {
+  field(DESC, "Permit Status")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):PERMIT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKD_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):CLCKD_MASK") {
+  field(DESC, "Clck PLL Locked")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKD")
+  field(CALC, "(A & 128) >> 7")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):CLCKD") {
+  field(DESC, "Clkc PLL Locked")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):CLCKD_MASK")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):WF_TDLY_DES") {
+  field(DESC, "Waveform des trigger delay")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TDLY_DES")
+  field(EGU, "119MHz Ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_DES") {
+  field(DESC, "Remote mod des trig delay")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_DES")
+  field(EGU, "119MHz Ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_RP_DES") {
+  field(DESC, "Rear panel des trig delay")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_RP_DES")
+  field(EGU, "119MHz Ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):TWTH_RP_DES") {
+  field(DESC, "Rear panel des trig width")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_RP_DES")
+  field(EGU, "119MHz Ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_FP_DES") {
+  field(DESC, "Front panel des trig delay")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_FP_DES")
+  field(EGU, "119MHz Ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):TWTH_FP_DES") {
+  field(DESC, "Front panel des trig width")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_FP_DES")
+  field(EGU, "119MHz Ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):TCNT_IN_DES") {
+  field(DESC, "Input trigger des rate cnt")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN_DES")
+  field(EGU, "1KHz Ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):TCNT_OUT_DES") {
+  field(DESC, "Output trigger des rate cnt")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_OUT_DES")
+  field(EGU, "1KHz Ticks")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WF_TDLY") {
+  field(DESC, "Waveguide trig delay")
   field(DTYP, "asynInt32")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TRIG_DELAY_READ")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TDLY")
+  field(EGU, "119MHz Ticks")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WF_TDLY_NS")
 }
 
-record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_VERSION") {
+record(calc, "KLYS:$(AREA):$(LOCATION):WF_TDLY_NS") {
+  field(DESC, "Waveguide trig delay (NS)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WF_TDLY")
+  field(EGU, "ns")
+  field(CALC, "A/0.119")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TDLY") {
+  field(DESC, "Remote mod trig delay")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY")
+  field(EGU, "119MHz Ticks")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDLY_NS")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_NS") {
+  field(DESC, "Remote mod trig delay (NS)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY")
+  field(EGU, "ns")
+  field(CALC, "A/0.119")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_RP") {
+  field(DESC, "Rear panel trig delay")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_RP")
+  field(EGU, "119MHz Ticks")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDLY_RP_NS")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_RP_NS") {
+  field(DESC, "Rear panel trig delay (NS)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY_RP")
+  field(EGU, "ns")
+  field(CALC, "A/0.119")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TWTH_RP") {
+  field(DESC, "Rear panel trig width")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_RP")
+  field(EGU, "119MHz Ticks")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TWTH_RP_NS")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TWTH_RP_NS") {
+  field(DESC, "Rear panel trig width (NS)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TWTH_RP")
+  field(EGU, "ns")
+  field(CALC, "A/0.119")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_FP") {
+  field(DESC, "Front panel trig delay")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_FP")
+  field(EGU, "119MHz Ticks")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDLY_FP_NS")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_FP_NS") {
+  field(DESC, "Front panel trig delay (NS)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY_FP")
+  field(EGU, "ns")
+  field(CALC, "A/0.119")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TWTH_FP") {
+  field(DESC, "Front panel trig width")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_FP")
+  field(EGU, "119MHz Ticks")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TWTH_FP_NS")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TWTH_FP_NS") {
+  field(DESC, "Front panel trig width (NS)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TWTH_FP")
+  field(EGU, "ns")
+  field(CALC, "A/0.119")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_LOC") {
+  field(DESC, "Local trigger delay")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_LOC")
+  field(EGU, "119MHz Ticks")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDLY_LOC_NS")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_LOC_NS") {
+  field(DESC, "Local trigger delay (NS)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY_LOC")
+  field(EGU, "ns")
+  field(CALC, "A/0.119")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_ACT") {
+  field(DESC, "Actual trigger delay")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_ACT")
+  field(EGU, "119MHz Ticks")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_ACT_NS") {
+  field(DESC, "Actual trigger delay (NS)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY_ACT")
+  field(EGU, "ns")
+  field(CALC, "A/0.119")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TCNT_IN") {
+  field(DESC, "Input trigger rate count")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN")
+  field(EGU, "1KHz Ticks")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TCNT_OUT") {
+  field(DESC, "Input trigger rate count")
+  field(DTYP, "asynInt32")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN")
+  field(EGU, "1KHz Ticks")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_VERSION") {
   field(DESC, "Firmware version")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
@@ -35,7 +287,7 @@ record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_VERSION") {
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_VERSION")
 }
 
-record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_ID") {
+record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_ID") {
   field(DESC, "System ID")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
@@ -44,8 +296,8 @@ record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_ID") {
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_ID")
 }
 
-record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_SUB_TYPE") {
-  field(DESC, "System ID")
+record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_SUB_TYPE") {
+  field(DESC, "System sub type")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
   field(NELM, "4")
@@ -53,11 +305,28 @@ record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_SUB_TYPE") {
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_SUB_TYPE")
 }
 
-record(waveform, "MKSU:$(AREA):$(LOCATION):SYS_DATE") {
-  field(DESC, "System ID")
+record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_DATE") {
+  field(DESC, "System date")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
   field(NELM, "8")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_DATE")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV_TBL_READ") {
+  field(DESC, "RF drive lookup table")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(NELM, "256")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_TBL_READ")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV_TBL_WRITE") {
+  field(DESC, "RF drive lookup table")
+  field(DTYP, "asynInt16ArrayOut")
+  field(FTVL, "SHORT")
+  field(NELM, "256")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_TBL_WRITE")
 }

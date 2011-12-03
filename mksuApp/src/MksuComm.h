@@ -52,7 +52,9 @@ public:
 
   bool read(int blockId, long address, epicsInt32 &value);
   bool read(int blockId, long address, epicsInt8 *value, int size);
+  bool read(int blockId, long address, epicsInt16 *value, int size);
   bool write(int blockId, long address, epicsInt32 value);
+  bool write(int blockId, long address, epicsInt16 *value, int size);
 
   void refresh();
   void refresh(int blockId);
@@ -60,6 +62,7 @@ public:
  private:
   void createBlockMap(MksuParam *params, int numParams);
   MksuBlock *getBlock(int blockId);
+  void printBlock(int blockId);
 
   /** MKSU module number (set in hardware) */
   char _moduleNumber;

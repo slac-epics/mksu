@@ -1,5 +1,6 @@
 #include <string.h> // memcpy
 #include <iostream>
+#include <sstream>
 
 #include "MksuComm.h"
 #include "Log.h"
@@ -50,7 +51,7 @@ void MksuComm::createBlockMap(MksuParam *params, int numParams) {
       if (it == _blockMap.end()) {
 	MksuBlock block;
 	block.memory = new unsigned short[MKSU_MAX_BLOCK_SIZE];
-	block.size = 100;
+	block.size = MKSU_MAX_BLOCK_SIZE;
 	block.header = reinterpret_cast<MksuUdpHeader *>(block.memory);
 	block.data = reinterpret_cast<unsigned short *>(block.header + 1);
 	_blockMap.insert(std::pair<int, MksuBlock>(blockId, block));
@@ -129,12 +130,35 @@ bool MksuComm::read(int blockId, long address, epicsInt8 *value, int size) {
 }
 
 /**
+ * Copies a sequence of values stored at the given address of the
+ * given blockId to the memory area pointed by the parameter value.
+ *
+ * @param blockId the MKSU memory block
+ * @param address starting location of the values to be read
+ * @param value points to the area where values are getting copied
+ * @param size number of items to be copied (of sizeof(epicsInt16))
+ * @return true if block and value were found, false if blockId is
+ * not valid (TODO: check address)
+ * @author L.Piccoli
+ */
+bool MksuComm::read(int blockId, long address, epicsInt16 *value, int size) {
+  MksuBlock *block = getBlock(blockId);
+  if (block == NULL) {
+    return false;
+  }
+
+  memcpy(value, &block->data[address], size * sizeof(epicsInt16));
+  
+  return true;
+}
+
+/**
  * Sends a write command to the MKSU, the specified value is writen
  * to the given block at the given address.
  *
  * @param blockId the MKSU memory block
  * @param address location of the value to be read
- * @param value returning parameter
+ * @param value data to be written out
  * @return true if block and value were found, false if blockId is
  * not valid (TODO: check address)
  * @author L.Piccoli
@@ -190,6 +214,80 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address 
 		     << ", value=" << value << "), numSent=" << (int) numSent
+		     << ", responseLen=" << (int) responseLen
+		     << ", eomReason=" << (int) eomReason
+		     << Log::dp;
+
+  return true;
+}
+
+/**
+ * Sends a write command to the MKSU, the specified value is writen
+ * to the given block at the given address.
+ *
+ * @param blockId the MKSU memory block
+ * @param address location of the value to be read
+ * @param value array of epicsInt16 to be written out
+ * @param size number of elements in the value array
+ * @return true if block and value were found, false if blockId is
+ * not valid (TODO: check address)
+ * @author L.Piccoli
+ */
+bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
+  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << "MksuComm::write(blockId="
+		     << blockId << ", address=" << address
+		     << ", value[0]=" << value[0]
+		     << ", size=" << size << ")" << Log::dp;
+
+  _commandHeader->messageVersion = 0x01;
+  _commandHeader->modulatorNumber = _moduleNumber;
+  _commandHeader->messageType = blockId;
+  _commandHeader->taskId = _commandCounter;
+  _commandHeader->address = address;
+  _commandHeader->count = size;
+
+  memcpy(&_commandData[0], value, size * sizeof(epicsInt16));
+
+  asynStatus status;
+  size_t numSent;
+  size_t responseLen;
+  int eomReason;
+  
+  status = pasynOctetSyncIO->writeRead(_sock, _command,
+				       sizeof(MksuUdpHeader) + size * sizeof(epicsInt16),
+				       _writeResponse, sizeof(MksuUdpHeader), 1, /* time out */
+				       &numSent, &responseLen, &eomReason);
+
+  if (_writeResponseHeader.taskId != _commandCounter) {
+    Log::getInstance() << "MksuComm::write(blockId="
+		       << blockId << ", address=" << address
+		       << ", value[0]=" << value[0]
+		       << ", size=" << size << ")"
+		       << ": expected taskId of " << _commandCounter
+		       << " got " << _writeResponseHeader.taskId
+		       << " instead." << Log::dp;
+    return false;
+  }
+
+  _commandCounter++;
+
+  if (status != asynSuccess) {
+    Log::getInstance() << "MksuComm::write(blockId="
+		       << blockId << ", address=" << address
+		       << ", value[0]=" << value[0]
+		       << ", size=" << size << ")"
+		       << ": communication failed (status="
+		       << (int) status << ")" << Log::dp;
+    return false;
+  }
+				       
+  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << "MksuComm::write(blockId="
+		     << blockId << ", address=" << address
+		     << ", value[0]=" << value[0]
+		     << ", size=" << size << ")"
+		     << " numSent=" << (int) numSent
 		     << ", responseLen=" << (int) responseLen
 		     << ", eomReason=" << (int) eomReason
 		     << Log::dp;
@@ -265,4 +363,29 @@ void MksuComm::refresh(int blockId) {
 		     << ", responseLen=" << (int) responseLen
 		     << ", eomReason=" << (int) eomReason
 		     << Log::dp;
+
+  printBlock(blockId);
+}
+
+void MksuComm::printBlock(int blockId) {
+  MksuBlock *block = getBlock(blockId);
+  if (block == NULL) {
+    return;
+  }
+
+  std::ostringstream info;
+
+  int offset = 0;
+  info << "=== Block " << blockId << " ===" << std::endl;
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 10; j++) {
+      info << std::hex << block->data[offset] << " ";
+      offset++;
+    }
+    info << std::endl;
+  }
+  info << "..." << std::endl;
+
+  Log::getInstance() << Log::flagComm << Log::dpDebug
+		     << info.str().c_str() << Log::dp;
 }

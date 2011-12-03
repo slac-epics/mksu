@@ -39,10 +39,58 @@ MksuParam *MksuDriver::getParam(int key) {
   return it->second;
 }  
 
+/**
+ * This method is called only when the associated record is processed, i.e.
+ * a `caget PV` will not cause the driver to read the latest value from 
+ * the MKSU. Either the scan field of the record must be set to some periodic
+ * value or one must do a `caput PV.PROC 1`.
+ *
+ * The whole MKSU memory block is updated, but that does not mean all the
+ * PVs get updated. The only PV to get new values is the one that caused
+ * this method to be invoked.
+ * 
+ * @author L.Piccoli
+ */
 asynStatus MksuDriver::readInt8Array(asynUser *pasynUser, epicsInt8 *value, 
 				     size_t nElements, size_t *nIn) {
   Log::getInstance() << Log::flagAsyn << Log::dpInfo;
   Log::getInstance() << "MksuDriver::readInt8Array(reason="
+		     << pasynUser->reason
+		     << ")" << Log::dp;
+
+  // First find the parameter in the _paramMap using the reason (key) field
+  MksuParam *param = getParam(pasynUser->reason);
+  if (param == NULL) {
+    return asynError;
+  }
+
+  _comm.refresh(param->blockId);
+
+  if (_comm.read(param->blockId, param->address, value, param->size)) {
+    *nIn = param->size;
+    return asynSuccess;
+  }
+  else {
+    return asynError;
+  }
+}
+
+/**
+ * This method is called only when the associated record is processed, i.e.
+ * a `caget PV` will not cause the driver to read the latest value from 
+ * the MKSU. Either the scan field of the record must be set to some periodic
+ * value or one must do a `caput PV.PROC 1`.
+ *
+ * The whole MKSU memory block is updated, but that does not mean all the
+ * PVs get updated. The only PV to get new values is the one that caused
+ * this method to be invoked.
+ * 
+ * @author L.Piccoli
+ */
+asynStatus MksuDriver::readInt16Array(asynUser *pasynUser, epicsInt16 *value,
+				      size_t nElements, size_t *nIn) {
+  Log::getInstance() << Log::flagAsyn << Log::dpInfo;
+  Log::getInstance() << "MksuDriver::readInt16Array(reason="
 		     << pasynUser->reason
 		     << ")" << Log::dp;
 
@@ -96,6 +144,14 @@ asynStatus MksuDriver::readInt32(asynUser *pasynUser, epicsInt32 *value) {
   }
 }
 
+/**
+ * This method is called when a new value is written to the associated PV,
+ * e.g. `caput PV <value>`. The blockId and address of the value in the
+ * MKSU memory are first looked up and used by the MksuComm to actually
+ * write out the value.
+ * 
+ * @author L.Piccoli
+ */
 asynStatus MksuDriver::writeInt32(asynUser *pasynUser, epicsInt32 value) {
   Log::getInstance() << Log::flagAsyn << Log::dpInfo;
   Log::getInstance() << "MksuDriver::writeInt32(reason="
@@ -109,6 +165,36 @@ asynStatus MksuDriver::writeInt32(asynUser *pasynUser, epicsInt32 value) {
   }
 
   if (_comm.write(param->blockId, param->address, value)) {
+    return asynSuccess;
+  }
+  else {
+    return asynError;
+  }
+}
+
+/**
+ * This method is called when a new value is written to the associated PV,
+ * e.g. `caput PV <value>`. The blockId and address of the value in the
+ * MKSU memory are first looked up and used by the MksuComm to actually
+ * write out the value.
+ * 
+ * @author L.Piccoli
+ */
+asynStatus MksuDriver::writeInt16Array(asynUser *pasynUser, epicsInt16 *value,
+				       size_t nElements) {
+
+  Log::getInstance() << Log::flagAsyn << Log::dpInfo;
+  Log::getInstance() << "MksuDriver::writeInt16Array(reason="
+		     << pasynUser->reason << ", value[0]=" << value[0]
+		     << ", size=" << (int) nElements << ")" << Log::dp;
+
+  // First find the parameter in the _paramMap using the reason (key) field
+  MksuParam *param = getParam(pasynUser->reason);
+  if (param == NULL) {
+    return asynError;
+  }
+
+  if (_comm.write(param->blockId, param->address, value, param->size)) {
     return asynSuccess;
   }
   else {
