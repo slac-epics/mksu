@@ -6,6 +6,15 @@
 #
 # CONTROL BLOCK (WRITE)
 #
+# The desired bits are written to the IOC using the bo
+# records, which FLNK to calc records used to shift
+# the bit to its correct place. The result is used
+# to actualy write out using the ao (asyn) record.
+#
+# All the ao (asyn) records for a given register
+# appears one time for each bit, e.g. STATUS_FADC_SET
+# and STATUS_CLCKDL_SET.
+#
 #=======================================================
 # Status Register (BEGIN)
 #-------------------------------------------------------
@@ -66,6 +75,294 @@ DOL	KLYS:$(AREA):$(LOCATION):CLCKDL_CLR_MASK
 OMSL	closed_loop
 #-------------------------------------------------------
 # Status Register (END)
+#-------------------------------------------------------
+# Control Set Register (BEGIN)
+#-------------------------------------------------------
+# PERMIT_SET: Set the PERMIT bit (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):PERMIT_SET
+operation	record
+DESC	Permit set
+FLNK	KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK
+DESC	Clear FADC Latch
+INPA	KLYS:$(AREA):$(LOCATION):PERMIT_SET
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_SET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_SET
+operation	write
+task	0x01
+address	1
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_PERMIT_SET
+DOL	KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK
+OMSL	closed_loop
+#-------------------------------------------------------
+# TREN_SET: Set Trigger Enable bit (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TREN_SET
+operation	record
+DESC	Trigger Enable (Set)
+FLNK	KLYS:$(AREA):$(LOCATION):TREN_SET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TREN_SET_MASK
+DESC	Triggen Enable (Set)
+INPA	KLYS:$(AREA):$(LOCATION):TREN_SET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TREN_SET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TREN_SET
+operation	write
+task	0x01
+address	1
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TREN_SET
+DOL	KLYS:$(AREA):$(LOCATION):TREN_SET_MASK
+OMSL	closed_loop
+#-------------------------------------------------------
+# CFGD_SET: Configured bit (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):CFGD_SET
+operation	record
+DESC	Configured (Set)
+FLNK	KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK
+DESC	Configured (Set)
+INPA	KLYS:$(AREA):$(LOCATION):CFGD_SET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_CFGD_SET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_CFGD_SET
+operation	write
+task	0x01
+address	1
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_CFGD_SET
+DOL	KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK
+OMSL	closed_loop
+#-------------------------------------------------------
+# WFTR_SET: Arm Waveform Trigger bit (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WFTR_SET
+operation	record
+DESC	Arm Waveform Trig (Set)
+FLNK	KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK
+DESC	Arm Waveform Trig (Set)
+INPA	KLYS:$(AREA):$(LOCATION):WFTR_SET
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_SET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_SET
+operation	write
+task	0x01
+address	1
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WFTR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK
+OMSL	closed_loop
+#-------------------------------------------------------
+# AVTR_SET: Arm Average Trigger bit (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):AVTR_SET
+operation	record
+DESC	Arm Average Trig (Set)
+FLNK	KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK
+DESC	Arm Average Trig (Set)
+INPA	KLYS:$(AREA):$(LOCATION):AVTR_SET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_SET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_SET
+operation	write
+task	0x01
+address	1
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_SET
+DOL	KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK
+OMSL	closed_loop
+#-------------------------------------------------------
+# Control Set Register (END)
+#-------------------------------------------------------
+# Control Reset Register (BEGIN)
+#-------------------------------------------------------
+# PERMIT_SET: Reset the PERMIT bit (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):PERMIT_RSET
+operation	record
+DESC	Permit set
+FLNK	KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK
+DESC	Clear FADC Latch
+INPA	KLYS:$(AREA):$(LOCATION):PERMIT_RSET
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_RSET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_RSET
+operation	write
+task	0x01
+address	2
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_PERMIT_RSET
+DOL	KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK
+OMSL	closed_loop
+#-------------------------------------------------------
+# TREN_RSET: Set Trigger Enable bit (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TREN_RSET
+operation	record
+DESC	Trigger Enable (Set)
+FLNK	KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK
+DESC	Triggen Enable (Set)
+INPA	KLYS:$(AREA):$(LOCATION):TREN_RSET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET
+operation	write
+task	0x01
+address	2
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TREN_RSET
+DOL	KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK
+OMSL	closed_loop
+#-------------------------------------------------------
+# CFGD_RSET: Configured bit (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):CFGD_RSET
+operation	record
+DESC	Configured (Set)
+FLNK	KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK
+DESC	Configured (Set)
+INPA	KLYS:$(AREA):$(LOCATION):CFGD_RSET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET
+operation	write
+task	0x01
+address	2
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_CFGD_RSET
+DOL	KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK
+OMSL	closed_loop
+#-------------------------------------------------------
+# WFTR_RSET: Arm Waveform Trigger bit (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WFTR_RSET
+operation	record
+DESC	Arm Waveform Trig (Set)
+FLNK	KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK
+DESC	Arm Waveform Trig (Set)
+INPA	KLYS:$(AREA):$(LOCATION):WFTR_RSET
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET
+operation	write
+task	0x01
+address	2
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WFTR_RSET
+DOL	KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK
+OMSL	closed_loop
+#-------------------------------------------------------
+# AVTR_RSET: Arm Average Trigger bit (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):AVTR_RSET
+operation	record
+DESC	Arm Average Trig (Set)
+FLNK	KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK
+DESC	Arm Average Trig (Set)
+INPA	KLYS:$(AREA):$(LOCATION):AVTR_RSET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET
+operation	write
+task	0x01
+address	2
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_RSET
+DOL	KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK
+OMSL	closed_loop
+#-------------------------------------------------------
+# Control Reset Register (END)
 #=======================================================
 #
 # CONTROL BLOCK (READ)
