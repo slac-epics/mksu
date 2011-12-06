@@ -1,16 +1,26 @@
-// Header file generated from MksuRegister.map on Sat, 03 Dec 2011 01:45:39 +0000
+// Header file generated from MksuRegister.map on Tue, 06 Dec 2011 01:45:02 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 43;
+const int MKSU_NUM_PARAMS = 37;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x01, asynParamInt32, 0, 1, "STATUS_FADC_SET", -1},
-  {0x01, asynParamInt32, 0, 1, "STATUS_CLCKD_SET", -1},
+  {0x01, asynParamInt32, 0, 1, "STATUS_CLCKDL_SET", -1},
+  {0x01, asynParamInt32, 1, 1, "CTRL_PERMIT_SET", -1},
+  {0x01, asynParamInt32, 1, 1, "CTRL_TREN_SET", -1},
+  {0x01, asynParamInt32, 1, 1, "CTRL_CFGD_SET", -1},
+  {0x01, asynParamInt32, 1, 1, "CTRL_WFTR_SET", -1},
+  {0x01, asynParamInt32, 1, 1, "CTRL_AVTR_SET", -1},
+  {0x01, asynParamInt32, 2, 1, "CTRL_PERMIT_RSET", -1},
+  {0x01, asynParamInt32, 2, 1, "CTRL_TREN_RSET", -1},
+  {0x01, asynParamInt32, 2, 1, "CTRL_CFGD_RSET", -1},
+  {0x01, asynParamInt32, 2, 1, "CTRL_WFTR_RSET", -1},
+  {0x01, asynParamInt32, 2, 1, "CTRL_AVTR_RSET", -1},
   {0x41, asynParamInt32, 0, 1, "STATUS", -1},
   {0x05, asynParamInt32, 0, 1, "WF_TDLY_DES", -1},
   {0x05, asynParamInt32, 1, 1, "TDLY_DES", -1},

@@ -1,9 +1,7 @@
-# Database template file generated from MksuRegister.map on Sat, 03 Dec 2011 01:45:39 +0000
+# Database template file generated from MksuRegister.map on Tue, 06 Dec 2011 01:45:02 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
-  field(ONAM, "Yes")
-  field(ZNAM, "No")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FADC_CLR_MASK")
 }
 
@@ -19,27 +17,227 @@ record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FADC_SET") {
   field(DTYP, "asynInt32")
   field(DOL, "KLYS:$(AREA):$(LOCATION):FADC_CLR_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FADC_SET")
+  field(OMSL, "closed_loop")
 }
 
-record(bo, "KLYS:$(AREA):$(LOCATION):CLCKD_CLR") {
+record(bo, "KLYS:$(AREA):$(LOCATION):CLCKDL_CLR") {
   field(DESC, "Clear Clck PLL Latch")
-  field(ONAM, "Yes")
-  field(ZNAM, "No")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKD_CLR_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKDL_CLR_MASK")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):CLCKD_CLR_MASK") {
+record(calc, "KLYS:$(AREA):$(LOCATION):CLCKDL_CLR_MASK") {
   field(DESC, "Clear FADC Latch")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):CLCKD_CLR")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_CLCKD_SET")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):CLCKDL_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_CLCKDL_SET")
   field(CALC, "A << 11")
 }
 
-record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_CLCKD_SET") {
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_CLCKDL_SET") {
   field(DESC, "MKSU Status (write)")
   field(DTYP, "asynInt32")
-  field(DOL, "KLYS:$(AREA):$(LOCATION):CLCKD_CLR_MASK")
-  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_CLCKD_SET")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):CLCKDL_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_CLCKDL_SET")
+  field(OMSL, "closed_loop")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):PERMIT_SET") {
+  field(DESC, "Permit set")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK") {
+  field(DESC, "Clear FADC Latch")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):PERMIT_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_SET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_PERMIT_SET")
+  field(OMSL, "closed_loop")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):TREN_SET") {
+  field(DESC, "Trigger Enable (Set)")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TREN_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TREN_SET_MASK") {
+  field(DESC, "Triggen Enable (Set)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TREN_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_TREN_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_TREN_SET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):TREN_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TREN_SET")
+  field(OMSL, "closed_loop")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):CFGD_SET") {
+  field(DESC, "Configured (Set)")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK") {
+  field(DESC, "Configured (Set)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):CFGD_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_CFGD_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_CFGD_SET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_CFGD_SET")
+  field(OMSL, "closed_loop")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WFTR_SET") {
+  field(DESC, "Arm Waveform Trig (Set)")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK") {
+  field(DESC, "Arm Waveform Trig (Set)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WFTR_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_SET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WFTR_SET")
+  field(OMSL, "closed_loop")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):AVTR_SET") {
+  field(DESC, "Arm Average Trig (Set)")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK") {
+  field(DESC, "Arm Average Trig (Set)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):AVTR_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_SET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_SET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_SET")
+  field(OMSL, "closed_loop")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):PERMIT_RSET") {
+  field(DESC, "Permit set")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK") {
+  field(DESC, "Clear FADC Latch")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):PERMIT_RSET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_RSET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_RSET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_PERMIT_RSET")
+  field(OMSL, "closed_loop")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):TREN_RSET") {
+  field(DESC, "Trigger Enable (Set)")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK") {
+  field(DESC, "Triggen Enable (Set)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TREN_RSET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TREN_RSET")
+  field(OMSL, "closed_loop")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):CFGD_RSET") {
+  field(DESC, "Configured (Set)")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK") {
+  field(DESC, "Configured (Set)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):CFGD_RSET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_CFGD_RSET")
+  field(OMSL, "closed_loop")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WFTR_RSET") {
+  field(DESC, "Arm Waveform Trig (Set)")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK") {
+  field(DESC, "Arm Waveform Trig (Set)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WFTR_RSET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WFTR_RSET")
+  field(OMSL, "closed_loop")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):AVTR_RSET") {
+  field(DESC, "Arm Average Trig (Set)")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK") {
+  field(DESC, "Arm Average Trig (Set)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):AVTR_RSET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_RSET")
+  field(OMSL, "closed_loop")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):STATUS") {
@@ -54,29 +252,146 @@ record(calc, "KLYS:$(AREA):$(LOCATION):PERMIT_MASK") {
   field(DESC, "Permit Status")
   field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):PERMIT")
-  field(CALC, "A & 1")
+  field(CALC, "A & (1 << 0)")
 }
 
 record(bi, "KLYS:$(AREA):$(LOCATION):PERMIT") {
   field(DESC, "Permit Status")
-  field(ONAM, "Yes")
-  field(ZNAM, "No")
+  field(ONAM, "Permit")
+  field(ZNAM, "No Permit")
   field(INP, "KLYS:$(AREA):$(LOCATION):PERMIT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TREN_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TREN_MASK") {
+  field(DESC, "Trigger Enable Status")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TREN")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):TREN") {
+  field(DESC, "Trigger Enable Status")
+  field(ONAM, "Enabled")
+  field(ZNAM, "Not Enabled")
+  field(INP, "KLYS:$(AREA):$(LOCATION):TREN_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CFGD_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):CFGD_MASK") {
+  field(DESC, "Configured Status")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CFGD")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):CFGD") {
+  field(DESC, "Configured Status")
+  field(ONAM, "Configured")
+  field(ZNAM, "Not Configured")
+  field(INP, "KLYS:$(AREA):$(LOCATION):CFGD_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_MASK") {
+  field(DESC, "Modulador State")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD")
+  field(CALC, "(A & (7 << 3) >> 3)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD") {
+  field(DESC, "Modulator State")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):RATE119_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):RATE119_MASK") {
+  field(DESC, "119MHz Present")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):RATE119")
+  field(CALC, "(A & (1 << 6)) >> 6")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):RATE119") {
+  field(DESC, "119MHz Present")
+  field(ONAM, "119MHz")
+  field(ZNAM, "125MHz")
+  field(INP, "KLYS:$(AREA):$(LOCATION):RATE119_MASK")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKD_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):CLCKD_MASK") {
-  field(DESC, "Clck PLL Locked")
+  field(DESC, "Sys Clck PLL Lckd")
   field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKD")
-  field(CALC, "(A & 128) >> 7")
+  field(CALC, "(A & (1 << 7)) >> 7")
 }
 
 record(bi, "KLYS:$(AREA):$(LOCATION):CLCKD") {
-  field(DESC, "Clkc PLL Locked")
-  field(ONAM, "Yes")
-  field(ZNAM, "No")
+  field(DESC, "Sys Clck PLL Lckd")
+  field(ONAM, "Locked")
+  field(ZNAM, "Not Locked")
   field(INP, "KLYS:$(AREA):$(LOCATION):CLCKD_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LOCAL_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LOCAL_MASK") {
+  field(DESC, "Local Mode")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LOCAL")
+  field(CALC, "(A & (1 << 8)) >> 8")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):LOCAL") {
+  field(DESC, "Local Mode")
+  field(ONAM, "Local")
+  field(ZNAM, "Remote")
+  field(INP, "KLYS:$(AREA):$(LOCATION):LOCAL_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCLCKD_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FCLCKD_MASK") {
+  field(DESC, "FADC Clck PLL Lckd")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCLCKD")
+  field(CALC, "(A & (1 << 9)) >> 9")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FCLCKD") {
+  field(DESC, "FADC Clck PLL Lckd")
+  field(ONAM, "Locked")
+  field(ZNAM, "Not Locked")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FCLCKD_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKDL_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):CLCKDL_MASK") {
+  field(DESC, "Clck PLL Not Lckd Latch")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKDL")
+  field(CALC, "(A & (1 << 10)) >> 10")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):CLCKDL") {
+  field(DESC, "Clkc PLL Not Lckd Latch")
+  field(ONAM, "Latch")
+  field(ZNAM, "Not Latch")
+  field(INP, "KLYS:$(AREA):$(LOCATION):CLCKDL_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FCLCKDL_MASK") {
+  field(DESC, "FADC PLL Not Lckd Latch")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCLCKDL")
+  field(CALC, "(A & (1 << 10)) >> 10")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FCLCKDL") {
+  field(DESC, "Clkc PLL Locked Latch")
+  field(ONAM, "Latch")
+  field(ZNAM, "Not Latch")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FCLCKDL_MASK")
 }
 
 record(ao, "KLYS:$(AREA):$(LOCATION):WF_TDLY_DES") {
