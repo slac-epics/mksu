@@ -25,6 +25,7 @@ name	KLYS:$(AREA):$(LOCATION):FADC_CLR
 operation	record
 DESC	Clear FADC Latch
 FLNK	KLYS:$(AREA):$(LOCATION):FADC_CLR_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -33,6 +34,7 @@ DESC	Clear FADC Latch
 INPA	KLYS:$(AREA):$(LOCATION):FADC_CLR
 CALC	A << 10
 FLNK	KLYS:$(AREA):$(LOCATION):STATUS_FADC_SET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):STATUS_FADC_SET
@@ -45,6 +47,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FADC_SET
 DOL	KLYS:$(AREA):$(LOCATION):FADC_CLR_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
 # CLCKDL_CLR: Sys Clock PLL Not Locked Latch
 #-------------------------------------------------------
@@ -53,6 +56,7 @@ name	KLYS:$(AREA):$(LOCATION):CLCKDL_CLR
 operation	record
 DESC	Clear Clck PLL Latch
 FLNK	KLYS:$(AREA):$(LOCATION):CLCKDL_CLR_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -61,6 +65,7 @@ DESC	Clear FADC Latch
 INPA	KLYS:$(AREA):$(LOCATION):CLCKDL_CLR
 CALC	A << 11
 FLNK	KLYS:$(AREA):$(LOCATION):STATUS_CLCKDL_SET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):STATUS_CLCKDL_SET
@@ -73,6 +78,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_CLCKDL_SET
 DOL	KLYS:$(AREA):$(LOCATION):CLCKDL_CLR_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
 # Status Register (END)
 #-------------------------------------------------------
@@ -85,6 +91,7 @@ name	KLYS:$(AREA):$(LOCATION):PERMIT_SET
 operation	record
 DESC	Permit set
 FLNK	KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -93,6 +100,7 @@ DESC	Clear FADC Latch
 INPA	KLYS:$(AREA):$(LOCATION):PERMIT_SET
 CALC	A
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_SET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_SET
@@ -105,6 +113,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_PERMIT_SET
 DOL	KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
 # TREN_SET: Set Trigger Enable bit (Bit 1)
 #-------------------------------------------------------
@@ -121,6 +130,7 @@ DESC	Triggen Enable (Set)
 INPA	KLYS:$(AREA):$(LOCATION):TREN_SET
 CALC	A << 1
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TREN_SET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):CTRL_TREN_SET
@@ -133,6 +143,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TREN_SET
 DOL	KLYS:$(AREA):$(LOCATION):TREN_SET_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
 # CFGD_SET: Configured bit (Bit 2)
 #-------------------------------------------------------
@@ -141,6 +152,7 @@ name	KLYS:$(AREA):$(LOCATION):CFGD_SET
 operation	record
 DESC	Configured (Set)
 FLNK	KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -149,6 +161,7 @@ DESC	Configured (Set)
 INPA	KLYS:$(AREA):$(LOCATION):CFGD_SET
 CALC	A << 2
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_CFGD_SET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):CTRL_CFGD_SET
@@ -161,6 +174,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_CFGD_SET
 DOL	KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
 # WFTR_SET: Arm Waveform Trigger bit (Bit 3)
 #-------------------------------------------------------
@@ -169,6 +183,7 @@ name	KLYS:$(AREA):$(LOCATION):WFTR_SET
 operation	record
 DESC	Arm Waveform Trig (Set)
 FLNK	KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -177,6 +192,7 @@ DESC	Arm Waveform Trig (Set)
 INPA	KLYS:$(AREA):$(LOCATION):WFTR_SET
 CALC	A << 3
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_SET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_SET
@@ -189,6 +205,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WFTR_SET
 DOL	KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
 # AVTR_SET: Arm Average Trigger bit (Bit 4)
 #-------------------------------------------------------
@@ -197,6 +214,7 @@ name	KLYS:$(AREA):$(LOCATION):AVTR_SET
 operation	record
 DESC	Arm Average Trig (Set)
 FLNK	KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -205,6 +223,7 @@ DESC	Arm Average Trig (Set)
 INPA	KLYS:$(AREA):$(LOCATION):AVTR_SET
 CALC	A << 4
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_SET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_SET
@@ -217,18 +236,20 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_SET
 DOL	KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
 # Control Set Register (END)
 #-------------------------------------------------------
 # Control Reset Register (BEGIN)
 #-------------------------------------------------------
-# PERMIT_SET: Reset the PERMIT bit (Bit 0)
+# PERMIT_RSET: Reset the PERMIT bit (Bit 0)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):PERMIT_RSET
 operation	record
 DESC	Permit set
 FLNK	KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -237,6 +258,7 @@ DESC	Clear FADC Latch
 INPA	KLYS:$(AREA):$(LOCATION):PERMIT_RSET
 CALC	A
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_RSET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_RSET
@@ -249,14 +271,16 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_PERMIT_RSET
 DOL	KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
-# TREN_RSET: Set Trigger Enable bit (Bit 1)
+# TREN_RSET: Reset Trigger Enable bit (Bit 1)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):TREN_RSET
 operation	record
 DESC	Trigger Enable (Set)
 FLNK	KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -265,6 +289,7 @@ DESC	Triggen Enable (Set)
 INPA	KLYS:$(AREA):$(LOCATION):TREN_RSET
 CALC	A << 1
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET
@@ -277,14 +302,16 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TREN_RSET
 DOL	KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
-# CFGD_RSET: Configured bit (Bit 2)
+# CFGD_RSET: Reset Configured bit (Bit 2)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):CFGD_RSET
 operation	record
 DESC	Configured (Set)
 FLNK	KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -293,6 +320,7 @@ DESC	Configured (Set)
 INPA	KLYS:$(AREA):$(LOCATION):CFGD_RSET
 CALC	A << 2
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET
@@ -305,14 +333,16 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_CFGD_RSET
 DOL	KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
-# WFTR_RSET: Arm Waveform Trigger bit (Bit 3)
+# WFTR_RSET: Reset Arm Waveform Trigger bit (Bit 3)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):WFTR_RSET
 operation	record
 DESC	Arm Waveform Trig (Set)
 FLNK	KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -321,6 +351,7 @@ DESC	Arm Waveform Trig (Set)
 INPA	KLYS:$(AREA):$(LOCATION):WFTR_RSET
 CALC	A << 3
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET
@@ -333,14 +364,16 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WFTR_RSET
 DOL	KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
-# AVTR_RSET: Arm Average Trigger bit (Bit 4)
+# AVTR_RSET: Reset Arm Average Trigger bit (Bit 4)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):AVTR_RSET
 operation	record
 DESC	Arm Average Trig (Set)
 FLNK	KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -349,6 +382,7 @@ DESC	Arm Average Trig (Set)
 INPA	KLYS:$(AREA):$(LOCATION):AVTR_RSET
 CALC	A << 4
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET
@@ -361,8 +395,34 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_RSET
 DOL	KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK
 OMSL	closed_loop
+PRIO	LOW
 #-------------------------------------------------------
 # Control Reset Register (END)
+#-------------------------------------------------------
+# Modulator State Register (BEGIN)
+#-------------------------------------------------------
+# MODSTATE_SET: Modulator State Set (Bits 0-3)
+#-------------------------------------------------------
+record	mbbo
+name	KLYS:$(AREA):$(LOCATION):MODSTATE_SET
+operation	write
+task	0x01
+address	3
+size	1
+DESC	Modulator State (Set)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MODSTATE_SET
+ONVL	1
+TWVL	2
+THVL	3
+FRVL	4
+ONST	Maintenance
+TWST	Offline
+THST	Stand By
+FRST	Accelerate
+PRIO	LOW
+#-------------------------------------------------------
+# Modulator State Register (END)
 #=======================================================
 #
 # CONTROL BLOCK (READ)
@@ -385,6 +445,7 @@ DTYP	asynInt32
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS
 FLNK	KLYS:$(AREA):$(LOCATION):PERMIT_MASK
 SCAN	$(SCAN)
+PRIO	LOW
 #-------------------------------------------------------
 # PERMIT: Permit (Bit 0)
 #-------------------------------------------------------
@@ -395,6 +456,7 @@ DESC	Permit Status
 INPA	KLYS:$(AREA):$(LOCATION):STATUS
 CALC	A & (1 << 0)
 FLNK	KLYS:$(AREA):$(LOCATION):PERMIT
+PRIO	LOW
 #-------------------------------------------------------
 record	bi
 name	KLYS:$(AREA):$(LOCATION):PERMIT
@@ -404,6 +466,7 @@ INP	KLYS:$(AREA):$(LOCATION):PERMIT_MASK
 ZNAM	No Permit
 ONAM	Permit
 FLNK	KLYS:$(AREA):$(LOCATION):TREN_MASK
+PRIO	LOW
 #-------------------------------------------------------
 # TREN: Trigger Enable (Bit 1)
 #-------------------------------------------------------
@@ -413,6 +476,7 @@ name	KLYS:$(AREA):$(LOCATION):TREN_MASK
 DESC	Trigger Enable Status
 INPA	KLYS:$(AREA):$(LOCATION):STATUS
 CALC	(A & (1 << 1)) >> 1
+PRIO	LOW
 FLNK	KLYS:$(AREA):$(LOCATION):TREN
 #-------------------------------------------------------
 record	bi
@@ -423,6 +487,7 @@ INP	KLYS:$(AREA):$(LOCATION):TREN_MASK
 ZNAM	Not Enabled
 ONAM	Enabled
 FLNK	KLYS:$(AREA):$(LOCATION):CFGD_MASK
+PRIO	LOW
 #-------------------------------------------------------
 # CFGD: Configured (Bit 2)
 #-------------------------------------------------------
@@ -433,6 +498,7 @@ DESC	Configured Status
 INPA	KLYS:$(AREA):$(LOCATION):STATUS
 CALC	(A & (1 << 2)) >> 2
 FLNK	KLYS:$(AREA):$(LOCATION):CFGD
+PRIO	LOW
 #-------------------------------------------------------
 record	bi
 name	KLYS:$(AREA):$(LOCATION):CFGD
@@ -442,6 +508,7 @@ INP	KLYS:$(AREA):$(LOCATION):CFGD_MASK
 ZNAM	Not Configured
 ONAM	Configured
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_MASK
+PRIO	LOW
 #-------------------------------------------------------
 # MOD: Modulator State (Bit 3, 4 & 5)
 #-------------------------------------------------------
@@ -452,6 +519,7 @@ DESC	Modulador State
 INPA	KLYS:$(AREA):$(LOCATION):STATUS
 CALC	(A & (7 << 3) >> 3)
 FLNK	KLYS:$(AREA):$(LOCATION):MOD
+PRIO	LOW
 #-------------------------------------------------------
 record	bi
 name	KLYS:$(AREA):$(LOCATION):MOD
@@ -459,6 +527,7 @@ operation	record
 DESC	Modulator State
 INP	KLYS:$(AREA):$(LOCATION):MOD_MASK
 FLNK	KLYS:$(AREA):$(LOCATION):RATE119_MASK
+PRIO	LOW
 #-------------------------------------------------------
 # RATE1119: 119MHz or 125MHz Present (Bit 6)
 #-------------------------------------------------------
@@ -478,6 +547,7 @@ INP	KLYS:$(AREA):$(LOCATION):RATE119_MASK
 ZNAM	125MHz
 ONAM	119MHz
 FLNK	KLYS:$(AREA):$(LOCATION):CLCKD_MASK
+PRIO	LOW
 #-------------------------------------------------------
 # CLCKD: SysClock PLL Locked (Bit 7)
 #-------------------------------------------------------
@@ -488,6 +558,7 @@ DESC	Sys Clck PLL Lckd
 INPA	KLYS:$(AREA):$(LOCATION):STATUS
 CALC	(A & (1 << 7)) >> 7
 FLNK	KLYS:$(AREA):$(LOCATION):CLCKD
+PRIO	LOW
 #-------------------------------------------------------
 record	bi
 name	KLYS:$(AREA):$(LOCATION):CLCKD
@@ -507,6 +578,7 @@ DESC	Local Mode
 INPA	KLYS:$(AREA):$(LOCATION):STATUS
 CALC	(A & (1 << 8)) >> 8
 FLNK	KLYS:$(AREA):$(LOCATION):LOCAL
+PRIO	LOW
 #-------------------------------------------------------
 record	bi
 name	KLYS:$(AREA):$(LOCATION):LOCAL
@@ -516,6 +588,7 @@ INP	KLYS:$(AREA):$(LOCATION):LOCAL_MASK
 ZNAM	Remote
 ONAM	Local
 FLNK	KLYS:$(AREA):$(LOCATION):FCLCKD_MASK
+PRIO	LOW
 #-------------------------------------------------------
 # FCLCKD: FAST ADC Data Clock PLL Locked (Bit 9)
 #-------------------------------------------------------
@@ -535,6 +608,7 @@ INP	KLYS:$(AREA):$(LOCATION):FCLCKD_MASK
 ZNAM	Not Locked
 ONAM	Locked
 FLNK	KLYS:$(AREA):$(LOCATION):CLCKDL_MASK
+PRIO	LOW
 #-------------------------------------------------------
 # CLCKDL: Sys Clock PLL Not Locked Latch (Bit 10)
 #-------------------------------------------------------
@@ -545,6 +619,7 @@ DESC	Clck PLL Not Lckd Latch
 INPA	KLYS:$(AREA):$(LOCATION):STATUS
 CALC	(A & (1 << 10)) >> 10
 FLNK	KLYS:$(AREA):$(LOCATION):CLCKDL
+PRIO	LOW
 #-------------------------------------------------------
 record	bi
 name	KLYS:$(AREA):$(LOCATION):CLCKDL
@@ -553,6 +628,7 @@ DESC	Clkc PLL Not Lckd Latch
 INP	KLYS:$(AREA):$(LOCATION):CLCKDL_MASK
 ZNAM	Not Latch
 ONAM	Latch
+PRIO	LOW
 #-------------------------------------------------------
 # FCLCKDL: FAST ADC Data Clock PLL Not Locked Latch (Bit 11)
 #-------------------------------------------------------
@@ -563,6 +639,7 @@ DESC	FADC PLL Not Lckd Latch
 INPA	KLYS:$(AREA):$(LOCATION):STATUS
 CALC	(A & (1 << 10)) >> 10
 FLNK	KLYS:$(AREA):$(LOCATION):FCLCKDL
+PRIO	LOW
 #-------------------------------------------------------
 record	bi
 name	KLYS:$(AREA):$(LOCATION):FCLCKDL
@@ -571,75 +648,92 @@ DESC	Clkc PLL Locked Latch
 INP	KLYS:$(AREA):$(LOCATION):FCLCKDL_MASK
 ZNAM	Not Latch
 ONAM	Latch
+PRIO	LOW
 #-------------------------------------------------------
 # Status Register (END)
 #=======================================================
 # Control Register (BEGIN)
 #-------------------------------------------------------
-#record	ai
-#name	KLYS:$(AREA):$(LOCATION):CTRL
-#operation	read
-#task	0x41
-#address	1
-#size	1
-#DESC	MKSU Control
-#DTYP	asynInt32
-#INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL
-#FLNK	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_MASK
-#SCAN	$(SCAN)
-##-------------------------------------------------------
-#record	calc
-#operation	record
-#name	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_MASK
-#DESC	Permit Control Status
-#INPA	KLYS:$(AREA):$(LOCATION):STATUS
-#CALC	A & 1
-#FLNK	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT
-##-------------------------------------------------------
-#record	bi
-#name	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT
-#operation	record
-#DESC	Permit Control Status
-#ZNAM	No
-#ONAM	Yes
-#FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TRGEN_MASK
-#INP	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_MASK
-##-------------------------------------------------------
-#record	calc
-#operation	record
-#name	KLYS:$(AREA):$(LOCATION):CTRL_TREN_MASK
-#DESC	Trigger Enable
-#INPA	KLYS:$(AREA):$(LOCATION):STATUS
-#CALC	A & 2
-#FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TREN
-##-------------------------------------------------------
-#record	bi
-#name	KLYS:$(AREA):$(LOCATION):CTRL_TREN
-#operation	record
-#DESC	Trigger Enable
-#ZNAM	No
-#ONAM	Yes
-#FLNK	KLYS:$(AREA):$(LOCATION):TREN_MASK
-#INP	KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_MASK
-##-------------------------------------------------------
-#record	calc
-#operation	record
-#name	KLYS:$(AREA):$(LOCATION):CTRL_CNFG_MASK
-#DESC	Trigger Enable
-#INPA	KLYS:$(AREA):$(LOCATION):STATUS
-#CALC	A & 2
-#FLNK	KLYS:$(AREA):$(LOCATION):CTRL_CNFG
-##-------------------------------------------------------
-#record	bi
-#name	KLYS:$(AREA):$(LOCATION):CTRL_CNFG
-#operation	record
-#DESC	Trigger Enable
-#ZNAM	No
-#ONAM	Yes
-#FLNK	KLYS:$(AREA):$(LOCATION):
-#INP	KLYS:$(AREA):$(LOCATION):CTRL_CNFG_MASK
+record	ai
+name	KLYS:$(AREA):$(LOCATION):CTRL
+operation	read
+task	0x41
+address	1
+size	1
+DESC	MKSU Control
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# WFTR: Arm Waveform Trigger (Bit 3)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_MASK
+DESC	Arm Waveform Trigger
+INPA	KLYS:$(AREA):$(LOCATION):CTRL
+CALC	(A & (1 << 3)) >> 3
+FLNK	KLYS:$(AREA):$(LOCATION):WFTR
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WFTR
+operation	record
+DESC	Arm Waveform Trigger
+INP	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# AVTR: Arm Average Trigger (Bit 4)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_MASK
+DESC	Arm Waveform Trigger
+INPA	KLYS:$(AREA):$(LOCATION):CTRL
+CALC	(A & (1 << 4)) >> 4
+FLNK	KLYS:$(AREA):$(LOCATION):AVTR
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):AVTR
+operation	record
+DESC	Arm Waveform Trigger
+INP	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
 #-------------------------------------------------------
 # Control Register (END)
+#-------------------------------------------------------
+# Modulator State Register (BEGIN)
+#-------------------------------------------------------
+# MODSTATE: Modulator State Set (Bits 0-3)
+#-------------------------------------------------------
+record	mbbi
+name	KLYS:$(AREA):$(LOCATION):MODSTATE
+operation	write
+task	0x41
+address	2
+size	1
+DESC	Modulator State (Read)
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MODSTATE
+ONVL	1
+TWVL	2
+THVL	3
+FRVL	4
+ONST	Maintenance
+TWST	Offline
+THST	Stand By
+FRST	Accelerate
+PRIO	LOW
+#-------------------------------------------------------
+# Modulator State Register (END)
 #=======================================================
 # SLOW MONITOR ADC (WRITE)
 #=======================================================
@@ -662,6 +756,7 @@ DESC	Waveform des trigger delay
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TDLY_DES
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TDLY_DES
@@ -673,6 +768,7 @@ DESC	Remote mod des trig delay
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_DES
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TDLY_RP_DES
@@ -684,6 +780,7 @@ DESC	Rear panel des trig delay
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_RP_DES
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TWTH_RP_DES
@@ -695,6 +792,7 @@ DESC	Rear panel des trig width
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_RP_DES
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TDLY_FP_DES
@@ -706,6 +804,7 @@ DESC	Front panel des trig delay
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_FP_DES
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TWTH_FP_DES
@@ -717,6 +816,7 @@ DESC	Front panel des trig width
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_FP_DES
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TCNT_IN_DES
@@ -728,6 +828,7 @@ DESC	Input trigger des rate cnt
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN_DES
 EGU	1KHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TCNT_OUT_DES
@@ -739,6 +840,7 @@ DESC	Output trigger des rate cnt
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_OUT_DES
 EGU	1KHz Ticks
+PRIO	LOW
 #=======================================================
 # TRIGGER CONTROL BLOCK (READ)
 #=======================================================
@@ -754,6 +856,7 @@ FLNK	KLYS:$(AREA):$(LOCATION):WF_TDLY_NS
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TDLY
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -762,6 +865,7 @@ DESC	Waveguide trig delay (NS)
 INPA	KLYS:$(AREA):$(LOCATION):WF_TDLY
 EGU	ns
 CALC	A/0.119
+PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):TDLY
@@ -775,6 +879,7 @@ FLNK	KLYS:$(AREA):$(LOCATION):TDLY_NS
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -783,6 +888,7 @@ DESC	Remote mod trig delay (NS)
 INPA	KLYS:$(AREA):$(LOCATION):TDLY
 EGU	ns
 CALC	A/0.119
+PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):TDLY_RP
@@ -796,6 +902,7 @@ FLNK	KLYS:$(AREA):$(LOCATION):TDLY_RP_NS
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_RP
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -804,6 +911,7 @@ DESC	Rear panel trig delay (NS)
 INPA	KLYS:$(AREA):$(LOCATION):TDLY_RP
 EGU	ns
 CALC	A/0.119
+PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):TWTH_RP
@@ -817,6 +925,7 @@ FLNK	KLYS:$(AREA):$(LOCATION):TWTH_RP_NS
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_RP
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -825,6 +934,7 @@ DESC	Rear panel trig width (NS)
 INPA	KLYS:$(AREA):$(LOCATION):TWTH_RP
 EGU	ns
 CALC	A/0.119
+PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):TDLY_FP
@@ -838,6 +948,7 @@ FLNK	KLYS:$(AREA):$(LOCATION):TDLY_FP_NS
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_FP
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -846,6 +957,7 @@ DESC	Front panel trig delay (NS)
 INPA	KLYS:$(AREA):$(LOCATION):TDLY_FP
 EGU	ns
 CALC	A/0.119
+PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):TWTH_FP
@@ -859,6 +971,7 @@ FLNK	KLYS:$(AREA):$(LOCATION):TWTH_FP_NS
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_FP
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -867,6 +980,7 @@ DESC	Front panel trig width (NS)
 INPA	KLYS:$(AREA):$(LOCATION):TWTH_FP
 EGU	ns
 CALC	A/0.119
+PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):TDLY_LOC
@@ -880,6 +994,7 @@ FLNK	KLYS:$(AREA):$(LOCATION):TDLY_LOC_NS
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_LOC
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -888,6 +1003,7 @@ DESC	Local trigger delay (NS)
 INPA	KLYS:$(AREA):$(LOCATION):TDLY_LOC
 EGU	ns
 CALC	A/0.119
+PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):TDLY_ACT
@@ -901,6 +1017,7 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_ACT
 EGU	119MHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -909,6 +1026,7 @@ DESC	Actual trigger delay (NS)
 INPA	KLYS:$(AREA):$(LOCATION):TDLY_ACT
 EGU	ns
 CALC	A/0.119
+PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):TCNT_IN
@@ -921,6 +1039,7 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN
 EGU	1KHz Ticks
+PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):TCNT_OUT
@@ -933,6 +1052,7 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN
 EGU	1KHz Ticks
+PRIO	LOW
 #=======================================================
 # SYSTEM INFO BLOCK (READ)
 #=======================================================
@@ -948,6 +1068,7 @@ FTVL	UCHAR
 NELM	8
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_VERSION
+PRIO	LOW
 #-------------------------------------------------------
 record	waveform
 name	KLYS:$(AREA):$(LOCATION):SYS_ID
@@ -961,6 +1082,7 @@ FTVL	UCHAR
 NELM	6
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_ID
+PRIO	LOW
 #-------------------------------------------------------
 record	waveform
 name	KLYS:$(AREA):$(LOCATION):SYS_SUB_TYPE
@@ -974,6 +1096,7 @@ FTVL	UCHAR
 NELM	4
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_SUB_TYPE
+PRIO	LOW
 #-------------------------------------------------------
 record	waveform
 name	KLYS:$(AREA):$(LOCATION):SYS_DATE
@@ -987,6 +1110,7 @@ FTVL	UCHAR
 NELM	8
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_DATE
+PRIO	LOW
 #-------------------------------------------------------
 record	waveform
 name	KLYS:$(AREA):$(LOCATION):RF_DRV_TBL_READ
@@ -1000,6 +1124,7 @@ FTVL	SHORT
 NELM	256
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_TBL_READ
+PRIO	LOW
 #-------------------------------------------------------
 record	waveform
 name	KLYS:$(AREA):$(LOCATION):RF_DRV_TBL_WRITE
@@ -1012,3 +1137,4 @@ DTYP	asynInt16Array
 FTVL	SHORT
 NELM	256
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_TBL_WRITE
+PRIO	LOW
