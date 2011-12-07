@@ -13,7 +13,9 @@
 
 int DEBUG_GENERAL_FLAG = 0;
 int DEBUG_ASYN_FLAG = 0;
+int DEBUG_ASYNW_FLAG = 0;
 int DEBUG_COMM_FLAG = 0;
+int DEBUG_COMMW_FLAG = 0;
 
 /**
  * Log singleton initialization
@@ -89,8 +91,14 @@ void Log::debugPrint() {
   case flagAsyn:
     flagLevel = DEBUG_ASYN_FLAG;
     break;
+  case flagAsynWrite:
+    flagLevel = DEBUG_ASYNW_FLAG;
+    break;
   case flagComm:
     flagLevel = DEBUG_COMM_FLAG;
+    break;
+  case flagCommWrite:
+    flagLevel = DEBUG_COMMW_FLAG;
     break;
   default:
     flagLevel = 0;
@@ -140,9 +148,17 @@ void Log::setDebugLevel(int flag, int level) {
     DEBUG_ASYN_FLAG = level;
     std::cout << " (ASYN)";
     break;
+  case flagAsynWrite:
+    DEBUG_ASYNW_FLAG = level;
+    std::cout << " (ASYNW)";
+    break;
   case flagComm:
     DEBUG_COMM_FLAG = level;
     std::cout << " (COMM)";
+    break;
+  case flagCommWrite:
+    DEBUG_COMMW_FLAG = level;
+    std::cout << " (COMMW)";
     break;
   }
   std::cout << " to level " << level << std::endl;

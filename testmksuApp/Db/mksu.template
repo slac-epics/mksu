@@ -1,12 +1,14 @@
-# Database template file generated from MksuRegister.map on Tue, 06 Dec 2011 01:45:02 +0000
+# Database template file generated from MksuRegister.map on Wed, 07 Dec 2011 00:43:40 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FADC_CLR_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):FADC_CLR_MASK") {
   field(DESC, "Clear FADC Latch")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):FADC_CLR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FADC_SET")
   field(CALC, "A << 10")
@@ -18,15 +20,18 @@ record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FADC_SET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):FADC_CLR_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FADC_SET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):CLCKDL_CLR") {
   field(DESC, "Clear Clck PLL Latch")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKDL_CLR_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):CLCKDL_CLR_MASK") {
   field(DESC, "Clear FADC Latch")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):CLCKDL_CLR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_CLCKDL_SET")
   field(CALC, "A << 11")
@@ -38,15 +43,18 @@ record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_CLCKDL_SET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):CLCKDL_CLR_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_CLCKDL_SET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):PERMIT_SET") {
   field(DESC, "Permit set")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK") {
   field(DESC, "Clear FADC Latch")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):PERMIT_SET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_SET")
   field(CALC, "A")
@@ -58,6 +66,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_SET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):PERMIT_SET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_PERMIT_SET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):TREN_SET") {
@@ -67,6 +76,7 @@ record(bo, "KLYS:$(AREA):$(LOCATION):TREN_SET") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TREN_SET_MASK") {
   field(DESC, "Triggen Enable (Set)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TREN_SET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_TREN_SET")
   field(CALC, "A << 1")
@@ -78,15 +88,18 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_TREN_SET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):TREN_SET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TREN_SET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):CFGD_SET") {
   field(DESC, "Configured (Set)")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK") {
   field(DESC, "Configured (Set)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):CFGD_SET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_CFGD_SET")
   field(CALC, "A << 2")
@@ -98,15 +111,18 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_CFGD_SET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):CFGD_SET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_CFGD_SET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):WFTR_SET") {
   field(DESC, "Arm Waveform Trig (Set)")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK") {
   field(DESC, "Arm Waveform Trig (Set)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):WFTR_SET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_SET")
   field(CALC, "A << 3")
@@ -118,15 +134,18 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_SET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):WFTR_SET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WFTR_SET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):AVTR_SET") {
   field(DESC, "Arm Average Trig (Set)")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK") {
   field(DESC, "Arm Average Trig (Set)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):AVTR_SET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_SET")
   field(CALC, "A << 4")
@@ -138,15 +157,18 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_SET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_SET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):PERMIT_RSET") {
   field(DESC, "Permit set")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK") {
   field(DESC, "Clear FADC Latch")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):PERMIT_RSET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_RSET")
   field(CALC, "A")
@@ -158,15 +180,18 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_RSET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):PERMIT_RSET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_PERMIT_RSET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):TREN_RSET") {
   field(DESC, "Trigger Enable (Set)")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK") {
   field(DESC, "Triggen Enable (Set)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TREN_RSET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET")
   field(CALC, "A << 1")
@@ -178,15 +203,18 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TREN_RSET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):CFGD_RSET") {
   field(DESC, "Configured (Set)")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK") {
   field(DESC, "Configured (Set)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):CFGD_RSET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET")
   field(CALC, "A << 2")
@@ -198,15 +226,18 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_CFGD_RSET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):WFTR_RSET") {
   field(DESC, "Arm Waveform Trig (Set)")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK") {
   field(DESC, "Arm Waveform Trig (Set)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):WFTR_RSET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET")
   field(CALC, "A << 3")
@@ -218,15 +249,18 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WFTR_RSET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):AVTR_RSET") {
   field(DESC, "Arm Average Trig (Set)")
+  field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK") {
   field(DESC, "Arm Average Trig (Set)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):AVTR_RSET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET")
   field(CALC, "A << 4")
@@ -238,11 +272,28 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET") {
   field(DOL, "KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_RSET")
   field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(mbbo, "KLYS:$(AREA):$(LOCATION):MOD_SET") {
+  field(DESC, "Modulator State (Set)")
+  field(DTYP, "asynInt32")
+  field(TWST, "Offline")
+  field(FRST, "Accelerate")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_SET")
+  field(TWVL, "2")
+  field(PRIO, "LOW")
+  field(THST, "Stand By")
+  field(ONVL, "1")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(ONST, "Maintenance")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):STATUS") {
   field(DESC, "MKSU Status")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):PERMIT_MASK")
@@ -250,6 +301,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):STATUS") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):PERMIT_MASK") {
   field(DESC, "Permit Status")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):PERMIT")
   field(CALC, "A & (1 << 0)")
@@ -257,6 +309,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):PERMIT_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):PERMIT") {
   field(DESC, "Permit Status")
+  field(PRIO, "LOW")
   field(ONAM, "Permit")
   field(ZNAM, "No Permit")
   field(INP, "KLYS:$(AREA):$(LOCATION):PERMIT_MASK")
@@ -265,6 +318,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):PERMIT") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TREN_MASK") {
   field(DESC, "Trigger Enable Status")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TREN")
   field(CALC, "(A & (1 << 1)) >> 1")
@@ -272,6 +326,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TREN_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):TREN") {
   field(DESC, "Trigger Enable Status")
+  field(PRIO, "LOW")
   field(ONAM, "Enabled")
   field(ZNAM, "Not Enabled")
   field(INP, "KLYS:$(AREA):$(LOCATION):TREN_MASK")
@@ -280,6 +335,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TREN") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):CFGD_MASK") {
   field(DESC, "Configured Status")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CFGD")
   field(CALC, "(A & (1 << 2)) >> 2")
@@ -287,22 +343,10 @@ record(calc, "KLYS:$(AREA):$(LOCATION):CFGD_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):CFGD") {
   field(DESC, "Configured Status")
+  field(PRIO, "LOW")
   field(ONAM, "Configured")
   field(ZNAM, "Not Configured")
   field(INP, "KLYS:$(AREA):$(LOCATION):CFGD_MASK")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_MASK")
-}
-
-record(calc, "KLYS:$(AREA):$(LOCATION):MOD_MASK") {
-  field(DESC, "Modulador State")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD")
-  field(CALC, "(A & (7 << 3) >> 3)")
-}
-
-record(bi, "KLYS:$(AREA):$(LOCATION):MOD") {
-  field(DESC, "Modulator State")
-  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_MASK")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):RATE119_MASK")
 }
 
@@ -315,6 +359,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):RATE119_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):RATE119") {
   field(DESC, "119MHz Present")
+  field(PRIO, "LOW")
   field(ONAM, "119MHz")
   field(ZNAM, "125MHz")
   field(INP, "KLYS:$(AREA):$(LOCATION):RATE119_MASK")
@@ -323,6 +368,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):RATE119") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):CLCKD_MASK") {
   field(DESC, "Sys Clck PLL Lckd")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKD")
   field(CALC, "(A & (1 << 7)) >> 7")
@@ -338,6 +384,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):CLCKD") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):LOCAL_MASK") {
   field(DESC, "Local Mode")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):LOCAL")
   field(CALC, "(A & (1 << 8)) >> 8")
@@ -345,6 +392,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):LOCAL_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):LOCAL") {
   field(DESC, "Local Mode")
+  field(PRIO, "LOW")
   field(ONAM, "Local")
   field(ZNAM, "Remote")
   field(INP, "KLYS:$(AREA):$(LOCATION):LOCAL_MASK")
@@ -360,6 +408,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):FCLCKD_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):FCLCKD") {
   field(DESC, "FADC Clck PLL Lckd")
+  field(PRIO, "LOW")
   field(ONAM, "Locked")
   field(ZNAM, "Not Locked")
   field(INP, "KLYS:$(AREA):$(LOCATION):FCLCKD_MASK")
@@ -368,6 +417,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FCLCKD") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):CLCKDL_MASK") {
   field(DESC, "Clck PLL Not Lckd Latch")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CLCKDL")
   field(CALC, "(A & (1 << 10)) >> 10")
@@ -375,6 +425,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):CLCKDL_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):CLCKDL") {
   field(DESC, "Clkc PLL Not Lckd Latch")
+  field(PRIO, "LOW")
   field(ONAM, "Latch")
   field(ZNAM, "Not Latch")
   field(INP, "KLYS:$(AREA):$(LOCATION):CLCKDL_MASK")
@@ -382,6 +433,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):CLCKDL") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):FCLCKDL_MASK") {
   field(DESC, "FADC PLL Not Lckd Latch")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FCLCKDL")
   field(CALC, "(A & (1 << 10)) >> 10")
@@ -389,14 +441,74 @@ record(calc, "KLYS:$(AREA):$(LOCATION):FCLCKDL_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):FCLCKDL") {
   field(DESC, "Clkc PLL Locked Latch")
+  field(PRIO, "LOW")
   field(ONAM, "Latch")
   field(ZNAM, "Not Latch")
   field(INP, "KLYS:$(AREA):$(LOCATION):FCLCKDL_MASK")
 }
 
+record(ai, "KLYS:$(AREA):$(LOCATION):CTRL") {
+  field(DESC, "MKSU Control")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_MASK") {
+  field(DESC, "Arm Waveform Trigger")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):CTRL")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WFTR")
+  field(CALC, "(A & (1 << 3)) >> 3")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WFTR") {
+  field(DESC, "Arm Waveform Trigger")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_MASK") {
+  field(DESC, "Arm Waveform Trigger")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):CTRL")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):AVTR")
+  field(CALC, "(A & (1 << 4)) >> 4")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):AVTR") {
+  field(DESC, "Arm Waveform Trigger")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_MASK")
+}
+
+record(mbbi, "KLYS:$(AREA):$(LOCATION):MOD") {
+  field(DESC, "Modulator State (Read)")
+  field(DTYP, "asynInt32")
+  field(TWST, "Offline")
+  field(FRST, "Accelerate")
+  field(FRVL, "4")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD")
+  field(TWVL, "2")
+  field(PRIO, "LOW")
+  field(ONVL, "1")
+  field(THVL, "3")
+  field(THST, "Stand By")
+  field(ONST, "Maintenance")
+}
+
 record(ao, "KLYS:$(AREA):$(LOCATION):WF_TDLY_DES") {
   field(DESC, "Waveform des trigger delay")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TDLY_DES")
   field(EGU, "119MHz Ticks")
 }
@@ -404,6 +516,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):WF_TDLY_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_DES") {
   field(DESC, "Remote mod des trig delay")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_DES")
   field(EGU, "119MHz Ticks")
 }
@@ -411,6 +524,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_RP_DES") {
   field(DESC, "Rear panel des trig delay")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_RP_DES")
   field(EGU, "119MHz Ticks")
 }
@@ -418,6 +532,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_RP_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TWTH_RP_DES") {
   field(DESC, "Rear panel des trig width")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_RP_DES")
   field(EGU, "119MHz Ticks")
 }
@@ -425,6 +540,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TWTH_RP_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_FP_DES") {
   field(DESC, "Front panel des trig delay")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_FP_DES")
   field(EGU, "119MHz Ticks")
 }
@@ -432,6 +548,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_FP_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TWTH_FP_DES") {
   field(DESC, "Front panel des trig width")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_FP_DES")
   field(EGU, "119MHz Ticks")
 }
@@ -439,6 +556,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TWTH_FP_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TCNT_IN_DES") {
   field(DESC, "Input trigger des rate cnt")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN_DES")
   field(EGU, "1KHz Ticks")
 }
@@ -446,22 +564,25 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TCNT_IN_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TCNT_OUT_DES") {
   field(DESC, "Output trigger des rate cnt")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_OUT_DES")
   field(EGU, "1KHz Ticks")
 }
 
-record(ai, "KLYS:$(AREA):$(LOCATION):WF_TDLY") {
+record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_WF") {
   field(DESC, "Waveguide trig delay")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TDLY")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_WF")
   field(EGU, "119MHz Ticks")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):WF_TDLY_NS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDLY_WF_NS")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):WF_TDLY_NS") {
+record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_WF_NS") {
   field(DESC, "Waveguide trig delay (NS)")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):WF_TDLY")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY_WF")
   field(EGU, "ns")
   field(CALC, "A/0.119")
 }
@@ -469,6 +590,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):WF_TDLY_NS") {
 record(ai, "KLYS:$(AREA):$(LOCATION):TDLY") {
   field(DESC, "Remote mod trig delay")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY")
   field(EGU, "119MHz Ticks")
@@ -477,6 +599,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TDLY") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_NS") {
   field(DESC, "Remote mod trig delay (NS)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY")
   field(EGU, "ns")
   field(CALC, "A/0.119")
@@ -485,6 +608,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_NS") {
 record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_RP") {
   field(DESC, "Rear panel trig delay")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_RP")
   field(EGU, "119MHz Ticks")
@@ -493,6 +617,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_RP") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_RP_NS") {
   field(DESC, "Rear panel trig delay (NS)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY_RP")
   field(EGU, "ns")
   field(CALC, "A/0.119")
@@ -501,6 +626,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_RP_NS") {
 record(ai, "KLYS:$(AREA):$(LOCATION):TWTH_RP") {
   field(DESC, "Rear panel trig width")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_RP")
   field(EGU, "119MHz Ticks")
@@ -509,6 +635,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TWTH_RP") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TWTH_RP_NS") {
   field(DESC, "Rear panel trig width (NS)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TWTH_RP")
   field(EGU, "ns")
   field(CALC, "A/0.119")
@@ -517,6 +644,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TWTH_RP_NS") {
 record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_FP") {
   field(DESC, "Front panel trig delay")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_FP")
   field(EGU, "119MHz Ticks")
@@ -525,6 +653,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_FP") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_FP_NS") {
   field(DESC, "Front panel trig delay (NS)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY_FP")
   field(EGU, "ns")
   field(CALC, "A/0.119")
@@ -533,6 +662,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_FP_NS") {
 record(ai, "KLYS:$(AREA):$(LOCATION):TWTH_FP") {
   field(DESC, "Front panel trig width")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_FP")
   field(EGU, "119MHz Ticks")
@@ -541,6 +671,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TWTH_FP") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TWTH_FP_NS") {
   field(DESC, "Front panel trig width (NS)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TWTH_FP")
   field(EGU, "ns")
   field(CALC, "A/0.119")
@@ -549,6 +680,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TWTH_FP_NS") {
 record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_LOC") {
   field(DESC, "Local trigger delay")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_LOC")
   field(EGU, "119MHz Ticks")
@@ -557,6 +689,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_LOC") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_LOC_NS") {
   field(DESC, "Local trigger delay (NS)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY_LOC")
   field(EGU, "ns")
   field(CALC, "A/0.119")
@@ -565,13 +698,16 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_LOC_NS") {
 record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_ACT") {
   field(DESC, "Actual trigger delay")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_ACT")
   field(EGU, "119MHz Ticks")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDLY_ACT_NS")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_ACT_NS") {
   field(DESC, "Actual trigger delay (NS)")
+  field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TDLY_ACT")
   field(EGU, "ns")
   field(CALC, "A/0.119")
@@ -580,6 +716,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TDLY_ACT_NS") {
 record(ai, "KLYS:$(AREA):$(LOCATION):TCNT_IN") {
   field(DESC, "Input trigger rate count")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN")
   field(EGU, "1KHz Ticks")
@@ -588,6 +725,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TCNT_IN") {
 record(ai, "KLYS:$(AREA):$(LOCATION):TCNT_OUT") {
   field(DESC, "Input trigger rate count")
   field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN")
   field(EGU, "1KHz Ticks")
@@ -597,6 +735,7 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_VERSION") {
   field(DESC, "Firmware version")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
+  field(PRIO, "LOW")
   field(NELM, "8")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_VERSION")
@@ -606,6 +745,7 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_ID") {
   field(DESC, "System ID")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
+  field(PRIO, "LOW")
   field(NELM, "6")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_ID")
@@ -615,6 +755,7 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_SUB_TYPE") {
   field(DESC, "System sub type")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
+  field(PRIO, "LOW")
   field(NELM, "4")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_SUB_TYPE")
@@ -624,24 +765,27 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_DATE") {
   field(DESC, "System date")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
+  field(PRIO, "LOW")
   field(NELM, "8")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_DATE")
 }
 
-record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV_TBL_READ") {
-  field(DESC, "RF drive lookup table")
-  field(DTYP, "asynInt16ArrayIn")
-  field(FTVL, "SHORT")
-  field(NELM, "256")
-  field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_TBL_READ")
-}
-
-record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV_TBL_WRITE") {
+record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV_SET") {
   field(DESC, "RF drive lookup table")
   field(DTYP, "asynInt16ArrayOut")
   field(FTVL, "SHORT")
+  field(PRIO, "LOW")
   field(NELM, "256")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_TBL_WRITE")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_SET")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV") {
+  field(DESC, "RF drive lookup table")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "256")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV")
 }

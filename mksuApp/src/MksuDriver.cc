@@ -153,7 +153,7 @@ asynStatus MksuDriver::readInt32(asynUser *pasynUser, epicsInt32 *value) {
  * @author L.Piccoli
  */
 asynStatus MksuDriver::writeInt32(asynUser *pasynUser, epicsInt32 value) {
-  Log::getInstance() << Log::flagAsyn << Log::dpInfo;
+  Log::getInstance() << Log::flagAsynWrite << Log::dpInfo;
   Log::getInstance() << "MksuDriver::writeInt32(reason="
 		     << pasynUser->reason << ", value=" << value
 		     << ")" << Log::dp;
@@ -183,7 +183,7 @@ asynStatus MksuDriver::writeInt32(asynUser *pasynUser, epicsInt32 value) {
 asynStatus MksuDriver::writeInt16Array(asynUser *pasynUser, epicsInt16 *value,
 				       size_t nElements) {
 
-  Log::getInstance() << Log::flagAsyn << Log::dpInfo;
+  Log::getInstance() << Log::flagAsynWrite << Log::dpInfo;
   Log::getInstance() << "MksuDriver::writeInt16Array(reason="
 		     << pasynUser->reason << ", value[0]=" << value[0]
 		     << ", size=" << (int) nElements << ")" << Log::dp;
@@ -216,7 +216,7 @@ void MksuDriver::report(FILE *fp, int reportDetails) {
        it != _paramMap.end(); it++) {
     MksuParam *param = (*it).second;
     details << param->name.c_str() << ":\t";
-    if (param->name.length() < 13) {
+    if (param->name.length() < 15) {
       details << "\t";
       if (param->name.length() < 7) {
 	details << "\t";
@@ -233,8 +233,11 @@ void MksuDriver::report(FILE *fp, int reportDetails) {
 	details << " latest read: " << value;
       }
     }
-    details << "\n";
+    details << std::endl;
   }
+
+  details << std::endl;
+  _comm.report(details);
 
   Log::getInstance() << Log::flagGeneral << Log::dpInfo << details.str().c_str() << Log::dp;
 

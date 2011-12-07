@@ -54,6 +54,7 @@ void MksuComm::createBlockMap(MksuParam *params, int numParams) {
 	block.size = MKSU_MAX_BLOCK_SIZE;
 	block.header = reinterpret_cast<MksuUdpHeader *>(block.memory);
 	block.data = reinterpret_cast<unsigned short *>(block.header + 1);
+	block.time = time(0);
 	_blockMap.insert(std::pair<int, MksuBlock>(blockId, block));
       }
     }
@@ -164,7 +165,7 @@ bool MksuComm::read(int blockId, long address, epicsInt16 *value, int size) {
  * @author L.Piccoli
  */
 bool MksuComm::write(int blockId, long address, epicsInt32 value) {
-  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address
 		     << ", value=" << value
@@ -190,6 +191,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 				       &numSent, &responseLen, &eomReason);
 
   if (_writeResponseHeader.taskId != _commandCounter) {
+    Log::getInstance() << Log::flagCommWrite << Log::dpError;
     Log::getInstance() << "MksuComm::write(blockId="
 		       << blockId << ", address=" << address 
 		       << "value=" << value << ")"
@@ -202,7 +204,8 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
   _commandCounter++;
 
   if (status != asynSuccess) {
-  Log::getInstance() << "MksuComm::write(blockId="
+    Log::getInstance() << Log::flagCommWrite << Log::dpError;
+    Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address 
 		     << "value=" << value << ")"
 		     << ": communication failed (status="
@@ -210,7 +213,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
     return false;
   }
 				       
-  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address 
 		     << ", value=" << value << "), numSent=" << (int) numSent
@@ -234,7 +237,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
  * @author L.Piccoli
  */
 bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
-  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address
 		     << ", value[0]=" << value[0]
@@ -260,6 +263,7 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
 				       &numSent, &responseLen, &eomReason);
 
   if (_writeResponseHeader.taskId != _commandCounter) {
+    Log::getInstance() << Log::flagCommWrite << Log::dpError;
     Log::getInstance() << "MksuComm::write(blockId="
 		       << blockId << ", address=" << address
 		       << ", value[0]=" << value[0]
@@ -273,6 +277,7 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
   _commandCounter++;
 
   if (status != asynSuccess) {
+    Log::getInstance() << Log::flagCommWrite << Log::dpError;
     Log::getInstance() << "MksuComm::write(blockId="
 		       << blockId << ", address=" << address
 		       << ", value[0]=" << value[0]
@@ -282,7 +287,7 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
     return false;
   }
 				       
-  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address
 		     << ", value[0]=" << value[0]
@@ -306,14 +311,26 @@ void MksuComm::refresh() {
  * @ author L.Piccoli
  */
 void MksuComm::refresh(int blockId) {
-  Log::getInstance() << Log::flagComm << Log::dpInfo;
-  Log::getInstance() << "MksuComm::refresh(blockId="
-		     << blockId << ")" << Log::dp;
-
+  time_t now = time(0);
 
   MksuBlock *block = getBlock(blockId);
   if (block == NULL) {
     return;
+  }
+  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << "MksuComm::refresh(blockId="
+		     << blockId << "): last refreshed "
+		     << now - block->time << " seconds ago."
+		     << Log::dp;
+
+  // Reflesh block only every couple seconds
+  if (block->time <= now - 4) {
+    return;
+  }
+  else {
+    Log::getInstance() << Log::flagComm << Log::dpDebug;
+    Log::getInstance() << "MksuComm::refresh(blockId="
+		       << blockId << "): refresh after 2 seconds." << Log::dp;
   }
 
   char *receiveMessage = reinterpret_cast<char *>(block->memory);
@@ -339,6 +356,7 @@ void MksuComm::refresh(int blockId) {
 				       &numSent, &responseLen, &eomReason);
 
   if (block->header->taskId != _commandCounter) {
+    Log::getInstance() << Log::flagComm << Log::dpError;
     Log::getInstance() << "MksuComm::reflesh(blockId="
 		       << blockId << ")"
 		       << ": expected taskId of " << _commandCounter
@@ -364,6 +382,8 @@ void MksuComm::refresh(int blockId) {
 		     << ", eomReason=" << (int) eomReason
 		     << Log::dp;
 
+  block->time = now;
+
   printBlock(blockId);
 }
 
@@ -388,4 +408,17 @@ void MksuComm::printBlock(int blockId) {
 
   Log::getInstance() << Log::flagComm << Log::dpDebug
 		     << info.str().c_str() << Log::dp;
+}
+
+void MksuComm::report(std::ostringstream &details) {
+  details << "=== MKSU Block last update time ===" << std::endl;
+
+  for (BlockMap::iterator it = _blockMap.begin();
+       it != _blockMap.end(); it++) {
+    time_t now = time(0);
+    details << it->first << ":\t"
+	    << now - (it->second).time << " seconds ago."
+	    << std::endl;
+  }
+  details << std::endl;
 }

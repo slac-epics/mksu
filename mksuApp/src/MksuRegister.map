@@ -401,17 +401,17 @@ PRIO	LOW
 #-------------------------------------------------------
 # Modulator State Register (BEGIN)
 #-------------------------------------------------------
-# MODSTATE_SET: Modulator State Set (Bits 0-3)
+# MOD_SET: Modulator State Set (Bits 0-3)
 #-------------------------------------------------------
 record	mbbo
-name	KLYS:$(AREA):$(LOCATION):MODSTATE_SET
+name	KLYS:$(AREA):$(LOCATION):MOD_SET
 operation	write
 task	0x01
 address	3
 size	1
 DESC	Modulator State (Set)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MODSTATE_SET
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_SET
 ONVL	1
 TWVL	2
 THVL	3
@@ -507,27 +507,12 @@ DESC	Configured Status
 INP	KLYS:$(AREA):$(LOCATION):CFGD_MASK
 ZNAM	Not Configured
 ONAM	Configured
-FLNK	KLYS:$(AREA):$(LOCATION):MOD_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):RATE119_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # MOD: Modulator State (Bit 3, 4 & 5)
+# Duplicate (see Modulator State Register)
 #-------------------------------------------------------
-record	calc
-operation	record
-name	KLYS:$(AREA):$(LOCATION):MOD_MASK
-DESC	Modulador State
-INPA	KLYS:$(AREA):$(LOCATION):STATUS
-CALC	(A & (7 << 3) >> 3)
-FLNK	KLYS:$(AREA):$(LOCATION):MOD
-PRIO	LOW
-#-------------------------------------------------------
-record	bi
-name	KLYS:$(AREA):$(LOCATION):MOD
-operation	record
-DESC	Modulator State
-INP	KLYS:$(AREA):$(LOCATION):MOD_MASK
-FLNK	KLYS:$(AREA):$(LOCATION):RATE119_MASK
-PRIO	LOW
 #-------------------------------------------------------
 # RATE1119: 119MHz or 125MHz Present (Bit 6)
 #-------------------------------------------------------
@@ -712,17 +697,17 @@ PRIO	LOW
 #-------------------------------------------------------
 # Modulator State Register (BEGIN)
 #-------------------------------------------------------
-# MODSTATE: Modulator State Set (Bits 0-3)
+# MOD: Modulator State Set (Bits 0-3)
 #-------------------------------------------------------
 record	mbbi
-name	KLYS:$(AREA):$(LOCATION):MODSTATE
+name	KLYS:$(AREA):$(LOCATION):MOD
 operation	write
 task	0x41
 address	2
 size	1
 DESC	Modulator State (Read)
 DTYP	asynInt32
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MODSTATE
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD
 ONVL	1
 TWVL	2
 THVL	3
@@ -732,6 +717,7 @@ TWST	Offline
 THST	Stand By
 FRST	Accelerate
 PRIO	LOW
+SCAN	$(SCAN)
 #-------------------------------------------------------
 # Modulator State Register (END)
 #=======================================================
@@ -740,6 +726,11 @@ PRIO	LOW
 #=======================================================
 # SLOW MONITOR ADC (READ)
 #=======================================================
+# Status Register (BEGIN)
+#-------------------------------------------------------
+# COPY FROM ABOVE - AND RENAME OF COURSE!
+#-------------------------------------------------------
+# Status Register (END)
 #=======================================================
 # VOLTAGE MONITOR (READ)
 #=======================================================
@@ -845,24 +836,24 @@ PRIO	LOW
 # TRIGGER CONTROL BLOCK (READ)
 #=======================================================
 record	ai
-name	KLYS:$(AREA):$(LOCATION):WF_TDLY
+name	KLYS:$(AREA):$(LOCATION):TDLY_WF
 operation	read 
 task	0x45
 address	0
 size	1
 DESC	Waveguide trig delay
 DTYP	asynInt32
-FLNK	KLYS:$(AREA):$(LOCATION):WF_TDLY_NS
+FLNK	KLYS:$(AREA):$(LOCATION):TDLY_WF_NS
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TDLY
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_WF
 EGU	119MHz Ticks
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):WF_TDLY_NS
+name	KLYS:$(AREA):$(LOCATION):TDLY_WF_NS
 DESC	Waveguide trig delay (NS)
-INPA	KLYS:$(AREA):$(LOCATION):WF_TDLY
+INPA	KLYS:$(AREA):$(LOCATION):TDLY_WF
 EGU	ns
 CALC	A/0.119
 PRIO	LOW
@@ -1013,7 +1004,7 @@ address	7
 size	1
 DESC	Actual trigger delay
 DTYP	asynInt32
-#FLNK	KLYS:$(AREA):$(LOCATION):TDLY_ACT_NS
+FLNK	KLYS:$(AREA):$(LOCATION):TDLY_ACT_NS
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_ACT
 EGU	119MHz Ticks
@@ -1111,9 +1102,26 @@ NELM	8
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_DATE
 PRIO	LOW
-#-------------------------------------------------------
+#=======================================================
+# RF LOOKUP TABLE BLOCK (WRITE)
+#=======================================================
 record	waveform
-name	KLYS:$(AREA):$(LOCATION):RF_DRV_TBL_READ
+name	KLYS:$(AREA):$(LOCATION):RF_DRV_SET
+operation	write
+task	0x27
+address	0
+size	256
+DESC	RF drive lookup table
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	256
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_SET
+PRIO	LOW
+#=======================================================
+# RF LOOKUP TABLE BLOCK (READ)
+#=======================================================
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):RF_DRV
 operation	read
 task	0x67
 address	0
@@ -1123,18 +1131,5 @@ DTYP	asynInt16Array
 FTVL	SHORT
 NELM	256
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_TBL_READ
-PRIO	LOW
-#-------------------------------------------------------
-record	waveform
-name	KLYS:$(AREA):$(LOCATION):RF_DRV_TBL_WRITE
-operation	write
-task	0x27
-address	0
-size	256
-DESC	RF drive lookup table
-DTYP	asynInt16Array
-FTVL	SHORT
-NELM	256
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_TBL_WRITE
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV
 PRIO	LOW

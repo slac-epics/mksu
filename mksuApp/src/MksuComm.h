@@ -1,6 +1,7 @@
 #include <string>
 #include <map>
 #include <stdio.h>
+#include <time.h>
 #include <asynPortDriver.h>
 #include <asynOctetSyncIO.h>
 #include "MksuParam.h"
@@ -26,6 +27,7 @@ typedef struct MksuBlock {
   unsigned short *memory;
   MksuUdpHeader *header;
   unsigned short *data;
+  time_t time; // Last update time
 } MksuBlock;
 
 typedef std::map<int, MksuBlock> BlockMap;
@@ -59,6 +61,8 @@ public:
   void refresh();
   void refresh(int blockId);
 
+  void report(std::ostringstream &details);
+
  private:
   void createBlockMap(MksuParam *params, int numParams);
   MksuBlock *getBlock(int blockId);
@@ -86,7 +90,7 @@ public:
   unsigned short *_commandData;
 
   /** Counter used to check the response to a command */
-  char _commandCounter;
+  unsigned char _commandCounter;
 
   /** Memory block to receive response of write commands */
   MksuUdpHeader _writeResponseHeader;

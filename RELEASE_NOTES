@@ -12,6 +12,10 @@
 #
 #
 
+mksu-R1-0-3:
+	* Initial edm panels added
+	* Added control for individual bits
+
 mksu-R1-0-2:
 	* Got Int16Array working (read/write)
 	* Bits of status control are read/write via several

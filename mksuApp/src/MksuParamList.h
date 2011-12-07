@@ -1,11 +1,11 @@
-// Header file generated from MksuRegister.map on Tue, 06 Dec 2011 01:45:02 +0000
+// Header file generated from MksuRegister.map on Wed, 07 Dec 2011 00:43:40 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 37;
+const int MKSU_NUM_PARAMS = 40;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -21,7 +21,10 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x01, asynParamInt32, 2, 1, "CTRL_CFGD_RSET", -1},
   {0x01, asynParamInt32, 2, 1, "CTRL_WFTR_RSET", -1},
   {0x01, asynParamInt32, 2, 1, "CTRL_AVTR_RSET", -1},
+  {0x01, asynParamInt32, 3, 1, "MOD_SET", -1},
   {0x41, asynParamInt32, 0, 1, "STATUS", -1},
+  {0x41, asynParamInt32, 1, 1, "CTRL", -1},
+  {0x41, asynParamInt32, 2, 1, "MOD", -1},
   {0x05, asynParamInt32, 0, 1, "WF_TDLY_DES", -1},
   {0x05, asynParamInt32, 1, 1, "TDLY_DES", -1},
   {0x05, asynParamInt32, 2, 1, "TDLY_RP_DES", -1},
@@ -30,7 +33,7 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x05, asynParamInt32, 5, 1, "TWTH_FP_DES", -1},
   {0x05, asynParamInt32, 8, 1, "TCNT_IN_DES", -1},
   {0x05, asynParamInt32, 9, 1, "TCNT_OUT_DES", -1},
-  {0x45, asynParamInt32, 0, 1, "WF_TDLY", -1},
+  {0x45, asynParamInt32, 0, 1, "TDLY_WF", -1},
   {0x45, asynParamInt32, 1, 1, "TDLY", -1},
   {0x45, asynParamInt32, 2, 1, "TDLY_RP", -1},
   {0x45, asynParamInt32, 3, 1, "TWTH_RP", -1},
@@ -44,8 +47,8 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x64, asynParamInt8Array, 4, 6, "SYS_ID", -1},
   {0x64, asynParamInt8Array, 7, 4, "SYS_SUB_TYPE", -1},
   {0x64, asynParamInt8Array, 9, 8, "SYS_DATE", -1},
-  {0x67, asynParamInt16Array, 0, 256, "RF_DRV_TBL_READ", -1},
-  {0x27, asynParamInt16Array, 0, 256, "RF_DRV_TBL_WRITE", -1},
+  {0x27, asynParamInt16Array, 0, 256, "RF_DRV_SET", -1},
+  {0x67, asynParamInt16Array, 0, 256, "RF_DRV", -1},
 };
 
 #endif

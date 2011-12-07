@@ -55,7 +55,9 @@ public:
     enum LogDebugFlag {
       flagGeneral,
       flagAsyn,
+      flagAsynWrite,
       flagComm,
+      flagCommWrite,
     };
 
     Log(std::string loopName = "Fbck", std::string slotName = "Fbck");
