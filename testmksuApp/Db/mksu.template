@@ -1,4 +1,4 @@
-# Database template file generated from MksuRegister.map on Wed, 07 Dec 2011 00:43:40 +0000
+# Database template file generated from MksuRegister.map on Thu, 08 Dec 2011 01:30:01 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -505,6 +505,515 @@ record(mbbi, "KLYS:$(AREA):$(LOCATION):MOD") {
   field(ONST, "Maintenance")
 }
 
+record(bo, "KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR") {
+  field(DESC, "Clear Klys Vac Low")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR_MASK") {
+  field(DESC, "Clear Klys Vac Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_KVAC_LO_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_KVAC_LO_SET") {
+  field(DESC, "Clear Klys Vac Low")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_KVAC_LO_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):KVAC_HI_CLR") {
+  field(DESC, "Clear Klys Vac High")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):KVAC_HI_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):KVAC_HI_CLR_MASK") {
+  field(DESC, "Clear Klys Vac Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):KVAC_HI_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_KVAC_HI_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_KVAC_HI_SET") {
+  field(DESC, "Clear Klys Vac High")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):KLYS_HI_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_KVAC_HI_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WVAC_LO_CLR") {
+  field(DESC, "Clear Waveguide Vacuum Low")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WVAC_LO_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WVAC_LO_CLR_MASK") {
+  field(DESC, "Clear Waveguide Vacuum Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WVAC_LO_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_WVAC_LO_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WVAC_LO_SET") {
+  field(DESC, "Clear Waveguide Vacuum Low")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WVAC_LO_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WVAC_LO_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WVAC_HI_CLR") {
+  field(DESC, "Clear Waveguide Vacuum High")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WVAC_HI_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WVAC_HI_CLR_MASK") {
+  field(DESC, "Clear Waveguide Vacuum High")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WVAC_HI_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_WVAC_HI_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WVAC_HI_SET") {
+  field(DESC, "Clear Waveguide Vacuum High")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WVAC_HI_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WVAC_HI_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FC_LO_CLR") {
+  field(DESC, "Clear Focus Coil Cur Low")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_LO_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FC_LO_CLR_MASK") {
+  field(DESC, "Clear Focus Coil Cur Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FC_LO_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FC_LO_SET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FC_LO_SET") {
+  field(DESC, "Clear Focus Coil Cur Low")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FC_LO_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FC_LO_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FC_HI_CLR") {
+  field(DESC, "Clear Focus Coil Cur High")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_HI_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FC_HI_CLR_MASK") {
+  field(DESC, "Clear Focus Coil Cur High")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FC_HI_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FC_HI_SET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FC_HI_SET") {
+  field(DESC, "Clear Focus Coil Cur High")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FC_HI_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FC_HI_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FCG_LO_CLR") {
+  field(DESC, "Clear Focus Coil Gnd Cur Low")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_LO_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FCG_LO_CLR_MASK") {
+  field(DESC, "Clear Focus Coil Gnd Cur Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FCG_LO_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FCG_LO_SET")
+  field(CALC, "A << 6")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FCG_LO_SET") {
+  field(DESC, "Clear Focus Coil Gnd Cur Low")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FCG_LO_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FCG_LO_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FCG_HI_CLR") {
+  field(DESC, "Clear Focus Coil Gnd Cur Hi")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_HI_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FCG_HI_CLR_MASK") {
+  field(DESC, "Clear Focus Coil Gnd Cur Hi")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FCG_HI_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FCG_HI_SET")
+  field(CALC, "A << 7")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FCG_HI_SET") {
+  field(DESC, "Clear Focus Coil Gnd Cur Hi")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FCG_HI_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FCG_HI_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):KVAC_HI_SET") {
+  field(DESC, "Klystron Vacuum High Set")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI_SET")
+  field(EGU, "Torr")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):KVAC_LO_SET") {
+  field(DESC, "Klystron Vacuum Low Set")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_LO_SET")
+  field(EGU, "Torr")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):WVAC_HI_SET") {
+  field(DESC, "Waveguide Vacuum High Set")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_HI_SET")
+  field(EGU, "Torr")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):WVAC_LO_SET") {
+  field(DESC, "Waveguide Vacuum Low Set")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_LO_SET")
+  field(EGU, "Torr")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):FC_HI_SET") {
+  field(DESC, "Focus Coil Current High Set")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_HI_SET")
+  field(EGU, "Torr")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):FC_LO_SET") {
+  field(DESC, "Focus Coil Current Low Set")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_LO_SET")
+  field(EGU, "Torr")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):FCG_HI_SET") {
+  field(DESC, "Focus Coil Gnd Cur High Set")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_HI_SET")
+  field(EGU, "Torr")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):FCG_LO_SET") {
+  field(DESC, "Focus Coil Gnd Cur Low Set")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_LO_SET")
+  field(EGU, "Torr")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):STATUS_SLOW") {
+  field(DESC, "Slow Monitor ADC Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_SLOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):KVAC_LO_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):KVAC_LO_MASK") {
+  field(DESC, "Klystron Vacuum Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_SLOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):KVAC_LO_BIT")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):KVAC_LO_BIT") {
+  field(DESC, "Klystron Vacuum Low")
+  field(PRIO, "LOW")
+  field(ONAM, "Low")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):KVAC_LO_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):KVAC_HI_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):KVAC_HI_MASK") {
+  field(DESC, "Klystron Vacuum High")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_SLOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):KVAC_HI_BIT")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):KVAC_HI_BIT") {
+  field(DESC, "Klystron Vacuum High")
+  field(PRIO, "LOW")
+  field(ONAM, "High")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):KVAC_HI_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WVAC_LO_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WVAC_LO_MASK") {
+  field(DESC, "Waveguide Vacuum Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_SLOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WVAC_LO_BIT")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WVAC_LO_BIT") {
+  field(DESC, "Waveguide Vacuum Low")
+  field(PRIO, "LOW")
+  field(ONAM, "Low")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WVAC_LO_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WVAC_HI_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WVAC_HI_MASK") {
+  field(DESC, "Waveguide Vacuum High")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_SLOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WVAC_HI_BIT")
+  field(CALC, "(A & (1 << 3)) >> 3")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WVAC_HI_BIT") {
+  field(DESC, "Waveguide Vacuum High")
+  field(PRIO, "LOW")
+  field(ONAM, "High")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WVAC_HI_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_LO_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FC_LO_MASK") {
+  field(DESC, "Focus Coil Current Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_SLOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_LO_BIT")
+  field(CALC, "(A & (1 << 4)) >> 4")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FC_LO_BIT") {
+  field(DESC, "Focus Coil Current Low")
+  field(ONAM, "Low")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FC_LO_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_HI_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FC_HI_MASK") {
+  field(DESC, "Focus Coil Current High")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_SLOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_HI_BIT")
+  field(CALC, "(A & (1 << 5)) >> 5")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FC_HI_BIT") {
+  field(DESC, "Focus Coil Current High")
+  field(PRIO, "LOW")
+  field(ONAM, "High")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FC_HI_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_LO_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FCG_LO_MASK") {
+  field(DESC, "Focus Coil Gnd Current Low")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_LO_BIT")
+  field(CALC, "(A & (1 << 6)) >> 6")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FCG_LO_BIT") {
+  field(DESC, "Focus Coil Gnd Current Low")
+  field(PRIO, "LOW")
+  field(ONAM, "Low")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FCG_LO_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_HI_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FCG_HI_MASK") {
+  field(DESC, "Focus Coil Gnd Current High")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_HI_BIT")
+  field(CALC, "(A & (1 << 7)) >> 7")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FCG_HI_BIT") {
+  field(DESC, "Focus Coil Gnd Current High")
+  field(PRIO, "LOW")
+  field(ONAM, "High")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FCG_HI_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):KVAC_HI") {
+  field(DESC, "Klystron Vacuum High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI")
+  field(EGU, "Torr")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):KVAC_LO")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):KVAC_LO") {
+  field(DESC, "Klystron Vacuum Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_LO")
+  field(EGU, "Torr")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):KVAC_AVG")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WVAC_HI") {
+  field(DESC, "Waveguide Vacuum High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_HI")
+  field(EGU, "Torr")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WVAC_LO")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WVAC_LO") {
+  field(DESC, "Waveguide Vacuum Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_LO")
+  field(EGU, "Torr")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_HI")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FC_HI") {
+  field(DESC, "Focus Coil Cur High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_HI")
+  field(EGU, "amps")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_LO")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FC_LO") {
+  field(DESC, "Focus Coil Cur Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_LO")
+  field(EGU, "amps")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_HI")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FCG_HI") {
+  field(DESC, "Focus Coil Gnd Cur Hi Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_HI")
+  field(EGU, "amps")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_LO")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FCG_LO") {
+  field(DESC, "Focus Coil Gnd Cur Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_LO")
+  field(EGU, "amps")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):KVAC_AVG")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):KVAC_AVG") {
+  field(DESC, "Klystron Vacuum Average")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_AVG")
+  field(EGU, "Torr")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WVAC_AVG")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WVAC_AVG") {
+  field(DESC, "Waveguide Vacuum Average")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_AVG")
+  field(EGU, "Torr")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_AVG")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FC_AVG") {
+  field(DESC, "Focus Coil Current Average")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_AVG")
+  field(EGU, "amps")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_AVG")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FCG_AVG") {
+  field(DESC, "Focus Coil Gnd Cur Average")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_AVG")
+  field(EGU, "amps")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_AVG")
+}
+
 record(ao, "KLYS:$(AREA):$(LOCATION):WF_TDLY_DES") {
   field(DESC, "Waveform des trigger delay")
   field(DTYP, "asynInt32")
@@ -788,4 +1297,148 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV") {
   field(NELM, "256")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_P24_RAW") {
+  field(DESC, "24V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P24_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P24")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_P24") {
+  field(DESC, "MKSU 24V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P24_RAW")
+  field(EGU, "V")
+  field(CALC, "A * 0.213")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_P15_RAW") {
+  field(DESC, "15V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P15_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P15")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_P15") {
+  field(DESC, "MKSU 15V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P15_RAW")
+  field(EGU, "V")
+  field(CALC, "A * 0.133")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_P5_RAW") {
+  field(DESC, "5V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P5_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P5")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_P5") {
+  field(DESC, "MKSU 5V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P5_RAW")
+  field(EGU, "V")
+  field(CALC, "A * 0.477")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW") {
+  field(DESC, "3.3V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P3D3_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P3D3")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_P3D3") {
+  field(DESC, "MKSU 3.3V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW")
+  field(EGU, "V")
+  field(CALC, "A * 0.00313")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW") {
+  field(DESC, "2.5V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P2D5_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P2D5")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_P2D5") {
+  field(DESC, "MKSU 2.5V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW")
+  field(EGU, "V")
+  field(CALC, "A * 0.00237")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_N5_RAW") {
+  field(DESC, "-5V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N5_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_N5")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_N5") {
+  field(DESC, "MKSU -5V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N5_RAW")
+  field(EGU, "V")
+  field(CALC, "A * -0.00511")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_N15_RAW") {
+  field(DESC, "-15V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N15_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_N15")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_N15") {
+  field(DESC, "MKSU -15V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N15_RAW")
+  field(EGU, "V")
+  field(CALC, "A * -0.0158")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_N24_RAW") {
+  field(DESC, "-24V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N24_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_N24")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_N24") {
+  field(DESC, "MKSU -24V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N24_RAW")
+  field(EGU, "V")
+  field(CALC, "A * -0.0257")
 }

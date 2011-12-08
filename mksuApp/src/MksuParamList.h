@@ -1,11 +1,11 @@
-// Header file generated from MksuRegister.map on Wed, 07 Dec 2011 00:43:40 +0000
+// Header file generated from MksuRegister.map on Thu, 08 Dec 2011 01:30:01 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 40;
+const int MKSU_NUM_PARAMS = 77;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -25,6 +25,35 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x41, asynParamInt32, 0, 1, "STATUS", -1},
   {0x41, asynParamInt32, 1, 1, "CTRL", -1},
   {0x41, asynParamInt32, 2, 1, "MOD", -1},
+  {0x01, asynParamInt32, 0, 1, "STATUS_KVAC_LO_SET", -1},
+  {0x01, asynParamInt32, 0, 1, "STATUS_KVAC_HI_SET", -1},
+  {0x01, asynParamInt32, 0, 1, "STATUS_WVAC_LO_SET", -1},
+  {0x01, asynParamInt32, 0, 1, "STATUS_WVAC_HI_SET", -1},
+  {0x01, asynParamInt32, 0, 1, "STATUS_FC_LO_SET", -1},
+  {0x01, asynParamInt32, 0, 1, "STATUS_FC_HI_SET", -1},
+  {0x01, asynParamInt32, 0, 1, "STATUS_FCG_LO_SET", -1},
+  {0x01, asynParamInt32, 0, 1, "STATUS_FCG_HI_SET", -1},
+  {0x03, asynParamInt32, 1, 1, "KVAC_HI_SET", -1},
+  {0x03, asynParamInt32, 2, 1, "KVAC_LO_SET", -1},
+  {0x03, asynParamInt32, 3, 1, "WVAC_HI_SET", -1},
+  {0x03, asynParamInt32, 4, 1, "WVAC_LO_SET", -1},
+  {0x03, asynParamInt32, 5, 1, "FC_HI_SET", -1},
+  {0x03, asynParamInt32, 6, 1, "FC_LO_SET", -1},
+  {0x03, asynParamInt32, 7, 1, "FCG_HI_SET", -1},
+  {0x03, asynParamInt32, 8, 1, "FCG_LO_SET", -1},
+  {0x43, asynParamInt32, 0, 1, "STATUS_SLOW", -1},
+  {0x43, asynParamInt32, 1, 1, "KVAC_HI", -1},
+  {0x43, asynParamInt32, 2, 1, "KVAC_LO", -1},
+  {0x43, asynParamInt32, 3, 1, "WVAC_HI", -1},
+  {0x43, asynParamInt32, 4, 1, "WVAC_LO", -1},
+  {0x43, asynParamInt32, 5, 1, "FC_HI", -1},
+  {0x43, asynParamInt32, 6, 1, "FC_LO", -1},
+  {0x43, asynParamInt32, 7, 1, "FCG_HI", -1},
+  {0x43, asynParamInt32, 8, 1, "FCG_LO", -1},
+  {0x43, asynParamInt32, 9, 1, "KVAC_AVG", -1},
+  {0x43, asynParamInt32, 10, 1, "WVAC_AVG", -1},
+  {0x43, asynParamInt32, 11, 1, "FC_AVG", -1},
+  {0x43, asynParamInt32, 12, 1, "FCG_AVG", -1},
   {0x05, asynParamInt32, 0, 1, "WF_TDLY_DES", -1},
   {0x05, asynParamInt32, 1, 1, "TDLY_DES", -1},
   {0x05, asynParamInt32, 2, 1, "TDLY_RP_DES", -1},
@@ -49,6 +78,14 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x64, asynParamInt8Array, 9, 8, "SYS_DATE", -1},
   {0x27, asynParamInt16Array, 0, 256, "RF_DRV_SET", -1},
   {0x67, asynParamInt16Array, 0, 256, "RF_DRV", -1},
+  {0x62, asynParamInt32, 0, 1, "MK_P24_RAW", -1},
+  {0x62, asynParamInt32, 1, 1, "MK_P15_RAW", -1},
+  {0x62, asynParamInt32, 2, 1, "MK_P5_RAW", -1},
+  {0x62, asynParamInt32, 3, 1, "MK_P3D3_RAW", -1},
+  {0x62, asynParamInt32, 4, 1, "MK_P2D5_RAW", -1},
+  {0x62, asynParamInt32, 5, 1, "MK_N5_RAW", -1},
+  {0x62, asynParamInt32, 6, 1, "MK_N15_RAW", -1},
+  {0x62, asynParamInt32, 7, 1, "MK_N24_RAW", -1},
 };
 
 #endif

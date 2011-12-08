@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 790
-y 148
+x 1036
+y 89
 w 500
 h 600
 font "helvetica-medium-r-18.0"
@@ -20,6 +20,20 @@ ctlBgColor2 index 14
 topShadowColor index 0
 botShadowColor index 14
 endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 23
+y 312
+w 200
+h 174
+lineColor index 14
+fillColor index 0
+endObjectProperties
 
 # (Text Update)
 object TextupdateClass
@@ -179,8 +193,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 50
-y 159
+x 93
+y 52
 w 37
 h 14
 font "helvetica-medium-r-12.0"
@@ -199,8 +213,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 50
-y 181
+x 93
+y 74
 w 85
 h 14
 font "helvetica-medium-r-12.0"
@@ -219,8 +233,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 50
-y 203
+x 93
+y 96
 w 64
 h 14
 font "helvetica-medium-r-12.0"
@@ -239,8 +253,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 50
-y 225
+x 93
+y 118
 w 91
 h 14
 font "helvetica-medium-r-12.0"
@@ -259,8 +273,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 50
-y 247
+x 93
+y 140
 w 64
 h 14
 font "helvetica-medium-r-12.0"
@@ -279,8 +293,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 50
-y 270
+x 93
+y 163
 w 127
 h 14
 font "helvetica-medium-r-12.0"
@@ -299,8 +313,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 52
-y 292
+x 95
+y 185
 w 129
 h 14
 font "helvetica-medium-r-12.0"
@@ -319,8 +333,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 52
-y 314
+x 95
+y 207
 w 185
 h 14
 font "helvetica-medium-r-12.0"
@@ -339,8 +353,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 52
-y 337
+x 95
+y 230
 w 187
 h 14
 font "helvetica-medium-r-12.0"
@@ -359,8 +373,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 94
-y 159
+x 137
+y 52
 w 74
 h 14
 controlPv "KLYS:$(area):$(loca):PERMIT"
@@ -382,8 +396,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 179
-y 157
+x 222
+y 50
 w 37
 h 18
 fgColor index 14
@@ -406,8 +420,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 220
-y 157
+x 263
+y 50
 w 37
 h 18
 fgColor index 14
@@ -430,8 +444,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 263
-y 179
+x 306
+y 72
 w 37
 h 18
 fgColor index 14
@@ -454,8 +468,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 222
-y 179
+x 265
+y 72
 w 37
 h 18
 fgColor index 14
@@ -478,8 +492,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 137
-y 181
+x 180
+y 74
 w 74
 h 14
 controlPv "KLYS:$(area):$(loca):TREN"
@@ -501,8 +515,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 260
-y 201
+x 303
+y 94
 w 37
 h 18
 fgColor index 14
@@ -525,8 +539,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 219
-y 201
+x 262
+y 94
 w 37
 h 18
 fgColor index 14
@@ -549,8 +563,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 117
-y 202
+x 160
+y 95
 w 85
 h 14
 controlPv "KLYS:$(area):$(loca):CFGD"
@@ -572,8 +586,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 147
-y 224
+x 190
+y 117
 w 85
 h 14
 controlPv "KLYS:$(area):$(loca):MOD"
@@ -595,8 +609,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 253
-y 224
+x 296
+y 117
 w 100
 h 18
 fgColor index 14
@@ -615,8 +629,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 122
-y 246
+x 165
+y 139
 w 85
 h 14
 controlPv "KLYS:$(area):$(loca):RATE119"
@@ -638,8 +652,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 182
-y 269
+x 225
+y 162
 w 85
 h 14
 controlPv "KLYS:$(area):$(loca):CLCKD"
@@ -661,8 +675,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 185
-y 291
+x 228
+y 184
 w 85
 h 14
 controlPv "KLYS:$(area):$(loca):FCLCKD"
@@ -684,8 +698,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 243
-y 314
+x 286
+y 207
 w 85
 h 14
 controlPv "KLYS:$(area):$(loca):CLCKDL"
@@ -707,8 +721,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 244
-y 337
+x 287
+y 230
 w 85
 h 14
 controlPv "KLYS:$(area):$(loca):FCLCKDL"
@@ -730,8 +744,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 313
-y 355
+x 356
+y 248
 w 37
 h 18
 fgColor index 14
@@ -754,8 +768,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 272
-y 355
+x 315
+y 248
 w 37
 h 18
 fgColor index 14
@@ -778,8 +792,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 187
-y 357
+x 230
+y 250
 w 74
 h 14
 controlPv "KLYS:$(area):$(loca):WFTR"
@@ -801,8 +815,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 54
-y 357
+x 97
+y 250
 w 127
 h 14
 font "helvetica-medium-r-12.0"
@@ -821,8 +835,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 272
-y 374
+x 315
+y 267
 w 37
 h 18
 fgColor index 14
@@ -845,8 +859,8 @@ beginObjectProperties
 major 4
 minor 5
 release 0
-x 187
-y 376
+x 230
+y 269
 w 74
 h 14
 controlPv "KLYS:$(area):$(loca):WFTR"
@@ -868,8 +882,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 54
-y 376
+x 97
+y 269
 w 120
 h 14
 font "helvetica-medium-r-12.0"
@@ -888,8 +902,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 313
-y 374
+x 356
+y 267
 w 37
 h 18
 fgColor index 14
@@ -903,6 +917,809 @@ onLabel "Reset"
 offLabel "Reset"
 3d
 useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 307
+w 96
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " MKSU Voltages "
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 325
+w 33
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "+24V:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 345
+w 33
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "+15V:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 365
+w 26
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "+5V:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 385
+w 36
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "+3.3V:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 405
+w 36
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "+2.5V:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 425
+w 24
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "-5V:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 445
+w 31
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "-15V:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 464
+w 31
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "-24V:"
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 76
+y 325
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P24"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 76
+y 345
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P15"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 76
+y 365
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P5"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 76
+y 385
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P3D3"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 76
+y 405
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P2D5"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 76
+y 425
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N5"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 76
+y 445
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N15"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 76
+y 464
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N24"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 119
+y 325
+w 11
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P24.EGU"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 119
+y 345
+w 11
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P15.EGU"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 119
+y 365
+w 11
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P5.EGU"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 119
+y 385
+w 11
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P3D3.EGU"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 119
+y 405
+w 11
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P2D5.EGU"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 119
+y 425
+w 11
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N5.EGU"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 119
+y 445
+w 11
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N15.EGU"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 119
+y 464
+w 11
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N24.EGU"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 325
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P24_RAW"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 345
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P15_RAW"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 365
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P5_RAW"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 385
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P3D3_RAW"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 405
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P2D5_RAW"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 425
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N5_RAW"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 445
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N15_RAW"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 465
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N24_RAW"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 175
+y 325
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P24_RAW.EGU"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 175
+y 345
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P15_RAW.EGU"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 175
+y 365
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P5_RAW.EGU"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 175
+y 385
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P3D3_RAW.EGU"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 175
+y 405
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_P2D5_RAW.EGU"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 175
+y 425
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N5_RAW.EGU"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 175
+y 445
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N15_RAW.EGU"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 175
+y 465
+w 40
+h 14
+controlPv "KLYS:$(area):$(loca):MK_N24_RAW.EGU"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
 font "helvetica-medium-r-12.0"
 endObjectProperties
 
