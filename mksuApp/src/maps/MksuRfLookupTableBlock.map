@@ -1,0 +1,32 @@
+#=======================================================
+# RF LOOKUP TABLE BLOCK (WRITE)
+#=======================================================
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):RF_DRV_SET
+operation	write
+task	0x27
+address	0
+size	256
+DESC	RF drive lookup table
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	256
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_SET
+PRIO	LOW
+#=======================================================
+# RF LOOKUP TABLE BLOCK (READ)
+#=======================================================
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):RF_DRV
+operation	read
+task	0x67
+address	0
+size	256
+DESC	RF drive lookup table
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	256
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV
+PRIO	LOW
+#-------------------------------------------------------

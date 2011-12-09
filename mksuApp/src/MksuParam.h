@@ -1,4 +1,4 @@
-// Header file generated from MksuRegister.map on Thu, 08 Dec 2011 01:30:01 +0000
+// Header file generated from MksuList.map on Fri, 09 Dec 2011 01:02:27 +0000
 
 #ifndef MKSUPARAM_H
 #define MKSUPARAM_H
@@ -9,6 +9,7 @@ typedef struct {
   int blockId; // MKSU FPGA Block
   asynParamType type; // Defined in asynPortDriver.h
   long address; // Starting address (offset) within the FPGA block
+  int conversion; // 0 for unsigned, 1 for signed int 16 (requires conversion)
   long size; // Number of bytes
   std::string name; // Name given in the INP/OUT asyn record field
   int id; // This is assigned by asynPortDriver::createParam()

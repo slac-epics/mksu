@@ -1,0 +1,210 @@
+#=======================================================
+# XILINX SYS MONITOR BLOCK (READ)
+#=======================================================
+record	ai
+name	KLYS:$(AREA):$(LOCATION):XTEMP_RAW
+operation	read 
+task	0x63
+address	0
+size	1
+DESC	Xilinx Temperature (raw)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XTEMP_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):XTEMP
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):XTEMP
+DESC	Xilinx Temperature
+INPA	KLYS:$(AREA):$(LOCATION):XTEMP_RAW
+EGU	C
+CALC	(A/64 * 503.975/1024) - 273.15
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):XV_INT_RAW
+operation	read 
+task	0x63
+address	1
+size	1
+DESC	Xilinx Voltage Int (raw)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_INT_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):XV_INT
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):XV_INT
+DESC	Xilinx Voltage Int
+INPA	KLYS:$(AREA):$(LOCATION):XV_INT_RAW
+EGU	V
+CALC	(A/64 / 1024 * 3)
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):XV_AUX_RAW
+operation	read 
+task	0x63
+address	2
+size	1
+DESC	Xilinx Voltage Aux (raw)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_AUX_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):XV_AUX
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):XV_AUX
+DESC	Xilinx Voltage Aux
+INPA	KLYS:$(AREA):$(LOCATION):XV_AUX_RAW
+EGU	V
+CALC	(A/64 / 1024 * 3)
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):XTEMP_MAX_RAW
+operation	read 
+task	0x63
+address	3
+size	1
+DESC	Xilinx Max Temp (raw)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XTEMP_MAX_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):XTEMP_MAX
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):XTEMP_MAX
+DESC	Xilinx Max Temp
+INPA	KLYS:$(AREA):$(LOCATION):XTEMP_MAX_RAW
+EGU	V
+CALC	(A/64 * 503.975/1024) - 273.15
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):XV_MAX_INT_RAW
+operation	read 
+task	0x63
+address	4
+size	1
+DESC	Xilinx Max V Int (raw)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_MAX_INT_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):XV_MAX_INT
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):XV_MAX_INT
+DESC	Xilinx Max V Int
+INPA	KLYS:$(AREA):$(LOCATION):XV_MAX_INT_RAW
+EGU	V
+CALC	(A/64 / 1024 * 3)
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):XV_MAX_AUX_RAW
+operation	read 
+task	0x63
+address	5
+size	1
+DESC	Xilinx Max V Aux (raw)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_MAX_AUX_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):XV_MAX_AUX
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):XV_MAX_AUX
+DESC	Xilinx Max V Int
+INPA	KLYS:$(AREA):$(LOCATION):XV_MAX_AUX_RAW
+EGU	V
+CALC	(A/64 / 1024 * 3)
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):XTEMP_MIN_RAW
+operation	read 
+task	0x63
+address	6
+size	1
+DESC	Xilinx Max Temp (raw)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XTEMP_MIN_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):XTEMP_MIN
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):XTEMP_MIN
+DESC	Xilinx Max Temp
+INPA	KLYS:$(AREA):$(LOCATION):XTEMP_MIN_RAW
+EGU	V
+CALC	(A/64 * 503.975/1024) - 273.15
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):XV_MIN_INT_RAW
+operation	read 
+task	0x63
+address	7
+size	1
+DESC	Xilinx Min V Int (raw)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_MIN_INT_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):XV_MIN_INT
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):XV_MIN_INT
+DESC	Xilinx Min V Int
+INPA	KLYS:$(AREA):$(LOCATION):XV_MIN_INT_RAW
+EGU	V
+CALC	(A/64 / 1024 * 3)
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):XV_MIN_AUX_RAW
+operation	read 
+task	0x63
+address	8
+size	1
+DESC	Xilinx Min V Aux (raw)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_MIN_AUX_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):XV_MIN_AUX
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):XV_MIN_AUX
+DESC	Xilinx Min V Aux
+INPA	KLYS:$(AREA):$(LOCATION):XV_MIN_AUX_RAW
+EGU	V
+CALC	(A/64 / 1024 * 3)
+PRIO	LOW
+#-------------------------------------------------------

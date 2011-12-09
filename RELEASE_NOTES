@@ -12,6 +12,19 @@
 #
 #
 
+mksu-R1-0-4:
+	* Changed generate.py script to take a file containing
+	  list of map file names.
+	* Source map files are now organized by FPGA block
+	  and reside under mksuApp/src/maps/*.map
+	* Added support to convert 16bit value into a signed
+	  short int (add "convert 1" to the register entry
+	  in the map file). If field is not present no
+	  conversion happens. Conversion occurs in the 
+	  MksuDriver::readInt32() method (if conversion
+	  field is non zero).
+	* Added all current PVs to the mksu_main.edl panel
+
 mksu-R1-0-3:
 	* Initial edm panels added
 	* Added control for individual bits

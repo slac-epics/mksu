@@ -1,0 +1,311 @@
+#=======================================================
+# TRIGGER CONTROL BLOCK (WRITE)
+#=======================================================
+record	ao
+name	KLYS:$(AREA):$(LOCATION):WF_TDLY_DES
+operation	write
+task	0x05
+address	0
+size	1
+DESC	Waveform des trigger delay
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TDLY_DES
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TDLY_DES
+operation	write
+task	0x05
+address	1
+size	1
+DESC	Remote mod des trig delay
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_DES
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TDLY_RP_DES
+operation	write
+task	0x05
+address	2
+size	1
+DESC	Rear panel des trig delay
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_RP_DES
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TWTH_RP_DES
+operation	write
+task	0x05
+address	3
+size	1
+DESC	Rear panel des trig width
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_RP_DES
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TDLY_FP_DES
+operation	write
+task	0x05
+address	4
+size	1
+DESC	Front panel des trig delay
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_FP_DES
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TWTH_FP_DES
+operation	write
+task	0x05
+address	5
+size	1
+DESC	Front panel des trig width
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_FP_DES
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TCNT_IN_DES
+operation	write
+task	0x05
+address	8
+size	1
+DESC	Input trigger des rate cnt
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN_DES
+EGU	1KHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TCNT_OUT_DES
+operation	write
+task	0x05
+address	9
+size	1
+DESC	Output trigger des rate cnt
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_OUT_DES
+EGU	1KHz Ticks
+PRIO	LOW
+#=======================================================
+# TRIGGER CONTROL BLOCK (READ)
+#=======================================================
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TDLY_WF
+operation	read 
+task	0x45
+address	0
+size	1
+DESC	Waveguide trig delay
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):TDLY_WF_NS
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_WF
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TDLY_WF_NS
+DESC	Waveguide trig delay (NS)
+INPA	KLYS:$(AREA):$(LOCATION):TDLY_WF
+EGU	ns
+CALC	A/0.119
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TDLY
+operation	read 
+task	0x45
+address	1
+size	1
+DESC	Remote mod trig delay
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):TDLY_NS
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TDLY_NS
+DESC	Remote mod trig delay (NS)
+INPA	KLYS:$(AREA):$(LOCATION):TDLY
+EGU	ns
+CALC	A/0.119
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TDLY_RP
+operation	read 
+task	0x45
+address	2
+size	1
+DESC	Rear panel trig delay
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):TDLY_RP_NS
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_RP
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TDLY_RP_NS
+DESC	Rear panel trig delay (NS)
+INPA	KLYS:$(AREA):$(LOCATION):TDLY_RP
+EGU	ns
+CALC	A/0.119
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TWTH_RP
+operation	read 
+task	0x45
+address	3
+size	1
+DESC	Rear panel trig width
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):TWTH_RP_NS
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_RP
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TWTH_RP_NS
+DESC	Rear panel trig width (NS)
+INPA	KLYS:$(AREA):$(LOCATION):TWTH_RP
+EGU	ns
+CALC	A/0.119
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TDLY_FP
+operation	read 
+task	0x45
+address	4
+size	1
+DESC	Front panel trig delay
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):TDLY_FP_NS
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_FP
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TDLY_FP_NS
+DESC	Front panel trig delay (NS)
+INPA	KLYS:$(AREA):$(LOCATION):TDLY_FP
+EGU	ns
+CALC	A/0.119
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TWTH_FP
+operation	read 
+task	0x45
+address	5
+size	1
+DESC	Front panel trig width
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):TWTH_FP_NS
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_FP
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TWTH_FP_NS
+DESC	Front panel trig width (NS)
+INPA	KLYS:$(AREA):$(LOCATION):TWTH_FP
+EGU	ns
+CALC	A/0.119
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TDLY_LOC
+operation	read 
+task	0x45
+address	6
+size	1
+DESC	Local trigger delay
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):TDLY_LOC_NS
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_LOC
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TDLY_LOC_NS
+DESC	Local trigger delay (NS)
+INPA	KLYS:$(AREA):$(LOCATION):TDLY_LOC
+EGU	ns
+CALC	A/0.119
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TDLY_ACT
+operation	read 
+task	0x45
+address	7
+size	1
+DESC	Actual trigger delay
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):TDLY_ACT_NS
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_ACT
+EGU	119MHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TDLY_ACT_NS
+DESC	Actual trigger delay (NS)
+INPA	KLYS:$(AREA):$(LOCATION):TDLY_ACT
+EGU	ns
+CALC	A/0.119
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TCNT_IN
+operation	read 
+task	0x45
+address	8
+size	1
+DESC	Input trigger rate count
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN
+EGU	1KHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TCNT_OUT
+operation	read 
+task	0x45
+address	8
+size	1
+DESC	Input trigger rate count
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN
+EGU	1KHz Ticks
+PRIO	LOW
+#-------------------------------------------------------

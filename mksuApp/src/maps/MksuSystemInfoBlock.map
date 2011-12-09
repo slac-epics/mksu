@@ -1,0 +1,59 @@
+#=======================================================
+# SYSTEM INFO BLOCK (READ)
+#=======================================================
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):SYS_VERSION
+operation	read
+task	0x64
+address	0
+size	8
+DESC	Firmware version
+DTYP	asynInt8Array
+FTVL	UCHAR
+NELM	8
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_VERSION
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):SYS_ID
+operation	read
+task	0x64
+address	4
+size	6
+DESC	System ID
+DTYP	asynInt8Array
+FTVL	UCHAR
+NELM	6
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_ID
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):SYS_SUB_TYPE
+operation	read
+task	0x64
+address	7
+size	4
+DESC	System sub type
+DTYP	asynInt8Array
+FTVL	UCHAR
+NELM	4
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_SUB_TYPE
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):SYS_DATE
+operation	read
+task	0x64
+address	9
+size	8
+DESC	System date
+DTYP	asynInt8Array
+FTVL	UCHAR
+NELM	8
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_DATE
+PRIO	LOW
+#-------------------------------------------------------

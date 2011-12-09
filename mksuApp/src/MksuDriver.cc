@@ -137,6 +137,11 @@ asynStatus MksuDriver::readInt32(asynUser *pasynUser, epicsInt32 *value) {
   _comm.refresh(param->blockId);
 
   if (_comm.read(param->blockId, param->address, *value)) {
+    // Convert from unsigned int16 to signed int16
+    if (param->conversion != 0) {
+      short int sint16 = *value;
+      *value = sint16;
+    }
     return asynSuccess;
   }
   else {

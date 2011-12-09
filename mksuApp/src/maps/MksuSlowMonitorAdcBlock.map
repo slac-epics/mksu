@@ -1,0 +1,719 @@
+#=======================================================
+# SLOW MONITOR ADC BLOCK (WRITE)
+#=======================================================
+#=======================================================
+# Status Register (BEGIN)
+#-------------------------------------------------------
+# KVAC_LO_CLR: Clear Klys Vac Low (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR
+operation	record
+DESC	Clear Klys Vac Low
+FLNK	KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR_MASK
+DESC	Clear Klys Vac Low
+INPA	KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_KVAC_LO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_KVAC_LO_SET
+operation	write
+task	0x03
+address	0
+size	1
+DESC	Clear Klys Vac Low
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_KVAC_LO_SET
+DOL	KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# KVAC_HI_CLR: Clear Klys Vac High (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):KVAC_HI_CLR
+operation	record
+DESC	Clear Klys Vac High
+FLNK	KLYS:$(AREA):$(LOCATION):KVAC_HI_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):KVAC_HI_CLR_MASK
+DESC	Clear Klys Vac Low
+INPA	KLYS:$(AREA):$(LOCATION):KVAC_HI_CLR
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_KVAC_HI_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_KVAC_HI_SET
+operation	write
+task	0x03
+address	0
+size	1
+DESC	Clear Klys Vac High
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_KVAC_HI_SET
+DOL	KLYS:$(AREA):$(LOCATION):KLYS_HI_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WVAC_LO_CLR: Clear Waveguide Vacuum Low (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WVAC_LO_CLR
+operation	record
+DESC	Clear Waveguide Vacuum Low
+FLNK	KLYS:$(AREA):$(LOCATION):WVAC_LO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WVAC_LO_CLR_MASK
+DESC	Clear Waveguide Vacuum Low
+INPA	KLYS:$(AREA):$(LOCATION):WVAC_LO_CLR
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WVAC_LO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WVAC_LO_SET
+operation	write
+task	0x03
+address	0
+size	1
+DESC	Clear Waveguide Vacuum Low
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WVAC_LO_SET
+DOL	KLYS:$(AREA):$(LOCATION):WVAC_LO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WVAC_HI_CLR: Clear Waveguide Vacuum High (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WVAC_HI_CLR
+operation	record
+DESC	Clear Waveguide Vacuum High
+FLNK	KLYS:$(AREA):$(LOCATION):WVAC_HI_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WVAC_HI_CLR_MASK
+DESC	Clear Waveguide Vacuum High
+INPA	KLYS:$(AREA):$(LOCATION):WVAC_HI_CLR
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WVAC_HI_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WVAC_HI_SET
+operation	write
+task	0x03
+address	0
+size	1
+DESC	Clear Waveguide Vacuum High
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WVAC_HI_SET
+DOL	KLYS:$(AREA):$(LOCATION):WVAC_HI_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# FC_LO_CLR: Clear Focus Coil Current Low (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):FC_LO_CLR
+operation	record
+DESC	Clear Focus Coil Cur Low
+FLNK	KLYS:$(AREA):$(LOCATION):FC_LO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FC_LO_CLR_MASK
+DESC	Clear Focus Coil Cur Low
+INPA	KLYS:$(AREA):$(LOCATION):FC_LO_CLR
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_FC_LO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_FC_LO_SET
+operation	write
+task	0x03
+address	0
+size	1
+DESC	Clear Focus Coil Cur Low
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FC_LO_SET
+DOL	KLYS:$(AREA):$(LOCATION):FC_LO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# FC_HI_CLR: Clear Focus Coil Cur High (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):FC_HI_CLR
+operation	record
+DESC	Clear Focus Coil Cur High
+FLNK	KLYS:$(AREA):$(LOCATION):FC_HI_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FC_HI_CLR_MASK
+DESC	Clear Focus Coil Cur High
+INPA	KLYS:$(AREA):$(LOCATION):FC_HI_CLR
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_FC_HI_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_FC_HI_SET
+operation	write
+task	0x03
+address	0
+size	1
+DESC	Clear Focus Coil Cur High
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FC_HI_SET
+DOL	KLYS:$(AREA):$(LOCATION):FC_HI_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# FCG_LO_CLR: Clear Focus Coil Ground Current Low (Bit 6)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):FCG_LO_CLR
+operation	record
+DESC	Clear Focus Coil Gnd Cur Low
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_LO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FCG_LO_CLR_MASK
+DESC	Clear Focus Coil Gnd Cur Low
+INPA	KLYS:$(AREA):$(LOCATION):FCG_LO_CLR
+CALC	A << 6
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_FCG_LO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_FCG_LO_SET
+operation	write
+task	0x03
+address	0
+size	1
+DESC	Clear Focus Coil Gnd Cur Low
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FCG_LO_SET
+DOL	KLYS:$(AREA):$(LOCATION):FCG_LO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# FCG_HI_CLR: Clear Focus Coil Ground Cur High (Bit 7)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):FCG_HI_CLR
+operation	record
+DESC	Clear Focus Coil Gnd Cur Hi
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_HI_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FCG_HI_CLR_MASK
+DESC	Clear Focus Coil Gnd Cur Hi
+INPA	KLYS:$(AREA):$(LOCATION):FCG_HI_CLR
+CALC	A << 7
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_FCG_HI_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_FCG_HI_SET
+operation	write
+task	0x03
+address	0
+size	1
+DESC	Clear Focus Coil Gnd Cur Hi
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FCG_HI_SET
+DOL	KLYS:$(AREA):$(LOCATION):FCG_HI_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# Status Register (END)
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):KVAC_HI_SET
+operation	write
+task	0x03
+address	1
+size	1
+DESC	Klystron Vacuum High Set
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI_SET
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):KVAC_LO_SET
+operation	write
+task	0x03
+address	2
+size	1
+DESC	Klystron Vacuum Low Set
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_LO_SET
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):WVAC_HI_SET
+operation	write
+task	0x03
+address	3
+size	1
+DESC	Waveguide Vacuum High Set
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_HI_SET
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):WVAC_LO_SET
+operation	write
+task	0x03
+address	4
+size	1
+DESC	Waveguide Vacuum Low Set
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_LO_SET
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FC_HI_SET
+operation	write
+task	0x03
+address	5
+size	1
+DESC	Focus Coil Current High Set
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_HI_SET
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FC_LO_SET
+operation	write
+task	0x03
+address	6
+size	1
+DESC	Focus Coil Current Low Set
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_LO_SET
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FCG_HI_SET
+operation	write
+task	0x03
+address	7
+size	1
+DESC	Focus Coil Gnd Cur High Set
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_HI_SET
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FCG_LO_SET
+operation	write
+task	0x03
+address	8
+size	1
+DESC	Focus Coil Gnd Cur Low Set
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_LO_SET
+EGU	Torr
+PRIO	LOW
+#=======================================================
+# SLOW MONITOR ADC (READ)
+#=======================================================
+# Status Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):STATUS_SLOW
+operation	read
+task	0x43
+address	0
+size	1
+DESC	Slow Monitor ADC Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_SLOW
+FLNK	KLYS:$(AREA):$(LOCATION):KVAC_LO_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# KVAC_LO: Klystron Vacuum Low (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):KVAC_LO_MASK
+DESC	Klystron Vacuum Low
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_SLOW
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):KVAC_LO_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):KVAC_LO_BIT
+operation	record
+DESC	Klystron Vacuum Low
+INP	KLYS:$(AREA):$(LOCATION):KVAC_LO_MASK
+ZNAM	Ok
+ONAM	Low
+FLNK	KLYS:$(AREA):$(LOCATION):KVAC_HI_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# KVAC_HI: Klystron Vacuum High (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):KVAC_HI_MASK
+DESC	Klystron Vacuum High
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_SLOW
+CALC	(A & (1 << 1)) >> 1
+PRIO	LOW
+FLNK	KLYS:$(AREA):$(LOCATION):KVAC_HI_BIT
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):KVAC_HI_BIT
+operation	record
+DESC	Klystron Vacuum High
+INP	KLYS:$(AREA):$(LOCATION):KVAC_HI_MASK
+ZNAM	Ok
+ONAM	High
+FLNK	KLYS:$(AREA):$(LOCATION):WVAC_LO_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WVAC_LO: Waveguide Vacuum Low (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WVAC_LO_MASK
+DESC	Waveguide Vacuum Low
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_SLOW
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):WVAC_LO_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WVAC_LO_BIT
+operation	record
+DESC	Waveguide Vacuum Low
+INP	KLYS:$(AREA):$(LOCATION):WVAC_LO_MASK
+ZNAM	Ok
+ONAM	Low
+FLNK	KLYS:$(AREA):$(LOCATION):WVAC_HI_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WVAC_HI: Waveguide Vacuum High (Bit 3)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WVAC_HI_MASK
+DESC	Waveguide Vacuum High
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_SLOW
+CALC	(A & (1 << 3)) >> 3
+FLNK	KLYS:$(AREA):$(LOCATION):WVAC_HI_BIT
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WVAC_HI_BIT
+operation	record
+DESC	Waveguide Vacuum High
+INP	KLYS:$(AREA):$(LOCATION):WVAC_HI_MASK
+ZNAM	Ok
+ONAM	High
+FLNK	KLYS:$(AREA):$(LOCATION):FC_LO_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# FC_LO: Focus Coil Current Low (Bit 4)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FC_LO_MASK
+DESC	Focus Coil Current Low
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_SLOW
+CALC	(A & (1 << 4)) >> 4
+FLNK	KLYS:$(AREA):$(LOCATION):FC_LO_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):FC_LO_BIT
+operation	record
+DESC	Focus Coil Current Low
+INP	KLYS:$(AREA):$(LOCATION):FC_LO_MASK
+ZNAM	Ok
+ONAM	Low
+FLNK	KLYS:$(AREA):$(LOCATION):FC_HI_MASK
+#-------------------------------------------------------
+# FC_HI: Focus Coil Current High (Bit 5)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FC_HI_MASK
+DESC	Focus Coil Current High
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_SLOW
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):FC_HI_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):FC_HI_BIT
+operation	record
+DESC	Focus Coil Current High
+INP	KLYS:$(AREA):$(LOCATION):FC_HI_MASK
+ZNAM	Ok
+ONAM	High
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_LO_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# FCG_LO: Focus Coil Ground Current Low (Bit 6)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FCG_LO_MASK
+DESC	Focus Coil Gnd Current Low
+INPA	KLYS:$(AREA):$(LOCATION):STATUS
+CALC	(A & (1 << 6)) >> 6
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_LO_BIT
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):FCG_LO_BIT
+operation	record
+DESC	Focus Coil Gnd Current Low
+INP	KLYS:$(AREA):$(LOCATION):FCG_LO_MASK
+ZNAM	Ok
+ONAM	Low
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_HI_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# FCG_HI: Focus Coil Ground Current High (Bit 7)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FCG_HI_MASK
+DESC	Focus Coil Gnd Current High
+INPA	KLYS:$(AREA):$(LOCATION):STATUS
+CALC	(A & (1 << 7)) >> 7
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_HI_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):FCG_HI_BIT
+operation	record
+DESC	Focus Coil Gnd Current High
+INP	KLYS:$(AREA):$(LOCATION):FCG_HI_MASK
+ZNAM	Ok
+ONAM	High
+PRIO	LOW
+#-------------------------------------------------------
+# Status Register (END)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):KVAC_HI
+operation	read 
+task	0x43
+address	1
+conversion	1
+size	1
+DESC	Klystron Vacuum High Limit
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):KVAC_LO
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):KVAC_LO
+operation	read 
+task	0x43
+address	2
+conversion	1
+size	1
+DESC	Klystron Vacuum Low Limit
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):KVAC_AVG
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_LO
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):WVAC_HI
+operation	read 
+task	0x43
+address	3
+conversion	1
+size	1
+DESC	Waveguide Vacuum High Limit
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):WVAC_LO
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_HI
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):WVAC_LO
+operation	read 
+task	0x43
+address	4
+conversion	1
+size	1
+DESC	Waveguide Vacuum Low Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_LO
+EGU	Torr
+FLNK	KLYS:$(AREA):$(LOCATION):FC_HI
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FC_HI
+operation	read 
+task	0x43
+address	5
+conversion	1
+size	1
+DESC	Focus Coil Cur High Limit
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):FC_LO
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_HI
+EGU	amps
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FC_LO
+operation	read 
+task	0x43
+address	6
+conversion	1
+size	1
+DESC	Focus Coil Cur Low Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_LO
+EGU	amps
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_HI
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FCG_HI
+operation	read 
+task	0x43
+address	7
+conversion	1
+size	1
+DESC	Focus Coil Gnd Cur Hi Limit
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_LO
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_HI
+EGU	amps
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FCG_LO
+operation	read 
+task	0x43
+address	8
+conversion	1
+size	1
+DESC	Focus Coil Gnd Cur Low Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_LO
+EGU	amps
+FLNK	KLYS:$(AREA):$(LOCATION):KVAC_AVG
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):KVAC_AVG
+operation	read 
+task	0x43
+address	9
+conversion	1
+size	1
+DESC	Klystron Vacuum Average
+DTYP	asynInt32
+#FLNK	KLYS:$(AREA):$(LOCATION):KVAC_AVG
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_AVG
+EGU	Torr
+FLNK	KLYS:$(AREA):$(LOCATION):WVAC_AVG
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):WVAC_AVG
+operation	read 
+task	0x43
+address	10
+conversion	1
+size	1
+DESC	Waveguide Vacuum Average
+DTYP	asynInt32
+#FLNK	KLYS:$(AREA):$(LOCATION):WVAC_AVG
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_AVG
+EGU	Torr
+FLNK	KLYS:$(AREA):$(LOCATION):FC_AVG
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FC_AVG
+operation	read 
+task	0x43
+address	11
+conversion	1
+size	1
+DESC	Focus Coil Current Average
+DTYP	asynInt32
+#FLNK	KLYS:$(AREA):$(LOCATION):FC_AVG
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_AVG
+EGU	amps
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_AVG
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FCG_AVG
+operation	read 
+task	0x43
+address	12
+conversion	1
+size	1
+DESC	Focus Coil Gnd Cur Average
+DTYP	asynInt32
+#FLNK	KLYS:$(AREA):$(LOCATION):FCG_AVG
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_AVG
+EGU	amps
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_AVG
+PRIO	LOW
+#-------------------------------------------------------

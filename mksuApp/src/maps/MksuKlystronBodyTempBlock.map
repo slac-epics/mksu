@@ -1,0 +1,375 @@
+#=======================================================
+# KLYSTRON BODY TEMP BLOCK (WRITE)
+#=======================================================
+#=======================================================
+# Status Register (BEGIN)
+#-------------------------------------------------------
+# TOUT_TMO_CLR: Output Temp Timeout Clear (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TOUT_TMO_CLR
+operation	record
+DESC	Output Temp Timeout Clear
+FLNK	KLYS:$(AREA):$(LOCATION):TOUT_TMO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TOUT_TMO_CLR_MASK
+DESC	Oitput Temp Timeout Clear
+INPA	KLYS:$(AREA):$(LOCATION):TOUT_TMO_CLR
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_TOUT_TMO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_TOUT_TMO_SET
+operation	write
+task	0x10
+address	0
+size	1
+DESC	Output Temp Timeout Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TOUT_TMO_SET
+DOL	KLYS:$(AREA):$(LOCATION):TOUT_TMO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TIN_TMO_CLR: Input Temp Timeout Clear (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TIN_TMO_CLR
+operation	record
+DESC	Input Temp Timeout Clear
+FLNK	KLYS:$(AREA):$(LOCATION):TIN_TMO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TIN_TMO_CLR_MASK
+DESC	Input Temp Timeout Clear
+INPA	KLYS:$(AREA):$(LOCATION):TIN_TMO_CLR
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_TIN_TMO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_TIN_TMO_SET
+operation	write
+task	0x10
+address	0
+size	1
+DESC	Input Temp Timeout Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TIN_TMO_SET
+DOL	KLYS:$(AREA):$(LOCATION):KLYS_HI_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TOUT_OR_CLR: Output Temperature Over of Range (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TOUT_OR_CLR
+operation	record
+DESC	Clear Out Temp Over Range
+FLNK	KLYS:$(AREA):$(LOCATION):TOUT_OR_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TOUT_OR_CLR_MASK
+DESC	Clear Out Temp Over Range
+INPA	KLYS:$(AREA):$(LOCATION):TOUT_OR_CLR
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_TOUT_OR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_TOUT_OR_SET
+operation	write
+task	0x10
+address	0
+size	1
+DESC	Clear Out Temp Over Range
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TOUT_OR_SET
+DOL	KLYS:$(AREA):$(LOCATION):TOUT_OR_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TIN_OR_CLR: Clear Input Temperature Over Range (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TIN_OR_CLR
+operation	record
+DESC	Clear In Temp Over Range
+FLNK	KLYS:$(AREA):$(LOCATION):TIN_OR_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TIN_OR_CLR_MASK
+DESC	Clear In Temp Over Range
+INPA	KLYS:$(AREA):$(LOCATION):TIN_OR_CLR
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_TIN_OR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_TIN_OR_SET
+operation	write
+task	0x10
+address	0
+size	1
+DESC	Clear In Temp Over Range
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TIN_OR_SET
+DOL	KLYS:$(AREA):$(LOCATION):TIN_OR_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TDELTA_CLR: Clear Delta Temperature Exceed (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TDELTA_CLR
+operation	record
+DESC	Clear Delta Temp Exceed
+FLNK	KLYS:$(AREA):$(LOCATION):TDELTA_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TDELTA_CLR_MASK
+DESC	Clear Delta Temp Exceed
+INPA	KLYS:$(AREA):$(LOCATION):TDELTA_CLR
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_TDELTA_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_TDELTA_SET
+operation	write
+task	0x10
+address	0
+size	1
+DESC	Clear Delta Temp Exceed
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TDELTA_SET
+DOL	KLYS:$(AREA):$(LOCATION):TDELTA_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# Status Register (END)
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TOFF_SET
+operation	write
+task	0x10
+address	1
+size	1
+DESC	Temperature Offset
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_SET
+EGU	C * 100
+PRIO	LOW
+#=======================================================
+# KLYSTRON BODY TEMP BLOCK (READ)
+#=======================================================
+# Status Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):STATUS_TEMP
+operation	read
+task	0x50
+address	0
+size	1
+DESC	Klystron Body Temp Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TEMP
+FLNK	KLYS:$(AREA):$(LOCATION):TOUT_TMO_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# TOUT_TMO: Output Temp Timeout (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TOUT_TMO_MASK
+DESC	Output Temp Timeout
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_TEMP
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):TOUT_TMO
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TOUT_TMO
+operation	record
+DESC	Output Temp Timeout
+INP	KLYS:$(AREA):$(LOCATION):TOUT_TMO_MASK
+ZNAM	Ok
+ONAM	Timeout
+FLNK	KLYS:$(AREA):$(LOCATION):TIN_TMO_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TIN_TMO: Input Temp Timeout (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TIN_TMO_MASK
+DESC	Input Temp Timeout
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_TEMP
+CALC	(A & (1 << 1)) >> 1
+PRIO	LOW
+FLNK	KLYS:$(AREA):$(LOCATION):TIN_TMO
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TIN_TMO
+operation	record
+DESC	Input Temp Timeout
+INP	KLYS:$(AREA):$(LOCATION):TIN_TMO_MASK
+ZNAM	Ok
+ONAM	Timeout
+FLNK	KLYS:$(AREA):$(LOCATION):TOUT_OR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TOUT_OR: Output Temp Over Range (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TOUT_OR_MASK
+DESC	Output Temp Over Range
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_TEMP
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):TOUT_OR
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TOUT_OR
+operation	record
+DESC	Output Temp Over Range
+INP	KLYS:$(AREA):$(LOCATION):TOUT_OR_MASK
+ZNAM	Ok
+ONAM	Over Range
+FLNK	KLYS:$(AREA):$(LOCATION):TIN_OR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TIN_OR: Input Temp Over Range (Bit 3)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TIN_OR_MASK
+DESC	Input Temp Over Range
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_TEMP
+CALC	(A & (1 << 3)) >> 3
+FLNK	KLYS:$(AREA):$(LOCATION):TIN_OR
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TIN_OR
+operation	record
+DESC	Input Temp Over Range
+INP	KLYS:$(AREA):$(LOCATION):TIN_OR_MASK
+ZNAM	Ok
+ONAM	Over Range
+FLNK	KLYS:$(AREA):$(LOCATION):TDELTA_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TDELTA: Delta Temp Exceed (Bit 4)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TDELTA_MASK
+DESC	Delta Temp Exceed
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_TEMP
+CALC	(A & (1 << 4)) >> 4
+FLNK	KLYS:$(AREA):$(LOCATION):TDELTA
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TDELTA
+operation	record
+DESC	Delta Temp Exceed
+INP	KLYS:$(AREA):$(LOCATION):TDELTA_MASK
+ZNAM	Ok
+ONAM	Delta Exceeded
+FLNK	KLYS:$(AREA):$(LOCATION):FC_HI_MASK
+#-------------------------------------------------------
+# Status Register (END)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TOFF
+operation	read 
+task	0x50
+address	1
+size	1
+DESC	Temperature Offset
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF
+EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TOUT
+operation	read 
+task	0x50
+address	2
+size	1
+DESC	Output Temperature
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT
+EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TIN
+operation	read 
+task	0x50
+address	3
+size	1
+DESC	Input Temperature (Raw)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN
+EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TDIFF
+operation	read 
+task	0x50
+address	4
+size	1
+DESC	Temperature Difference
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDIFF
+EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TOUT_CNTS
+operation	read 
+task	0x50
+address	5
+size	1
+DESC	Output Temperature ADC cnts
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT_CNTS
+EGU	counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TIN_CNTS
+operation	read 
+task	0x50
+address	6
+size	1
+DESC	Input Temperature ADC cnts
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN_CNTS
+EGU	counts
+PRIO	LOW
+#-------------------------------------------------------

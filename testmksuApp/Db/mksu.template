@@ -1,4 +1,4 @@
-# Database template file generated from MksuRegister.map on Thu, 08 Dec 2011 01:30:01 +0000
+# Database template file generated from MksuList.map on Fri, 09 Dec 2011 01:02:27 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -1014,6 +1014,150 @@ record(ai, "KLYS:$(AREA):$(LOCATION):FCG_AVG") {
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_AVG")
 }
 
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_P24_RAW") {
+  field(DESC, "24V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P24_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P24")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_P24") {
+  field(DESC, "MKSU 24V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P24_RAW")
+  field(EGU, "V")
+  field(CALC, "A * 0.213")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_P15_RAW") {
+  field(DESC, "15V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P15_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P15")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_P15") {
+  field(DESC, "MKSU 15V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P15_RAW")
+  field(EGU, "V")
+  field(CALC, "A * 0.133")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_P5_RAW") {
+  field(DESC, "5V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P5_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P5")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_P5") {
+  field(DESC, "MKSU 5V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P5_RAW")
+  field(EGU, "V")
+  field(CALC, "A * 0.477")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW") {
+  field(DESC, "3.3V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P3D3_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P3D3")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_P3D3") {
+  field(DESC, "MKSU 3.3V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW")
+  field(EGU, "V")
+  field(CALC, "A * 0.00313")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW") {
+  field(DESC, "2.5V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P2D5_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P2D5")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_P2D5") {
+  field(DESC, "MKSU 2.5V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW")
+  field(EGU, "V")
+  field(CALC, "A * 0.00237")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_N5_RAW") {
+  field(DESC, "-5V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N5_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_N5")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_N5") {
+  field(DESC, "MKSU -5V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N5_RAW")
+  field(EGU, "V")
+  field(CALC, "A * -0.00511")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_N15_RAW") {
+  field(DESC, "-15V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N15_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_N15")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_N15") {
+  field(DESC, "MKSU -15V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N15_RAW")
+  field(EGU, "V")
+  field(CALC, "A * -0.0158")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MK_N24_RAW") {
+  field(DESC, "-24V Raw Reading")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N24_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_N24")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MK_N24") {
+  field(DESC, "MKSU -24V Reading")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N24_RAW")
+  field(EGU, "V")
+  field(CALC, "A * -0.0257")
+}
+
 record(ao, "KLYS:$(AREA):$(LOCATION):WF_TDLY_DES") {
   field(DESC, "Waveform des trigger delay")
   field(DTYP, "asynInt32")
@@ -1240,6 +1384,25 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TCNT_OUT") {
   field(EGU, "1KHz Ticks")
 }
 
+record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV_SET") {
+  field(DESC, "RF drive lookup table")
+  field(DTYP, "asynInt16ArrayOut")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "256")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_SET")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV") {
+  field(DESC, "RF drive lookup table")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "256")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV")
+}
+
 record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_VERSION") {
   field(DESC, "Firmware version")
   field(DTYP, "asynInt8ArrayIn")
@@ -1280,165 +1443,433 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_DATE") {
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SYS_DATE")
 }
 
-record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV_SET") {
-  field(DESC, "RF drive lookup table")
-  field(DTYP, "asynInt16ArrayOut")
-  field(FTVL, "SHORT")
+record(bo, "KLYS:$(AREA):$(LOCATION):TOUT_TMO_CLR") {
+  field(DESC, "Output Temp Timeout Clear")
   field(PRIO, "LOW")
-  field(NELM, "256")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TOUT_TMO_CLR_MASK")
 }
 
-record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV") {
-  field(DESC, "RF drive lookup table")
-  field(DTYP, "asynInt16ArrayIn")
-  field(FTVL, "SHORT")
+record(calc, "KLYS:$(AREA):$(LOCATION):TOUT_TMO_CLR_MASK") {
+  field(DESC, "Oitput Temp Timeout Clear")
   field(PRIO, "LOW")
-  field(NELM, "256")
-  field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TOUT_TMO_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_TOUT_TMO_SET")
+  field(CALC, "A")
 }
 
-record(ai, "KLYS:$(AREA):$(LOCATION):MK_P24_RAW") {
-  field(DESC, "24V Raw Reading")
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_TOUT_TMO_SET") {
+  field(DESC, "Output Temp Timeout Clear")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):TOUT_TMO_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TOUT_TMO_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):TIN_TMO_CLR") {
+  field(DESC, "Input Temp Timeout Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN_TMO_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TIN_TMO_CLR_MASK") {
+  field(DESC, "Input Temp Timeout Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TIN_TMO_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_TIN_TMO_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_TIN_TMO_SET") {
+  field(DESC, "Input Temp Timeout Clear")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):KLYS_HI_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TIN_TMO_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):TOUT_OR_CLR") {
+  field(DESC, "Clear Out Temp Over Range")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TOUT_OR_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TOUT_OR_CLR_MASK") {
+  field(DESC, "Clear Out Temp Over Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TOUT_OR_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_TOUT_OR_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_TOUT_OR_SET") {
+  field(DESC, "Clear Out Temp Over Range")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):TOUT_OR_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TOUT_OR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):TIN_OR_CLR") {
+  field(DESC, "Clear In Temp Over Range")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN_OR_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TIN_OR_CLR_MASK") {
+  field(DESC, "Clear In Temp Over Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TIN_OR_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_TIN_OR_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_TIN_OR_SET") {
+  field(DESC, "Clear In Temp Over Range")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):TIN_OR_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TIN_OR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):TDELTA_CLR") {
+  field(DESC, "Clear Delta Temp Exceed")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTA_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TDELTA_CLR_MASK") {
+  field(DESC, "Clear Delta Temp Exceed")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TDELTA_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_TDELTA_SET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_TDELTA_SET") {
+  field(DESC, "Clear Delta Temp Exceed")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):TDELTA_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TDELTA_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):TOFF_SET") {
+  field(DESC, "Temperature Offset")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_SET")
+  field(EGU, "C * 100")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):STATUS_TEMP") {
+  field(DESC, "Klystron Body Temp Status")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P24_RAW")
-  field(EGU, "counts")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P24")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TEMP")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TOUT_TMO_MASK")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):MK_P24") {
-  field(DESC, "MKSU 24V Reading")
+record(calc, "KLYS:$(AREA):$(LOCATION):TOUT_TMO_MASK") {
+  field(DESC, "Output Temp Timeout")
   field(PRIO, "LOW")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P24_RAW")
-  field(EGU, "V")
-  field(CALC, "A * 0.213")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_TEMP")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TOUT_TMO")
+  field(CALC, "A & (1 << 0)")
 }
 
-record(ai, "KLYS:$(AREA):$(LOCATION):MK_P15_RAW") {
-  field(DESC, "15V Raw Reading")
+record(bi, "KLYS:$(AREA):$(LOCATION):TOUT_TMO") {
+  field(DESC, "Output Temp Timeout")
+  field(PRIO, "LOW")
+  field(ONAM, "Timeout")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):TOUT_TMO_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN_TMO_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TIN_TMO_MASK") {
+  field(DESC, "Input Temp Timeout")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_TEMP")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN_TMO")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):TIN_TMO") {
+  field(DESC, "Input Temp Timeout")
+  field(PRIO, "LOW")
+  field(ONAM, "Timeout")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):TIN_TMO_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TOUT_OR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TOUT_OR_MASK") {
+  field(DESC, "Output Temp Over Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_TEMP")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TOUT_OR")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):TOUT_OR") {
+  field(DESC, "Output Temp Over Range")
+  field(PRIO, "LOW")
+  field(ONAM, "Over Range")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):TOUT_OR_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN_OR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TIN_OR_MASK") {
+  field(DESC, "Input Temp Over Range")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_TEMP")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN_OR")
+  field(CALC, "(A & (1 << 3)) >> 3")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):TIN_OR") {
+  field(DESC, "Input Temp Over Range")
+  field(PRIO, "LOW")
+  field(ONAM, "Over Range")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):TIN_OR_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTA_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TDELTA_MASK") {
+  field(DESC, "Delta Temp Exceed")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_TEMP")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTA")
+  field(CALC, "(A & (1 << 4)) >> 4")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):TDELTA") {
+  field(DESC, "Delta Temp Exceed")
+  field(ONAM, "Delta Exceeded")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):TDELTA_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_HI_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TOFF") {
+  field(DESC, "Temperature Offset")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P15_RAW")
-  field(EGU, "counts")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P15")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF")
+  field(EGU, "C")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):MK_P15") {
-  field(DESC, "MKSU 15V Reading")
-  field(PRIO, "LOW")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P15_RAW")
-  field(EGU, "V")
-  field(CALC, "A * 0.133")
-}
-
-record(ai, "KLYS:$(AREA):$(LOCATION):MK_P5_RAW") {
-  field(DESC, "5V Raw Reading")
+record(ai, "KLYS:$(AREA):$(LOCATION):TOUT") {
+  field(DESC, "Output Temperature")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P5_RAW")
-  field(EGU, "counts")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P5")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT")
+  field(EGU, "C")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):MK_P5") {
-  field(DESC, "MKSU 5V Reading")
-  field(PRIO, "LOW")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P5_RAW")
-  field(EGU, "V")
-  field(CALC, "A * 0.477")
-}
-
-record(ai, "KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW") {
-  field(DESC, "3.3V Raw Reading")
+record(ai, "KLYS:$(AREA):$(LOCATION):TIN") {
+  field(DESC, "Input Temperature (Raw)")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P3D3_RAW")
-  field(EGU, "counts")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P3D3")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN")
+  field(EGU, "C")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):MK_P3D3") {
-  field(DESC, "MKSU 3.3V Reading")
-  field(PRIO, "LOW")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW")
-  field(EGU, "V")
-  field(CALC, "A * 0.00313")
-}
-
-record(ai, "KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW") {
-  field(DESC, "2.5V Raw Reading")
+record(ai, "KLYS:$(AREA):$(LOCATION):TDIFF") {
+  field(DESC, "Temperature Difference")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P2D5_RAW")
-  field(EGU, "counts")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_P2D5")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDIFF")
+  field(EGU, "C")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):MK_P2D5") {
-  field(DESC, "MKSU 2.5V Reading")
-  field(PRIO, "LOW")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW")
-  field(EGU, "V")
-  field(CALC, "A * 0.00237")
-}
-
-record(ai, "KLYS:$(AREA):$(LOCATION):MK_N5_RAW") {
-  field(DESC, "-5V Raw Reading")
+record(ai, "KLYS:$(AREA):$(LOCATION):TOUT_CNTS") {
+  field(DESC, "Output Temperature ADC cnts")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N5_RAW")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT_CNTS")
   field(EGU, "counts")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_N5")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):MK_N5") {
-  field(DESC, "MKSU -5V Reading")
-  field(PRIO, "LOW")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N5_RAW")
-  field(EGU, "V")
-  field(CALC, "A * -0.00511")
-}
-
-record(ai, "KLYS:$(AREA):$(LOCATION):MK_N15_RAW") {
-  field(DESC, "-15V Raw Reading")
+record(ai, "KLYS:$(AREA):$(LOCATION):TIN_CNTS") {
+  field(DESC, "Input Temperature ADC cnts")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N15_RAW")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN_CNTS")
   field(EGU, "counts")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_N15")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):MK_N15") {
-  field(DESC, "MKSU -15V Reading")
-  field(PRIO, "LOW")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N15_RAW")
-  field(EGU, "V")
-  field(CALC, "A * -0.0158")
-}
-
-record(ai, "KLYS:$(AREA):$(LOCATION):MK_N24_RAW") {
-  field(DESC, "-24V Raw Reading")
+record(ai, "KLYS:$(AREA):$(LOCATION):XTEMP_RAW") {
+  field(DESC, "Xilinx Temperature (raw)")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N24_RAW")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XTEMP_RAW")
   field(EGU, "counts")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MK_N24")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):XTEMP")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):MK_N24") {
-  field(DESC, "MKSU -24V Reading")
+record(calc, "KLYS:$(AREA):$(LOCATION):XTEMP") {
+  field(DESC, "Xilinx Temperature")
   field(PRIO, "LOW")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N24_RAW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):XTEMP_RAW")
+  field(EGU, "C")
+  field(CALC, "(A/64 * 503.975/1024) - 273.15")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):XV_INT_RAW") {
+  field(DESC, "Xilinx Voltage Int (raw)")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_INT_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):XV_INT")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):XV_INT") {
+  field(DESC, "Xilinx Voltage Int")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):XV_INT_RAW")
   field(EGU, "V")
-  field(CALC, "A * -0.0257")
+  field(CALC, "(A/64 / 1024 * 3)")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):XV_AUX_RAW") {
+  field(DESC, "Xilinx Voltage Aux (raw)")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_AUX_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):XV_AUX")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):XV_AUX") {
+  field(DESC, "Xilinx Voltage Aux")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):XV_AUX_RAW")
+  field(EGU, "V")
+  field(CALC, "(A/64 / 1024 * 3)")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):XTEMP_MAX_RAW") {
+  field(DESC, "Xilinx Max Temp (raw)")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XTEMP_MAX_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):XTEMP_MAX")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):XTEMP_MAX") {
+  field(DESC, "Xilinx Max Temp")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):XTEMP_MAX_RAW")
+  field(EGU, "V")
+  field(CALC, "(A/64 * 503.975/1024) - 273.15")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):XV_MAX_INT_RAW") {
+  field(DESC, "Xilinx Max V Int (raw)")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_MAX_INT_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):XV_MAX_INT")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):XV_MAX_INT") {
+  field(DESC, "Xilinx Max V Int")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):XV_MAX_INT_RAW")
+  field(EGU, "V")
+  field(CALC, "(A/64 / 1024 * 3)")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):XV_MAX_AUX_RAW") {
+  field(DESC, "Xilinx Max V Aux (raw)")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_MAX_AUX_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):XV_MAX_AUX")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):XV_MAX_AUX") {
+  field(DESC, "Xilinx Max V Int")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):XV_MAX_AUX_RAW")
+  field(EGU, "V")
+  field(CALC, "(A/64 / 1024 * 3)")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):XTEMP_MIN_RAW") {
+  field(DESC, "Xilinx Max Temp (raw)")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XTEMP_MIN_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):XTEMP_MIN")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):XTEMP_MIN") {
+  field(DESC, "Xilinx Max Temp")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):XTEMP_MIN_RAW")
+  field(EGU, "V")
+  field(CALC, "(A/64 * 503.975/1024) - 273.15")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):XV_MIN_INT_RAW") {
+  field(DESC, "Xilinx Min V Int (raw)")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_MIN_INT_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):XV_MIN_INT")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):XV_MIN_INT") {
+  field(DESC, "Xilinx Min V Int")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):XV_MIN_INT_RAW")
+  field(EGU, "V")
+  field(CALC, "(A/64 / 1024 * 3)")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):XV_MIN_AUX_RAW") {
+  field(DESC, "Xilinx Min V Aux (raw)")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))XV_MIN_AUX_RAW")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):XV_MIN_AUX")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):XV_MIN_AUX") {
+  field(DESC, "Xilinx Min V Aux")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):XV_MIN_AUX_RAW")
+  field(EGU, "V")
+  field(CALC, "(A/64 / 1024 * 3)")
 }
