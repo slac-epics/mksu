@@ -1,0 +1,1021 @@
+#=======================================================
+# FAST ADC CONTROL BLOCK (WRITE)
+#=======================================================
+#=======================================================
+# Status Register (BEGIN)
+#-------------------------------------------------------
+# BV_LO_CLR: Beam Voltage Low Fault Clear (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):BV_LO_CLR
+operation	record
+DESC	Clear Beam Volt Low Fault
+FLNK	KLYS:$(AREA):$(LOCATION):BV_LO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):BV_LO_CLR_MASK
+DESC	Clear Beam Volt Low Fault
+INPA	KLYS:$(AREA):$(LOCATION):BV_LO_CLR
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_BV_LO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_BV_LO_SET
+operation	write
+task	0x04
+address	0
+size	1
+DESC	Clear Beam Volt Low Fault
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_BV_LO_SET
+DOL	KLYS:$(AREA):$(LOCATION):BV_LO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# BV_HI_CLR: Clear Clear Beam Volt High Fault (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):BV_HI_CLR
+operation	record
+DESC	Clear Beam Volt High Fault
+FLNK	KLYS:$(AREA):$(LOCATION):BV_HI_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):BV_HI_CLR_MASK
+DESC	Clear Beam Volt High Fault
+INPA	KLYS:$(AREA):$(LOCATION):BV_HI_CLR
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_BV_HI_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_BV_HI_SET
+operation	write
+task	0x04
+address	0
+size	1
+DESC	Clear Beam Volt High Fault
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_BV_HI_SET
+DOL	KLYS:$(AREA):$(LOCATION):KLYS_HI_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# BC_LO_CLR: Clear Beam Current Low Fault (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):BC_LO_CLR
+operation	record
+DESC	Clear Beam Current Low Fault
+FLNK	KLYS:$(AREA):$(LOCATION):BC_LO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):BC_LO_CLR_MASK
+DESC	Clear Beam Current Low Fault
+INPA	KLYS:$(AREA):$(LOCATION):BC_LO_CLR
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_BC_LO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_BC_LO_SET
+operation	write
+task	0x04
+address	0
+size	1
+DESC	Clear Beam Current Low Fault
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_BC_LO_SET
+DOL	KLYS:$(AREA):$(LOCATION):BC_LO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# BC_HI_CLR: Clear Beam Curr Hi Fault (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):BC_HI_CLR
+operation	record
+DESC	Clear Beam Curr Hi Fault
+FLNK	KLYS:$(AREA):$(LOCATION):BC_HI_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):BC_HI_CLR_MASK
+DESC	Clear Beam Curr Hi Fault
+INPA	KLYS:$(AREA):$(LOCATION):BC_HI_CLR
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_BC_HI_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_BC_HI_SET
+operation	write
+task	0x04
+address	0
+size	1
+DESC	Clear Beam Curr Hi Fault
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_BC_HI_SET
+DOL	KLYS:$(AREA):$(LOCATION):BC_HI_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# FP_LO_CLR: Clear Fwd Power Low Fault (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):FP_LO_CLR
+operation	record
+DESC	Clear Fwd Power Low Fault
+FLNK	KLYS:$(AREA):$(LOCATION):FP_LO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FP_LO_CLR_MASK
+DESC	Clear Fwd Power Low Fault
+INPA	KLYS:$(AREA):$(LOCATION):FP_LO_CLR
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_FP_LO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_FP_LO_SET
+operation	write
+task	0x04
+address	0
+size	1
+DESC	Clear Fwd Power Low Fault
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FP_LO_SET
+DOL	KLYS:$(AREA):$(LOCATION):FP_LO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# FP_HI_CLR: Clear Fwd Power Hi Fault (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):FP_HI_CLR
+operation	record
+DESC	Clear Fwd Power Hi Fault
+FLNK	KLYS:$(AREA):$(LOCATION):FP_HI_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FP_HI_CLR_MASK
+DESC	Clear Fwd Power Hi Fault
+INPA	KLYS:$(AREA):$(LOCATION):FP_HI_CLR
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_FP_HI_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_FP_HI_SET
+operation	write
+task	0x04
+address	0
+size	1
+DESC	Clear Fwd Power Hi Fault
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FP_HI_SET
+DOL	KLYS:$(AREA):$(LOCATION):FP_HI_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# RP_LO_CLR: Clr Reflctd Pwr Low Fault (Bit 6)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):RP_LO_CLR
+operation	record
+DESC	Clear Focus Coil Gnd Cur Low
+FLNK	KLYS:$(AREA):$(LOCATION):RP_LO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RP_LO_CLR_MASK
+DESC	Clr Reflctd Pwr Low Fault
+INPA	KLYS:$(AREA):$(LOCATION):RP_LO_CLR
+CALC	A << 6
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_RP_LO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_RP_LO_SET
+operation	write
+task	0x04
+address	0
+size	1
+DESC	Clr Reflctd Pwr Low Fault
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_RP_LO_SET
+DOL	KLYS:$(AREA):$(LOCATION):RP_LO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# RP_HI_CLR: Clear Focus Coil Ground Cur High (Bit 7)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):RP_HI_CLR
+operation	record
+DESC	Clear Focus Coil Gnd Cur Hi
+FLNK	KLYS:$(AREA):$(LOCATION):RP_HI_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RP_HI_CLR_MASK
+DESC	Clear Focus Coil Gnd Cur Hi
+INPA	KLYS:$(AREA):$(LOCATION):RP_HI_CLR
+CALC	A << 7
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_RP_HI_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_RP_HI_SET
+operation	write
+task	0x04
+address	0
+size	1
+DESC	Clear Focus Coil Gnd Cur Hi
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_RP_HI_SET
+DOL	KLYS:$(AREA):$(LOCATION):RP_HI_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# BC_LO10S_CLR: Clear Beam Current Low > 10s Fault (Bit 8)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):BC_LO10S_CLR
+operation	record
+DESC	Clear Beam C Low 10S
+FLNK	KLYS:$(AREA):$(LOCATION):BC_LO10S_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):BC_LO10S_CLR_MASK
+DESC	Clear Beam C Low 10S
+INPA	KLYS:$(AREA):$(LOCATION):BC_LO10S_CLR
+CALC	A << 7
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_BC_LO10S_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_BC_LO10S_SET
+operation	write
+task	0x04
+address	0
+size	1
+DESC	Clear Beam C Low 10S
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_BC_LO10S_SET
+DOL	KLYS:$(AREA):$(LOCATION):BC_LO10S_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# Status Register (END)
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):BV_LO_SET
+operation	write
+task	0x04
+address	1
+size	1
+DESC	Beam Volt Low Limit
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_LO_SET
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):BV_HI_SET
+operation	write
+task	0x04
+address	2
+size	1
+DESC	Beam Volt High Limit
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_HI_SET
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):BV_AVG_STA_SET
+operation	write
+task	0x04
+address	3
+size	1
+DESC	Beam Volt Avg Win Start
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_STA_SET
+EGU	60MHz ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):BV_AVG_END_SET
+operation	write
+task	0x04
+address	4
+size	1
+DESC	Beam Volt Avg Win Ent
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_END_SET
+EGU	60MHz ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):BC_LO_SET
+operation	write
+task	0x04
+address	5
+size	1
+DESC	Beam Curr Low Limit
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_LO_SET
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):BC_HI_SET
+operation	write
+task	0x04
+address	6
+size	1
+DESC	Beam Curr High Limit
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_HI_SET
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):BC_AVG_STA_SET
+operation	write
+task	0x04
+address	7
+size	1
+DESC	Beam Curr Avg Win Start
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_STA_SET
+EGU	60MHz ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):BC_AVG_END_SET
+operation	write
+task	0x04
+address	8
+size	1
+DESC	Beam Curr Avg Win Ent
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_END_SET
+EGU	60MHz ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FP_LO_SET
+operation	write
+task	0x04
+address	9
+size	1
+DESC	Forward Power Low Limit
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_LO_SET
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FP_HI_SET
+operation	write
+task	0x04
+address	10
+size	1
+DESC	Forward Power High Limit
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_HI_SET
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FP_AVG_STA_SET
+operation	write
+task	0x04
+address	11
+size	1
+DESC	Forward Power Avg Win Start
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_STA_SET
+EGU	60MHz ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FP_AVG_END_SET
+operation	write
+task	0x04
+address	12
+size	1
+DESC	Forward Power Avg Win Ent
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_END_SET
+EGU	60MHz ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):RP_LO_SET
+operation	write
+task	0x04
+address	13
+size	1
+DESC	Reflected Power Low Limit
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_LO_SET
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):RP_HI_SET
+operation	write
+task	0x04
+address	14
+size	1
+DESC	Reflected Power High Limit
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_HI_SET
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):RP_AVG_STA_SET
+operation	write
+task	0x04
+address	15
+size	1
+DESC	Reflctd Pwr Avg Win Start
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_STA_SET
+EGU	60MHz ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):RP_AVG_END_SET
+operation	write
+task	0x04
+address	16
+size	1
+DESC	Reflctd Pwr Avg Win End
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_END_SET
+EGU	60MHz ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):WF_CNT_SET
+operation	write
+task	0x04
+address	17
+size	1
+DESC	Avg Waveform Samples
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_CNT_SET
+EGU	samples
+PRIO	LOW
+#=======================================================
+# FAST ADC CONTROL (READ)
+#=======================================================
+# Status Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):STATUS_FADC
+operation	read
+task	0x44
+address	0
+size	1
+DESC	Fast ADC Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FADC
+FLNK	KLYS:$(AREA):$(LOCATION):BV_LO_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# BV_LO: Beam Voltage Low (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):BV_LO_MASK
+DESC	Beam Voltage Low
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_FADC
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):BV_LO_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):BV_LO_BIT
+operation	record
+DESC	Beam Voltage Low
+INP	KLYS:$(AREA):$(LOCATION):BV_LO_MASK
+ZNAM	Ok
+ONAM	Low
+FLNK	KLYS:$(AREA):$(LOCATION):BV_HI_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# BV_HI: Beam Voltage High (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):BV_HI_MASK
+DESC	Beam Voltage High
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_FADC
+CALC	(A & (1 << 1)) >> 1
+PRIO	LOW
+FLNK	KLYS:$(AREA):$(LOCATION):BV_HI_BIT
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):BV_HI_BIT
+operation	record
+DESC	Beam Voltage High
+INP	KLYS:$(AREA):$(LOCATION):BV_HI_MASK
+ZNAM	Ok
+ONAM	High
+FLNK	KLYS:$(AREA):$(LOCATION):BC_LO_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# BC_LO: Beam Current Low (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):BC_LO_MASK
+DESC	Beam Current Low
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_FADC
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):BC_LO_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):BC_LO_BIT
+operation	record
+DESC	Beam Current Low
+INP	KLYS:$(AREA):$(LOCATION):BC_LO_MASK
+ZNAM	Ok
+ONAM	Low
+FLNK	KLYS:$(AREA):$(LOCATION):BC_HI_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# BC_HI: Beam Current High (Bit 3)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):BC_HI_MASK
+DESC	Beam Current High
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_FADC
+CALC	(A & (1 << 3)) >> 3
+FLNK	KLYS:$(AREA):$(LOCATION):BC_HI_BIT
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):BC_HI_BIT
+operation	record
+DESC	Beam Current High
+INP	KLYS:$(AREA):$(LOCATION):BC_HI_MASK
+ZNAM	Ok
+ONAM	High
+FLNK	KLYS:$(AREA):$(LOCATION):FP_LO_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# FP_LO: Forward Power Low (Bit 4)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FP_LO_MASK
+DESC	Forward Power Low
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_FADC
+CALC	(A & (1 << 4)) >> 4
+FLNK	KLYS:$(AREA):$(LOCATION):FP_LO_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):FP_LO_BIT
+operation	record
+DESC	Forward Power Low
+INP	KLYS:$(AREA):$(LOCATION):FP_LO_MASK
+ZNAM	Ok
+ONAM	Low
+FLNK	KLYS:$(AREA):$(LOCATION):FP_HI_MASK
+#-------------------------------------------------------
+# FP_HI: Forward Power High (Bit 5)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):FP_HI_MASK
+DESC	Forward Power High
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_FADC
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):FP_HI_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):FP_HI_BIT
+operation	record
+DESC	Forward Power High
+INP	KLYS:$(AREA):$(LOCATION):FP_HI_MASK
+ZNAM	Ok
+ONAM	High
+FLNK	KLYS:$(AREA):$(LOCATION):RP_LO_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# RP_LO: Reflected Power Low (Bit 6)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RP_LO_MASK
+DESC	Focus Coil Gnd Current Low
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_FADC
+CALC	(A & (1 << 6)) >> 6
+FLNK	KLYS:$(AREA):$(LOCATION):RP_LO_BIT
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):RP_LO_BIT
+operation	record
+DESC	Focus Coil Gnd Current Low
+INP	KLYS:$(AREA):$(LOCATION):RP_LO_MASK
+ZNAM	Ok
+ONAM	Low
+FLNK	KLYS:$(AREA):$(LOCATION):RP_HI_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# RP_HI: Reflected Power High (Bit 7)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RP_HI_MASK
+DESC	Focus Coil Gnd Current High
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_FADC
+CALC	(A & (1 << 7)) >> 7
+FLNK	KLYS:$(AREA):$(LOCATION):RP_HI_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):RP_HI_BIT
+operation	record
+DESC	Focus Coil Gnd Current High
+INP	KLYS:$(AREA):$(LOCATION):RP_HI_MASK
+ZNAM	Ok
+ONAM	High
+FLNK	KLYS:$(AREA):$(LOCATION):BC_LO10S_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# BC_LO10S: Beam Curr Low > 10 s (Bit 8)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):BC_LO10S_MASK
+DESC	Beam Curr Low > 10 s
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_FADC
+CALC	(A & (1 << 8)) >> 8
+FLNK	KLYS:$(AREA):$(LOCATION):BC_LO10S_BIT
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):BC_LO10S_BIT
+operation	record
+DESC	Beam Curr Low > 10 s
+INP	KLYS:$(AREA):$(LOCATION):BC_LO10S_MASK
+ZNAM	Ok
+ONAM	High
+PRIO	LOW
+#-------------------------------------------------------
+# Status Register (END)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BV_LO
+operation	read 
+task	0x44
+address	1
+size	1
+DESC	Beam Voltage Low Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_LO
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BV_HI
+operation	read 
+task	0x44
+address	2
+size	1
+DESC	Beam Voltage High Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_HI
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BV_AVG_STA
+operation	read 
+task	0x44
+address	3
+size	1
+DESC	Beam Voltage Avg Win Start
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_STA
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BV_AVG_END
+operation	read 
+task	0x44
+address	4
+size	1
+DESC	Beam Voltage Avg Win End
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_END
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BC_LO
+operation	read 
+task	0x44
+address	5
+size	1
+DESC	Beam Current Low Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_LO
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BC_HI
+operation	read 
+task	0x44
+address	6
+size	1
+DESC	Beam Current High Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_HI
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BC_AVG_STA
+operation	read 
+task	0x44
+address	7
+size	1
+DESC	Beam Current Avg Win Start
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_STA
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BC_AVG_END
+operation	read 
+task	0x44
+address	8
+size	1
+DESC	Beam Current Avg Win End
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_END
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FP_LO
+operation	read 
+task	0x44
+address	9
+size	1
+DESC	Forward Power Low Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_LO
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FP_HI
+operation	read 
+task	0x44
+address	10
+size	1
+DESC	Forward Power High Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_HI
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FP_AVG_STA
+operation	read 
+task	0x44
+address	11
+size	1
+DESC	Forward Power Avg Win Start
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_STA
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FP_AVG_END
+operation	read 
+task	0x44
+address	12
+size	1
+DESC	Forward Power Avg Win End
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_END
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RP_LO
+operation	read 
+task	0x44
+address	13
+size	1
+DESC	Reflected Power Low Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_LO
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RP_HI
+operation	read 
+task	0x44
+address	14
+size	1
+DESC	Reflected Power High Limit
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_HI
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RP_AVG_STA
+operation	read 
+task	0x44
+address	15
+size	1
+DESC	Reflctd Pwr Avg Win Start
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_STA
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RP_AVG_END
+operation	read 
+task	0x44
+address	16
+size	1
+DESC	Reflected Power Avg Win End
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_END
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):WF_CNT
+operation	read 
+task	0x44
+address	17
+size	1
+DESC	Num Samples For Avg Wform
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_CNT
+EGU	samples
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BV_AVG
+operation	read 
+task	0x44
+address	18
+size	1
+DESC	Average Beam Voltage
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BC_AVG
+operation	read 
+task	0x44
+address	19
+size	1
+DESC	Average Beam Current
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FP_AVG
+operation	read 
+task	0x44
+address	20
+size	1
+DESC	Average Forward Power
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RP_AVG
+operation	read 
+task	0x44
+address	21
+size	1
+DESC	Average Forward Power
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BV
+operation	read 
+task	0x44
+address	22
+size	1
+DESC	Instant Beam Voltage
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):BC
+operation	read 
+task	0x44
+address	23
+size	1
+DESC	Instant Beam Current
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FP
+operation	read 
+task	0x44
+address	24
+size	1
+DESC	Instant Forward Power
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RP
+operation	read 
+task	0x44
+address	25
+size	1
+DESC	Instant Forward Power
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP
+EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+

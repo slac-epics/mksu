@@ -12,6 +12,10 @@
 #
 #
 
+mksu-R1-0-5:
+	* Addition of map file for the Fast ADC control Block.
+	  Missing EDM panel for Fast ADC controls.
+
 mksu-R1-0-4:
 	* Changed generate.py script to take a file containing
 	  list of map file names.

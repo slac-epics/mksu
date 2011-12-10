@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Fri, 09 Dec 2011 01:02:27 +0000
+# Database template file generated from MksuList.map on Sat, 10 Dec 2011 01:35:11 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -864,7 +864,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FC_HI_BIT") {
 
 record(calc, "KLYS:$(AREA):$(LOCATION):FCG_LO_MASK") {
   field(DESC, "Focus Coil Gnd Current Low")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_SLOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_LO_BIT")
   field(CALC, "(A & (1 << 6)) >> 6")
 }
@@ -881,7 +881,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FCG_LO_BIT") {
 record(calc, "KLYS:$(AREA):$(LOCATION):FCG_HI_MASK") {
   field(DESC, "Focus Coil Gnd Current High")
   field(PRIO, "LOW")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_SLOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FCG_HI_BIT")
   field(CALC, "(A & (1 << 7)) >> 7")
 }
@@ -1872,4 +1872,730 @@ record(calc, "KLYS:$(AREA):$(LOCATION):XV_MIN_AUX") {
   field(INPA, "KLYS:$(AREA):$(LOCATION):XV_MIN_AUX_RAW")
   field(EGU, "V")
   field(CALC, "(A/64 / 1024 * 3)")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):BV_LO_CLR") {
+  field(DESC, "Clear Beam Volt Low Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BV_LO_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):BV_LO_CLR_MASK") {
+  field(DESC, "Clear Beam Volt Low Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):BV_LO_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_BV_LO_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_BV_LO_SET") {
+  field(DESC, "Clear Beam Volt Low Fault")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):BV_LO_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_BV_LO_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):BV_HI_CLR") {
+  field(DESC, "Clear Beam Volt High Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BV_HI_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):BV_HI_CLR_MASK") {
+  field(DESC, "Clear Beam Volt High Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):BV_HI_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_BV_HI_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_BV_HI_SET") {
+  field(DESC, "Clear Beam Volt High Fault")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):KLYS_HI_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_BV_HI_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):BC_LO_CLR") {
+  field(DESC, "Clear Beam Current Low Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BC_LO_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):BC_LO_CLR_MASK") {
+  field(DESC, "Clear Beam Current Low Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):BC_LO_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_BC_LO_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_BC_LO_SET") {
+  field(DESC, "Clear Beam Current Low Fault")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):BC_LO_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_BC_LO_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):BC_HI_CLR") {
+  field(DESC, "Clear Beam Curr Hi Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BC_HI_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):BC_HI_CLR_MASK") {
+  field(DESC, "Clear Beam Curr Hi Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):BC_HI_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_BC_HI_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_BC_HI_SET") {
+  field(DESC, "Clear Beam Curr Hi Fault")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):BC_HI_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_BC_HI_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FP_LO_CLR") {
+  field(DESC, "Clear Fwd Power Low Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FP_LO_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FP_LO_CLR_MASK") {
+  field(DESC, "Clear Fwd Power Low Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FP_LO_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FP_LO_SET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FP_LO_SET") {
+  field(DESC, "Clear Fwd Power Low Fault")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FP_LO_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FP_LO_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FP_HI_CLR") {
+  field(DESC, "Clear Fwd Power Hi Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FP_HI_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FP_HI_CLR_MASK") {
+  field(DESC, "Clear Fwd Power Hi Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FP_HI_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FP_HI_SET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FP_HI_SET") {
+  field(DESC, "Clear Fwd Power Hi Fault")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FP_HI_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FP_HI_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):RP_LO_CLR") {
+  field(DESC, "Clear Focus Coil Gnd Cur Low")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):RP_LO_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):RP_LO_CLR_MASK") {
+  field(DESC, "Clr Reflctd Pwr Low Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):RP_LO_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_RP_LO_SET")
+  field(CALC, "A << 6")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_RP_LO_SET") {
+  field(DESC, "Clr Reflctd Pwr Low Fault")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):RP_LO_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_RP_LO_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):RP_HI_CLR") {
+  field(DESC, "Clear Focus Coil Gnd Cur Hi")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):RP_HI_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):RP_HI_CLR_MASK") {
+  field(DESC, "Clear Focus Coil Gnd Cur Hi")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):RP_HI_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_RP_HI_SET")
+  field(CALC, "A << 7")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_RP_HI_SET") {
+  field(DESC, "Clear Focus Coil Gnd Cur Hi")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):RP_HI_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_RP_HI_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):BC_LO10S_CLR") {
+  field(DESC, "Clear Beam C Low 10S")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BC_LO10S_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):BC_LO10S_CLR_MASK") {
+  field(DESC, "Clear Beam C Low 10S")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):BC_LO10S_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_BC_LO10S_SET")
+  field(CALC, "A << 7")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_BC_LO10S_SET") {
+  field(DESC, "Clear Beam C Low 10S")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):BC_LO10S_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_BC_LO10S_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):BV_LO_SET") {
+  field(DESC, "Beam Volt Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_LO_SET")
+  field(EGU, "ADC counts")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):BV_HI_SET") {
+  field(DESC, "Beam Volt High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_HI_SET")
+  field(EGU, "ADC counts")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):BV_AVG_STA_SET") {
+  field(DESC, "Beam Volt Avg Win Start")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_STA_SET")
+  field(EGU, "60MHz ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):BV_AVG_END_SET") {
+  field(DESC, "Beam Volt Avg Win Ent")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_END_SET")
+  field(EGU, "60MHz ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):BC_LO_SET") {
+  field(DESC, "Beam Curr Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_LO_SET")
+  field(EGU, "ADC counts")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):BC_HI_SET") {
+  field(DESC, "Beam Curr High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_HI_SET")
+  field(EGU, "ADC counts")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):BC_AVG_STA_SET") {
+  field(DESC, "Beam Curr Avg Win Start")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_STA_SET")
+  field(EGU, "60MHz ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):BC_AVG_END_SET") {
+  field(DESC, "Beam Curr Avg Win Ent")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_END_SET")
+  field(EGU, "60MHz ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):FP_LO_SET") {
+  field(DESC, "Forward Power Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_LO_SET")
+  field(EGU, "ADC counts")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):FP_HI_SET") {
+  field(DESC, "Forward Power High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_HI_SET")
+  field(EGU, "ADC counts")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):FP_AVG_STA_SET") {
+  field(DESC, "Forward Power Avg Win Start")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_STA_SET")
+  field(EGU, "60MHz ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):FP_AVG_END_SET") {
+  field(DESC, "Forward Power Avg Win Ent")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_END_SET")
+  field(EGU, "60MHz ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):RP_LO_SET") {
+  field(DESC, "Reflected Power Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_LO_SET")
+  field(EGU, "ADC counts")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):RP_HI_SET") {
+  field(DESC, "Reflected Power High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_HI_SET")
+  field(EGU, "ADC counts")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):RP_AVG_STA_SET") {
+  field(DESC, "Reflctd Pwr Avg Win Start")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_STA_SET")
+  field(EGU, "60MHz ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):RP_AVG_END_SET") {
+  field(DESC, "Reflctd Pwr Avg Win End")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_END_SET")
+  field(EGU, "60MHz ticks")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):WF_CNT_SET") {
+  field(DESC, "Avg Waveform Samples")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_CNT_SET")
+  field(EGU, "samples")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):STATUS_FADC") {
+  field(DESC, "Fast ADC Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FADC")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BV_LO_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):BV_LO_MASK") {
+  field(DESC, "Beam Voltage Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_FADC")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BV_LO_BIT")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):BV_LO_BIT") {
+  field(DESC, "Beam Voltage Low")
+  field(PRIO, "LOW")
+  field(ONAM, "Low")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):BV_LO_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BV_HI_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):BV_HI_MASK") {
+  field(DESC, "Beam Voltage High")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_FADC")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BV_HI_BIT")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):BV_HI_BIT") {
+  field(DESC, "Beam Voltage High")
+  field(PRIO, "LOW")
+  field(ONAM, "High")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):BV_HI_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BC_LO_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):BC_LO_MASK") {
+  field(DESC, "Beam Current Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_FADC")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BC_LO_BIT")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):BC_LO_BIT") {
+  field(DESC, "Beam Current Low")
+  field(PRIO, "LOW")
+  field(ONAM, "Low")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):BC_LO_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BC_HI_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):BC_HI_MASK") {
+  field(DESC, "Beam Current High")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_FADC")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BC_HI_BIT")
+  field(CALC, "(A & (1 << 3)) >> 3")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):BC_HI_BIT") {
+  field(DESC, "Beam Current High")
+  field(PRIO, "LOW")
+  field(ONAM, "High")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):BC_HI_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FP_LO_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FP_LO_MASK") {
+  field(DESC, "Forward Power Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_FADC")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FP_LO_BIT")
+  field(CALC, "(A & (1 << 4)) >> 4")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FP_LO_BIT") {
+  field(DESC, "Forward Power Low")
+  field(ONAM, "Low")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FP_LO_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FP_HI_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FP_HI_MASK") {
+  field(DESC, "Forward Power High")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_FADC")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FP_HI_BIT")
+  field(CALC, "(A & (1 << 5)) >> 5")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FP_HI_BIT") {
+  field(DESC, "Forward Power High")
+  field(PRIO, "LOW")
+  field(ONAM, "High")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FP_HI_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):RP_LO_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):RP_LO_MASK") {
+  field(DESC, "Focus Coil Gnd Current Low")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_FADC")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):RP_LO_BIT")
+  field(CALC, "(A & (1 << 6)) >> 6")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):RP_LO_BIT") {
+  field(DESC, "Focus Coil Gnd Current Low")
+  field(PRIO, "LOW")
+  field(ONAM, "Low")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):RP_LO_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):RP_HI_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):RP_HI_MASK") {
+  field(DESC, "Focus Coil Gnd Current High")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_FADC")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):RP_HI_BIT")
+  field(CALC, "(A & (1 << 7)) >> 7")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):RP_HI_BIT") {
+  field(DESC, "Focus Coil Gnd Current High")
+  field(PRIO, "LOW")
+  field(ONAM, "High")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):RP_HI_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BC_LO10S_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):BC_LO10S_MASK") {
+  field(DESC, "Beam Curr Low > 10 s")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_FADC")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):BC_LO10S_BIT")
+  field(CALC, "(A & (1 << 8)) >> 8")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):BC_LO10S_BIT") {
+  field(DESC, "Beam Curr Low > 10 s")
+  field(PRIO, "LOW")
+  field(ONAM, "High")
+  field(ZNAM, "Ok")
+  field(INP, "KLYS:$(AREA):$(LOCATION):BC_LO10S_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BV_LO") {
+  field(DESC, "Beam Voltage Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_LO")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BV_HI") {
+  field(DESC, "Beam Voltage High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_HI")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BV_AVG_STA") {
+  field(DESC, "Beam Voltage Avg Win Start")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_STA")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BV_AVG_END") {
+  field(DESC, "Beam Voltage Avg Win End")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_END")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BC_LO") {
+  field(DESC, "Beam Current Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_LO")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BC_HI") {
+  field(DESC, "Beam Current High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_HI")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BC_AVG_STA") {
+  field(DESC, "Beam Current Avg Win Start")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_STA")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BC_AVG_END") {
+  field(DESC, "Beam Current Avg Win End")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_END")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FP_LO") {
+  field(DESC, "Forward Power Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_LO")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FP_HI") {
+  field(DESC, "Forward Power High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_HI")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FP_AVG_STA") {
+  field(DESC, "Forward Power Avg Win Start")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_STA")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FP_AVG_END") {
+  field(DESC, "Forward Power Avg Win End")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_END")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):RP_LO") {
+  field(DESC, "Reflected Power Low Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_LO")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):RP_HI") {
+  field(DESC, "Reflected Power High Limit")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_HI")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):RP_AVG_STA") {
+  field(DESC, "Reflctd Pwr Avg Win Start")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_STA")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):RP_AVG_END") {
+  field(DESC, "Reflected Power Avg Win End")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_END")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WF_CNT") {
+  field(DESC, "Num Samples For Avg Wform")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_CNT")
+  field(EGU, "samples")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BV_AVG") {
+  field(DESC, "Average Beam Voltage")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BC_AVG") {
+  field(DESC, "Average Beam Current")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FP_AVG") {
+  field(DESC, "Average Forward Power")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):RP_AVG") {
+  field(DESC, "Average Forward Power")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BV") {
+  field(DESC, "Instant Beam Voltage")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):BC") {
+  field(DESC, "Instant Beam Current")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FP") {
+  field(DESC, "Instant Forward Power")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP")
+  field(EGU, "ADC counts")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):RP") {
+  field(DESC, "Instant Forward Power")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP")
+  field(EGU, "ADC counts")
 }

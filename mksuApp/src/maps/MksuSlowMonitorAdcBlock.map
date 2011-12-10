@@ -497,7 +497,7 @@ record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):FCG_LO_MASK
 DESC	Focus Coil Gnd Current Low
-INPA	KLYS:$(AREA):$(LOCATION):STATUS
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_SLOW
 CALC	(A & (1 << 6)) >> 6
 FLNK	KLYS:$(AREA):$(LOCATION):FCG_LO_BIT
 #-------------------------------------------------------
@@ -517,7 +517,7 @@ record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):FCG_HI_MASK
 DESC	Focus Coil Gnd Current High
-INPA	KLYS:$(AREA):$(LOCATION):STATUS
+INPA	KLYS:$(AREA):$(LOCATION):STATUS_SLOW
 CALC	(A & (1 << 7)) >> 7
 FLNK	KLYS:$(AREA):$(LOCATION):FCG_HI_BIT
 PRIO	LOW
