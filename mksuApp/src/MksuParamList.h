@@ -1,11 +1,11 @@
-// Header file generated from MksuList.map on Sat, 10 Dec 2011 01:35:11 +0000
+// Header file generated from MksuList.map on Tue, 13 Dec 2011 01:28:05 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 151;
+const int MKSU_NUM_PARAMS = 155;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -135,31 +135,35 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x04, asynParamInt32, 16, 0, 1, "RP_AVG_END_SET", -1},
   {0x04, asynParamInt32, 17, 0, 1, "WF_CNT_SET", -1},
   {0x44, asynParamInt32, 0, 0, 1, "STATUS_FADC", -1},
-  {0x44, asynParamInt32, 1, 0, 1, "BV_LO", -1},
-  {0x44, asynParamInt32, 2, 0, 1, "BV_HI", -1},
+  {0x44, asynParamInt32, 1, 1, 1, "BV_LO", -1},
+  {0x44, asynParamInt32, 2, 1, 1, "BV_HI", -1},
   {0x44, asynParamInt32, 3, 0, 1, "BV_AVG_STA", -1},
   {0x44, asynParamInt32, 4, 0, 1, "BV_AVG_END", -1},
-  {0x44, asynParamInt32, 5, 0, 1, "BC_LO", -1},
-  {0x44, asynParamInt32, 6, 0, 1, "BC_HI", -1},
+  {0x44, asynParamInt32, 5, 1, 1, "BC_LO", -1},
+  {0x44, asynParamInt32, 6, 1, 1, "BC_HI", -1},
   {0x44, asynParamInt32, 7, 0, 1, "BC_AVG_STA", -1},
   {0x44, asynParamInt32, 8, 0, 1, "BC_AVG_END", -1},
-  {0x44, asynParamInt32, 9, 0, 1, "FP_LO", -1},
-  {0x44, asynParamInt32, 10, 0, 1, "FP_HI", -1},
+  {0x44, asynParamInt32, 9, 1, 1, "FP_LO", -1},
+  {0x44, asynParamInt32, 10, 1, 1, "FP_HI", -1},
   {0x44, asynParamInt32, 11, 0, 1, "FP_AVG_STA", -1},
   {0x44, asynParamInt32, 12, 0, 1, "FP_AVG_END", -1},
-  {0x44, asynParamInt32, 13, 0, 1, "RP_LO", -1},
-  {0x44, asynParamInt32, 14, 0, 1, "RP_HI", -1},
+  {0x44, asynParamInt32, 13, 1, 1, "RP_LO", -1},
+  {0x44, asynParamInt32, 14, 1, 1, "RP_HI", -1},
   {0x44, asynParamInt32, 15, 0, 1, "RP_AVG_STA", -1},
   {0x44, asynParamInt32, 16, 0, 1, "RP_AVG_END", -1},
   {0x44, asynParamInt32, 17, 0, 1, "WF_CNT", -1},
-  {0x44, asynParamInt32, 18, 0, 1, "BV_AVG", -1},
-  {0x44, asynParamInt32, 19, 0, 1, "BC_AVG", -1},
-  {0x44, asynParamInt32, 20, 0, 1, "FP_AVG", -1},
-  {0x44, asynParamInt32, 21, 0, 1, "RP_AVG", -1},
-  {0x44, asynParamInt32, 22, 0, 1, "BV", -1},
-  {0x44, asynParamInt32, 23, 0, 1, "BC", -1},
-  {0x44, asynParamInt32, 24, 0, 1, "FP", -1},
-  {0x44, asynParamInt32, 25, 0, 1, "RP", -1},
+  {0x44, asynParamInt32, 18, 1, 1, "BV_AVG", -1},
+  {0x44, asynParamInt32, 19, 1, 1, "BC_AVG", -1},
+  {0x44, asynParamInt32, 20, 1, 1, "FP_AVG", -1},
+  {0x44, asynParamInt32, 21, 1, 1, "RP_AVG", -1},
+  {0x44, asynParamInt32, 22, 1, 1, "BV", -1},
+  {0x44, asynParamInt32, 23, 1, 1, "BC", -1},
+  {0x44, asynParamInt32, 24, 1, 1, "FP", -1},
+  {0x44, asynParamInt32, 25, 1, 1, "RP", -1},
+  {0x61, asynParamInt16Array, 0, 1, 512, "BV_WF", -1},
+  {0x61, asynParamInt16Array, 512, 1, 512, "BC_WF", -1},
+  {0x61, asynParamInt16Array, 1024, 1, 512, "FP_WF", -1},
+  {0x61, asynParamInt16Array, 1536, 1, 512, "RP_WF", -1},
 };
 
 #endif

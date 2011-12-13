@@ -31,7 +31,7 @@ public:
 
   ParamMap _paramMap;
   std::string _mksuPortName;
-  MksuComm _comm;
+  MksuComm *_comm;
 };
 
 #endif

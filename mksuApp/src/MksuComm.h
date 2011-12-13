@@ -24,6 +24,7 @@ typedef struct {
 
 typedef struct MksuBlock {
   int size;
+  long address;
   unsigned short *memory;
   MksuUdpHeader *header;
   unsigned short *data;
@@ -31,6 +32,9 @@ typedef struct MksuBlock {
 } MksuBlock;
 
 typedef std::map<int, MksuBlock> BlockMap;
+
+const int MKSU_FAST_ADC_WF_BLOCK = 0x61;
+
 /**
  * Class MksuComm
  *

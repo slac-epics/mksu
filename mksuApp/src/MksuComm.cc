@@ -52,6 +52,7 @@ void MksuComm::createBlockMap(MksuParam *params, int numParams) {
 	MksuBlock block;
 	block.memory = new unsigned short[MKSU_MAX_BLOCK_SIZE];
 	block.size = MKSU_MAX_BLOCK_SIZE;
+	block.address = params[i].address;
 	block.header = reinterpret_cast<MksuUdpHeader *>(block.memory);
 	block.data = reinterpret_cast<unsigned short *>(block.header + 1);
 	block.time = time(0);
@@ -148,7 +149,13 @@ bool MksuComm::read(int blockId, long address, epicsInt16 *value, int size) {
     return false;
   }
 
-  memcpy(value, &block->data[address], size * sizeof(epicsInt16));
+  if (blockId == MKSU_FAST_ADC_WF_BLOCK ||
+      blockId == MKSU_FAST_ADC_WF_BLOCK + block->address) {
+    memcpy(value, &block->data[0], size * sizeof(epicsInt16));
+  }
+  else {
+    memcpy(value, &block->data[address], size * sizeof(epicsInt16));
+  }
   
   return true;
 }
@@ -321,7 +328,7 @@ void MksuComm::refresh(int blockId) {
   Log::getInstance() << "MksuComm::refresh(blockId="
 		     << blockId << "): last refreshed "
 		     << now - block->time << " seconds ago."
-		     << Log::dp;
+		     << " Block address " << (int) block << Log::dp;
 
   // Reflesh block only every couple seconds
   if (block->time <= now - 4) {
@@ -345,6 +352,12 @@ void MksuComm::refresh(int blockId) {
   // from the specified address
   _commandHeader->address = 0;
   _commandHeader->count = 0;
+
+  // The starting address is relevant only for the Fast ADC Waveforms
+  if (blockId == MKSU_FAST_ADC_WF_BLOCK ||
+      blockId == MKSU_FAST_ADC_WF_BLOCK + block->address) {
+    _commandHeader->address = block->address;
+  }
 
   asynStatus status;
   size_t numSent;
@@ -383,6 +396,26 @@ void MksuComm::refresh(int blockId) {
 		     << Log::dp;
 
   block->time = now;
+  /*
+  if (blockId == MKSU_FAST_ADC_WF_BLOCK ||
+      blockId == MKSU_FAST_ADC_WF_BLOCK + block->address) {
+    std::ostringstream info;
+    
+    int offset = 0;
+    info << "=== Block " << blockId << " ===" << std::endl;
+    for (int i = 0; i < 512/32; i++) {
+      for (int j = 0; j < 32; j++) {
+	info << std::hex << block->data[offset] << " ";
+	offset++;
+      }
+      info << std::endl;
+    }
+    info << "..." << std::endl;
+    
+    Log::getInstance() << Log::flagComm << Log::dpWarn
+		       << info.str().c_str() << Log::dp;
+  }
+  */
 
   printBlock(blockId);
 }

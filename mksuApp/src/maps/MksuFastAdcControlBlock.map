@@ -698,6 +698,7 @@ name	KLYS:$(AREA):$(LOCATION):BV_LO
 operation	read 
 task	0x44
 address	1
+conversion	1
 size	1
 DESC	Beam Voltage Low Limit
 DTYP	asynInt32
@@ -711,6 +712,7 @@ name	KLYS:$(AREA):$(LOCATION):BV_HI
 operation	read 
 task	0x44
 address	2
+conversion	1
 size	1
 DESC	Beam Voltage High Limit
 DTYP	asynInt32
@@ -750,6 +752,7 @@ name	KLYS:$(AREA):$(LOCATION):BC_LO
 operation	read 
 task	0x44
 address	5
+conversion	1
 size	1
 DESC	Beam Current Low Limit
 DTYP	asynInt32
@@ -763,6 +766,7 @@ name	KLYS:$(AREA):$(LOCATION):BC_HI
 operation	read 
 task	0x44
 address	6
+conversion	1
 size	1
 DESC	Beam Current High Limit
 DTYP	asynInt32
@@ -802,6 +806,7 @@ name	KLYS:$(AREA):$(LOCATION):FP_LO
 operation	read 
 task	0x44
 address	9
+conversion	1
 size	1
 DESC	Forward Power Low Limit
 DTYP	asynInt32
@@ -815,6 +820,7 @@ name	KLYS:$(AREA):$(LOCATION):FP_HI
 operation	read 
 task	0x44
 address	10
+conversion	1
 size	1
 DESC	Forward Power High Limit
 DTYP	asynInt32
@@ -854,6 +860,7 @@ name	KLYS:$(AREA):$(LOCATION):RP_LO
 operation	read 
 task	0x44
 address	13
+conversion	1
 size	1
 DESC	Reflected Power Low Limit
 DTYP	asynInt32
@@ -867,6 +874,7 @@ name	KLYS:$(AREA):$(LOCATION):RP_HI
 operation	read 
 task	0x44
 address	14
+conversion	1
 size	1
 DESC	Reflected Power High Limit
 DTYP	asynInt32
@@ -919,6 +927,7 @@ name	KLYS:$(AREA):$(LOCATION):BV_AVG
 operation	read 
 task	0x44
 address	18
+conversion	1
 size	1
 DESC	Average Beam Voltage
 DTYP	asynInt32
@@ -932,6 +941,7 @@ name	KLYS:$(AREA):$(LOCATION):BC_AVG
 operation	read 
 task	0x44
 address	19
+conversion	1
 size	1
 DESC	Average Beam Current
 DTYP	asynInt32
@@ -945,6 +955,7 @@ name	KLYS:$(AREA):$(LOCATION):FP_AVG
 operation	read 
 task	0x44
 address	20
+conversion	1
 size	1
 DESC	Average Forward Power
 DTYP	asynInt32
@@ -958,6 +969,7 @@ name	KLYS:$(AREA):$(LOCATION):RP_AVG
 operation	read 
 task	0x44
 address	21
+conversion	1
 size	1
 DESC	Average Forward Power
 DTYP	asynInt32
@@ -971,6 +983,7 @@ name	KLYS:$(AREA):$(LOCATION):BV
 operation	read 
 task	0x44
 address	22
+conversion	1
 size	1
 DESC	Instant Beam Voltage
 DTYP	asynInt32
@@ -984,6 +997,7 @@ name	KLYS:$(AREA):$(LOCATION):BC
 operation	read 
 task	0x44
 address	23
+conversion	1
 size	1
 DESC	Instant Beam Current
 DTYP	asynInt32
@@ -997,6 +1011,7 @@ name	KLYS:$(AREA):$(LOCATION):FP
 operation	read 
 task	0x44
 address	24
+conversion	1
 size	1
 DESC	Instant Forward Power
 DTYP	asynInt32
@@ -1010,6 +1025,7 @@ name	KLYS:$(AREA):$(LOCATION):RP
 operation	read 
 task	0x44
 address	25
+conversion	1
 size	1
 DESC	Instant Forward Power
 DTYP	asynInt32

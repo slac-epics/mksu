@@ -15,13 +15,18 @@ MksuDriver::MksuDriver(const char *portName, const char *mksuPortName) :
 		 asynInt32Mask | asynInt16ArrayMask | asynInt8ArrayMask, // interruptMask
 		 ASYN_CANBLOCK | ASYN_MULTIDEVICE,                       // asynFlags
 		 1, 0, 0),           // autoConnect, priority, stackSize
-  _mksuPortName(mksuPortName),
-  _comm(mksuPortName, &MksuParams[0], MKSU_NUM_PARAMS) {
+  _mksuPortName(mksuPortName) {
   Log::getInstance() << Log::flagGeneral << Log::dpInfo << "# Creating MKSU object" << Log::cout;
   for (int i = 0; i < MKSU_NUM_PARAMS; i++) {
+    // If the param belons to the Fast ADC block, change the blockId
+    // to make it possible to reflesh all waveforms independently
+    if (MksuParams[i].blockId == MKSU_FAST_ADC_WF_BLOCK) {
+      MksuParams[i].blockId += MksuParams[i].address;
+    }
     createParam(MksuParams[i].name.c_str(), MksuParams[i].type, &MksuParams[i].id);
     _paramMap.insert(std::pair<int, MksuParam *>(MksuParams[i].id, &MksuParams[i]));
   }
+  _comm = new MksuComm (mksuPortName, &MksuParams[0], MKSU_NUM_PARAMS);
 }
 
 MksuDriver::~MksuDriver() {
@@ -64,9 +69,9 @@ asynStatus MksuDriver::readInt8Array(asynUser *pasynUser, epicsInt8 *value,
     return asynError;
   }
 
-  _comm.refresh(param->blockId);
+  _comm->refresh(param->blockId);
 
-  if (_comm.read(param->blockId, param->address, value, param->size)) {
+  if (_comm->read(param->blockId, param->address, value, param->size)) {
     *nIn = param->size;
     return asynSuccess;
   }
@@ -100,10 +105,36 @@ asynStatus MksuDriver::readInt16Array(asynUser *pasynUser, epicsInt16 *value,
     return asynError;
   }
 
-  _comm.refresh(param->blockId);
+  _comm->refresh(param->blockId);
 
-  if (_comm.read(param->blockId, param->address, value, param->size)) {
+  if (_comm->read(param->blockId, param->address, value, param->size)) {
     *nIn = param->size;
+    /*
+    {
+      std::ostringstream info;
+      
+      int offset = 0;
+      info << "=== Block " << param->blockId << " ===" << std::endl;
+      for (int i = 0; i < 512/32; i++) {
+	for (int j = 0; j < 32; j++) {
+	  info << std::hex << value[offset] << " ";
+	  offset++;
+	}
+	info << std::endl;
+      }
+      info << "..." << std::endl;
+      
+      Log::getInstance() << Log::flagComm << Log::dpWarn
+			 << info.str().c_str() << Log::dp;
+    }
+    */
+    if (param->conversion != 0) {
+      for (int i = 0; i < param->size; i++) {
+	short int sint16 = value[i];
+	value[i] = sint16;
+      }
+    }
+
     return asynSuccess;
   }
   else {
@@ -134,9 +165,9 @@ asynStatus MksuDriver::readInt32(asynUser *pasynUser, epicsInt32 *value) {
     return asynError;
   }
 
-  _comm.refresh(param->blockId);
+  _comm->refresh(param->blockId);
 
-  if (_comm.read(param->blockId, param->address, *value)) {
+  if (_comm->read(param->blockId, param->address, *value)) {
     // Convert from unsigned int16 to signed int16
     if (param->conversion != 0) {
       short int sint16 = *value;
@@ -169,7 +200,7 @@ asynStatus MksuDriver::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     return asynError;
   }
 
-  if (_comm.write(param->blockId, param->address, value)) {
+  if (_comm->write(param->blockId, param->address, value)) {
     return asynSuccess;
   }
   else {
@@ -199,7 +230,7 @@ asynStatus MksuDriver::writeInt16Array(asynUser *pasynUser, epicsInt16 *value,
     return asynError;
   }
 
-  if (_comm.write(param->blockId, param->address, value, param->size)) {
+  if (_comm->write(param->blockId, param->address, value, param->size)) {
     return asynSuccess;
   }
   else {
@@ -234,7 +265,7 @@ void MksuDriver::report(FILE *fp, int reportDetails) {
 	    << param->id << "\t";
     if (param->size == 1 && param->blockId > 0x40) {
       epicsInt32 value = -1;
-      if (_comm.read(param->blockId, param->address, value)) {
+      if (_comm->read(param->blockId, param->address, value)) {
 	details << " latest read: " << value;
       }
     }
@@ -242,7 +273,7 @@ void MksuDriver::report(FILE *fp, int reportDetails) {
   }
 
   details << std::endl;
-  _comm.report(details);
+  _comm->report(details);
 
   Log::getInstance() << Log::flagGeneral << Log::dpInfo << details.str().c_str() << Log::dp;
 

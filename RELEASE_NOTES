@@ -12,6 +12,12 @@
 #
 #
 
+mksu-R1-0-6:
+	* Addidion of Fast ADC Waveform maps
+	* Addition of Fast ADC edl panel: waveform plots
+	  display the wrong scale, as if the data is of
+	  unsigned shorts.
+
 mksu-R1-0-5:
 	* Addition of map file for the Fast ADC control Block.
 	  Missing EDM panel for Fast ADC controls.
