@@ -23,7 +23,7 @@ task	0x61
 address	512
 conversion	1
 size	512
-DESC	Beam Voltage Waveform
+DESC	Beam Current Waveform
 DTYP	asynInt16Array
 FTVL	SHORT
 NELM	512
@@ -38,7 +38,7 @@ task	0x61
 address	1024
 conversion	1
 size	512
-DESC	Beam Voltage Waveform
+DESC	Forward Power Waveform
 DTYP	asynInt16Array
 FTVL	SHORT
 NELM	512
@@ -53,11 +53,85 @@ task	0x61
 address	1536
 conversion	1
 size	512
-DESC	Beam Voltage Waveform
+DESC	Reflected Power Waveform
 DTYP	asynInt16Array
 FTVL	SHORT
 NELM	512
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_WF
 PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):BV_AVG_WF
+operation	read
+task	0x61
+address	2048
+conversion	1
+size	512
+DESC	Beam Voltage Avg Waveform
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	512
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_WF
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):BC_AVG_WF
+operation	read
+task	0x61
+address	2560
+conversion	1
+size	512
+DESC	Beam Current Avg Waveform
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	512
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_WF
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):FP_AVG_WF
+operation	read
+task	0x61
+address	3072
+conversion	1
+size	512
+DESC	Forward Power Avg Waveform
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	512
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_WF
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):RP_AVG_WF
+operation	read
+task	0x61
+address	3584
+conversion	1
+size	512
+DESC	Reflected Power Avg Waveform
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	512
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_WF
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):X_RANGE
+operation	record
+DESC	X axis range for plots
+FTVL	LONG
+NELM	2
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):Y_RANGE
+operation	record
+DESC	Y axis range for plots
+FTVL	LONG
+NELM	2
 #-------------------------------------------------------

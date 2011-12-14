@@ -330,6 +330,14 @@ void MksuComm::refresh(int blockId) {
 		     << now - block->time << " seconds ago."
 		     << " Block address " << (int) block << Log::dp;
 
+  // This is a special block, used only to generate the
+  // plot trace lines for the Fast ADC waveforms!
+  if (blockId == MKSU_FAST_ADC_WF_PLOT_BLOCK) {
+    refreshPlotBlock(block);
+    block->time = now;
+    return;
+  }
+
   // Reflesh block only every couple seconds
   if (block->time <= now - 4) {
     return;
@@ -396,26 +404,6 @@ void MksuComm::refresh(int blockId) {
 		     << Log::dp;
 
   block->time = now;
-  /*
-  if (blockId == MKSU_FAST_ADC_WF_BLOCK ||
-      blockId == MKSU_FAST_ADC_WF_BLOCK + block->address) {
-    std::ostringstream info;
-    
-    int offset = 0;
-    info << "=== Block " << blockId << " ===" << std::endl;
-    for (int i = 0; i < 512/32; i++) {
-      for (int j = 0; j < 32; j++) {
-	info << std::hex << block->data[offset] << " ";
-	offset++;
-      }
-      info << std::endl;
-    }
-    info << "..." << std::endl;
-    
-    Log::getInstance() << Log::flagComm << Log::dpWarn
-		       << info.str().c_str() << Log::dp;
-  }
-  */
 
   printBlock(blockId);
 }
@@ -454,4 +442,16 @@ void MksuComm::report(std::ostringstream &details) {
 	    << std::endl;
   }
   details << std::endl;
+}
+
+void MksuComm::refreshPlotBlock(MksuBlock *block) {
+  MksuBlock *sourceBlock = getBlock(0x44);
+  if (block == NULL) {
+    return;
+  }
+
+  for (int i = 0; i < 4 * 4; i++) {
+    block->data[i * 2] = sourceBlock->data[i+1];
+    block->data[i * 2 + 1] = sourceBlock->data[i+1];
+  }
 }

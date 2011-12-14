@@ -1,0 +1,10 @@
+maps/MksuControlBlock.map
+maps/MksuSlowMonitorAdcBlock.map
+maps/MksuVoltageMonitorBlock.map
+maps/MksuTriggerControlBlock.map
+maps/MksuRfLookupTableBlock.map
+maps/MksuSystemInfoBlock.map
+maps/MksuKlystronBodyTempBlock.map
+maps/MksuXilinxSysMonitorBlock.map
+maps/MksuFastAdcControlBlock.map
+maps/MksuFastAdcWaveformBlock.map

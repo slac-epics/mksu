@@ -707,6 +707,21 @@ INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_LO
 EGU	ADC counts
 PRIO	LOW
 #-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):BV_LO_PLOT
+operation	read
+task	0x70
+address	0
+conversion	1
+size	2
+DESC	Beam Lo Limit (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_Lo_PLOT
+PRIO	LOW
+#-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):BV_HI
 operation	read 
@@ -719,6 +734,21 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_HI
 EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):BV_HI_PLOT
+operation	read
+task	0x70
+address	2
+conversion	1
+size	2
+DESC	Beam Hi Limit (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_HI_PLOT
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
@@ -734,6 +764,21 @@ INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_STA
 EGU	ADC counts
 PRIO	LOW
 #-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):BV_STA_PLOT
+operation	read
+task	0x70
+address	4
+conversion	1
+size	2
+DESC	Beam Avg Start (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_STA_PLOT
+PRIO	LOW
+#-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):BV_AVG_END
 operation	read 
@@ -745,6 +790,21 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_END
 EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):BV_END_PLOT
+operation	read
+task	0x70
+address	6
+conversion	1
+size	2
+DESC	Beam Avg End (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_END_PLOT
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
@@ -761,6 +821,21 @@ INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_LO
 EGU	ADC counts
 PRIO	LOW
 #-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):BC_LO_PLOT
+operation	read
+task	0x70
+address	8
+conversion	1
+size	2
+DESC	BC LO (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_LO_PLOT
+PRIO	LOW
+#-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):BC_HI
 operation	read 
@@ -773,6 +848,21 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_HI
 EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):BC_HI_PLOT
+operation	read
+task	0x70
+address	10
+conversion	1
+size	2
+DESC	BC HI (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_HI_PLOT
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
@@ -788,6 +878,21 @@ INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_STA
 EGU	ADC counts
 PRIO	LOW
 #-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):BC_STA_PLOT
+operation	read
+task	0x70
+address	12
+conversion	1
+size	2
+DESC	BC AVG STA (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_STA_PLOT
+PRIO	LOW
+#-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):BC_AVG_END
 operation	read 
@@ -799,6 +904,21 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_END
 EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):BC_END_PLOT
+operation	read
+task	0x70
+address	14
+conversion	1
+size	2
+DESC	BC AVG END (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_END_PLOT
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
@@ -815,6 +935,21 @@ INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_LO
 EGU	ADC counts
 PRIO	LOW
 #-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):FP_LO_PLOT
+operation	read
+task	0x70
+address	16
+conversion	1
+size	2
+DESC	FP LO (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_LO_PLOT
+PRIO	LOW
+#-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):FP_HI
 operation	read 
@@ -827,6 +962,21 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_HI
 EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):FP_HI_PLOT
+operation	read
+task	0x70
+address	18
+conversion	1
+size	2
+DESC	FP HI (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_HI_PLOT
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
@@ -842,6 +992,21 @@ INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_STA
 EGU	ADC counts
 PRIO	LOW
 #-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):FP_STA_PLOT
+operation	read
+task	0x70
+address	20
+conversion	1
+size	2
+DESC	FP AVG STA (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_STA_PLOT
+PRIO	LOW
+#-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):FP_AVG_END
 operation	read 
@@ -853,6 +1018,21 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_END
 EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):FP_END_PLOT
+operation	read
+task	0x70
+address	22
+conversion	1
+size	2
+DESC	FP AVG END (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_END_PLOT
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
@@ -869,6 +1049,21 @@ INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_LO
 EGU	ADC counts
 PRIO	LOW
 #-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):RP_LO_PLOT
+operation	read
+task	0x70
+address	24
+conversion	1
+size	2
+DESC	RP LO (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_LO_PLOT
+PRIO	LOW
+#-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):RP_HI
 operation	read 
@@ -881,6 +1076,21 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_HI
 EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):RP_HI_PLOT
+operation	read
+task	0x70
+address	26
+conversion	1
+size	2
+DESC	RP HI (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_HI_PLOT
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
@@ -896,6 +1106,21 @@ INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_STA
 EGU	ADC counts
 PRIO	LOW
 #-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):RP_STA_PLOT
+operation	read
+task	0x70
+address	26
+conversion	1
+size	2
+DESC	RP AVG STA (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_STA_PLOT
+PRIO	LOW
+#-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):RP_AVG_END
 operation	read 
@@ -907,6 +1132,21 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_END
 EGU	ADC counts
+PRIO	LOW
+#-------------------------------------------------------
+record	waveform
+name	KLYS:$(AREA):$(LOCATION):RP_END_PLOT
+operation	read
+task	0x70
+address	28
+conversion	1
+size	2
+DESC	RP AVG END (plot only)
+DTYP	asynInt16Array
+FTVL	SHORT
+NELM	2
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_END_PLOT
 PRIO	LOW
 #-------------------------------------------------------
 record	ai

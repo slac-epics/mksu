@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Tue, 13 Dec 2011 01:28:05 +0000
+# Database template file generated from MksuList.map on Tue, 13 Dec 2011 23:30:33 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -1029,7 +1029,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MK_P24") {
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P24_RAW")
   field(EGU, "V")
-  field(CALC, "A * 0.213")
+  field(CALC, "A * .0213")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):MK_P15_RAW") {
@@ -1047,7 +1047,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MK_P15") {
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P15_RAW")
   field(EGU, "V")
-  field(CALC, "A * 0.133")
+  field(CALC, "A * .0133")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):MK_P5_RAW") {
@@ -1065,7 +1065,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MK_P5") {
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P5_RAW")
   field(EGU, "V")
-  field(CALC, "A * 0.477")
+  field(CALC, "A * .00477")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW") {
@@ -1119,7 +1119,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MK_N5") {
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N5_RAW")
   field(EGU, "V")
-  field(CALC, "A * -0.00511")
+  field(CALC, "A * -.00511")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):MK_N15_RAW") {
@@ -1137,7 +1137,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MK_N15") {
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):MK_N15_RAW")
   field(EGU, "V")
-  field(CALC, "A * -0.0158")
+  field(CALC, "A * -.0158")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):MK_N24_RAW") {
@@ -2384,6 +2384,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):BV_LO") {
   field(EGU, "ADC counts")
 }
 
+record(waveform, "KLYS:$(AREA):$(LOCATION):BV_LO_PLOT") {
+  field(DESC, "Beam Lo Limit (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_Lo_PLOT")
+}
+
 record(ai, "KLYS:$(AREA):$(LOCATION):BV_HI") {
   field(DESC, "Beam Voltage High Limit")
   field(DTYP, "asynInt32")
@@ -2391,6 +2401,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):BV_HI") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_HI")
   field(EGU, "ADC counts")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):BV_HI_PLOT") {
+  field(DESC, "Beam Hi Limit (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_HI_PLOT")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):BV_AVG_STA") {
@@ -2402,6 +2422,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):BV_AVG_STA") {
   field(EGU, "ADC counts")
 }
 
+record(waveform, "KLYS:$(AREA):$(LOCATION):BV_STA_PLOT") {
+  field(DESC, "Beam Avg Start (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_STA_PLOT")
+}
+
 record(ai, "KLYS:$(AREA):$(LOCATION):BV_AVG_END") {
   field(DESC, "Beam Voltage Avg Win End")
   field(DTYP, "asynInt32")
@@ -2409,6 +2439,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):BV_AVG_END") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_END")
   field(EGU, "ADC counts")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):BV_END_PLOT") {
+  field(DESC, "Beam Avg End (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_END_PLOT")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):BC_LO") {
@@ -2420,6 +2460,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):BC_LO") {
   field(EGU, "ADC counts")
 }
 
+record(waveform, "KLYS:$(AREA):$(LOCATION):BC_LO_PLOT") {
+  field(DESC, "BC LO (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_LO_PLOT")
+}
+
 record(ai, "KLYS:$(AREA):$(LOCATION):BC_HI") {
   field(DESC, "Beam Current High Limit")
   field(DTYP, "asynInt32")
@@ -2427,6 +2477,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):BC_HI") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_HI")
   field(EGU, "ADC counts")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):BC_HI_PLOT") {
+  field(DESC, "BC HI (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_HI_PLOT")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):BC_AVG_STA") {
@@ -2438,6 +2498,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):BC_AVG_STA") {
   field(EGU, "ADC counts")
 }
 
+record(waveform, "KLYS:$(AREA):$(LOCATION):BC_STA_PLOT") {
+  field(DESC, "BC AVG STA (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_STA_PLOT")
+}
+
 record(ai, "KLYS:$(AREA):$(LOCATION):BC_AVG_END") {
   field(DESC, "Beam Current Avg Win End")
   field(DTYP, "asynInt32")
@@ -2445,6 +2515,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):BC_AVG_END") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_END")
   field(EGU, "ADC counts")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):BC_END_PLOT") {
+  field(DESC, "BC AVG END (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_END_PLOT")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):FP_LO") {
@@ -2456,6 +2536,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):FP_LO") {
   field(EGU, "ADC counts")
 }
 
+record(waveform, "KLYS:$(AREA):$(LOCATION):FP_LO_PLOT") {
+  field(DESC, "FP LO (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_LO_PLOT")
+}
+
 record(ai, "KLYS:$(AREA):$(LOCATION):FP_HI") {
   field(DESC, "Forward Power High Limit")
   field(DTYP, "asynInt32")
@@ -2463,6 +2553,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):FP_HI") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_HI")
   field(EGU, "ADC counts")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):FP_HI_PLOT") {
+  field(DESC, "FP HI (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_HI_PLOT")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):FP_AVG_STA") {
@@ -2474,6 +2574,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):FP_AVG_STA") {
   field(EGU, "ADC counts")
 }
 
+record(waveform, "KLYS:$(AREA):$(LOCATION):FP_STA_PLOT") {
+  field(DESC, "FP AVG STA (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_STA_PLOT")
+}
+
 record(ai, "KLYS:$(AREA):$(LOCATION):FP_AVG_END") {
   field(DESC, "Forward Power Avg Win End")
   field(DTYP, "asynInt32")
@@ -2481,6 +2591,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):FP_AVG_END") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_END")
   field(EGU, "ADC counts")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):FP_END_PLOT") {
+  field(DESC, "FP AVG END (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_END_PLOT")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):RP_LO") {
@@ -2492,6 +2612,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):RP_LO") {
   field(EGU, "ADC counts")
 }
 
+record(waveform, "KLYS:$(AREA):$(LOCATION):RP_LO_PLOT") {
+  field(DESC, "RP LO (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_LO_PLOT")
+}
+
 record(ai, "KLYS:$(AREA):$(LOCATION):RP_HI") {
   field(DESC, "Reflected Power High Limit")
   field(DTYP, "asynInt32")
@@ -2499,6 +2629,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):RP_HI") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_HI")
   field(EGU, "ADC counts")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):RP_HI_PLOT") {
+  field(DESC, "RP HI (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_HI_PLOT")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):RP_AVG_STA") {
@@ -2510,6 +2650,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):RP_AVG_STA") {
   field(EGU, "ADC counts")
 }
 
+record(waveform, "KLYS:$(AREA):$(LOCATION):RP_STA_PLOT") {
+  field(DESC, "RP AVG STA (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_STA_PLOT")
+}
+
 record(ai, "KLYS:$(AREA):$(LOCATION):RP_AVG_END") {
   field(DESC, "Reflected Power Avg Win End")
   field(DTYP, "asynInt32")
@@ -2517,6 +2667,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):RP_AVG_END") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_END")
   field(EGU, "ADC counts")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):RP_END_PLOT") {
+  field(DESC, "RP AVG END (plot only)")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "2")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_END_PLOT")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):WF_CNT") {
@@ -2611,7 +2771,7 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):BV_WF") {
 }
 
 record(waveform, "KLYS:$(AREA):$(LOCATION):BC_WF") {
-  field(DESC, "Beam Voltage Waveform")
+  field(DESC, "Beam Current Waveform")
   field(DTYP, "asynInt16ArrayIn")
   field(FTVL, "SHORT")
   field(PRIO, "LOW")
@@ -2621,7 +2781,7 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):BC_WF") {
 }
 
 record(waveform, "KLYS:$(AREA):$(LOCATION):FP_WF") {
-  field(DESC, "Beam Voltage Waveform")
+  field(DESC, "Forward Power Waveform")
   field(DTYP, "asynInt16ArrayIn")
   field(FTVL, "SHORT")
   field(PRIO, "LOW")
@@ -2631,11 +2791,63 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):FP_WF") {
 }
 
 record(waveform, "KLYS:$(AREA):$(LOCATION):RP_WF") {
-  field(DESC, "Beam Voltage Waveform")
+  field(DESC, "Reflected Power Waveform")
   field(DTYP, "asynInt16ArrayIn")
   field(FTVL, "SHORT")
   field(PRIO, "LOW")
   field(NELM, "512")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_WF")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):BV_AVG_WF") {
+  field(DESC, "Beam Voltage Avg Waveform")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "512")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_WF")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):BC_AVG_WF") {
+  field(DESC, "Beam Current Avg Waveform")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "512")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_WF")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):FP_AVG_WF") {
+  field(DESC, "Forward Power Avg Waveform")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "512")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_WF")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):RP_AVG_WF") {
+  field(DESC, "Reflected Power Avg Waveform")
+  field(DTYP, "asynInt16ArrayIn")
+  field(FTVL, "SHORT")
+  field(PRIO, "LOW")
+  field(NELM, "512")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_WF")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):X_RANGE") {
+  field(DESC, "X axis range for plots")
+  field(FTVL, "LONG")
+  field(NELM, "2")
+}
+
+record(waveform, "KLYS:$(AREA):$(LOCATION):Y_RANGE") {
+  field(DESC, "Y axis range for plots")
+  field(FTVL, "LONG")
+  field(NELM, "2")
 }

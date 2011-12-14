@@ -12,6 +12,12 @@
 #
 #
 
+mksu-R1-0-7:
+	* Addition of Fast ADC average waveform maps and
+	  panel
+	* Fixed addresses for the voltage block (inverted
+	  addresses)
+
 mksu-R1-0-6:
 	* Addidion of Fast ADC Waveform maps
 	* Addition of Fast ADC edl panel: waveform plots

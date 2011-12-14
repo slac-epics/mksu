@@ -5,7 +5,7 @@ record	ai
 name	KLYS:$(AREA):$(LOCATION):MK_P24_RAW
 operation	read 
 task	0x62
-address	0
+address	7
 size	1
 DESC	24V Raw Reading
 DTYP	asynInt32
@@ -21,14 +21,14 @@ name	KLYS:$(AREA):$(LOCATION):MK_P24
 DESC	MKSU 24V Reading
 INPA	KLYS:$(AREA):$(LOCATION):MK_P24_RAW
 EGU	V
-CALC	A * 0.213
+CALC	A * .0213
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):MK_P15_RAW
 operation	read 
 task	0x62
-address	1
+address	6
 size	1
 DESC	15V Raw Reading
 DTYP	asynInt32
@@ -44,14 +44,14 @@ name	KLYS:$(AREA):$(LOCATION):MK_P15
 DESC	MKSU 15V Reading
 INPA	KLYS:$(AREA):$(LOCATION):MK_P15_RAW
 EGU	V
-CALC	A * 0.133
+CALC	A * .0133
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):MK_P5_RAW
 operation	read 
 task	0x62
-address	2
+address	5
 size	1
 DESC	5V Raw Reading
 DTYP	asynInt32
@@ -67,14 +67,14 @@ name	KLYS:$(AREA):$(LOCATION):MK_P5
 DESC	MKSU 5V Reading
 INPA	KLYS:$(AREA):$(LOCATION):MK_P5_RAW
 EGU	V
-CALC	A * 0.477
+CALC	A * .00477
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW
 operation	read 
 task	0x62
-address	3
+address	4
 size	1
 DESC	3.3V Raw Reading
 DTYP	asynInt32
@@ -97,7 +97,7 @@ record	ai
 name	KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW
 operation	read 
 task	0x62
-address	4
+address	3
 size	1
 DESC	2.5V Raw Reading
 DTYP	asynInt32
@@ -120,7 +120,8 @@ record	ai
 name	KLYS:$(AREA):$(LOCATION):MK_N5_RAW
 operation	read 
 task	0x62
-address	5
+address	2
+conversion	1
 size	1
 DESC	-5V Raw Reading
 DTYP	asynInt32
@@ -136,14 +137,15 @@ name	KLYS:$(AREA):$(LOCATION):MK_N5
 DESC	MKSU -5V Reading
 INPA	KLYS:$(AREA):$(LOCATION):MK_N5_RAW
 EGU	V
-CALC	A * -0.00511
+CALC	A * -.00511
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):MK_N15_RAW
 operation	read 
 task	0x62
-address	6
+address	1
+conversion	1
 size	1
 DESC	-15V Raw Reading
 DTYP	asynInt32
@@ -159,14 +161,15 @@ name	KLYS:$(AREA):$(LOCATION):MK_N15
 DESC	MKSU -15V Reading
 INPA	KLYS:$(AREA):$(LOCATION):MK_N15_RAW
 EGU	V
-CALC	A * -0.0158
+CALC	A * -.0158
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):MK_N24_RAW
 operation	read 
 task	0x62
-address	7
+address	0
+conversion	1
 size	1
 DESC	-24V Raw Reading
 DTYP	asynInt32

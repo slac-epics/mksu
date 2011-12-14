@@ -34,6 +34,7 @@ typedef struct MksuBlock {
 typedef std::map<int, MksuBlock> BlockMap;
 
 const int MKSU_FAST_ADC_WF_BLOCK = 0x61;
+const int MKSU_FAST_ADC_WF_PLOT_BLOCK = 0x70;
 
 /**
  * Class MksuComm
@@ -71,6 +72,7 @@ public:
   void createBlockMap(MksuParam *params, int numParams);
   MksuBlock *getBlock(int blockId);
   void printBlock(int blockId);
+  void refreshPlotBlock(MksuBlock *block);
 
   /** MKSU module number (set in hardware) */
   char _moduleNumber;
