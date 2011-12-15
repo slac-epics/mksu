@@ -1,0 +1,437 @@
+#=======================================================
+#
+# RF ATTENUATOR BLOCK (WRITE)
+#
+#=======================================================
+# RF Status Register (BEGIN)
+#-------------------------------------------------------
+# RF_3O5_CLR: Clear 3 out of 5 seconds fault (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):RF_3O5_CLR
+operation	record
+DESC	Clr 3 out of 5 sec fault
+FLNK	KLYS:$(AREA):$(LOCATION):RF_3O5_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_3O5_CLR_MASK
+DESC	Clr 3 out of 5 sec fault
+INPA	KLYS:$(AREA):$(LOCATION):RF_3O5_CLR
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_RF_3O5_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_RF_3O5_SET
+operation	write
+task	0x06
+address	0
+size	1
+DESC	RF Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_RF_3O5_SET
+DOL	KLYS:$(AREA):$(LOCATION):RF_3O5_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# RF_BC_LO_CLR: Clear Beam Current Low Fault (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):RF_BC_LO_CLR
+operation	record
+DESC	Clear Beam Current Low Fault
+FLNK	KLYS:$(AREA):$(LOCATION):RF_BC_LO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_BC_LO_CLR_MASK
+DESC	Clear Beam Current Low Fault
+INPA	KLYS:$(AREA):$(LOCATION):RF_BC_LO_CLR
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_RF_BC_LO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_RF_BC_LO_SET
+operation	write
+task	0x06
+address	0
+size	1
+DESC	RF Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_RF_BC_LO_SET
+DOL	KLYS:$(AREA):$(LOCATION):RF_BC_LO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# RF Status Register (END)
+#-------------------------------------------------------
+# RF Control Set Register (BEGIN)
+#-------------------------------------------------------
+# RF_RAMP_SLOW: Set the RF Ramp bit to SLOW (1) (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):RF_RAMP_SLOW
+operation	record
+DESC	Set RF Ramp Slow
+FLNK	KLYS:$(AREA):$(LOCATION):RF_RAMP_SLOW_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_RAMP_SLOW_MASK
+DESC	Set RF Ramp Slow
+INPA	KLYS:$(AREA):$(LOCATION):RF_RAMP_SLOW
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_RF_RAMP_SLOW
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_RF_RAMP_SLOW
+operation	write
+task	0x06
+address	1
+size	1
+DESC	RF Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_RF_RAMP_SLOW
+DOL	KLYS:$(AREA):$(LOCATION):RF_RAMP_SLOW_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# RF_BYPASS_SET: Set Bypass Mode bit (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):RF_BYPASS_SET
+operation	record
+DESC	Set RF Bypass mode
+FLNK	KLYS:$(AREA):$(LOCATION):RF_BYPASS_SET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_BYPASS_SET_MASK
+DESC	Set RF Bypass mode
+INPA	KLYS:$(AREA):$(LOCATION):RF_BYPASS_SET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_BYPASS_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_BYPASS_SET
+operation	write
+task	0x06
+address	1
+size	1
+DESC	RF Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_BYPASS_SET
+DOL	KLYS:$(AREA):$(LOCATION):RF_BYPASS_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# RF Control Set Register (END)
+#-------------------------------------------------------
+# RF Control Reset Register (BEGIN)
+#-------------------------------------------------------
+# RF_RAMP_NORM: Set the RF Ramp bit to NORMAL (0) (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):RF_RAMP_NORM
+operation	record
+DESC	Set RF Ramp Slow
+FLNK	KLYS:$(AREA):$(LOCATION):RF_RAMP_NORM_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_RAMP_NORM_MASK
+DESC	Set RF Ramp Slow
+INPA	KLYS:$(AREA):$(LOCATION):RF_RAMP_NORM
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_RF_RAMP_NORM
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_RF_RAMP_NORM
+operation	write
+task	0x06
+address	2
+size	1
+DESC	RF Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_RF_RAMP_NORM
+DOL	KLYS:$(AREA):$(LOCATION):RF_RAMP_NORM_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# RF_BYPASS_RESET: Set Bypass Mode bit (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):RF_BYPASS_RESET
+operation	record
+DESC	Reset RF Bypass mode
+FLNK	KLYS:$(AREA):$(LOCATION):RF_BYPASS_RESET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_BYPASS_RESET_MASK
+DESC	Reset RF Bypass mode
+INPA	KLYS:$(AREA):$(LOCATION):RF_BYPASS_RESET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_BYPASS_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_BYPASS_RESET
+operation	write
+task	0x06
+address	2
+size	1
+DESC	RF Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_BYPASS_RESET
+DOL	KLYS:$(AREA):$(LOCATION):RF_BYPASS_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# RF Control Reset Register (END)
+#-------------------------------------------------------
+# Remote Drive - Attenuator setpoint (8 LSB used)
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):RF_RDRV_SET
+operation	write
+task	0x06
+address	3
+size	1
+DESC	Remote RF Drive (Set)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_RDRV_SET
+PRIO	LOW
+#=======================================================
+#
+# RF ATTENUATOR BLOCK (READ)
+#
+#=======================================================
+# RF Status Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RF_STATUS
+operation	read
+task	0x46
+address	0
+size	1
+DESC	MKSU Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_STATUS
+FLNK	KLYS:$(AREA):$(LOCATION):RF_3O5_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# RF_3O5: 3 out of 5 seconds fault (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_3O5_MASK
+DESC	3 out of 5 seconds fault
+INPA	KLYS:$(AREA):$(LOCATION):RF_STATUS
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):RF_3O5
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):RF_3O5
+operation	record
+DESC	3 out of 5 seconds fault
+INP	KLYS:$(AREA):$(LOCATION):RF_3O5_MASK
+ZNAM	Ok
+ONAM	Fault
+FLNK	KLYS:$(AREA):$(LOCATION):RF_BC_LO_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# RF_BC_LO: Beam Current Low Fault (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_BC_LO_MASK
+DESC	Beam Current Low Fault
+INPA	KLYS:$(AREA):$(LOCATION):RF_STATUS
+CALC	(A & (1 << 1)) >> 1
+PRIO	LOW
+FLNK	KLYS:$(AREA):$(LOCATION):RF_BC_LO
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):RF_BC_LO
+operation	record
+DESC	Beam Current Low Fault
+INP	KLYS:$(AREA):$(LOCATION):RF_BC_LO_MASK
+ZNAM	Ok
+ONAM	Fault
+#FLNK	KLYS:$(AREA):$(LOCATION):RF_RAMPING_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# RF_RAMPING: RF Ramping Status (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_RAMPING_MASK
+DESC	Configured Status
+INPA	KLYS:$(AREA):$(LOCATION):RF_STATUS
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):RF_RAMPING
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):RF_RAMPING
+operation	record
+DESC	Configured Status
+INP	KLYS:$(AREA):$(LOCATION):RF_RAMPING_MASK
+ZNAM	Ramp Done
+ONAM	Ramping
+FLNK	KLYS:$(AREA):$(LOCATION):RF_BYPASS_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# RF_BYPASS: Bypass status (Bit 3)
+#-------------------------------------------------------
+#record	calc
+#operation	record
+#name	KLYS:$(AREA):$(LOCATION):RF_BYPASS_MASK
+#DESC	RF Lookup Bypass Status
+#INPA	KLYS:$(AREA):$(LOCATION):RF_STATUS
+#CALC	(A & (1 << 3)) >> 3
+#FLNK	KLYS:$(AREA):$(LOCATION):RF_BYPASS
+#PRIO	LOW
+#-------------------------------------------------------
+#record	bi
+#name	KLYS:$(AREA):$(LOCATION):RF_BYPASS
+#operation	record
+#DESC	RF Lookup Bypass Status
+#INP	KLYS:$(AREA):$(LOCATION):RF_BYPASS_MASK
+#ZNAM	Bypass Off
+#ONAM	Bypass On
+#PRIO	LOW
+#-------------------------------------------------------
+# RF Status Register (END)
+#=======================================================
+# RF Control Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RF_CTRL
+operation	read
+task	0x46
+address	1
+size	1
+DESC	RF Control Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_CTRL
+FLNK	KLYS:$(AREA):$(LOCATION):RF_CTRL_RATE_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# RF_RAMP_RATE: RF Ramp Rate State (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_CTRL_RATE_MASK
+DESC	RF Ramp Rate State
+INPA	KLYS:$(AREA):$(LOCATION):RF_CTRL
+CALC	A & 1
+FLNK	KLYS:$(AREA):$(LOCATION):RF_RAMP_RATE
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):RF_RAMP_RATE
+operation	record
+DESC	RF Ramp Rate State
+INP	KLYS:$(AREA):$(LOCATION):RF_CTRL_RATE_MASK
+ZNAM	Normal
+ONAM	Slow
+FLNK	KLYS:$(AREA):$(LOCATION):RF_CTRL_BYPASS_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# RF_CTRL_BYPASS: RF Bypass State (Bit 1)
+# Is this the same as RF_BYPASS in the RF_STATUS register?
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):RF_CTRL_BYPASS_MASK
+DESC	RF Bypass State
+INPA	KLYS:$(AREA):$(LOCATION):RF_CTRL
+CALC	(A & (1 << 1)) >> 1
+FLNK	KLYS:$(AREA):$(LOCATION):RF_BYPASS
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):RF_BYPASS
+operation	record
+DESC	RF Bypass State
+INP	KLYS:$(AREA):$(LOCATION):RF_CTRL_BYPASS_MASK
+ZNAM	Bypass Off
+ONAM	Bypass On
+PRIO	LOW
+#-------------------------------------------------------
+# RF Control Register (END)
+#-------------------------------------------------------
+# Remote Drive Read
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RF_RDRV
+operation	read 
+task	0x46
+address	2
+conversion	1
+size	1
+DESC	RF Remote Drive
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_RDRV
+PRIO	LOW
+#-------------------------------------------------------
+# Local Drive Read
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RF_LDRV
+operation	read 
+task	0x46
+address	3
+conversion	1
+size	1
+DESC	RF Local Drive
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_LDRV
+PRIO	LOW
+#-------------------------------------------------------
+# Current Drive Read
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RF_DRV
+operation	read 
+task	0x46
+address	4
+conversion	1
+size	1
+DESC	RF Current Drive
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_DRV
+PRIO	LOW
+#-------------------------------------------------------
+# Actual Drive Read
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RF_ACTDRV
+operation	read 
+task	0x46
+address	5
+conversion	1
+size	1
+DESC	RF Actual Drv (after table)
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_ACTDRV
+PRIO	LOW
+#-------------------------------------------------------

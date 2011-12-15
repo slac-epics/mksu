@@ -2,142 +2,27 @@
 # VOLTAGE MONITOR BLOCK (READ)
 #=======================================================
 record	ai
-name	KLYS:$(AREA):$(LOCATION):MK_P24_RAW
+name	KLYS:$(AREA):$(LOCATION):MK_N24_RAW
 operation	read 
 task	0x62
-address	7
-size	1
-DESC	24V Raw Reading
-DTYP	asynInt32
-SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P24_RAW
-EGU	counts
-FLNK	KLYS:$(AREA):$(LOCATION):MK_P24
-PRIO	LOW
-#-------------------------------------------------------
-record	calc
-operation	record
-name	KLYS:$(AREA):$(LOCATION):MK_P24
-DESC	MKSU 24V Reading
-INPA	KLYS:$(AREA):$(LOCATION):MK_P24_RAW
-EGU	V
-CALC	A * .0213
-PRIO	LOW
-#-------------------------------------------------------
-record	ai
-name	KLYS:$(AREA):$(LOCATION):MK_P15_RAW
-operation	read 
-task	0x62
-address	6
-size	1
-DESC	15V Raw Reading
-DTYP	asynInt32
-SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P15_RAW
-EGU	counts
-FLNK	KLYS:$(AREA):$(LOCATION):MK_P15
-PRIO	LOW
-#-------------------------------------------------------
-record	calc
-operation	record
-name	KLYS:$(AREA):$(LOCATION):MK_P15
-DESC	MKSU 15V Reading
-INPA	KLYS:$(AREA):$(LOCATION):MK_P15_RAW
-EGU	V
-CALC	A * .0133
-PRIO	LOW
-#-------------------------------------------------------
-record	ai
-name	KLYS:$(AREA):$(LOCATION):MK_P5_RAW
-operation	read 
-task	0x62
-address	5
-size	1
-DESC	5V Raw Reading
-DTYP	asynInt32
-SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P5_RAW
-EGU	counts
-FLNK	KLYS:$(AREA):$(LOCATION):MK_P5
-PRIO	LOW
-#-------------------------------------------------------
-record	calc
-operation	record
-name	KLYS:$(AREA):$(LOCATION):MK_P5
-DESC	MKSU 5V Reading
-INPA	KLYS:$(AREA):$(LOCATION):MK_P5_RAW
-EGU	V
-CALC	A * .00477
-PRIO	LOW
-#-------------------------------------------------------
-record	ai
-name	KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW
-operation	read 
-task	0x62
-address	4
-size	1
-DESC	3.3V Raw Reading
-DTYP	asynInt32
-SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P3D3_RAW
-EGU	counts
-FLNK	KLYS:$(AREA):$(LOCATION):MK_P3D3
-PRIO	LOW
-#-------------------------------------------------------
-record	calc
-operation	record
-name	KLYS:$(AREA):$(LOCATION):MK_P3D3
-DESC	MKSU 3.3V Reading
-INPA	KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW
-EGU	V
-CALC	A * 0.00313
-PRIO	LOW
-#-------------------------------------------------------
-record	ai
-name	KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW
-operation	read 
-task	0x62
-address	3
-size	1
-DESC	2.5V Raw Reading
-DTYP	asynInt32
-SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P2D5_RAW
-EGU	counts
-FLNK	KLYS:$(AREA):$(LOCATION):MK_P2D5
-PRIO	LOW
-#-------------------------------------------------------
-record	calc
-operation	record
-name	KLYS:$(AREA):$(LOCATION):MK_P2D5
-DESC	MKSU 2.5V Reading
-INPA	KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW
-EGU	V
-CALC	A * 0.00237
-PRIO	LOW
-#-------------------------------------------------------
-record	ai
-name	KLYS:$(AREA):$(LOCATION):MK_N5_RAW
-operation	read 
-task	0x62
-address	2
+address	0
 conversion	1
 size	1
-DESC	-5V Raw Reading
+DESC	-24V Raw Reading
 DTYP	asynInt32
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N5_RAW
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N24_RAW
 EGU	counts
-FLNK	KLYS:$(AREA):$(LOCATION):MK_N5
+FLNK	KLYS:$(AREA):$(LOCATION):MK_N24
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):MK_N5
-DESC	MKSU -5V Reading
-INPA	KLYS:$(AREA):$(LOCATION):MK_N5_RAW
+name	KLYS:$(AREA):$(LOCATION):MK_N24
+DESC	MKSU -24V Reading
+INPA	KLYS:$(AREA):$(LOCATION):MK_N24_RAW
 EGU	V
-CALC	A * -.00511
+CALC	A * -0.0257
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
@@ -165,26 +50,141 @@ CALC	A * -.0158
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):MK_N24_RAW
+name	KLYS:$(AREA):$(LOCATION):MK_N5_RAW
 operation	read 
 task	0x62
-address	0
+address	2
 conversion	1
 size	1
-DESC	-24V Raw Reading
+DESC	-5V Raw Reading
 DTYP	asynInt32
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N24_RAW
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_N5_RAW
 EGU	counts
-FLNK	KLYS:$(AREA):$(LOCATION):MK_N24
+FLNK	KLYS:$(AREA):$(LOCATION):MK_N5
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):MK_N24
-DESC	MKSU -24V Reading
-INPA	KLYS:$(AREA):$(LOCATION):MK_N24_RAW
+name	KLYS:$(AREA):$(LOCATION):MK_N5
+DESC	MKSU -5V Reading
+INPA	KLYS:$(AREA):$(LOCATION):MK_N5_RAW
 EGU	V
-CALC	A * -0.0257
+CALC	A * -.00511
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW
+operation	read 
+task	0x62
+address	3
+size	1
+DESC	2.5V Raw Reading
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P2D5_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):MK_P2D5
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):MK_P2D5
+DESC	MKSU 2.5V Reading
+INPA	KLYS:$(AREA):$(LOCATION):MK_P2D5_RAW
+EGU	V
+CALC	A * 0.00237
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW
+operation	read 
+task	0x62
+address	4
+size	1
+DESC	3.3V Raw Reading
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P3D3_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):MK_P3D3
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):MK_P3D3
+DESC	MKSU 3.3V Reading
+INPA	KLYS:$(AREA):$(LOCATION):MK_P3D3_RAW
+EGU	V
+CALC	A * 0.00313
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):MK_P5_RAW
+operation	read 
+task	0x62
+address	5
+size	1
+DESC	5V Raw Reading
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P5_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):MK_P5
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):MK_P5
+DESC	MKSU 5V Reading
+INPA	KLYS:$(AREA):$(LOCATION):MK_P5_RAW
+EGU	V
+CALC	A * .00477
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):MK_P15_RAW
+operation	read 
+task	0x62
+address	6
+size	1
+DESC	15V Raw Reading
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P15_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):MK_P15
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):MK_P15
+DESC	MKSU 15V Reading
+INPA	KLYS:$(AREA):$(LOCATION):MK_P15_RAW
+EGU	V
+CALC	A * .0133
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):MK_P24_RAW
+operation	read 
+task	0x62
+address	7
+size	1
+DESC	24V Raw Reading
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MK_P24_RAW
+EGU	counts
+FLNK	KLYS:$(AREA):$(LOCATION):MK_P24
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):MK_P24
+DESC	MKSU 24V Reading
+INPA	KLYS:$(AREA):$(LOCATION):MK_P24_RAW
+EGU	V
+CALC	A * .0213
 PRIO	LOW
 #-------------------------------------------------------

@@ -1,0 +1,1010 @@
+#=======================================================
+#
+# SLED INTERFACE BLOCK (WRITE)
+#
+#=======================================================
+# SLED Status Register (BEGIN)
+#-------------------------------------------------------
+# SLED_TMO_CLR: SLED Timeout clear (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SLED_TMO_CLR
+operation	record
+DESC	SLED Timeout Clear
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_TMO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_TMO_CLR_MASK
+DESC	SLED Timeout Clear
+INPA	KLYS:$(AREA):$(LOCATION):SLED_TMO_CLR
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_SLED_TMO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_SLED_TMO_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	SLED Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_SLED_TMO_SET
+DOL	KLYS:$(AREA):$(LOCATION):SLED_TMO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SLED Status Register (END)
+#-------------------------------------------------------
+# SLED Control Set Register (BEGIN)
+#-------------------------------------------------------
+# SLED_ENABLE: Set SLED Enable (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SLED_ENABLE
+operation	record
+DESC	Enable SLED
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_ENABLE_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_ENABLE_MASK
+DESC	Enable SLED
+INPA	KLYS:$(AREA):$(LOCATION):SLED_ENABLE
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SLED_ENABLE
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SLED_ENABLE
+operation	write
+task	0x08
+address	1
+size	1
+DESC	SLED Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLED_ENABLE
+DOL	KLYS:$(AREA):$(LOCATION):SLED_ENABLE_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_TN_SET: Set SLED Tune (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SLED_TN_SET
+operation	record
+DESC	Set SLED Tune bit
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_TN_SET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_TN_SET_MASK
+DESC	Set SLED Tune bit
+INPA	KLYS:$(AREA):$(LOCATION):SLED_TN_SET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TN_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TN_SET
+operation	write
+task	0x08
+address	1
+size	1
+DESC	SLED Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TN_SET
+DOL	KLYS:$(AREA):$(LOCATION):SLED_TN_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_DTN_SET: Set SLED Detune (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SLED_DTN_SET
+operation	record
+DESC	Set SLED Detune bit
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_DTN_SET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_DTN_SET_MASK
+DESC	Set SLED Detune bit
+INPA	KLYS:$(AREA):$(LOCATION):SLED_DTN_SET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_DTN_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_DTN_SET
+operation	write
+task	0x08
+address	1
+size	1
+DESC	SLED Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_DTN_SET
+DOL	KLYS:$(AREA):$(LOCATION):SLED_DTN_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SLED Control Set Register (END)
+#-------------------------------------------------------
+# SLED Control Reset Register (BEGIN)
+#-------------------------------------------------------
+# SLED_DISABLE: Set SLED Disable (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SLED_DISABLE
+operation	record
+DESC	Disable SLED
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_DISABLE_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_DISABLE_MASK
+DESC	Disable SLED
+INPA	KLYS:$(AREA):$(LOCATION):SLED_DISABLE
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SLED_DISABLE
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SLED_DISABLE
+operation	write
+task	0x08
+address	1
+size	1
+DESC	SLED Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLED_DISABLE
+DOL	KLYS:$(AREA):$(LOCATION):SLED_DISABLE_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_TN_RESET: Reset SLED Tune (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SLED_TN_RESET
+operation	record
+DESC	Reset SLED Tune bit
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_TN_RESET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_TN_RESET_MASK
+DESC	Reset SLED Tune bit
+INPA	KLYS:$(AREA):$(LOCATION):SLED_TN_RESET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TN_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TN_RESET
+operation	write
+task	0x08
+address	1
+size	1
+DESC	SLED Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TN_RESET
+DOL	KLYS:$(AREA):$(LOCATION):SLED_TN_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_DTN_RESET: Reset SLED Detune (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SLED_DTN_RESET
+operation	record
+DESC	Reset SLED Detune bit
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_DTN_RESET_MASK
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_DTN_RESET_MASK
+DESC	Reset SLED Detune bit
+INPA	KLYS:$(AREA):$(LOCATION):SLED_DTN_RESET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_DTN_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_DTN_RESET
+operation	write
+task	0x08
+address	1
+size	1
+DESC	SLED Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_DTN_RESET
+DOL	KLYS:$(AREA):$(LOCATION):SLED_DTN_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SLED Control Reset Register (END)
+#-------------------------------------------------------
+# SLED Test Set Register (BEGIN)
+#-------------------------------------------------------
+# SM_NTND_SET: SLED Motor not tuned set (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SM_NTND_SET
+operation	record
+DESC	SLED Motor not tuned
+FLNK	KLYS:$(AREA):$(LOCATION):SM_NTND_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SM_NTND_SET_MASK
+DESC	SLED Motor not tuned
+INPA	KLYS:$(AREA):$(LOCATION):SM_NTND_SET
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SM_NTND_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SM_NTND_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	SLED Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SM_NTND_SET
+DOL	KLYS:$(AREA):$(LOCATION):SM_NTND_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SM_NDTND_SET: SLED Motor not detuned set (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SM_NDTND_SET
+operation	record
+DESC	SLED Motor not detuned
+FLNK	KLYS:$(AREA):$(LOCATION):SM_NDTND_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SM_NDTND_SET_MASK
+DESC	SLED Motor not detuned
+INPA	KLYS:$(AREA):$(LOCATION):SM_NDTND_SET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SM_NDTND_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SM_NDTND_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	SLED Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SM_NDTND_SET
+DOL	KLYS:$(AREA):$(LOCATION):SM_NDTND_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SU_TND_SET: SLED Upper tuned set (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SU_TND_SET
+operation	record
+DESC	SLED Upper tuned set
+FLNK	KLYS:$(AREA):$(LOCATION):SU_TND_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SU_TND_SET_MASK
+DESC	SLED Upper tuned set
+INPA	KLYS:$(AREA):$(LOCATION):SU_TND_SET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SU_TND_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SU_TND_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	SLED Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SU_TND_SET
+DOL	KLYS:$(AREA):$(LOCATION):SU_TND_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SU_DTND_SET: SLED Upper detuned set (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SU_DTND_SET
+operation	record
+DESC	SLED Upper detuned set
+FLNK	KLYS:$(AREA):$(LOCATION):SU_DTND_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SU_DTND_SET_MASK
+DESC	SLED Upper tuned set
+INPA	KLYS:$(AREA):$(LOCATION):SU_DTND_SET
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SU_DTND_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SU_DTND_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	SLED Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SU_DTND_SET
+DOL	KLYS:$(AREA):$(LOCATION):SU_DTND_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SL_TND_SET: SLED Lower tuned set (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SL_TND_SET
+operation	record
+DESC	SLED Lower tuned set
+FLNK	KLYS:$(AREA):$(LOCATION):SL_TND_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SL_TND_SET_MASK
+DESC	SLED Lower tuned set
+INPA	KLYS:$(AREA):$(LOCATION):SL_TND_SET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SL_TND_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SL_TND_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	SLED Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SL_TND_SET
+DOL	KLYS:$(AREA):$(LOCATION):SL_TND_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SL_DTND_SET: SLED Lower detuned set (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SL_DTND_SET
+operation	record
+DESC	SLED Lower detuned set
+FLNK	KLYS:$(AREA):$(LOCATION):SL_DTND_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SL_DTND_SET_MASK
+DESC	SLED Lower detuned set
+INPA	KLYS:$(AREA):$(LOCATION):SL_DTND_SET
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SL_DTND_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SL_DTND_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	SLED Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SL_DTND_SET
+DOL	KLYS:$(AREA):$(LOCATION):SL_DTND_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SLED Test Set Register (END)
+#-------------------------------------------------------
+# SLED Test Reset Register (BEGIN)
+#-------------------------------------------------------
+# SM_NTND_RESET: SLED Motor not tuned reset (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SM_NTND_RESET
+operation	record
+DESC	SLED Motor not tuned
+FLNK	KLYS:$(AREA):$(LOCATION):SM_NTND_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SM_NTND_RESET_MASK
+DESC	SLED Motor not tuned
+INPA	KLYS:$(AREA):$(LOCATION):SM_NTND_RESET
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SM_NTND_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SM_NTND_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	SLED Test Reset (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SM_NTND_RESET
+DOL	KLYS:$(AREA):$(LOCATION):SM_NTND_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SM_NDTND_RESET: SLED Motor not detuned reset (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SM_NDTND_RESET
+operation	record
+DESC	SLED Motor not detuned
+FLNK	KLYS:$(AREA):$(LOCATION):SM_NDTND_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SM_NDTND_RESET_MASK
+DESC	SLED Motor not detuned
+INPA	KLYS:$(AREA):$(LOCATION):SM_NDTND_RESET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SM_NDTND_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SM_NDTND_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	SLED Test Reset (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SM_NDTND_RESET
+DOL	KLYS:$(AREA):$(LOCATION):SM_NDTND_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SU_TND_RESET: SLED Upper tuned reset (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SU_TND_RESET
+operation	record
+DESC	SLED Upper tuned set
+FLNK	KLYS:$(AREA):$(LOCATION):SU_TND_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SU_TND_RESET_MASK
+DESC	SLED Upper tuned set
+INPA	KLYS:$(AREA):$(LOCATION):SU_TND_RESET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SU_TND_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SU_TND_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	SLED Test Reset (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SU_TND_RESET
+DOL	KLYS:$(AREA):$(LOCATION):SU_TND_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SU_DTND_RESET: SLED Upper detuned reset (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SU_DTND_RESET
+operation	record
+DESC	SLED Upper detuned set
+FLNK	KLYS:$(AREA):$(LOCATION):SU_DTND_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SU_DTND_RESET_MASK
+DESC	SLED Upper tuned set
+INPA	KLYS:$(AREA):$(LOCATION):SU_DTND_RESET
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SU_DTND_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SU_DTND_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	SLED Test Reset (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SU_DTND_RESET
+DOL	KLYS:$(AREA):$(LOCATION):SU_DTND_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SL_TND_RESET: SLED Lower tuned reset (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SL_TND_RESET
+operation	record
+DESC	SLED Lower tuned set
+FLNK	KLYS:$(AREA):$(LOCATION):SL_TND_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SL_TND_RESET_MASK
+DESC	SLED Lower tuned set
+INPA	KLYS:$(AREA):$(LOCATION):SL_TND_RESET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SL_TND_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SL_TND_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	SLED Test Reset (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SL_TND_RESET
+DOL	KLYS:$(AREA):$(LOCATION):SL_TND_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SL_DTND_RESET: SLED Lower detuned reset (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SL_DTND_RESET
+operation	record
+DESC	SLED Lower detuned set
+FLNK	KLYS:$(AREA):$(LOCATION):SL_DTND_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SL_DTND_RESET_MASK
+DESC	SLED Lower detuned set
+INPA	KLYS:$(AREA):$(LOCATION):SL_DTND_RESET
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SL_DTND_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SL_DTND_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	SLED Test Reset (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SL_DTND_RESET
+DOL	KLYS:$(AREA):$(LOCATION):SL_DTND_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SLED Test Reset Register (END)
+#=======================================================
+#
+# SLED INTERFACE BLOCK (READ)
+#
+#=======================================================
+# SLED Status Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+operation	read
+task	0x48
+address	0
+size	1
+DESC	MKSU Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SLED_STATUS
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_3O5_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_TMO: SLED Timeout (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_TMO_MASK
+DESC	SLED Timeout
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_TMO
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_TMO
+operation	record
+DESC	SLED Timeout
+INP	KLYS:$(AREA):$(LOCATION):SLED_TMO_MASK
+ZNAM	Ok
+ONAM	Timeout
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_TND_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_DTND: SLED Tuned (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_DTND_MASK
+DESC	SLED Tuned
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 1)) >> 1
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_DTND
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_DTND
+operation	record
+DESC	SLED Tuned
+INP	KLYS:$(AREA):$(LOCATION):SLED_DTND_MASK
+ZNAM	Ok
+ONAM	Timeout
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_DDTND_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_DTND: SLED Detuned (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_DTND_MASK
+DESC	SLED Detuned
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_DTND
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_DTND
+operation	record
+DESC	SLED Detuned
+INP	KLYS:$(AREA):$(LOCATION):SLED_DTND_MASK
+ZNAM	Ok
+ONAM	Timeout
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_TNG_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_TNG: SLED Tuning (Bit 3)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_TNG_MASK
+DESC	SLED Tuning
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 3)) >> 3
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_TNG
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_TNG
+operation	record
+DESC	SLED Tuning
+INP	KLYS:$(AREA):$(LOCATION):SLED_TNG_MASK
+ZNAM	Ok
+ONAM	Timeout
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_DTNG_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_DTNG: SLED Detuning (Bit 4)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_DTNG_MASK
+DESC	SLED Detuning
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 4)) >> 4
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_DTNG
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_DTNG
+operation	record
+DESC	SLED Detuning
+INP	KLYS:$(AREA):$(LOCATION):SLED_DTNG_MASK
+ZNAM	Ok
+ONAM	Timeout
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_STATE_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_STATE: SLED State (Enabled/Disabled) (Bit 5)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_STATE_MASK
+DESC	SLED State (enbld/disbld)
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_STATE
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_STATE
+operation	record
+DESC	SLED State (enbld/disbld)
+INP	KLYS:$(AREA):$(LOCATION):SLED_STATE_MASK
+ZNAM	Disabled
+ONAM	Enabled
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_MVNG_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_MVNG: SLED Motor moving (Bit 6)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_MVNG_MASK
+DESC	SLED Motor On
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 6)) >> 6
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_MVNG
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_MVNG
+operation	record
+DESC	SLED Motor On
+INP	KLYS:$(AREA):$(LOCATION):SLED_MVNG_MASK
+ZNAM	Disabled
+ONAM	Enabled
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_MOD_ON_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_MOD_ON: SLED Motor moving (Bit 7)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_MOD_ON_MASK
+DESC	SLED Modulator On
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 7)) >> 7
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_MOD_ON
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_MOD_ON
+operation	record
+DESC	SLED Modulator On
+INP	KLYS:$(AREA):$(LOCATION):SLED_MOD_ON_MASK
+ZNAM	Off
+ONAM	On
+FLNK	KLYS:$(AREA):$(LOCATION):SM_NTND_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SM_NTND: SLED Motor not tuned (Bit 8)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SM_NTND_MASK
+DESC	SLED Motor not tuned
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 8)) >> 8
+FLNK	KLYS:$(AREA):$(LOCATION):SM_NTND
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SM_NTND
+operation	record
+DESC	SLED Motor not tuned
+INP	KLYS:$(AREA):$(LOCATION):SM_NTND_MASK
+ZNAM	Off
+ONAM	On
+FLNK	KLYS:$(AREA):$(LOCATION):SM_DNTND_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SM_NDTND: SLED Motor not detuned (Bit 9)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SM_NDTND_MASK
+DESC	SLED Motor not detuned
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 9)) >> 9
+FLNK	KLYS:$(AREA):$(LOCATION):SM_NDTND
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SM_NDTND
+operation	record
+DESC	SLED Motor not detuned
+INP	KLYS:$(AREA):$(LOCATION):SM_NDTND_MASK
+ZNAM	Off
+ONAM	On
+FLNK	KLYS:$(AREA):$(LOCATION):SU_TND_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SU_TND: SLED Upper tuned (Bit 10)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SU_TND_MASK
+DESC	SLED Upper tuned
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 10)) >> 10
+FLNK	KLYS:$(AREA):$(LOCATION):SU_TND
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SU_TND
+operation	record
+DESC	SLED Upper tuned
+INP	KLYS:$(AREA):$(LOCATION):SU_TND_MASK
+ZNAM	Off
+ONAM	On
+FLNK	KLYS:$(AREA):$(LOCATION):SU_DTND_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SU_DTND: SLED Upper tuned (Bit 11)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SU_DTND_MASK
+DESC	SLED Upper detuned
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 11)) >> 11
+FLNK	KLYS:$(AREA):$(LOCATION):SU_DTND
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SU_DTND
+operation	record
+DESC	SLED Upper detuned
+INP	KLYS:$(AREA):$(LOCATION):SU_DTND_MASK
+ZNAM	Off
+ONAM	On
+FLNK	KLYS:$(AREA):$(LOCATION):SL_TND_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SL_TND: SLED Lower tuned (Bit 12)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SL_TND_MASK
+DESC	SLED Lower tuned
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 12)) >> 12
+FLNK	KLYS:$(AREA):$(LOCATION):SL_TND
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SL_TND
+operation	record
+DESC	SLED Lower tuned
+INP	KLYS:$(AREA):$(LOCATION):SL_TND_MASK
+ZNAM	Off
+ONAM	On
+FLNK	KLYS:$(AREA):$(LOCATION):SL_DTND_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SL_DTND: SLED Lower tuned (Bit 13)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SL_DTND_MASK
+DESC	SLED Lower detuned
+INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
+CALC	(A & (1 << 13)) >> 13
+FLNK	KLYS:$(AREA):$(LOCATION):SL_DTND
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SL_DTND
+operation	record
+DESC	SLED Lower detuned
+INP	KLYS:$(AREA):$(LOCATION):SL_DTND_MASK
+ZNAM	Off
+ONAM	On
+PRIO	LOW
+#-------------------------------------------------------
+# SLED Status Register (END)
+#=======================================================
+# SLED Control Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):SLED_CTRL
+operation	read
+task	0x48
+address	1
+size	1
+DESC	SLED Control Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SLED_CTRL
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_CTRL_RATE_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_CTRL_STATE: SLED State (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_CTRL_RATE_MASK
+DESC	SLED State
+INPA	KLYS:$(AREA):$(LOCATION):SLED_CTRL
+CALC	A & 1
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_CTRL_STATE
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_CTRL_STATE
+operation	record
+DESC	SLED State
+INP	KLYS:$(AREA):$(LOCATION):SLED_CTRL_RATE_MASK
+ZNAM	Normal
+ONAM	Slow
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_CTRL_TN_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_TN: SLED Tune (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_TN_MASK
+DESC	SLED Tune
+INPA	KLYS:$(AREA):$(LOCATION):SLED_CTRL
+CALC	(A & (1 << 1)) >> 1
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_TN
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_TN
+operation	record
+DESC	SLED Tune
+INP	KLYS:$(AREA):$(LOCATION):SLED_TN_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# SLED_DTN: SLED Tune (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SLED_DTN_MASK
+DESC	SLED Detune
+INPA	KLYS:$(AREA):$(LOCATION):SLED_CTRL
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_DTN
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SLED_DTN
+operation	record
+DESC	SLED Detune
+INP	KLYS:$(AREA):$(LOCATION):SLED_DTN_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# SLED Control Register (END)
+#-------------------------------------------------------
+# SLED Test Register (BEGIN)
+#-------------------------------------------------------
+
+MISSING STUFF!
+
+#-------------------------------------------------------
+# SLED Test Register (END)
+#-------------------------------------------------------

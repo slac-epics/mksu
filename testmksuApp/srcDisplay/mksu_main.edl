@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 97
-y 98
+x 79
+y 102
 w 1300
 h 1000
 font "helvetica-medium-r-18.0"
@@ -6348,6 +6348,19 @@ value {
 autoSize
 endObjectProperties
 
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 864
+y 275
+w 412
+h 163
+
+beginGroup
+
 # (Rectangle)
 object activeRectangleClass
 beginObjectProperties
@@ -6397,7 +6410,7 @@ y2Max 1
 # Trace Properties
 numTraces 1
 yPv {
-  0 "KLYS:$(area):$(loca):RF_DRV"
+  0 "KLYS:$(area):$(loca):RF_DRV_WF"
 }
 plotColor {
   0 index 21
@@ -6421,5 +6434,32 @@ value {
   " RF Lookup Table "
 }
 autoSize
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 780
+y 623
+w 112
+h 31
+fgColor index 14
+bgColor index 0
+topShadowColor index 0
+botShadowColor index 14
+font "helvetica-medium-r-12.0"
+buttonLabel "RF Attenuator..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "mksu_rf_attenuator.edl"
+}
 endObjectProperties
 

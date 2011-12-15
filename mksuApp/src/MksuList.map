@@ -8,3 +8,6 @@ maps/MksuKlystronBodyTempBlock.map
 maps/MksuXilinxSysMonitorBlock.map
 maps/MksuFastAdcControlBlock.map
 maps/MksuFastAdcWaveformBlock.map
+maps/MksuRfAttenuatorBlock.map
+maps/MksuSledBlock.map
+

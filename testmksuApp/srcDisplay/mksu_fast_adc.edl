@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 65
-y 69
+x 289
+y 222
 w 930
 h 800
 font "helvetica-medium-r-18.0"
@@ -3066,5 +3066,25 @@ plotColor {
   3 index 19
   4 index 19
 }
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 373
+y 15
+w 187
+h 21
+font "helvetica-bold-r-18.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Fast ADC Waveforms"
+}
+autoSize
 endObjectProperties
 
