@@ -270,7 +270,7 @@ DESC	Beam Current Low Fault
 INP	KLYS:$(AREA):$(LOCATION):RF_BC_LO_MASK
 ZNAM	Ok
 ONAM	Fault
-#FLNK	KLYS:$(AREA):$(LOCATION):RF_RAMPING_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):RF_RAMPING_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # RF_RAMPING: RF Ramping Status (Bit 2)
@@ -291,7 +291,7 @@ DESC	Configured Status
 INP	KLYS:$(AREA):$(LOCATION):RF_RAMPING_MASK
 ZNAM	Ramp Done
 ONAM	Ramping
-FLNK	KLYS:$(AREA):$(LOCATION):RF_BYPASS_MASK
+#FLNK	KLYS:$(AREA):$(LOCATION):RF_BYPASS_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # RF_BYPASS: Bypass status (Bit 3)

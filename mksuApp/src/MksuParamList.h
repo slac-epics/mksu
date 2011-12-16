@@ -1,11 +1,11 @@
-// Header file generated from MksuList.map on Wed, 14 Dec 2011 21:11:19 +0000
+// Header file generated from MksuList.map on Fri, 16 Dec 2011 01:42:21 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 188;
+const int MKSU_NUM_PARAMS = 210;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -93,8 +93,8 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x10, asynParamInt32, 0, 0, 1, "STATUS_TDELTA_SET", -1},
   {0x10, asynParamInt32, 1, 0, 1, "TOFF_SET", -1},
   {0x50, asynParamInt32, 0, 0, 1, "STATUS_TEMP", -1},
-  {0x50, asynParamInt32, 1, 0, 1, "TOFF", -1},
-  {0x50, asynParamInt32, 2, 0, 1, "TOUT", -1},
+  {0x50, asynParamInt32, 1, 1, 1, "TOFF", -1},
+  {0x50, asynParamInt32, 2, 0, 1, "TOUT_RAW", -1},
   {0x50, asynParamInt32, 3, 0, 1, "TIN", -1},
   {0x50, asynParamInt32, 4, 0, 1, "TDIFF", -1},
   {0x50, asynParamInt32, 5, 0, 1, "TOUT_CNTS", -1},
@@ -197,6 +197,28 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x46, asynParamInt32, 3, 1, 1, "RF_LDRV", -1},
   {0x46, asynParamInt32, 4, 1, 1, "RF_DRV", -1},
   {0x46, asynParamInt32, 5, 1, 1, "RF_ACTDRV", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_SLED_TMO_SET", -1},
+  {0x08, asynParamInt32, 1, 0, 1, "CTRL_SLED_ENABLE", -1},
+  {0x08, asynParamInt32, 1, 0, 1, "CTRL_TN_SET", -1},
+  {0x08, asynParamInt32, 1, 0, 1, "CTRL_DTN_SET", -1},
+  {0x08, asynParamInt32, 2, 0, 1, "CTRL_SLED_DISABLE", -1},
+  {0x08, asynParamInt32, 2, 0, 1, "CTRL_TN_RESET", -1},
+  {0x08, asynParamInt32, 2, 0, 1, "CTRL_DTN_RESET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SM_NTND_SET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SM_NDTND_SET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SU_TND_SET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SU_DTND_SET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SL_TND_SET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SL_DTND_SET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SM_NTND_RESET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SM_NDTND_RESET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SU_TND_RESET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SU_DTND_RESET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SL_TND_RESET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SL_DTND_RESET", -1},
+  {0x48, asynParamInt32, 0, 0, 1, "SLED_STATUS", -1},
+  {0x48, asynParamInt32, 1, 0, 1, "SLED_CTRL", -1},
+  {0x48, asynParamInt32, 2, 0, 1, "SLED_TEST", -1},
 };
 
 #endif

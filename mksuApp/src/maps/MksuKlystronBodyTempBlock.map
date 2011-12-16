@@ -300,6 +300,7 @@ name	KLYS:$(AREA):$(LOCATION):TOFF
 operation	read 
 task	0x50
 address	1
+conversion	1
 size	1
 DESC	Temperature Offset
 DTYP	asynInt32
@@ -309,7 +310,7 @@ EGU	C
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):TOUT
+name	KLYS:$(AREA):$(LOCATION):TOUT_RAW
 operation	read 
 task	0x50
 address	2
@@ -317,7 +318,18 @@ size	1
 DESC	Output Temperature
 DTYP	asynInt32
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT_RAW
+FLNK	KLYS:$(AREA):$(LOCATION):TOUT
+EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+name	KLYS:$(AREA):$(LOCATION):TOUT
+operation	record
+DESC	Output Temperature
+SCAN	$(SCAN)
+INPA	KLYS:$(AREA):$(LOCATION):TOUT_RAW
+CALC	(A & 255) * 100
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------
