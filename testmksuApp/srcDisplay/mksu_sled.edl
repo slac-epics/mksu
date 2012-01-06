@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1015
-y 189
+x 931
+y 141
 w 445
 h 675
 font "helvetica-medium-r-18.0"
@@ -2186,7 +2186,7 @@ minor 1
 release 0
 x 29
 y 123
-w 96
+w 91
 h 14
 font "helvetica-medium-r-12.0"
 fgColor index 14

@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Fri, 16 Dec 2011 01:42:21 +0000
+# Database template file generated from MksuList.map on Fri, 06 Jan 2012 01:32:15 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -1683,16 +1683,26 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TOUT") {
   field(SCAN, "$(SCAN)")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TOUT_RAW")
   field(EGU, "C")
-  field(CALC, "(A & 255) * 100")
+  field(CALC, "((A & 255) - 3.6307)/0.0613")
 }
 
-record(ai, "KLYS:$(AREA):$(LOCATION):TIN") {
+record(ai, "KLYS:$(AREA):$(LOCATION):TIN_RAW") {
   field(DESC, "Input Temperature (Raw)")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN_RAW")
   field(EGU, "C")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TIN") {
+  field(DESC, "Output Temperature")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TIN_RAW")
+  field(EGU, "C")
+  field(CALC, "((A & 255) - 3.6307)/0.0613")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):TDIFF") {
@@ -3983,4 +3993,2231 @@ record(bi, "KLYS:$(AREA):$(LOCATION):SL_TST_DTND") {
   field(ONAM, "Not detuned")
   field(ZNAM, "Detuned")
   field(INP, "KLYS:$(AREA):$(LOCATION):SL_DTND_TST_MASK")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_SET") {
+  field(DESC, "Control Power On")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_SET_MASK") {
+  field(DESC, "Control Power On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_CPWR_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_CPWR_SET") {
+  field(DESC, "MOD Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_CPWR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVON_SET") {
+  field(DESC, "High Voltage On bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVON_SET_MASK") {
+  field(DESC, "High Voltage On bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_HVON_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_HVON_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_HVON_SET") {
+  field(DESC, "MOD Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_HVON_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_HVON_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_SET") {
+  field(DESC, "High Voltage Off bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_SET_MASK") {
+  field(DESC, "High Voltage Off bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_HVOFF_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_HVOFF_SET") {
+  field(DESC, "MOD Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_HVOFF_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_SET") {
+  field(DESC, "Fault Reset bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_SET_MASK") {
+  field(DESC, "Fault Reset bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FLTRST_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FLTRST_SET") {
+  field(DESC, "MOD Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FLTRST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_RESET") {
+  field(DESC, "Control Power On")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_RESET_MASK") {
+  field(DESC, "Control Power On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_CPWR_RESET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_CPWR_RESET") {
+  field(DESC, "MOD Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_CPWR_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVON_RESET") {
+  field(DESC, "High Voltage On bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVON_RESET_MASK") {
+  field(DESC, "High Voltage On bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_HVON_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_HVON_RESET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_HVON_RESET") {
+  field(DESC, "MOD Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_HVON_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_HVON_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_RESET") {
+  field(DESC, "High Voltage Off bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_RESET_MASK") {
+  field(DESC, "High Voltage Off bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_HVOFF_RESET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_HVOFF_RESET") {
+  field(DESC, "MOD Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_HVOFF_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_RESET") {
+  field(DESC, "Fault Reset bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_RESET_MASK") {
+  field(DESC, "Fault Reset bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FLTRST_RESET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FLTRST_RESET") {
+  field(DESC, "MOD Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FLTRST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_SET") {
+  field(DESC, "Test High Volt On")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_SET_MASK") {
+  field(DESC, "Test High Volt On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVON_TST_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVON_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_HVON_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_SET") {
+  field(DESC, "Test Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_SET_MASK") {
+  field(DESC, "Test Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_FLK_TST_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_FLK_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_FLK_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_SET") {
+  field(DESC, "External Interlock Test")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_SET_MASK") {
+  field(DESC, "External Interlock Test")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_EILK_TST_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_EILK_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_EILK_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_SET") {
+  field(DESC, "High Volt Over Cur")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_SET_MASK") {
+  field(DESC, "High Volt Over Cur")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVOC_TST_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVOC_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_HVOC_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_SET") {
+  field(DESC, "End of Line Clipper")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_SET_MASK") {
+  field(DESC, "End of Line Clipper")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_EOLC_TST_SET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_EOLC_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_EOLC_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_SET") {
+  field(DESC, "Thyratron Over Current")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_SET_MASK") {
+  field(DESC, "Thyratron Over Current")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_TTOC_TST_SET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_TTOC_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_TTOC_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_SET") {
+  field(DESC, "High Voltage Ready")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_SET_MASK") {
+  field(DESC, "High Voltage Ready")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVRDY_TST_SET")
+  field(CALC, "A << 6")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVRDY_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_HVRDY_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_SET") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_SET_MASK") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_AVAIL_TST_SET")
+  field(CALC, "A << 7")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_AVAIL_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_AVAIL_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_SET") {
+  field(DESC, "Interlock Complete")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_SET_MASK") {
+  field(DESC, "Interlock Complete")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_ILKC_TST_SET")
+  field(CALC, "A << 8")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_ILKC_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_ILKC_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_SET") {
+  field(DESC, "Control Power Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_SET_MASK") {
+  field(DESC, "Control Power Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_CTRL_PFLT_TST_SET")
+  field(CALC, "A << 9")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_CTRL_PFLT_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_CTRL_PFLT_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_SET") {
+  field(DESC, "Klys Filament TDLY")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_SET_MASK") {
+  field(DESC, "Klys Filament TDLY")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_KFTDLY_TST_SET")
+  field(CALC, "A << 10")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_KFTDLY_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_KFTDLY_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_SET") {
+  field(DESC, "VVS Power On")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_SET_MASK") {
+  field(DESC, "VVS Power On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_VVS_TST_SET")
+  field(CALC, "A << 11")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_VVS_TST_SET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_VVS_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_RESET") {
+  field(DESC, "Test High Volt On")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_RESET_MASK") {
+  field(DESC, "Test High Volt On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVON_TST_RESET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVON_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_HVON_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_RESET") {
+  field(DESC, "Test Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_RESET_MASK") {
+  field(DESC, "Test Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_FLK_TST_RESET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_FLK_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_FLK_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_RESET") {
+  field(DESC, "External Interlock Test")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_RESET_MASK") {
+  field(DESC, "External Interlock Test")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_EILK_TST_RESET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_EILK_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_EILK_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_RESET") {
+  field(DESC, "High Volt Over Cur")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_RESET_MASK") {
+  field(DESC, "High Volt Over Cur")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVOC_TST_RESET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVOC_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_HVOC_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_RESET") {
+  field(DESC, "End of Line Clipper")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_RESET_MASK") {
+  field(DESC, "End of Line Clipper")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_EOLC_TST_RESET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_EOLC_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_EOLC_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_RESET") {
+  field(DESC, "Thyratron Over Current")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_RESET_MASK") {
+  field(DESC, "Thyratron Over Current")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_TTOC_TST_RESET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_TTOC_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_TTOC_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_RESET") {
+  field(DESC, "High Voltage Ready")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_RESET_MASK") {
+  field(DESC, "High Voltage Ready")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVRDY_TST_RESET")
+  field(CALC, "A << 6")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_HVRDY_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_HVRDY_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_RESET") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_RESET_MASK") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_AVAIL_TST_RESET")
+  field(CALC, "A << 7")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_AVAIL_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_AVAIL_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_RESET") {
+  field(DESC, "Interlock Complete")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_RESET_MASK") {
+  field(DESC, "Interlock Complete")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_ILKC_TST_RESET")
+  field(CALC, "A << 8")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_ILKC_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_ILKC_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_RESET") {
+  field(DESC, "Control Power Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_RESET_MASK") {
+  field(DESC, "Control Power Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_CTRL_PFLT_TST_RESET")
+  field(CALC, "A << 9")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_CTRL_PFLT_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_CTRL_PFLT_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_RESET") {
+  field(DESC, "Klys Filament TDLY")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_RESET_MASK") {
+  field(DESC, "Klys Filament TDLY")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_KFTDLY_TST_RESET")
+  field(CALC, "A << 10")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_KFTDLY_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_KFTDLY_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_RESET") {
+  field(DESC, "VVS Power On")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_RESET_MASK") {
+  field(DESC, "VVS Power On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_VVS_TST_RESET")
+  field(CALC, "A << 11")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_VVS_TST_RESET") {
+  field(DESC, "MOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MOD_VVS_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MOD_STATUS") {
+  field(DESC, "MKSU Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT_MASK") {
+  field(DESC, "High Voltage On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT") {
+  field(DESC, "High Voltage On")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLK_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_FLK_MASK") {
+  field(DESC, "Fault Lock Out (FLK)")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLK")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_FLK") {
+  field(DESC, "Fault Lock Out (FLK)")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_FLK_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EILK_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_EILK_MASK") {
+  field(DESC, "External Interlock")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EILK")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_EILK") {
+  field(DESC, "External Interlock")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_EILK_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_MASK") {
+  field(DESC, "High Voltage Over Curr")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOC")
+  field(CALC, "(A & (1 << 3)) >> 3")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVOC") {
+  field(DESC, "High Voltage Over Curr")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_MASK") {
+  field(DESC, "End of Line Clipper (EOLC)")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EOLC")
+  field(CALC, "(A & (1 << 4)) >> 4")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_EOLC") {
+  field(DESC, "End of Line Clipper (EOLC)")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_MASK") {
+  field(DESC, "Thyratron Over Curr")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_TTOC")
+  field(CALC, "(A & (1 << 5)) >> 5")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_TTOC") {
+  field(DESC, "Thyratron Over Curr")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_MASK") {
+  field(DESC, "High Voltage Ready")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY")
+  field(CALC, "(A & (1 << 6)) >> 6")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY") {
+  field(DESC, "High Voltage Ready")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_MASK") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL")
+  field(CALC, "(A & (1 << 7)) >> 7")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_MASK") {
+  field(DESC, "Interlock Complete")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_ILKC")
+  field(CALC, "(A & (1 << 8)) >> 8")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_ILKC") {
+  field(DESC, "Interlock Complete")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_MASK") {
+  field(DESC, "Control Power Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT")
+  field(CALC, "(A & (1 << 9)) >> 9")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT") {
+  field(DESC, "Control Power Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_MASK") {
+  field(DESC, "Klys Filament TDLY")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY")
+  field(CALC, "(A & (1 << 10)) >> 10")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY") {
+  field(DESC, "Klys Filament TDLY")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_VVS_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_VVS_MASK") {
+  field(DESC, "VVS Power On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_VVS")
+  field(CALC, "(A & (1 << 11)) >> 11")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_VVS") {
+  field(DESC, "VVS Power On")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_VVS_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CTRLPWR_ON_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_CTRLPWR_ON_MASK") {
+  field(DESC, "Control Power On CMD")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CTRLPWR_ON")
+  field(CALC, "(A & (1 << 12)) >> 12")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_CTRLPWR_ON") {
+  field(DESC, "Control Power On CMD")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_CTRLPWR_ON_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HV_OFF_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HV_OFF_MASK") {
+  field(DESC, "High Volt Off CMD")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HV_OFF")
+  field(CALC, "(A & (1 << 13)) >> 13")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HV_OFF") {
+  field(DESC, "High Volt Off CMD")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HV_OFF_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HV_ON_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HV_ON_MASK") {
+  field(DESC, "High Volt On CMD")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HV_ON")
+  field(CALC, "(A & (1 << 14)) >> 14")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HV_ON") {
+  field(DESC, "High Volt On CMD")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HV_ON_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLT_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_FLT_RESET_MASK") {
+  field(DESC, "Fault Reset")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLT_RESET")
+  field(CALC, "(A & (1 << 15)) >> 15")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_FLT_RESET") {
+  field(DESC, "Fault Reset")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_FLT_RESET_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MOD_CTRL") {
+  field(DESC, "MOD Control Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_CTRL")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_MASK") {
+  field(DESC, "Control Power On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_CTRL")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CPWR")
+  field(CALC, "A & 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_CPWR") {
+  field(DESC, "Control Power On")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVON_MASK") {
+  field(DESC, "High Volt On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_CTRL")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVON") {
+  field(DESC, "High Volt On")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVON_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_MASK") {
+  field(DESC, "High Volt Off")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_CTRL")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF") {
+  field(DESC, "High Volt Off")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_MASK") {
+  field(DESC, "Fault Reset CMD")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_CTRL")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST") {
+  field(DESC, "Fault Reset CMD")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):MOD_TEST") {
+  field(DESC, "MOD Test Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_MASK") {
+  field(DESC, "High Voltage On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST") {
+  field(DESC, "High Voltage On")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_MASK") {
+  field(DESC, "Fault Lock Out (FLK)")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST") {
+  field(DESC, "Fault Lock Out (FLK)")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_MASK") {
+  field(DESC, "External Interlock")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST") {
+  field(DESC, "External Interlock")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_MASK") {
+  field(DESC, "High Voltage Over Curr")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST")
+  field(CALC, "(A & (1 << 3)) >> 3")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST") {
+  field(DESC, "High Voltage Over Curr")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_MASK") {
+  field(DESC, "End of Line Clipper (EOLC)")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST")
+  field(CALC, "(A & (1 << 4)) >> 4")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST") {
+  field(DESC, "End of Line Clipper (EOLC)")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_MASK") {
+  field(DESC, "Thyratron Over Curr")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST")
+  field(CALC, "(A & (1 << 5)) >> 5")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST") {
+  field(DESC, "Thyratron Over Curr")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_MASK") {
+  field(DESC, "High Voltage Ready")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST")
+  field(CALC, "(A & (1 << 6)) >> 6")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST") {
+  field(DESC, "High Voltage Ready")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_MASK") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST")
+  field(CALC, "(A & (1 << 7)) >> 7")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_MASK") {
+  field(DESC, "Interlock Complete")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST")
+  field(CALC, "(A & (1 << 8)) >> 8")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST") {
+  field(DESC, "Interlock Complete")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_MASK") {
+  field(DESC, "Control Power Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST")
+  field(CALC, "(A & (1 << 9)) >> 9")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST") {
+  field(DESC, "Control Power Faul")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_MASK") {
+  field(DESC, "Klys Filament TDLY")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST")
+  field(CALC, "(A & (1 << 10)) >> 10")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST") {
+  field(DESC, "Klys Filament TDLY")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_MASK") {
+  field(DESC, "VVS Power On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):MOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST")
+  field(CALC, "(A & (1 << 11)) >> 11")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST") {
+  field(DESC, "VVS Power On")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_MASK")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_CLR") {
+  field(DESC, "Waterflow Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_CLR_MASK") {
+  field(DESC, "Waterflow Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_CLR_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_CLR_SET") {
+  field(DESC, "Waterflow Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_WG1_CLR") {
+  field(DESC, "Waveguide1 Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG1_CLR_MASK") {
+  field(DESC, "Waveguide1 Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_WG1_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_WG1_CLR_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_WG1_CLR_SET") {
+  field(DESC, "Waterflow Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_WG1_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_WG1_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_WG2_CLR") {
+  field(DESC, "Waveguide2 Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG2_CLR_MASK") {
+  field(DESC, "Waveguide2 Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_WG2_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_WG2_CLR_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_WG2_CLR_SET") {
+  field(DESC, "Waterflow Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_WG2_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_WG2_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_CLR") {
+  field(DESC, "Waveguide1 Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_CLR_MASK") {
+  field(DESC, "Waveguide1 Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_ACC1_CLR_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_ACC1_CLR_SET") {
+  field(DESC, "Waterflow Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_ACC1_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR") {
+  field(DESC, "Waveguide2 Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR_MASK") {
+  field(DESC, "Waveguide2 Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_ACC2_CLR_SET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_ACC2_CLR_SET") {
+  field(DESC, "Waterflow Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_ACC2_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR") {
+  field(DESC, "Waveguide2 Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR_MASK") {
+  field(DESC, "Waveguide2 Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLT_CLR_SET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLT_CLR_SET") {
+  field(DESC, "Waterflow Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_FLT_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_TST_SET") {
+  field(DESC, "Klys Waterflow test")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_TST_SET_MASK") {
+  field(DESC, "Klys Waterflow test")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_TST_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_TST_SET") {
+  field(DESC, "WATR Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_SET") {
+  field(DESC, "Waveguide1")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_SET_MASK") {
+  field(DESC, "Waveguide1")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG1_TST_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG1_TST_SET") {
+  field(DESC, "WATR Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_WG1_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_SET") {
+  field(DESC, "Waveguide2")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_SET_MASK") {
+  field(DESC, "Waveguide2")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG2_TST_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG2_TST_SET") {
+  field(DESC, "WATR Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_WG2_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_SET") {
+  field(DESC, "Accelerator1")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_SET_MASK") {
+  field(DESC, "Accelerator1")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC1_TST_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC1_TST_SET") {
+  field(DESC, "WATR Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_ACC1_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_SET") {
+  field(DESC, "Accelerator2")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_SET_MASK") {
+  field(DESC, "Accelerator2")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC2_TST_SET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC2_TST_SET") {
+  field(DESC, "WATR Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_ACC2_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_TST_RESET") {
+  field(DESC, "Klys Waterflow test")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_TST_RESET_MASK") {
+  field(DESC, "Klys Waterflow test")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_TST_RESET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_TST_RESET") {
+  field(DESC, "WATR Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_RESET") {
+  field(DESC, "Waveguide1")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_RESET_MASK") {
+  field(DESC, "Waveguide1")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG1_TST_RESET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG1_TST_RESET") {
+  field(DESC, "WATR Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_WG1_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_RESET") {
+  field(DESC, "Waveguide2")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_RESET_MASK") {
+  field(DESC, "Waveguide2")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG2_TST_RESET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG2_TST_RESET") {
+  field(DESC, "WATR Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_WG2_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_RESET") {
+  field(DESC, "Accelerator1")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_RESET_MASK") {
+  field(DESC, "Accelerator1")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC1_TST_RESET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC1_TST_RESET") {
+  field(DESC, "WATR Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_ACC1_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_RESET") {
+  field(DESC, "Accelerator2")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_RESET_MASK") {
+  field(DESC, "Accelerator2")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC2_TST_RESET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC2_TST_RESET") {
+  field(DESC, "WATR Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_ACC2_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WATR_STATUS") {
+  field(DESC, "MKSU Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_L_MASK") {
+  field(DESC, "Klys Waterflow Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_L")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_L") {
+  field(DESC, "Klys Waterflow Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG1_L_MASK") {
+  field(DESC, "Waveguide1 Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_L")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG1_L") {
+  field(DESC, "Waveguide1 Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG1_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG2_L_MASK") {
+  field(DESC, "Waveguide2 Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_L")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG2_L") {
+  field(DESC, "Waveguide2 Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG2_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_L_MASK") {
+  field(DESC, "Accelerator1 Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_L")
+  field(CALC, "(A & (1 << 3)) >> 3")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_L") {
+  field(DESC, "Accelerator1 Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK") {
+  field(DESC, "Accelerator2 Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_L")
+  field(CALC, "(A & (1 << 4)) >> 4")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_L") {
+  field(DESC, "Accelerator2 Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK") {
+  field(DESC, "Fault Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L")
+  field(CALC, "(A & (1 << 5)) >> 5")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L") {
+  field(DESC, "Fault Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_DB_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_DB_MASK") {
+  field(DESC, "Klys Waterflow Debounced")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_DB")
+  field(CALC, "(A & (1 << 8)) >> 8")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_DB") {
+  field(DESC, "Klys Waterflow Debounced")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_DB_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_DB_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG1_DB_MASK") {
+  field(DESC, "Waveguide1 Debounced")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_DB")
+  field(CALC, "(A & (1 << 9)) >> 9")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG1_DB") {
+  field(DESC, "Waveguide1 Debounced")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG1_DB_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_DB_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG2_DB_MASK") {
+  field(DESC, "Waveguide2 Debounced")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_DB")
+  field(CALC, "(A & (1 << 10)) >> 10")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG2_DB") {
+  field(DESC, "Waveguide2 Debounced")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG2_DB_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB_MASK") {
+  field(DESC, "Accelerator1 Debounced")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB")
+  field(CALC, "(A & (1 << 11)) >> 11")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB") {
+  field(DESC, "Accelerator1 Debounced")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB_MASK") {
+  field(DESC, "Accelerator2 Debounced")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB")
+  field(CALC, "(A & (1 << 12)) >> 12")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB") {
+  field(DESC, "Accelerator2 Debounced")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WATR_TEST") {
+  field(DESC, "WATR Test Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WATR_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_TST_MASK") {
+  field(DESC, "Klystron Waterflow")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_TST")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_TST") {
+  field(DESC, "Klystron Waterflow")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_MASK") {
+  field(DESC, "Waveguide1 Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST") {
+  field(DESC, "Waveguide1 Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_MASK") {
+  field(DESC, "Waveguide2 Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST") {
+  field(DESC, "Waveguide2 Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_MASK") {
+  field(DESC, "Accelerator1 Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST")
+  field(CALC, "(A & (1 << 3)) >> 3")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST") {
+  field(DESC, "Accelerator1 Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_MASK") {
+  field(DESC, "Accelerator2 Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST")
+  field(CALC, "(A & (1 << 4)) >> 4")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST") {
+  field(DESC, "Accelerator2 Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_MASK")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_SET") {
+  field(DESC, "Legacy Mod Available")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_SET_MASK") {
+  field(DESC, "Legacy Mod Available")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_AVAIL_TST_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_AVAIL_TST_SET") {
+  field(DESC, "LMOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_LMOD_AVAIL_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_SET") {
+  field(DESC, "Waveguide Valve")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_SET_MASK") {
+  field(DESC, "Waveguide Valve")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_WGV_TST_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_WGV_TST_SET") {
+  field(DESC, "LMOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_LMOD_WGV_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_SET") {
+  field(DESC, "Waveguide Thermal Couple")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_SET_MASK") {
+  field(DESC, "Waveguide Thermal Couple")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_WGTC_TST_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_WGTC_TST_SET") {
+  field(DESC, "LMOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_LMOD_WGTC_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_RESET") {
+  field(DESC, "Legacy Mod Available")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_RESET_MASK") {
+  field(DESC, "Legacy Mod Available")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_AVAIL_TST_RESET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_AVAIL_TST_RESET") {
+  field(DESC, "LMOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_LMOD_AVAIL_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_RESET") {
+  field(DESC, "Waveguide Valve")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_RESET_MASK") {
+  field(DESC, "Waveguide Valve")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_WGV_TST_RESET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_WGV_TST_RESET") {
+  field(DESC, "LMOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_LMOD_WGV_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_RESET") {
+  field(DESC, "Waveguide Thermal Couple")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_RESET_MASK") {
+  field(DESC, "Waveguide Thermal Couple")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_WGTC_TST_RESET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_LMOD_WGTC_TST_RESET") {
+  field(DESC, "LMOD Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_LMOD_WGTC_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):LMOD_STATUS") {
+  field(DESC, "MKSU Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))LMOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_MASK") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_MASK") {
+  field(DESC, "Waveguide Valve Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGV")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):LMOD_WGV") {
+  field(DESC, "Waveguide Valve Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_MASK") {
+  field(DESC, "WG Thermal Couple Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC") {
+  field(DESC, "WG Thermal Couple Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_ON_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_ON_MASK") {
+  field(DESC, "Modulator On")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_ON")
+  field(CALC, "(A & (1 << 3)) >> 3")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):LMOD_ON") {
+  field(DESC, "Modulator On")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):LMOD_ON_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):LMOD_TEST") {
+  field(DESC, "LMOD Test Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))LMOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_MASK") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST") {
+  field(DESC, "Modulator Available")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_MASK") {
+  field(DESC, "Waveguide Valve")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST") {
+  field(DESC, "Waveguide Valve")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):LMOD_WGV_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_MASK") {
+  field(DESC, "Waveguide Thermal Couple")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):LMOD_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST")
+  field(CALC, "(A & (1 << 2)) >> 2")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST") {
+  field(DESC, "Waveguide Thermal Couple")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_MASK")
 }

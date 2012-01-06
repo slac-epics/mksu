@@ -10,4 +10,6 @@ maps/MksuFastAdcControlBlock.map
 maps/MksuFastAdcWaveformBlock.map
 maps/MksuRfAttenuatorBlock.map
 maps/MksuSledBlock.map
-
+maps/MksuModulatorInterfaceBlock.map
+maps/MksuWaterflowInterfaceBlock.map
+maps/MksuLegacyModulatorInterfaceBlock.map

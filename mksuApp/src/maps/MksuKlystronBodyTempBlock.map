@@ -329,12 +329,12 @@ operation	record
 DESC	Output Temperature
 SCAN	$(SCAN)
 INPA	KLYS:$(AREA):$(LOCATION):TOUT_RAW
-CALC	(A & 255) * 100
+CALC	((A & 255) - 3.6307)/0.0613
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):TIN
+name	KLYS:$(AREA):$(LOCATION):TIN_RAW
 operation	read 
 task	0x50
 address	3
@@ -342,7 +342,18 @@ size	1
 DESC	Input Temperature (Raw)
 DTYP	asynInt32
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN_RAW
+FLNK	KLYS:$(AREA):$(LOCATION):TIN
+EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+name	KLYS:$(AREA):$(LOCATION):TIN
+operation	record
+DESC	Output Temperature
+SCAN	$(SCAN)
+INPA	KLYS:$(AREA):$(LOCATION):TIN_RAW
+CALC	((A & 255) - 3.6307)/0.0613
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------

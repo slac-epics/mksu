@@ -1,11 +1,11 @@
-// Header file generated from MksuList.map on Fri, 16 Dec 2011 01:42:21 +0000
+// Header file generated from MksuList.map on Fri, 06 Jan 2012 01:32:15 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 210;
+const int MKSU_NUM_PARAMS = 271;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -95,7 +95,7 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x50, asynParamInt32, 0, 0, 1, "STATUS_TEMP", -1},
   {0x50, asynParamInt32, 1, 1, 1, "TOFF", -1},
   {0x50, asynParamInt32, 2, 0, 1, "TOUT_RAW", -1},
-  {0x50, asynParamInt32, 3, 0, 1, "TIN", -1},
+  {0x50, asynParamInt32, 3, 0, 1, "TIN_RAW", -1},
   {0x50, asynParamInt32, 4, 0, 1, "TDIFF", -1},
   {0x50, asynParamInt32, 5, 0, 1, "TOUT_CNTS", -1},
   {0x50, asynParamInt32, 6, 0, 1, "TIN_CNTS", -1},
@@ -219,6 +219,67 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x48, asynParamInt32, 0, 0, 1, "SLED_STATUS", -1},
   {0x48, asynParamInt32, 1, 0, 1, "SLED_CTRL", -1},
   {0x48, asynParamInt32, 2, 0, 1, "SLED_TEST", -1},
+  {0x0A, asynParamInt32, 1, 0, 1, "CTRL_MOD_CPWR_SET", -1},
+  {0x0A, asynParamInt32, 1, 0, 1, "CTRL_HVON_SET", -1},
+  {0x0A, asynParamInt32, 1, 0, 1, "CTRL_HVOFF_SET", -1},
+  {0x0A, asynParamInt32, 1, 0, 1, "CTRL_FLTRST_SET", -1},
+  {0x0A, asynParamInt32, 2, 0, 1, "CTRL_MOD_CPWR_RESET", -1},
+  {0x0A, asynParamInt32, 2, 0, 1, "CTRL_HVON_RESET", -1},
+  {0x0A, asynParamInt32, 2, 0, 1, "CTRL_HVOFF_RESET", -1},
+  {0x0A, asynParamInt32, 2, 0, 1, "CTRL_FLTRST_RESET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_HVON_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_FLK_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_EILK_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_HVOC_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_EOLC_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_TTOC_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_HVRDY_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_AVAIL_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_ILKC_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_CTRL_PFLT_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_KFTDLY_TST_SET", -1},
+  {0x0A, asynParamInt32, 3, 0, 1, "CTRL_MOD_VVS_TST_SET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_HVON_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_FLK_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_EILK_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_HVOC_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_EOLC_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_TTOC_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_HVRDY_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_AVAIL_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_ILKC_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_CTRL_PFLT_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_KFTDLY_TST_RESET", -1},
+  {0x0A, asynParamInt32, 4, 0, 1, "CTRL_MOD_VVS_TST_RESET", -1},
+  {0x4A, asynParamInt32, 0, 0, 1, "MOD_STATUS", -1},
+  {0x4A, asynParamInt32, 1, 0, 1, "MOD_CTRL", -1},
+  {0x4A, asynParamInt32, 2, 0, 1, "MOD_TEST", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_WG1_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_WG2_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_ACC1_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_ACC2_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_FLT_CLR_SET", -1},
+  {0x0B, asynParamInt32, 3, 0, 1, "CTRL_WATR_TST_SET", -1},
+  {0x0B, asynParamInt32, 3, 0, 1, "CTRL_WATR_WG1_TST_SET", -1},
+  {0x0B, asynParamInt32, 3, 0, 1, "CTRL_WATR_WG2_TST_SET", -1},
+  {0x0B, asynParamInt32, 3, 0, 1, "CTRL_WATR_ACC1_TST_SET", -1},
+  {0x0B, asynParamInt32, 3, 0, 1, "CTRL_WATR_ACC2_TST_SET", -1},
+  {0x0B, asynParamInt32, 4, 0, 1, "CTRL_WATR_TST_RESET", -1},
+  {0x0B, asynParamInt32, 4, 0, 1, "CTRL_WATR_WG1_TST_RESET", -1},
+  {0x0B, asynParamInt32, 4, 0, 1, "CTRL_WATR_WG2_TST_RESET", -1},
+  {0x0B, asynParamInt32, 4, 0, 1, "CTRL_WATR_ACC1_TST_RESET", -1},
+  {0x0B, asynParamInt32, 4, 0, 1, "CTRL_WATR_ACC2_TST_RESET", -1},
+  {0x4B, asynParamInt32, 0, 0, 1, "WATR_STATUS", -1},
+  {0x4B, asynParamInt32, 2, 0, 1, "WATR_TEST", -1},
+  {0x11, asynParamInt32, 3, 0, 1, "CTRL_LMOD_AVAIL_TST_SET", -1},
+  {0x11, asynParamInt32, 3, 0, 1, "CTRL_LMOD_WGV_TST_SET", -1},
+  {0x11, asynParamInt32, 3, 0, 1, "CTRL_LMOD_WGTC_TST_SET", -1},
+  {0x11, asynParamInt32, 4, 0, 1, "CTRL_LMOD_AVAIL_TST_RESET", -1},
+  {0x11, asynParamInt32, 4, 0, 1, "CTRL_LMOD_WGV_TST_RESET", -1},
+  {0x11, asynParamInt32, 4, 0, 1, "CTRL_LMOD_WGTC_TST_RESET", -1},
+  {0x51, asynParamInt32, 0, 0, 1, "LMOD_STATUS", -1},
+  {0x51, asynParamInt32, 2, 0, 1, "LMOD_TEST", -1},
 };
 
 #endif

@@ -12,6 +12,11 @@
 #
 #
 
+mksu-R1-0-9:
+	* Maps for the Waterflow, Modulator and Legacy Modulator
+	  added
+	* Panels for Waterflow and Modulator added
+
 mksu-R1-0-8:
 	* More maps and edm screens added
 

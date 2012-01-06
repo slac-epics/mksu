@@ -1,0 +1,892 @@
+#=======================================================
+#
+# WATERFLOW INTERFACE BLOCK (WRITE)
+#
+#=======================================================
+# WATR Status Register (BEGIN)
+#-------------------------------------------------------
+# WATR_CLR: Waterflow Latch Clear (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_CLR
+operation	record
+DESC	Waterflow Latch Clear
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_CLR_MASK
+DESC	Waterflow Latch Clear
+INPA	KLYS:$(AREA):$(LOCATION):WATR_CLR
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WATR_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WATR_CLR_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Waterflow Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG1_CLR: Waveguide1 Latch Clear (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_CLR
+operation	record
+DESC	Waveguide1 Latch Clear
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_CLR_MASK
+DESC	Waveguide1 Latch Clear
+INPA	KLYS:$(AREA):$(LOCATION):WATR_WG1_CLR
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WATR_WG1_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WATR_WG1_CLR_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Waterflow Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_WG1_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_WG1_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG2_CLR: Waveguide2 Latch Clear (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_CLR
+operation	record
+DESC	Waveguide2 Latch Clear
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_CLR_MASK
+DESC	Waveguide2 Latch Clear
+INPA	KLYS:$(AREA):$(LOCATION):WATR_WG2_CLR
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WATR_WG2_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WATR_WG2_CLR_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Waterflow Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_WG2_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_WG2_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC1_CLR: Waveguide1 Latch Clear (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_CLR
+operation	record
+DESC	Waveguide1 Latch Clear
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_CLR_MASK
+DESC	Waveguide1 Latch Clear
+INPA	KLYS:$(AREA):$(LOCATION):WATR_ACC1_CLR
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WATR_ACC1_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WATR_ACC1_CLR_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Waterflow Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_ACC1_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_ACC1_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC2_CLR: Waveguide2 Latch Clear (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR
+operation	record
+DESC	Waveguide2 Latch Clear
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR_MASK
+DESC	Waveguide2 Latch Clear
+INPA	KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WATR_ACC2_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WATR_ACC2_CLR_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Waterflow Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_ACC2_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_FLT_CLR: Fault Latch Clear (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR
+operation	record
+DESC	Waveguide2 Latch Clear
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR_MASK
+DESC	Waveguide2 Latch Clear
+INPA	KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLT_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLT_CLR_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Waterflow Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_FLT_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR Status Register (END)
+#-------------------------------------------------------
+#-------------------------------------------------------
+# WATR Test Set Register (BEGIN)
+#-------------------------------------------------------
+# WATR_TST_SET: Klys Waterflow test (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_TST_SET
+operation	record
+DESC	Klys Waterflow test
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_TST_SET_MASK
+DESC	Klys Waterflow test
+INPA	KLYS:$(AREA):$(LOCATION):WATR_TST_SET
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WATR_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WATR_TST_SET
+operation	write
+task	0x0B
+address	3
+size	1
+DESC	WATR Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG1_TST_SET: Waveguide1 set (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_SET
+operation	record
+DESC	Waveguide1
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_SET_MASK
+DESC	Waveguide1
+INPA	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_SET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG1_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG1_TST_SET
+operation	write
+task	0x0B
+address	3
+size	1
+DESC	WATR Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_WG1_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG2_TST_SET: Waveguide2 Set (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_SET
+operation	record
+DESC	Waveguide2
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_SET_MASK
+DESC	Waveguide2
+INPA	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_SET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG2_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG2_TST_SET
+operation	write
+task	0x0B
+address	3
+size	1
+DESC	WATR Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_WG2_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC1_TST_SET: Accelerator1 (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_SET
+operation	record
+DESC	Accelerator1
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_SET_MASK
+DESC	Accelerator1
+INPA	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_SET
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC1_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC1_TST_SET
+operation	write
+task	0x0B
+address	3
+size	1
+DESC	WATR Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_ACC1_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC2_TST_SET: Accelerator2 (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_SET
+operation	record
+DESC	Accelerator2
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_SET_MASK
+DESC	Accelerator2
+INPA	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_SET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC2_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC2_TST_SET
+operation	write
+task	0x0B
+address	3
+size	1
+DESC	WATR Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_ACC2_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR Test Set Register (END)
+#-------------------------------------------------------
+# WATR Test Reset Register (BEGIN)
+#-------------------------------------------------------
+# WATR_TST_RESET: Klys Waterflow test (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_TST_RESET
+operation	record
+DESC	Klys Waterflow test
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_TST_RESET_MASK
+DESC	Klys Waterflow test
+INPA	KLYS:$(AREA):$(LOCATION):WATR_TST_RESET
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WATR_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WATR_TST_RESET
+operation	write
+task	0x0B
+address	4
+size	1
+DESC	WATR Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG1_TST_RESET: Waveguide1 set (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_RESET
+operation	record
+DESC	Waveguide1
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_RESET_MASK
+DESC	Waveguide1
+INPA	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_RESET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG1_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG1_TST_RESET
+operation	write
+task	0x0B
+address	4
+size	1
+DESC	WATR Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_WG1_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG2_TST_RESET: Waveguide2 Set (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_RESET
+operation	record
+DESC	Waveguide2
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_RESET_MASK
+DESC	Waveguide2
+INPA	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_RESET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG2_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WATR_WG2_TST_RESET
+operation	write
+task	0x0B
+address	4
+size	1
+DESC	WATR Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_WG2_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC1_TST_RESET: Accelerator1 (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_RESET
+operation	record
+DESC	Accelerator1
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_RESET_MASK
+DESC	Accelerator1
+INPA	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_RESET
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC1_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC1_TST_RESET
+operation	write
+task	0x0B
+address	4
+size	1
+DESC	WATR Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_ACC1_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC2_TST_RESET: Accelerator2 (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_RESET
+operation	record
+DESC	Accelerator2
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_RESET_MASK
+DESC	Accelerator2
+INPA	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_RESET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC2_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WATR_ACC2_TST_RESET
+operation	write
+task	0x0B
+address	4
+size	1
+DESC	WATR Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WATR_ACC2_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR Test Reset Register (END)
+#=======================================================
+#
+# WATR INTERFACE BLOCK (READ)
+#
+#=======================================================
+# WATR Status Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+operation	read
+task	0x4B
+address	0
+size	1
+DESC	MKSU Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WATR_STATUS
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_L_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_L: Klys Waterflow Latch (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_L_MASK
+DESC	Klys Waterflow Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_L
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_L
+operation	record
+DESC	Klys Waterflow Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_L_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_L_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG1_L: Waveguide1 Latch (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_L_MASK
+DESC	Waveguide1 Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 1)) >> 1
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_L
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_L
+operation	record
+DESC	Waveguide1 Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_WG1_L_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_L_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG2_L: Waveguide2 Latch (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_L_MASK
+DESC	Waveguide2 Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_L
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_L
+operation	record
+DESC	Waveguide2 Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_WG2_L_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_L_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC1_L: Accelerator1 Latch (Bit 3)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_L_MASK
+DESC	Accelerator1 Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 3)) >> 3
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_L
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_L
+operation	record
+DESC	Accelerator1 Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_ACC1_L_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC2_L: Accelerator2 Latch (Bit 4)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK
+DESC	Accelerator2 Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 4)) >> 4
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_L
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_L
+operation	record
+DESC	Accelerator2 Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_FLT_L: Fault Latch (Bit 5)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK
+DESC	Fault Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_FLT_L
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_FLT_L
+operation	record
+DESC	Fault Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_DB_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_DB: Klys Waterflow Debounced (Bit 8)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_DB_MASK
+DESC	Klys Waterflow Debounced
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 8)) >> 8
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_DB
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_DB
+operation	record
+DESC	Klys Waterflow Debounced
+INP	KLYS:$(AREA):$(LOCATION):WATR_DB_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_DB_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG1_DB: Waveguide1 Debounced (Bit 9)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_DB_MASK
+DESC	Waveguide1 Debounced
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 9)) >> 9
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_DB
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_DB
+operation	record
+DESC	Waveguide1 Debounced
+INP	KLYS:$(AREA):$(LOCATION):WATR_WG1_DB_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_DB_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG2_DB: Waveguide2 Debounced (Bit 10)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_DB_MASK
+DESC	Waveguide2 Debounced
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 10)) >> 10
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_DB
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_DB
+operation	record
+DESC	Waveguide2 Debounced
+INP	KLYS:$(AREA):$(LOCATION):WATR_WG2_DB_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC1_DB: Accelerator1 Debounced (Bit 11)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB_MASK
+DESC	Accelerator1 Debounced
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 11)) >> 11
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB
+operation	record
+DESC	Accelerator1 Debounced
+INP	KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC2_DB: Accelerator2 Debounced (Bit 12)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB_MASK
+DESC	Accelerator2 Debounced
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 12)) >> 12
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB
+operation	record
+DESC	Accelerator2 Debounced
+INP	KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# WATR Status Register (END)
+#=======================================================
+# WATR Control Register (BEGIN)
+#-------------------------------------------------------
+# Empty
+#-------------------------------------------------------
+# WATR Control Register (END)
+#-------------------------------------------------------
+# WATR Test Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):WATR_TEST
+operation	read
+task	0x4B
+address	2
+size	1
+DESC	WATR Test Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WATR_TEST
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_TST_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_TST: Klystron Waterflow (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_TST_MASK
+DESC	Klystron Waterflow
+INPA	KLYS:$(AREA):$(LOCATION):WATR_TEST
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_TST
+operation	record
+DESC	Klystron Waterflow
+INP	KLYS:$(AREA):$(LOCATION):WATR_TST_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_DWG1_TST: Waveguide1 Latch (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_MASK
+DESC	Waveguide1 Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_TEST
+CALC	(A & (1 << 1)) >> 1
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST
+operation	record
+DESC	Waveguide1 Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_WG2_TST: Waveguide2 Latch (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_MASK
+DESC	Waveguide2 Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_TEST
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST
+operation	record
+DESC	Waveguide2 Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC1_TST: Accelerator1 Latch (Bit 3)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_MASK
+DESC	Accelerator1 Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_TEST
+CALC	(A & (1 << 3)) >> 3
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST
+operation	record
+DESC	Accelerator1 Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_ACC2_TST: Accelerator2 Latch (Bit 4)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_MASK
+DESC	Accelerator2 Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_TEST
+CALC	(A & (1 << 4)) >> 4
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST
+operation	record
+DESC	Accelerator2 Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# WATR Test Register (END)
+#-------------------------------------------------------
