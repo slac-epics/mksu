@@ -1,11 +1,11 @@
-// Header file generated from MksuList.map on Fri, 06 Jan 2012 01:32:15 +0000
+// Header file generated from MksuList.map on Sat, 07 Jan 2012 00:33:46 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 271;
+const int MKSU_NUM_PARAMS = 281;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -280,6 +280,16 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x11, asynParamInt32, 4, 0, 1, "CTRL_LMOD_WGTC_TST_RESET", -1},
   {0x51, asynParamInt32, 0, 0, 1, "LMOD_STATUS", -1},
   {0x51, asynParamInt32, 2, 0, 1, "LMOD_TEST", -1},
+  {0x12, asynParamInt32, 3, 0, 1, "CTRL_VPIO_TST_SET", -1},
+  {0x12, asynParamInt32, 4, 0, 1, "CTRL_VPIO_TST_RESET", -1},
+  {0x52, asynParamInt32, 0, 0, 1, "VPIO_STATUS", -1},
+  {0x52, asynParamInt32, 2, 0, 1, "VPIO_TEST", -1},
+  {0x13, asynParamInt32, 3, 0, 1, "CTRL_WGV_OK_TST_SET", -1},
+  {0x13, asynParamInt32, 3, 0, 1, "CTRL_WGV_BAD_TST_SET", -1},
+  {0x13, asynParamInt32, 4, 0, 1, "CTRL_WGV_OK_TST_RESET", -1},
+  {0x13, asynParamInt32, 4, 0, 1, "CTRL_WGV_BAD_TST_RESET", -1},
+  {0x53, asynParamInt32, 0, 0, 1, "WGV_STATUS", -1},
+  {0x53, asynParamInt32, 2, 0, 1, "WGV_TEST", -1},
 };
 
 #endif

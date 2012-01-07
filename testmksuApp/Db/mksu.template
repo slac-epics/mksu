@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Fri, 06 Jan 2012 01:32:15 +0000
+# Database template file generated from MksuList.map on Sat, 07 Jan 2012 00:33:46 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -4731,7 +4731,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):MOD_STATUS") {
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_STATUS")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT_MASK") {
@@ -6220,4 +6220,293 @@ record(bi, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_TST_MASK")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):VPIO_TST_SET") {
+  field(DESC, "Ion Pump Test")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):VPIO_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):VPIO_TST_SET_MASK") {
+  field(DESC, "Ion Pump Test")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):VPIO_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_VPIO_TST_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_VPIO_TST_SET") {
+  field(DESC, "VPIO Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):VPIO_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_VPIO_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):VPIO_TST_RESET") {
+  field(DESC, "Ion Pump Test")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):VPIO_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):VPIO_TST_RESET_MASK") {
+  field(DESC, "Ion Pump Test")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):VPIO_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_VPIO_TST_RESET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_VPIO_TST_RESET") {
+  field(DESC, "VPIO Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):VPIO_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_VPIO_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):VPIO_STATUS") {
+  field(DESC, "MKSU Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))VPIO_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):VPIO_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):VPIO_MASK") {
+  field(DESC, "Ion Pump Monitor")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):VPIO_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):VPIO_MON")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):VPIO_MON") {
+  field(DESC, "Ion Pump Monitor")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):VPIO_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):VPIO_TEST") {
+  field(DESC, "VPIO Test Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))VPIO_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):VPIO_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):VPIO_TST_MASK") {
+  field(DESC, "Ion Pump Monitor")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):VPIO_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):VPIO_TST")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):VPIO_TST") {
+  field(DESC, "Ion Pump Monitor")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):VPIO_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):VPIO_WGV_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):VPIO_WGV_TST_MASK") {
+  field(DESC, "Waveguide Valve")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):VPIO_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):VPIO_WGV_TST")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):VPIO_WGV_TST") {
+  field(DESC, "Waveguide Valve")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):VPIO_WGV_TST_MASK")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_SET") {
+  field(DESC, "Waveguide Vacuum Ok Test")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_SET_MASK") {
+  field(DESC, "Waveguide Vacuum Ok Test")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGV_OK_TST_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGV_OK_TST_SET") {
+  field(DESC, "WGV Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGV_OK_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_SET") {
+  field(DESC, "Waveguide Vacuum Bad Test")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_SET_MASK") {
+  field(DESC, "Waveguide Vacuum Bad Test")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGV_BAD_TST_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGV_BAD_TST_SET") {
+  field(DESC, "WGV Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGV_BAD_TST_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_RESET") {
+  field(DESC, "Waveguide Vacuum Ok Test")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_RESET_MASK") {
+  field(DESC, "Waveguide Vacuum Ok Test")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGV_OK_TST_RESET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGV_OK_TST_RESET") {
+  field(DESC, "WGV Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGV_OK_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_RESET") {
+  field(DESC, "Waveguide Vacuum Bad Test")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_RESET_MASK") {
+  field(DESC, "Waveguide Vacuum Bad Test")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGV_BAD_TST_RESET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGV_BAD_TST_RESET") {
+  field(DESC, "WGV Test (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGV_BAD_TST_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WGV_STATUS") {
+  field(DESC, "Waveguide Vacuum Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WGV_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_OK_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WGV_OK_MASK") {
+  field(DESC, "Waveguide Vacuum Ok Monitor")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WGV_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_OK")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WGV_OK") {
+  field(DESC, "Waveguide Vacuum Ok Monitor")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WGV_OK_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_BAD_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WGV_BAD_MASK") {
+  field(DESC, "Waveguide Vacuum Bad Monitor")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WGV_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_BAD")
+  field(CALC, "A & (1 << 1)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WGV_BAD") {
+  field(DESC, "Waveguide Vacuum Bad Monitor")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WGV_BAD_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):WGV_TEST") {
+  field(DESC, "WGV Test Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WGV_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_MASK") {
+  field(DESC, "Waveguide Vacuum Ok Monitor")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WGV_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST") {
+  field(DESC, "Waveguide Vacuum Ok Monitor")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_MASK") {
+  field(DESC, "Waveguide Valve")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WGV_TEST")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST")
+  field(CALC, "(A & (1 << 1)) >> 1")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST") {
+  field(DESC, "Waveguide Valve")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_MASK")
 }

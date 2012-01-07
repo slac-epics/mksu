@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1084
-y 48
+x 1145
+y 89
 w 550
 h 500
 font "helvetica-medium-r-18.0"
@@ -1737,6 +1737,75 @@ numPvs 4
 numDsps 1
 displayFileName {
   0 "mksu_water.edl"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 365
+y 335
+w 129
+h 27
+fgColor index 14
+bgColor index 0
+topShadowColor index 0
+botShadowColor index 14
+font "helvetica-medium-r-12.0"
+buttonLabel "Legacy Modulator..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "mksu_legacy_mod.edl"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 365
+y 370
+w 129
+h 27
+fgColor index 14
+bgColor index 0
+topShadowColor index 0
+botShadowColor index 14
+font "helvetica-medium-r-12.0"
+buttonLabel "Ion Pump..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "mksu_vpio.edl"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 365
+y 405
+w 129
+h 27
+fgColor index 14
+bgColor index 0
+topShadowColor index 0
+botShadowColor index 14
+font "helvetica-medium-r-12.0"
+buttonLabel "Waveguide Vacuum..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "mksu_wgv.edl"
 }
 endObjectProperties
 

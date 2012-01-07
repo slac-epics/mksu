@@ -1,0 +1,187 @@
+#=======================================================
+#
+# ION PUMP INTERFACE BLOCK (WRITE)
+#
+#=======================================================
+# VPIO Status Register (BEGIN)
+#-------------------------------------------------------
+# No bit to be written
+#-------------------------------------------------------
+# VPIO Status Register (END)
+#-------------------------------------------------------
+#-------------------------------------------------------
+# VPIO Test Set Register (BEGIN)
+#-------------------------------------------------------
+# VPIO_TST_SET: Ion Pump Test (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):VPIO_TST_SET
+operation	record
+DESC	Ion Pump Test
+FLNK	KLYS:$(AREA):$(LOCATION):VPIO_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):VPIO_TST_SET_MASK
+DESC	Ion Pump Test
+INPA	KLYS:$(AREA):$(LOCATION):VPIO_TST_SET
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_VPIO_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_VPIO_TST_SET
+operation	write
+task	0x12
+address	3
+size	1
+DESC	VPIO Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_VPIO_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):VPIO_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# VPIO Test Set Register (END)
+#-------------------------------------------------------
+# VPIO Test Reset Register (BEGIN)
+#-------------------------------------------------------
+# VPIO_TST_RESET: Ion Pump Test (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):VPIO_TST_RESET
+operation	record
+DESC	Ion Pump Test
+FLNK	KLYS:$(AREA):$(LOCATION):VPIO_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):VPIO_TST_RESET_MASK
+DESC	Ion Pump Test
+INPA	KLYS:$(AREA):$(LOCATION):VPIO_TST_RESET
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_VPIO_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_VPIO_TST_RESET
+operation	write
+task	0x12
+address	4
+size	1
+DESC	VPIO Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_VPIO_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):VPIO_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# VPIO Test Reset Register (END)
+#=======================================================
+#
+# VPIO INTERFACE BLOCK (READ)
+#
+#=======================================================
+# VPIO Status Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):VPIO_STATUS
+operation	read
+task	0x52
+address	0
+size	1
+DESC	MKSU Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))VPIO_STATUS
+FLNK	KLYS:$(AREA):$(LOCATION):VPIO_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# VPIO_MON: Ion Pump Monitor (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):VPIO_MASK
+DESC	Ion Pump Monitor
+INPA	KLYS:$(AREA):$(LOCATION):VPIO_STATUS
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):VPIO_MON
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):VPIO_MON
+operation	record
+DESC	Ion Pump Monitor
+INP	KLYS:$(AREA):$(LOCATION):VPIO_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# VPIO Status Register (END)
+#=======================================================
+# VPIO Control Register (BEGIN)
+#-------------------------------------------------------
+# Empty
+#-------------------------------------------------------
+# VPIO Control Register (END)
+#-------------------------------------------------------
+# VPIO Test Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):VPIO_TEST
+operation	read
+task	0x52
+address	2
+size	1
+DESC	VPIO Test Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))VPIO_TEST
+FLNK	KLYS:$(AREA):$(LOCATION):VPIO_TST_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# VPIO_TST: Ion Pump Monitor (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):VPIO_TST_MASK
+DESC	Ion Pump Monitor
+INPA	KLYS:$(AREA):$(LOCATION):VPIO_TEST
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):VPIO_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):VPIO_TST
+operation	record
+DESC	Ion Pump Monitor
+INP	KLYS:$(AREA):$(LOCATION):VPIO_TST_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):VPIO_WGV_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# VPIO_WGV_TST: Waveguide Valve (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):VPIO_WGV_TST_MASK
+DESC	Waveguide Valve
+INPA	KLYS:$(AREA):$(LOCATION):VPIO_TEST
+CALC	(A & (1 << 1)) >> 1
+FLNK	KLYS:$(AREA):$(LOCATION):VPIO_WGV_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):VPIO_WGV_TST
+operation	record
+DESC	Waveguide Valve
+INP	KLYS:$(AREA):$(LOCATION):VPIO_WGV_TST_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# VPIO Test Register (END)
+#-------------------------------------------------------

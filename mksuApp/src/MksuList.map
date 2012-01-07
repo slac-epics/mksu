@@ -13,3 +13,6 @@ maps/MksuSledBlock.map
 maps/MksuModulatorInterfaceBlock.map
 maps/MksuWaterflowInterfaceBlock.map
 maps/MksuLegacyModulatorInterfaceBlock.map
+maps/MksuIonPumpInterfaceBlock.map
+maps/MksuWaveguideVacuumInterfaceBlock.map
+maps/MksuMagnetInterfaceInterfaceBlock.map

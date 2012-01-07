@@ -1,0 +1,270 @@
+#=======================================================
+#
+# WAVEGUIDE VACUUM INTERFACE BLOCK (WRITE)
+#
+#=======================================================
+# WGV Status Register (BEGIN)
+#-------------------------------------------------------
+# No bit to be written
+#-------------------------------------------------------
+# WGV Status Register (END)
+#-------------------------------------------------------
+#-------------------------------------------------------
+# WGV Test Set Register (BEGIN)
+#-------------------------------------------------------
+# WGV_OK_TST_SET: Waveguide Vacuum Ok Test (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_SET
+operation	record
+DESC	Waveguide Vacuum Ok Test
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_SET_MASK
+DESC	Waveguide Vacuum Ok Test
+INPA	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_SET
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WGV_OK_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WGV_OK_TST_SET
+operation	write
+task	0x13
+address	3
+size	1
+DESC	WGV Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGV_OK_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WGV_BAD_TST_SET: Waveguide Vacuum Bad Test (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_SET
+operation	record
+DESC	Waveguide Vacuum Bad Test
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_SET_MASK
+DESC	Waveguide Vacuum Bad Test
+INPA	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_SET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WGV_BAD_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WGV_BAD_TST_SET
+operation	write
+task	0x13
+address	3
+size	1
+DESC	WGV Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGV_BAD_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WGV Test Set Register (END)
+#-------------------------------------------------------
+# WGV Test Reset Register (BEGIN)
+#-------------------------------------------------------
+# WGV_OK_TST_RESET: Waveguide Vacuum Ok Test (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_RESET
+operation	record
+DESC	Waveguide Vacuum Ok Test
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_RESET_MASK
+DESC	Waveguide Vacuum Ok Test
+INPA	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_RESET
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WGV_OK_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WGV_OK_TST_RESET
+operation	write
+task	0x13
+address	4
+size	1
+DESC	WGV Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGV_OK_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WGV_BAD_TST_RESET: Waveguide Vacuum Bad Test (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_RESET
+operation	record
+DESC	Waveguide Vacuum Bad Test
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_RESET_MASK
+DESC	Waveguide Vacuum Bad Test
+INPA	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_RESET
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WGV_BAD_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_WGV_BAD_TST_RESET
+operation	write
+task	0x13
+address	4
+size	1
+DESC	WGV Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGV_BAD_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WGV Test Reset Register (END)
+#=======================================================
+#
+# WGV INTERFACE BLOCK (READ)
+#
+#=======================================================
+# WGV Status Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):WGV_STATUS
+operation	read
+task	0x53
+address	0
+size	1
+DESC	Waveguide Vacuum Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WGV_STATUS
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_OK_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# WGV_OK: Waveguide Vacuum Ok Monitor (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WGV_OK_MASK
+DESC	Waveguide Vacuum Ok Monitor
+INPA	KLYS:$(AREA):$(LOCATION):WGV_STATUS
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_OK
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WGV_OK
+operation	record
+DESC	Waveguide Vacuum Ok Monitor
+INP	KLYS:$(AREA):$(LOCATION):WGV_OK_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_BAD_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WGV_BAD: Waveguide Vacuum Bad Monitor (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WGV_BAD_MASK
+DESC	Waveguide Vacuum Bad Monitor
+INPA	KLYS:$(AREA):$(LOCATION):WGV_STATUS
+CALC	A & (1 << 1)
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_BAD
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WGV_BAD
+operation	record
+DESC	Waveguide Vacuum Bad Monitor
+INP	KLYS:$(AREA):$(LOCATION):WGV_BAD_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# WGV Status Register (END)
+#=======================================================
+# WGV Control Register (BEGIN)
+#-------------------------------------------------------
+# Empty
+#-------------------------------------------------------
+# WGV Control Register (END)
+#-------------------------------------------------------
+# WGV Test Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):WGV_TEST
+operation	read
+task	0x53
+address	2
+size	1
+DESC	WGV Test Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WGV_TEST
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# WGV_OK_TST: Waveguide Vacuum Ok Monitor (Bit 0)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_MASK
+DESC	Waveguide Vacuum Ok Monitor
+INPA	KLYS:$(AREA):$(LOCATION):WGV_TEST
+CALC	A & (1 << 0)
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_OK_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WGV_OK_TST
+operation	record
+DESC	Waveguide Vacuum Ok Monitor
+INP	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WGV_BAD_TST: Waveguide Valve (Bit 1)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_MASK
+DESC	Waveguide Valve
+INPA	KLYS:$(AREA):$(LOCATION):WGV_TEST
+CALC	(A & (1 << 1)) >> 1
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST
+operation	record
+DESC	Waveguide Valve
+INP	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# WGV Test Register (END)
+#-------------------------------------------------------

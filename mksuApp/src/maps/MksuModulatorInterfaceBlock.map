@@ -1026,7 +1026,7 @@ size	1
 DESC	MKSU Status
 DTYP	asynInt32
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_STATUS
-FLNK	KLYS:$(AREA):$(LOCATION):MOD_HVON_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT_MASK
 SCAN	$(SCAN)
 PRIO	LOW
 #-------------------------------------------------------
@@ -1051,7 +1051,7 @@ ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_FLK_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# MOD_DFLK: Fault Lock Out (FLK) (Bit 1)
+# MOD_FLK: Fault Lock Out (FLK) (Bit 1)
 #-------------------------------------------------------
 record	calc
 operation	record
