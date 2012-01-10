@@ -1,11 +1,10 @@
 maps/MksuControlBlock.map
-maps/MksuSlowMonitorAdcBlock.map
-maps/MksuVoltageMonitorBlock.map
 maps/MksuTriggerControlBlock.map
 maps/MksuRfLookupTableBlock.map
 maps/MksuSystemInfoBlock.map
 maps/MksuKlystronBodyTempBlock.map
 maps/MksuXilinxSysMonitorBlock.map
+maps/MksuMagnetInterfaceBlock.map
 maps/MksuFastAdcControlBlock.map
 maps/MksuFastAdcWaveformBlock.map
 maps/MksuRfAttenuatorBlock.map
@@ -15,4 +14,5 @@ maps/MksuWaterflowInterfaceBlock.map
 maps/MksuLegacyModulatorInterfaceBlock.map
 maps/MksuIonPumpInterfaceBlock.map
 maps/MksuWaveguideVacuumInterfaceBlock.map
-maps/MksuMagnetInterfaceInterfaceBlock.map
+maps/MksuSlowMonitorAdcBlock.map
+maps/MksuVoltageMonitorBlock.map
