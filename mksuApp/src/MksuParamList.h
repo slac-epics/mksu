@@ -1,11 +1,11 @@
-// Header file generated from MksuList.map on Tue, 10 Jan 2012 18:59:28 +0000
+// Header file generated from MksuList.map on Sat, 14 Jan 2012 01:22:18 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 289;
+const int MKSU_NUM_PARAMS = 357;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -298,6 +298,74 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x62, asynParamInt32, 5, 0, 1, "MK_P5_RAW", -1},
   {0x62, asynParamInt32, 6, 0, 1, "MK_P15_RAW", -1},
   {0x62, asynParamInt32, 7, 0, 1, "MK_P24_RAW", -1},
+  {0x07, asynParamInt32, 0, 0, 1, "FC_DAC_SET", -1},
+  {0x47, asynParamInt32, 0, 0, 1, "FC_DAC", -1},
+  {0x09, asynParamInt32, 0, 0, 1, "STATUS_FG_RFOFF_CLR_SET", -1},
+  {0x09, asynParamInt32, 0, 0, 1, "STATUS_FG_MGNTOFF_CLR_SET", -1},
+  {0x09, asynParamInt32, 0, 0, 1, "STATUS_FG_EILKOPN_CLR_SET", -1},
+  {0x09, asynParamInt32, 0, 0, 1, "STATUS_FG_HVOFF_CLR_SET", -1},
+  {0x09, asynParamInt32, 0, 0, 1, "STATUS_FG_TRIGDIS_CLR_SET", -1},
+  {0x09, asynParamInt32, 1, 0, 1, "FG_CNT_CLR", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_FG_SLEDNOK_FLT_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_SLED_FLT_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_SLEDMOTR_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_MGNTKLIX_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_MGNTCNOK_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_MGNTCILK_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_WVACBAD_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_WVACNOK_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_KVACFLT_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_WGVFLT_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_WGTCFLT_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_KLYSFSOPEN_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_WGFLW2_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_WGFLW1_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_ACCFLW2_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_ACCFLW1_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_RPOT_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_FPOT_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_BVOT_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_BCOT_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_FCGCURR_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_FCCURR_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_WVAC_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_KVAC_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_KTEMPDIFF_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_24VLOW_BP_SET", -1},
+  {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_BEAMLOW_BP_SET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_FG_SLEDNOK_FLT_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_SLED_FLT_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_SLEDMOTR_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_MGNTKLIX_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_MGNTCNOK_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_MGNTCILK_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_WVACBAD_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_WVACNOK_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_KVACFLT_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_WGVFLT_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_WGTCFLT_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_KLYSFSOPEN_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_WGFLW2_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_WGFLW1_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_ACCFLW2_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_ACCFLW1_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_RPOT_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_FPOT_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_BVOT_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_BCOT_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_FCGCURR_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_FCCURR_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_WVAC_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_KVAC_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_KTEMPDIFF_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_24VLOW_BP_RESET", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "CTRL_FG_BEAMLOW_BP_RESET", -1},
+  {0x49, asynParamInt32, 0, 0, 1, "FG_STATUS", -1},
+  {0x49, asynParamInt32, 1, 0, 1, "FG_FLT_CNT", -1},
+  {0x49, asynParamInt32, 2, 0, 1, "FG_BYPASS0", -1},
+  {0x49, asynParamInt32, 3, 0, 1, "FG_BYPASS1", -1},
+  {0x49, asynParamInt32, 4, 0, 1, "FG_FAULT0", -1},
+  {0x49, asynParamInt32, 3, 0, 1, "FG_FAULT1", -1},
 };
 
 #endif

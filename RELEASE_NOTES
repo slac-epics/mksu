@@ -12,6 +12,14 @@
 #
 #
 
+mksu-R1-0-10:
+	* Maps for Focus Coil, Magnet, Ion Pump and Fault Generator
+	* Panels for Focus Coil, Magnet, Ion Pump. Still missing
+	  panels for Fault Generator
+
+	* Command to generate databases:
+	 cd mksuApp/src/; ../../tools/generate.py MksuList.map MksuParam
+
 mksu-R1-0-9:
 	* Maps for the Waterflow, Modulator and Legacy Modulator
 	  added

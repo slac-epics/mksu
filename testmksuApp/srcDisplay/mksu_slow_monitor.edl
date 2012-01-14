@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1052
-y 308
+x 667
+y 369
 w 450
-h 500
+h 550
 font "helvetica-medium-r-18.0"
 ctlFont "helvetica-medium-r-18.0"
 btnFont "helvetica-medium-r-18.0"
@@ -30,10 +30,24 @@ release 0
 x 16
 y 48
 w 416
-h 445
+h 491
 lineColor index 14
 fillColor index 0
 lineWidth 2
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 22
+y 490
+w 401
+h 37
+lineColor index 14
+fillColor index 0
 endObjectProperties
 
 # (Static Text)
@@ -838,7 +852,7 @@ major 4
 minor 0
 release 0
 x 22
-y 281
+y 270
 w 401
 h 90
 
@@ -851,7 +865,7 @@ major 4
 minor 0
 release 0
 x 22
-y 289
+y 278
 w 401
 h 82
 lineColor index 14
@@ -865,7 +879,7 @@ major 4
 minor 1
 release 0
 x 32
-y 281
+y 270
 w 114
 h 14
 font "helvetica-medium-r-12.0"
@@ -884,7 +898,7 @@ major 4
 minor 1
 release 0
 x 32
-y 304
+y 293
 w 97
 h 14
 font "helvetica-medium-r-12.0"
@@ -904,7 +918,7 @@ major 10
 minor 0
 release 0
 x 137
-y 304
+y 293
 w 87
 h 14
 controlPv "KLYS:$(area):$(loca):FC_AVG"
@@ -922,7 +936,7 @@ major 4
 minor 0
 release 0
 x 328
-y 345
+y 334
 w 86
 h 20
 fgColor index 14
@@ -946,7 +960,7 @@ major 4
 minor 0
 release 0
 x 328
-y 322
+y 311
 w 86
 h 20
 fgColor index 14
@@ -970,7 +984,7 @@ major 4
 minor 1
 release 0
 x 284
-y 304
+y 293
 w 34
 h 14
 font "helvetica-medium-r-12.0"
@@ -990,7 +1004,7 @@ major 4
 minor 5
 release 0
 x 282
-y 325
+y 314
 w 38
 h 14
 controlPv "KLYS:$(area):$(loca):FC_HI_BIT"
@@ -1014,7 +1028,7 @@ major 4
 minor 5
 release 0
 x 282
-y 348
+y 337
 w 38
 h 14
 controlPv "KLYS:$(area):$(loca):FC_LO_BIT"
@@ -1038,7 +1052,7 @@ major 4
 minor 5
 release 0
 x 230
-y 348
+y 337
 w 50
 h 14
 controlPv "KLYS:$(area):$(loca):FC_LO.EGU"
@@ -1061,7 +1075,7 @@ major 4
 minor 5
 release 0
 x 230
-y 325
+y 314
 w 50
 h 14
 controlPv "KLYS:$(area):$(loca):FC_HI.EGU"
@@ -1084,7 +1098,7 @@ major 4
 minor 5
 release 0
 x 171
-y 323
+y 312
 w 54
 h 18
 controlPv "KLYS:$(area):$(loca):FC_HI_SET"
@@ -1110,7 +1124,7 @@ major 4
 minor 5
 release 0
 x 171
-y 346
+y 335
 w 54
 h 18
 controlPv "KLYS:$(area):$(loca):FC_LO_SET"
@@ -1136,7 +1150,7 @@ major 4
 minor 5
 release 0
 x 125
-y 348
+y 337
 w 38
 h 14
 controlPv "KLYS:$(area):$(loca):FC_LO"
@@ -1159,7 +1173,7 @@ major 4
 minor 5
 release 0
 x 125
-y 325
+y 314
 w 38
 h 14
 controlPv "KLYS:$(area):$(loca):FC_HI"
@@ -1182,7 +1196,7 @@ major 4
 minor 1
 release 0
 x 32
-y 325
+y 314
 w 55
 h 14
 font "helvetica-medium-r-12.0"
@@ -1202,7 +1216,7 @@ major 4
 minor 1
 release 0
 x 32
-y 348
+y 337
 w 52
 h 14
 font "helvetica-medium-r-12.0"
@@ -1226,7 +1240,7 @@ major 4
 minor 0
 release 0
 x 22
-y 384
+y 375
 w 401
 h 90
 
@@ -1239,7 +1253,7 @@ major 4
 minor 0
 release 0
 x 22
-y 392
+y 383
 w 401
 h 82
 lineColor index 14
@@ -1253,7 +1267,7 @@ major 4
 minor 1
 release 0
 x 32
-y 384
+y 375
 w 159
 h 14
 font "helvetica-medium-r-12.0"
@@ -1272,7 +1286,7 @@ major 4
 minor 1
 release 0
 x 32
-y 407
+y 398
 w 97
 h 14
 font "helvetica-medium-r-12.0"
@@ -1292,7 +1306,7 @@ major 10
 minor 0
 release 0
 x 137
-y 407
+y 398
 w 87
 h 14
 controlPv "KLYS:$(area):$(loca):FCG_AVG"
@@ -1310,7 +1324,7 @@ major 4
 minor 0
 release 0
 x 328
-y 448
+y 439
 w 86
 h 20
 fgColor index 14
@@ -1334,7 +1348,7 @@ major 4
 minor 0
 release 0
 x 328
-y 425
+y 416
 w 86
 h 20
 fgColor index 14
@@ -1358,7 +1372,7 @@ major 4
 minor 1
 release 0
 x 284
-y 407
+y 398
 w 34
 h 14
 font "helvetica-medium-r-12.0"
@@ -1378,7 +1392,7 @@ major 4
 minor 5
 release 0
 x 282
-y 428
+y 419
 w 38
 h 14
 controlPv "KLYS:$(area):$(loca):FCG_HI_BIT"
@@ -1402,7 +1416,7 @@ major 4
 minor 5
 release 0
 x 282
-y 451
+y 442
 w 38
 h 14
 controlPv "KLYS:$(area):$(loca):FCG_LO_BIT"
@@ -1426,7 +1440,7 @@ major 4
 minor 5
 release 0
 x 230
-y 451
+y 442
 w 50
 h 14
 controlPv "KLYS:$(area):$(loca):FCG_LO.EGU"
@@ -1449,7 +1463,7 @@ major 4
 minor 5
 release 0
 x 230
-y 428
+y 419
 w 50
 h 14
 controlPv "KLYS:$(area):$(loca):FCG_HI.EGU"
@@ -1472,7 +1486,7 @@ major 4
 minor 5
 release 0
 x 171
-y 426
+y 417
 w 54
 h 18
 controlPv "KLYS:$(area):$(loca):FCG_HI_SET"
@@ -1498,7 +1512,7 @@ major 4
 minor 5
 release 0
 x 171
-y 449
+y 440
 w 54
 h 18
 controlPv "KLYS:$(area):$(loca):FCG_LO_SET"
@@ -1524,7 +1538,7 @@ major 4
 minor 5
 release 0
 x 125
-y 451
+y 442
 w 38
 h 14
 controlPv "KLYS:$(area):$(loca):FCG_LO"
@@ -1547,7 +1561,7 @@ major 4
 minor 5
 release 0
 x 125
-y 428
+y 419
 w 38
 h 14
 controlPv "KLYS:$(area):$(loca):FCG_HI"
@@ -1570,7 +1584,7 @@ major 4
 minor 1
 release 0
 x 32
-y 428
+y 419
 w 55
 h 14
 font "helvetica-medium-r-12.0"
@@ -1590,7 +1604,7 @@ major 4
 minor 1
 release 0
 x 32
-y 451
+y 442
 w 52
 h 14
 font "helvetica-medium-r-12.0"
@@ -1625,5 +1639,110 @@ value {
   "Slow Monitor ADC"
 }
 autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 482
+w 100
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " Focus Coil DAC "
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 32
+y 505
+w 21
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Set:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 159
+y 505
+w 63
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Read back:"
+}
+autoSize
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 60
+y 503
+w 54
+h 18
+controlPv "KLYS:$(area):$(loca):FC_DAC_SET"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+editable
+autoHeight
+motifWidget
+limitsFromDb
+nullColor index 0
+useHexPrefix
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 226
+y 505
+w 45
+h 14
+controlPv "KLYS:$(area):$(loca):FC_DAC"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
 endObjectProperties
 

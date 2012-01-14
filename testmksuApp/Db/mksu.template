@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Tue, 10 Jan 2012 18:59:28 +0000
+# Database template file generated from MksuList.map on Sat, 14 Jan 2012 01:22:18 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -6763,4 +6763,2490 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MK_P24") {
   field(INPA, "KLYS:$(AREA):$(LOCATION):MK_P24_RAW")
   field(EGU, "V")
   field(CALC, "A * .0213")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):FC_DAC_SET") {
+  field(DESC, "Focus Coil DAC Set")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_DAC_SET")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FC_DAC") {
+  field(DESC, "Focus Coil DAC")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_DAC")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_CLR") {
+  field(DESC, "RF Off Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_CLR_MASK") {
+  field(DESC, "RF Off Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FG_RFOFF_CLR_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FG_RFOFF_CLR_SET") {
+  field(DESC, "Fault Gen Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FG_RFOFF_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_CLR") {
+  field(DESC, "Magnet Off Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_CLR_MASK") {
+  field(DESC, "Magnet Off Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FG_MGNTOFF_CLR_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FG_MGNTOFF_CLR_SET") {
+  field(DESC, "Fault Gen Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FG_MGNTOFF_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_CLR") {
+  field(DESC, "Ext Interlck Opn Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_CLR_MASK") {
+  field(DESC, "Ext Interlck Opn Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FG_EILKOPN_CLR_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FG_EILKOPN_CLR_SET") {
+  field(DESC, "Fault Gen Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FG_EILKOPN_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_CLR") {
+  field(DESC, "High Volt Off Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_CLR_MASK") {
+  field(DESC, "High Volt Off Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FG_HVOFF_CLR_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FG_HVOFF_CLR_SET") {
+  field(DESC, "Fault Gen Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FG_HVOFF_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_CLR") {
+  field(DESC, "Trigger Disabled Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_CLR_MASK") {
+  field(DESC, "Trigger Disabled Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_FG_TRIGDIS_CLR_SET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FG_TRIGDIS_CLR_SET") {
+  field(DESC, "Fault Gen Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FG_TRIGDIS_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):FG_CNT_CLR") {
+  field(DESC, "Fault Gen Count Clear")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_CNT_CLR")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_SET") {
+  field(DESC, "SLED NOK Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_SET_MASK") {
+  field(DESC, "SLED NOK Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_FLT_BP_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_FLT_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_SLEDNOK_FLT_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_SET") {
+  field(DESC, "SLED Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_SET_MASK") {
+  field(DESC, "SLED Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_SLED_FLT_BP_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_SLED_FLT_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLED_FLT_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_SET") {
+  field(DESC, "SLED Motor Timeout bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_SET_MASK") {
+  field(DESC, "SLED Motor Timeout bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_SLEDMOTR_BP_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_SLEDMOTR_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLEDMOTR_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_SET") {
+  field(DESC, "Magnet Klixon Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_SET_MASK") {
+  field(DESC, "Magnet Klixon Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTKLIX_BP_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTKLIX_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNTKLIX_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_SET") {
+  field(DESC, "Magnet Curr NOK Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_SET_MASK") {
+  field(DESC, "Magnet Curr NOK Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTCNOK_BP_SET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTCNOK_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNTCNOK_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_SET") {
+  field(DESC, "Mgnt Curr Ilck Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_SET_MASK") {
+  field(DESC, "Mgnt Curr Ilck Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTCILK_BP_SET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTCILK_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNTCILK_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_SET") {
+  field(DESC, "Waveguide Vac BAD Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_SET_MASK") {
+  field(DESC, "Waveguide Vac BAD Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WVACBAD_BP_SET")
+  field(CALC, "A << 6")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WVACBAD_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WVACBAD_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_SET") {
+  field(DESC, "Waveguide Vac NOK Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_SET_MASK") {
+  field(DESC, "Waveguide Vac NOK Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WVACNOK_BP_SET")
+  field(CALC, "A << 7")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WVACNOK_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WVACNOK_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_KVACFLT_BP_SET") {
+  field(DESC, "Klys Vacuum Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KVACFLT_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KVACFLT_BP_SET_MASK") {
+  field(DESC, "Klys Vacuum Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_KVACFLT_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_KVACFLT_BP_SET")
+  field(CALC, "A << 8")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_KVACFLT_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_KVACFLT_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_KVACFLT_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_SET") {
+  field(DESC, "Waveguide Valve Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_SET_MASK") {
+  field(DESC, "Waveguide Valve Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGVFLT_BP_SET")
+  field(CALC, "A << 9")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGVFLT_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGVFLT_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_SET") {
+  field(DESC, "WG Thermo Couple Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_SET_MASK") {
+  field(DESC, "WG Thermo Couple Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGTCFLT_BP_SET")
+  field(CALC, "A << 10")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGTCFLT_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGTCFLT_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_SET") {
+  field(DESC, "Klys Flow Sw Open bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_SET_MASK") {
+  field(DESC, "Klys Flow Sw Open bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_KLYSFSOPEN_BP_SET")
+  field(CALC, "A << 11")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_KLYSFSOPEN_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_KLYSFSOPEN_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_SET") {
+  field(DESC, "Waveguide Flow SW2 bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_SET_MASK") {
+  field(DESC, "Waveguide Flow SW2 bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGFLW2_BP_SET")
+  field(CALC, "A << 12")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGFLW2_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGFLW2_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_SET") {
+  field(DESC, "Waveguide Flow SW1 bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_SET_MASK") {
+  field(DESC, "Waveguide Flow SW1 bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGFLW1_BP_SET")
+  field(CALC, "A << 13")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGFLW1_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGFLW1_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_SET") {
+  field(DESC, "Accel Flow SW2 bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_SET_MASK") {
+  field(DESC, "Accel Flow SW2 bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_ACCFLW2_BP_SET")
+  field(CALC, "A << 14")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_ACCFLW2_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_ACCFLW2_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_SET") {
+  field(DESC, "Accel Flow SW1 bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_SET_MASK") {
+  field(DESC, "Accel Flow SW1 bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_ACCFLW1_BP_SET")
+  field(CALC, "A << 15")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_ACCFLW1_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_ACCFLW1_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_SET") {
+  field(DESC, "Reflctd Pwr Over Thres")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_SET_MASK") {
+  field(DESC, "Reflctd Pwr Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_RPOT_BP_SET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_RPOT_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_RPOT_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_SET") {
+  field(DESC, "Fwrd Pwr Over Thres")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_SET_MASK") {
+  field(DESC, "Fwrd Pwr Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FPOT_BP_SET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FPOT_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_FPOT_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_SET") {
+  field(DESC, "Beam Volt Over Thres")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_SET_MASK") {
+  field(DESC, "Beam Volt Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BVOT_BP_SET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BVOT_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_BVOT_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_SET") {
+  field(DESC, "Beam Curr Over Thres")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_SET_MASK") {
+  field(DESC, "Beam Curr Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BCOT_BP_SET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BCOT_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_BCOT_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_SET") {
+  field(DESC, "FCoil Gnd Curr Out Of Range")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_SET_MASK") {
+  field(DESC, "FCoil Gnd Curr Out Of Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FCGCURR_BP_SET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FCGCURR_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_FCGCURR_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_SET") {
+  field(DESC, "FCoil Curr Out Of Range")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_SET_MASK") {
+  field(DESC, "FCoil Curr Out Of Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FCCURR_BP_SET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FCCURR_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_FCCURR_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_SET") {
+  field(DESC, "Waveguide Vac Out Of Range")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_SET_MASK") {
+  field(DESC, "Waveguide Vac Out Of Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_WVAC_BP_SET")
+  field(CALC, "A << 6")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_WVAC_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_WVAC_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_SET") {
+  field(DESC, "Klys Vac Out Of Range")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_SET_MASK") {
+  field(DESC, "Klys Vac Out Of Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_KVAC_BP_SET")
+  field(CALC, "A << 7")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_KVAC_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_KVAC_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_SET") {
+  field(DESC, "Klys Body Temp Diff")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_SET_MASK") {
+  field(DESC, "Klys Body Temp Diff")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_KTEMPDIFF_BP_SET")
+  field(CALC, "A << 8")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_KTEMPDIFF_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_KTEMPDIFF_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_SET") {
+  field(DESC, "-24V Battery Low")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_SET_MASK") {
+  field(DESC, "-24V Battery Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_24VLOW_BP_SET")
+  field(CALC, "A << 9")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_24VLOW_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_24VLOW_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_SET") {
+  field(DESC, "Beam Below Thres")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_SET_MASK") {
+  field(DESC, "Beam Below Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BEAMLOW_BP_SET")
+  field(CALC, "A << 10")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BEAMLOW_BP_SET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_BEAMLOW_BP_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_RESET") {
+  field(DESC, "SLED NOK Fault")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_RESET_MASK") {
+  field(DESC, "SLED NOK Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_FLT_BP_RESET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_FLT_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_SLEDNOK_FLT_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_RESET") {
+  field(DESC, "SLED Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_RESET_MASK") {
+  field(DESC, "SLED Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_SLED_FLT_BP_RESET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_SLED_FLT_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLED_FLT_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_RESET") {
+  field(DESC, "SLED Motor Timeout bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_RESET_MASK") {
+  field(DESC, "SLED Motor Timeout bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_SLEDMOTR_BP_RESET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_SLEDMOTR_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLEDMOTR_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_RESET") {
+  field(DESC, "Magnet Klixon Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_RESET_MASK") {
+  field(DESC, "Magnet Klixon Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTKLIX_BP_RESET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTKLIX_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNTKLIX_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_RESET") {
+  field(DESC, "Magnet Curr NOK Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_RESET_MASK") {
+  field(DESC, "Magnet Curr NOK Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTCNOK_BP_RESET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTCNOK_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNTCNOK_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_RESET") {
+  field(DESC, "Mgnt Curr Ilck Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_RESET_MASK") {
+  field(DESC, "Mgnt Curr Ilck Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTCILK_BP_RESET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MGNTCILK_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNTCILK_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_RESET") {
+  field(DESC, "Waveguide Vac BAD Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_RESET_MASK") {
+  field(DESC, "Waveguide Vac BAD Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WVACBAD_BP_RESET")
+  field(CALC, "A << 6")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WVACBAD_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WVACBAD_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_RESET") {
+  field(DESC, "Waveguide Vac NOK Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_RESET_MASK") {
+  field(DESC, "Waveguide Vac NOK Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WVACNOK_BP_RESET")
+  field(CALC, "A << 7")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WVACNOK_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WVACNOK_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_KVACFLT_BP_RESET") {
+  field(DESC, "Klys Vacuum Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KVACFLT_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KVACFLT_BP_RESET_MASK") {
+  field(DESC, "Klys Vacuum Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_KVACFLT_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_KVACFLT_BP_RESET")
+  field(CALC, "A << 8")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_KVACFLT_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_KVACFLT_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_KVACFLT_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_RESET") {
+  field(DESC, "Waveguide Valve Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_RESET_MASK") {
+  field(DESC, "Waveguide Valve Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGVFLT_BP_RESET")
+  field(CALC, "A << 9")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGVFLT_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGVFLT_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_RESET") {
+  field(DESC, "WG Thermo Couple Fault bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_RESET_MASK") {
+  field(DESC, "WG Thermo Couple Fault bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGTCFLT_BP_RESET")
+  field(CALC, "A << 10")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGTCFLT_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGTCFLT_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_RESET") {
+  field(DESC, "Klys Flow Sw Open bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_RESET_MASK") {
+  field(DESC, "Klys Flow Sw Open bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_KLYSFSOPEN_BP_RESET")
+  field(CALC, "A << 11")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_KLYSFSOPEN_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_KLYSFSOPEN_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_RESET") {
+  field(DESC, "Waveguide Flow SW2 bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_RESET_MASK") {
+  field(DESC, "Waveguide Flow SW2 bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGFLW2_BP_RESET")
+  field(CALC, "A << 12")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGFLW2_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGFLW2_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_RESET") {
+  field(DESC, "Waveguide Flow SW1 bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_RESET_MASK") {
+  field(DESC, "Waveguide Flow SW1 bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WGFLW1_BP_RESET")
+  field(CALC, "A << 13")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WGFLW1_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_WGFLW1_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_RESET") {
+  field(DESC, "Accel Flow SW2 bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_RESET_MASK") {
+  field(DESC, "Accel Flow SW2 bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_ACCFLW2_BP_RESET")
+  field(CALC, "A << 14")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_ACCFLW2_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_ACCFLW2_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_RESET") {
+  field(DESC, "Accel Flow SW1 bit")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_RESET_MASK") {
+  field(DESC, "Accel Flow SW1 bit")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_ACCFLW1_BP_RESET")
+  field(CALC, "A << 15")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_ACCFLW1_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_ACCFLW1_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_RESET") {
+  field(DESC, "Reflctd Pwr Over Thres")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_RESET_MASK") {
+  field(DESC, "Reflctd Pwr Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_RPOT_BP_RESET")
+  field(CALC, "A")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_RPOT_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_RPOT_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_RESET") {
+  field(DESC, "Fwrd Pwr Over Thres")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_RESET_MASK") {
+  field(DESC, "Fwrd Pwr Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FPOT_BP_RESET")
+  field(CALC, "A << 1")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FPOT_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_FPOT_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_RESET") {
+  field(DESC, "Beam Volt Over Thres")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_RESET_MASK") {
+  field(DESC, "Beam Volt Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BVOT_BP_RESET")
+  field(CALC, "A << 2")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BVOT_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_BVOT_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_RESET") {
+  field(DESC, "Beam Curr Over Thres")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_RESET_MASK") {
+  field(DESC, "Beam Curr Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BCOT_BP_RESET")
+  field(CALC, "A << 3")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BCOT_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_BCOT_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_RESET") {
+  field(DESC, "FCoil Gnd Curr Out Of Range")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_RESET_MASK") {
+  field(DESC, "FCoil Gnd Curr Out Of Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FCGCURR_BP_RESET")
+  field(CALC, "A << 4")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FCGCURR_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_FCGCURR_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_RESET") {
+  field(DESC, "FCoil Curr Out Of Range")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_RESET_MASK") {
+  field(DESC, "FCoil Curr Out Of Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FCCURR_BP_RESET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_FCCURR_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_FCCURR_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_RESET") {
+  field(DESC, "Waveguide Vac Out Of Range")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_RESET_MASK") {
+  field(DESC, "Waveguide Vac Out Of Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_WVAC_BP_RESET")
+  field(CALC, "A << 6")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_WVAC_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_WVAC_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_RESET") {
+  field(DESC, "Klys Vac Out Of Range")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_RESET_MASK") {
+  field(DESC, "Klys Vac Out Of Range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_KVAC_BP_RESET")
+  field(CALC, "A << 7")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_KVAC_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_KVAC_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_RESET") {
+  field(DESC, "Klys Body Temp Diff")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_RESET_MASK") {
+  field(DESC, "Klys Body Temp Diff")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_KTEMPDIFF_BP_RESET")
+  field(CALC, "A << 8")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_KTEMPDIFF_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_KTEMPDIFF_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_RESET") {
+  field(DESC, "-24V Battery Low")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_RESET_MASK") {
+  field(DESC, "-24V Battery Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_24VLOW_BP_RESET")
+  field(CALC, "A << 9")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_24VLOW_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_24VLOW_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_RESET") {
+  field(DESC, "Beam Below Thres")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_RESET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_RESET_MASK") {
+  field(DESC, "Beam Below Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_RESET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BEAMLOW_BP_RESET")
+  field(CALC, "A << 10")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_FG_BEAMLOW_BP_RESET") {
+  field(DESC, "FG Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_RESET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_BEAMLOW_BP_RESET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FG_STATUS") {
+  field(DESC, "Fault Generator Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_L_MASK") {
+  field(DESC, "RF Off Latched")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_L")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_L") {
+  field(DESC, "RF Off Latched")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_L_MASK") {
+  field(DESC, "Magnet Off Latched")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_L")
+  field(CALC, "A & (1 << 1)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_L") {
+  field(DESC, "Magnet Off Latched")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_L_MASK") {
+  field(DESC, "Magnet Off Latched")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_L")
+  field(CALC, "A & (1 << 2)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_L") {
+  field(DESC, "Magnet Off Latched")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_L_MASK") {
+  field(DESC, "Magnet Off Latched")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_L")
+  field(CALC, "A & (1 << 3)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_L") {
+  field(DESC, "Magnet Off Latched")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L_MASK") {
+  field(DESC, "Magnet Off Latched")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L")
+  field(CALC, "A & (1 << 4)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L") {
+  field(DESC, "Magnet Off Latched")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_MASK") {
+  field(DESC, "RF Off")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_RFOFF")
+  field(CALC, "A & (1 << 5)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_RFOFF") {
+  field(DESC, "RF Off")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_RFOFF_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_MASK") {
+  field(DESC, "Magnet Off")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF")
+  field(CALC, "A & (1 << 6)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF") {
+  field(DESC, "Magnet Off")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_MASK") {
+  field(DESC, "Magnet Off")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN")
+  field(CALC, "A & (1 << 7)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN") {
+  field(DESC, "Magnet Off")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_EILKOPN_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_MASK") {
+  field(DESC, "Magnet Off")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_HVOFF")
+  field(CALC, "A & (1 << 8)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_HVOFF") {
+  field(DESC, "Magnet Off")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_HVOFF_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_MASK") {
+  field(DESC, "Magnet Off")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS")
+  field(CALC, "A & (1 << 9)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS") {
+  field(DESC, "Magnet Off")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FG_FLT_CNT") {
+  field(DESC, "Fault Generator Counter")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_FLT_CNT")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0") {
+  field(DESC, "Fault Generator Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_MASK") {
+  field(DESC, "SLED not Ok")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP") {
+  field(DESC, "SLED not Ok")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLED_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLED_BP_MASK") {
+  field(DESC, "SLED Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLED_BP")
+  field(CALC, "A & (1 << 1)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_SLED_BP") {
+  field(DESC, "SLED Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_SLED_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_MASK") {
+  field(DESC, "SLED Motor Timeout")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP")
+  field(CALC, "A & (1 << 2)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP") {
+  field(DESC, "SLED Motor Timeout")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_MASK") {
+  field(DESC, "Mgnt Klix Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP")
+  field(CALC, "A & (1 << 3)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP") {
+  field(DESC, "Mgnt Klix Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_MASK") {
+  field(DESC, "Mgnt Curr NOK Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP")
+  field(CALC, "A & (1 << 4)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP") {
+  field(DESC, "Mgnt Curr NOK Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_MASK") {
+  field(DESC, "Mgnt Curr Ilock Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP")
+  field(CALC, "A & (1 << 5)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP") {
+  field(DESC, "Mgnt Curr Ilock Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_MASK") {
+  field(DESC, "Waveguide Vac BAD")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP")
+  field(CALC, "A & (1 << 6)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP") {
+  field(DESC, "Waveguide Vac BAD")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_MASK") {
+  field(DESC, "Waveguide Vac NOK")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP")
+  field(CALC, "A & (1 << 7)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP") {
+  field(DESC, "Waveguide Vac NOK")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_BP_MASK") {
+  field(DESC, "Klys Vacuum Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_BP")
+  field(CALC, "A & (1 << 8)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_BP") {
+  field(DESC, "Klys Vacuum Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_MASK") {
+  field(DESC, "Waveguide Valve Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP")
+  field(CALC, "A & (1 << 9)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP") {
+  field(DESC, "Waveguide Valve Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_MASK") {
+  field(DESC, "WG Thermo Couple Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP")
+  field(CALC, "A & (1 << 10)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP") {
+  field(DESC, "WG Thermo Couple Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_MASK") {
+  field(DESC, "Klys Flow Sw Open")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP")
+  field(CALC, "A & (1 << 11)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP") {
+  field(DESC, "Klys Flow Sw Open")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_MASK") {
+  field(DESC, "Waveguide Flow Sw 2 Open")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP")
+  field(CALC, "A & (1 << 12)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP") {
+  field(DESC, "Waveguide Flow Sw 2 Open")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_MASK") {
+  field(DESC, "Waveguide Flow Sw 1 Open")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP")
+  field(CALC, "A & (1 << 13)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP") {
+  field(DESC, "Waveguide Flow Sw 1 Open")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_MASK") {
+  field(DESC, "Accelerator Flow Sw 2 Open")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP")
+  field(CALC, "A & (1 << 14)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP") {
+  field(DESC, "Accelerator Flow Sw 2 Open")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_MASK") {
+  field(DESC, "Accelerator Flow Sw 1 Open")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP")
+  field(CALC, "A & (1 << 15)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP") {
+  field(DESC, "Accelerator Flow Sw 1 Open")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1") {
+  field(DESC, "Fault Generator Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_MASK") {
+  field(DESC, "Reflct Pwr Ower Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP") {
+  field(DESC, "Reflct Pwr Ower Thres")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FGOT_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FGOT_BP_MASK") {
+  field(DESC, "Fwrd Pwr Ower Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FGOT_BP")
+  field(CALC, "A & (1 << 1)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_FGOT_BP") {
+  field(DESC, "Fwrd Pwr Ower Thres")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_FGOT_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_MASK") {
+  field(DESC, "Beam Volt Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP")
+  field(CALC, "A & (1 << 2)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP") {
+  field(DESC, "Beam Volt Over Thres")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_MASK") {
+  field(DESC, "Beam Curr Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP")
+  field(CALC, "A & (1 << 3)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP") {
+  field(DESC, "Beam Curr Over Thres")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_MASK") {
+  field(DESC, "FCoil GCurr out of range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP")
+  field(CALC, "A & (1 << 4)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP") {
+  field(DESC, "FCoil GCurr out of range")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FGCURR_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FGCURR_BP_MASK") {
+  field(DESC, "FCoil Curr out of range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FGCURR_BP")
+  field(CALC, "A & (1 << 5)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_FGCURR_BP") {
+  field(DESC, "FCoil Curr out of range")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_FGCURR_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_MASK") {
+  field(DESC, "Waveguide Vac out of range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP")
+  field(CALC, "A & (1 << 6)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP") {
+  field(DESC, "Waveguide Vac out of range")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_MASK") {
+  field(DESC, "Klys Vac out of range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP")
+  field(CALC, "A & (1 << 7)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP") {
+  field(DESC, "Klys Vac out of range")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_MASK") {
+  field(DESC, "Klys Temp Difference")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP")
+  field(CALC, "A & (1 << 8)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP") {
+  field(DESC, "Klys Temp Difference")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_MASK") {
+  field(DESC, "-24V Battery Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP")
+  field(CALC, "A & (1 << 9)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP") {
+  field(DESC, "-24V Battery Low")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_MASK") {
+  field(DESC, "Beam Below Low Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP")
+  field(CALC, "A & (1 << 10)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP") {
+  field(DESC, "Beam Below Low Thres")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FG_FAULT0") {
+  field(DESC, "Fault Generator Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_MASK") {
+  field(DESC, "SLED not Ok")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK") {
+  field(DESC, "SLED not Ok")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLED_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLED_MASK") {
+  field(DESC, "SLED Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLED")
+  field(CALC, "A & (1 << 1)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_SLED") {
+  field(DESC, "SLED Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_SLED_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_MASK") {
+  field(DESC, "SLED Motor Timeout")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR")
+  field(CALC, "A & (1 << 2)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR") {
+  field(DESC, "SLED Motor Timeout")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_MASK") {
+  field(DESC, "Mgnt Klix Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX")
+  field(CALC, "A & (1 << 3)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX") {
+  field(DESC, "Mgnt Klix Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_MASK") {
+  field(DESC, "Mgnt Curr NOK Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK")
+  field(CALC, "A & (1 << 4)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK") {
+  field(DESC, "Mgnt Curr NOK Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_MASK") {
+  field(DESC, "Mgnt Curr Ilock Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK")
+  field(CALC, "A & (1 << 5)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK") {
+  field(DESC, "Mgnt Curr Ilock Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_MASK") {
+  field(DESC, "Waveguide Vac BAD")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD")
+  field(CALC, "A & (1 << 6)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD") {
+  field(DESC, "Waveguide Vac BAD")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_MASK") {
+  field(DESC, "Waveguide Vac NOK")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK")
+  field(CALC, "A & (1 << 7)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK") {
+  field(DESC, "Waveguide Vac NOK")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_MASK") {
+  field(DESC, "Klys Vacuum Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_VACFLT")
+  field(CALC, "A & (1 << 8)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_VACFLT") {
+  field(DESC, "Klys Vacuum Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_MASK") {
+  field(DESC, "Waveguide Valve Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT")
+  field(CALC, "A & (1 << 9)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT") {
+  field(DESC, "Waveguide Valve Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_MASK") {
+  field(DESC, "WG Thermo Couple Fault")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT")
+  field(CALC, "A & (1 << 10)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT") {
+  field(DESC, "WG Thermo Couple Fault")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_MASK") {
+  field(DESC, "Klys Flow Sw Open")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN")
+  field(CALC, "A & (1 << 11)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN") {
+  field(DESC, "Klys Flow Sw Open")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_MASK") {
+  field(DESC, "Waveguide Flow Sw 2 Open")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2")
+  field(CALC, "A & (1 << 12)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2") {
+  field(DESC, "Waveguide Flow Sw 2 Open")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_MASK") {
+  field(DESC, "Waveguide Flow Sw 1 Open")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1")
+  field(CALC, "A & (1 << 13)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1") {
+  field(DESC, "Waveguide Flow Sw 1 Open")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_MASK") {
+  field(DESC, "Accelerator Flow Sw 2 Open")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2")
+  field(CALC, "A & (1 << 14)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2") {
+  field(DESC, "Accelerator Flow Sw 2 Open")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_MASK") {
+  field(DESC, "Accelerator Flow Sw 1 Open")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1")
+  field(CALC, "A & (1 << 15)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1") {
+  field(DESC, "Accelerator Flow Sw 1 Open")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_MASK")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):FG_FAULT1") {
+  field(DESC, "Fault Generator Status")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_RPOT_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_RPOT_MASK") {
+  field(DESC, "Reflct Pwr Ower Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_RPOT")
+  field(CALC, "A & (1 << 0)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_RPOT") {
+  field(DESC, "Reflct Pwr Ower Thres")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_RPOT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FGOT_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FGOT_MASK") {
+  field(DESC, "Fwrd Pwr Ower Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FGOT")
+  field(CALC, "A & (1 << 1)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_FGOT") {
+  field(DESC, "Fwrd Pwr Ower Thres")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_FGOT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BVOT_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BVOT_MASK") {
+  field(DESC, "Beam Volt Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BVOT")
+  field(CALC, "A & (1 << 2)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_BVOT") {
+  field(DESC, "Beam Volt Over Thres")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_BVOT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BCOT_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BCOT_MASK") {
+  field(DESC, "Beam Curr Over Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BCOT")
+  field(CALC, "A & (1 << 3)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_BCOT") {
+  field(DESC, "Beam Curr Over Thres")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_BCOT_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_MASK") {
+  field(DESC, "FCoil GCurr out of range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR")
+  field(CALC, "A & (1 << 4)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR") {
+  field(DESC, "FCoil GCurr out of range")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FGCURR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_FGCURR_MASK") {
+  field(DESC, "FCoil Curr out of range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FGCURR")
+  field(CALC, "A & (1 << 5)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_FGCURR") {
+  field(DESC, "FCoil Curr out of range")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_FGCURR_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVAC_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_WVAC_MASK") {
+  field(DESC, "Waveguide Vac out of range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVAC")
+  field(CALC, "A & (1 << 6)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_WVAC") {
+  field(DESC, "Waveguide Vac out of range")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_WVAC_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KVAC_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KVAC_MASK") {
+  field(DESC, "Klys Vac out of range")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KVAC")
+  field(CALC, "A & (1 << 7)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_KVAC") {
+  field(DESC, "Klys Vac out of range")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_KVAC_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_MASK") {
+  field(DESC, "Klys Temp Difference")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF")
+  field(CALC, "A & (1 << 8)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF") {
+  field(DESC, "Klys Temp Difference")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_MASK") {
+  field(DESC, "-24V Battery Low")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_24VLOW")
+  field(CALC, "A & (1 << 9)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_24VLOW") {
+  field(DESC, "-24V Battery Low")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_MASK") {
+  field(DESC, "Beam Below Low Thres")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT1")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW")
+  field(CALC, "A & (1 << 10)")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW") {
+  field(DESC, "Beam Below Low Thres")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_MASK")
 }

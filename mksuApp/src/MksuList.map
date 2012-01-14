@@ -16,3 +16,5 @@ maps/MksuIonPumpInterfaceBlock.map
 maps/MksuWaveguideVacuumInterfaceBlock.map
 maps/MksuSlowMonitorAdcBlock.map
 maps/MksuVoltageMonitorBlock.map
+maps/MksuFocusCoilBlock.map
+maps/MksuFaultGeneratorInterfaceBlock.map

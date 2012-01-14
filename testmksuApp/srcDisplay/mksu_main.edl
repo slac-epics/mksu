@@ -1809,3 +1809,26 @@ displayFileName {
 }
 endObjectProperties
 
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 365
+y 440
+w 129
+h 27
+fgColor index 14
+bgColor index 0
+topShadowColor index 0
+botShadowColor index 14
+font "helvetica-medium-r-12.0"
+buttonLabel "Magnet..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "mksu_magnet.edl"
+}
+endObjectProperties
+

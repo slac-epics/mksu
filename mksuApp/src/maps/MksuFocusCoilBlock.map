@@ -1,0 +1,37 @@
+#=======================================================
+#
+# FOCUS COIL BLOCK (WRITE)
+#
+#=======================================================
+# FC_DAC_SET
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FC_DAC_SET
+operation	write
+task	0x07
+address	0
+size	1
+DESC	Focus Coil DAC Set
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_DAC_SET
+PRIO	LOW
+#=======================================================
+#
+# FOCUS COIL BLOCK (READ)
+#
+#=======================================================
+# FC_DAC
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FC_DAC
+operation	read
+task	0x47
+address	0
+size	1
+DESC	Focus Coil DAC
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_DAC
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+
