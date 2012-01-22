@@ -1,4 +1,4 @@
-// Header file generated from MksuList.map on Sat, 14 Jan 2012 01:22:18 +0000
+// Header file generated from MksuList.map on Sun, 22 Jan 2012 17:09:30 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
@@ -306,8 +306,8 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x09, asynParamInt32, 0, 0, 1, "STATUS_FG_HVOFF_CLR_SET", -1},
   {0x09, asynParamInt32, 0, 0, 1, "STATUS_FG_TRIGDIS_CLR_SET", -1},
   {0x09, asynParamInt32, 1, 0, 1, "FG_CNT_CLR", -1},
-  {0x09, asynParamInt32, 2, 0, 1, "CTRL_FG_SLEDNOK_FLT_BP_SET", -1},
-  {0x09, asynParamInt32, 2, 0, 1, "CTRL_SLED_FLT_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_FG_SLEDNOK_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_SLED_BP_SET", -1},
   {0x09, asynParamInt32, 2, 0, 1, "CTRL_SLEDMOTR_BP_SET", -1},
   {0x09, asynParamInt32, 2, 0, 1, "CTRL_MGNTKLIX_BP_SET", -1},
   {0x09, asynParamInt32, 2, 0, 1, "CTRL_MGNTCNOK_BP_SET", -1},
@@ -333,8 +333,8 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_KTEMPDIFF_BP_SET", -1},
   {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_24VLOW_BP_SET", -1},
   {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_BEAMLOW_BP_SET", -1},
-  {0x09, asynParamInt32, 4, 0, 1, "CTRL_FG_SLEDNOK_FLT_BP_RESET", -1},
-  {0x09, asynParamInt32, 4, 0, 1, "CTRL_SLED_FLT_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_FG_SLEDNOK_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_SLED_BP_RESET", -1},
   {0x09, asynParamInt32, 4, 0, 1, "CTRL_SLEDMOTR_BP_RESET", -1},
   {0x09, asynParamInt32, 4, 0, 1, "CTRL_MGNTKLIX_BP_RESET", -1},
   {0x09, asynParamInt32, 4, 0, 1, "CTRL_MGNTCNOK_BP_RESET", -1},
@@ -365,7 +365,7 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x49, asynParamInt32, 2, 0, 1, "FG_BYPASS0", -1},
   {0x49, asynParamInt32, 3, 0, 1, "FG_BYPASS1", -1},
   {0x49, asynParamInt32, 4, 0, 1, "FG_FAULT0", -1},
-  {0x49, asynParamInt32, 3, 0, 1, "FG_FAULT1", -1},
+  {0x49, asynParamInt32, 5, 0, 1, "FG_FAULT1", -1},
 };
 
 #endif

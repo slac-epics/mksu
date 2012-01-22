@@ -12,6 +12,10 @@
 #
 #
 
+mksu-R1-0-11:
+	* Added panel for Fault Generator (missing the fault
+	  counter)
+
 mksu-R1-0-10:
 	* Maps for Focus Coil, Magnet, Ion Pump and Fault Generator
 	* Panels for Focus Coil, Magnet, Ion Pump. Still missing

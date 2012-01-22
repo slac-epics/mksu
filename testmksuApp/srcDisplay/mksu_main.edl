@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1145
-y 89
+x 709
+y 145
 w 550
 h 500
 font "helvetica-medium-r-18.0"
@@ -1563,7 +1563,7 @@ major 4
 minor 3
 release 0
 x 365
-y 53
+y 52
 w 129
 h 27
 fgColor index 14
@@ -1586,7 +1586,7 @@ major 4
 minor 3
 release 0
 x 365
-y 88
+y 86
 w 129
 h 27
 fgColor index 14
@@ -1609,7 +1609,7 @@ major 4
 minor 3
 release 0
 x 365
-y 123
+y 119
 w 129
 h 27
 fgColor index 14
@@ -1632,7 +1632,7 @@ major 4
 minor 3
 release 0
 x 365
-y 159
+y 153
 w 129
 h 27
 fgColor index 14
@@ -1655,7 +1655,7 @@ major 4
 minor 3
 release 0
 x 365
-y 194
+y 187
 w 129
 h 27
 fgColor index 14
@@ -1678,7 +1678,7 @@ major 4
 minor 3
 release 0
 x 365
-y 230
+y 220
 w 129
 h 27
 fgColor index 14
@@ -1701,7 +1701,7 @@ major 4
 minor 3
 release 0
 x 365
-y 265
+y 254
 w 129
 h 27
 fgColor index 14
@@ -1724,7 +1724,7 @@ major 4
 minor 3
 release 0
 x 365
-y 300
+y 287
 w 129
 h 27
 fgColor index 14
@@ -1747,7 +1747,7 @@ major 4
 minor 3
 release 0
 x 365
-y 335
+y 321
 w 129
 h 27
 fgColor index 14
@@ -1770,7 +1770,7 @@ major 4
 minor 3
 release 0
 x 365
-y 370
+y 355
 w 129
 h 27
 fgColor index 14
@@ -1793,7 +1793,7 @@ major 4
 minor 3
 release 0
 x 365
-y 405
+y 388
 w 129
 h 27
 fgColor index 14
@@ -1816,7 +1816,7 @@ major 4
 minor 3
 release 0
 x 365
-y 440
+y 422
 w 129
 h 27
 fgColor index 14
@@ -1829,6 +1829,29 @@ numPvs 4
 numDsps 1
 displayFileName {
   0 "mksu_magnet.edl"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 365
+y 455
+w 129
+h 27
+fgColor index 14
+bgColor index 0
+topShadowColor index 0
+botShadowColor index 14
+font "helvetica-medium-r-12.0"
+buttonLabel "Fault Generator..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "mksu_fault.edl"
 }
 endObjectProperties
 

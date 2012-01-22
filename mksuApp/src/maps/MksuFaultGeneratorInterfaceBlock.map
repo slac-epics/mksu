@@ -177,64 +177,64 @@ PRIO	LOW
 #-------------------------------------------------------
 # FG Bypass0 Set Register (BEGIN)
 #-------------------------------------------------------
-# FG_SLEDNOK_FLT_BP_SET: SLED NOK Fault (Bit 0)
+# FG_SLEDNOK_BP_SET: SLED NOK Fault (Bit 0)
 #-------------------------------------------------------
 record	bo
-name	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_SET
+name	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_SET
 operation	record
 DESC	SLED NOK Fault
-FLNK	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_SET_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_SET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_SET_MASK
+name	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_SET_MASK
 DESC	SLED NOK Fault
-INPA	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_SET
+INPA	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_SET
 CALC	A
-FLNK	KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_FLT_BP_SET
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_BP_SET
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_FLT_BP_SET
+name	KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_BP_SET
 operation	write
 task	0x09
 address	2
 size	1
 DESC	FG Control (write)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_SLEDNOK_FLT_BP_SET
-DOL	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_SET_MASK
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_SLEDNOK_BP_SET
+DOL	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# FG_SLED_FLT_BP_SET: SLED Fault (Bit 1)
+# FG_SLED_BP_SET: SLED Fault (Bit 1)
 #-------------------------------------------------------
 record	bo
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_SET
+name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_SET
 operation	record
 DESC	SLED Fault bit
-FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_SET_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_SET_MASK
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_SET_MASK
+name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_SET_MASK
 DESC	SLED Fault bit
-INPA	KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_SET
+INPA	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_SET
 CALC	A << 1
-FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SLED_FLT_BP_SET
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SLED_BP_SET
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):CTRL_SLED_FLT_BP_SET
+name	KLYS:$(AREA):$(LOCATION):CTRL_SLED_BP_SET
 operation	write
 task	0x09
 address	2
 size	1
 DESC	FG Control (write)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLED_FLT_BP_SET
-DOL	KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_SET_MASK
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLED_BP_SET
+DOL	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -1007,64 +1007,64 @@ PRIO	LOW
 #-------------------------------------------------------
 # FG Bypass0 Reset Register (BEGIN)
 #-------------------------------------------------------
-# FG_SLEDNOK_FLT_BP_RESET: SLED NOK Fault (Bit 0)
+# FG_SLEDNOK_BP_RESET: SLED NOK Fault (Bit 0)
 #-------------------------------------------------------
 record	bo
-name	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_RESET
+name	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_RESET
 operation	record
 DESC	SLED NOK Fault
-FLNK	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_RESET_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_RESET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_RESET_MASK
+name	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_RESET_MASK
 DESC	SLED NOK Fault
-INPA	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_RESET
+INPA	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_RESET
 CALC	A
-FLNK	KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_FLT_BP_RESET
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_BP_RESET
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_FLT_BP_RESET
+name	KLYS:$(AREA):$(LOCATION):CTRL_FG_SLEDNOK_BP_RESET
 operation	write
 task	0x09
 address	4
 size	1
 DESC	FG Control (write)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_SLEDNOK_FLT_BP_RESET
-DOL	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_FLT_BP_RESET_MASK
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_FG_SLEDNOK_BP_RESET
+DOL	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_RESET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# FG_SLED_FLT_BP_RESET: SLED Fault (Bit 1)
+# FG_SLED_BP_RESET: SLED Fault (Bit 1)
 #-------------------------------------------------------
 record	bo
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_RESET
+name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_RESET
 operation	record
 DESC	SLED Fault bit
-FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_RESET_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_RESET_MASK
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_RESET_MASK
+name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_RESET_MASK
 DESC	SLED Fault bit
-INPA	KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_RESET
+INPA	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_RESET
 CALC	A << 1
-FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SLED_FLT_BP_RESET
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SLED_BP_RESET
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):CTRL_SLED_FLT_BP_RESET
+name	KLYS:$(AREA):$(LOCATION):CTRL_SLED_BP_RESET
 operation	write
 task	0x09
 address	4
 size	1
 DESC	FG Control (write)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLED_FLT_BP_RESET
-DOL	KLYS:$(AREA):$(LOCATION):FG_SLED_FLT_BP_RESET_MASK
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLED_BP_RESET
+DOL	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_RESET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -1882,7 +1882,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_L_MASK
 DESC	Magnet Off Latched
 INPA	KLYS:$(AREA):$(LOCATION):FG_STATUS
-CALC	A & (1 << 1)
+CALC	(A & (1 << 1)) >> 1
 FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_L
 PRIO	LOW
 #-------------------------------------------------------
@@ -1903,7 +1903,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_EILKOPN_L_MASK
 DESC	Magnet Off Latched
 INPA	KLYS:$(AREA):$(LOCATION):FG_STATUS
-CALC	A & (1 << 2)
+CALC	(A & (1 << 2)) >> 2
 FLNK	KLYS:$(AREA):$(LOCATION):FG_EILKOPN_L
 PRIO	LOW
 #-------------------------------------------------------
@@ -1924,7 +1924,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_HVOFF_L_MASK
 DESC	Magnet Off Latched
 INPA	KLYS:$(AREA):$(LOCATION):FG_STATUS
-CALC	A & (1 << 3)
+CALC	(A & (1 << 3)) >> 3
 FLNK	KLYS:$(AREA):$(LOCATION):FG_HVOFF_L
 PRIO	LOW
 #-------------------------------------------------------
@@ -1945,7 +1945,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L_MASK
 DESC	Magnet Off Latched
 INPA	KLYS:$(AREA):$(LOCATION):FG_STATUS
-CALC	A & (1 << 4)
+CALC	(A & (1 << 4)) >> 4
 FLNK	KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L
 PRIO	LOW
 #-------------------------------------------------------
@@ -1956,7 +1956,7 @@ DESC	Magnet Off Latched
 INP	KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L_MASK
 ZNAM	No
 ONAM	Yes
-FLNK	KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_RFOFF_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # FG_RFOFF: RF Off (Bit 5)
@@ -1966,7 +1966,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_RFOFF_MASK
 DESC	RF Off
 INPA	KLYS:$(AREA):$(LOCATION):FG_STATUS
-CALC	A & (1 << 5)
+CALC	(A & (1 << 5)) >> 5
 FLNK	KLYS:$(AREA):$(LOCATION):FG_RFOFF
 PRIO	LOW
 #-------------------------------------------------------
@@ -1987,7 +1987,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_MGNTOFF_MASK
 DESC	Magnet Off
 INPA	KLYS:$(AREA):$(LOCATION):FG_STATUS
-CALC	A & (1 << 6)
+CALC	(A & (1 << 6)) >> 6
 FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTOFF
 PRIO	LOW
 #-------------------------------------------------------
@@ -2008,7 +2008,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_EILKOPN_MASK
 DESC	Magnet Off
 INPA	KLYS:$(AREA):$(LOCATION):FG_STATUS
-CALC	A & (1 << 7)
+CALC	(A & (1 << 7)) >> 7
 FLNK	KLYS:$(AREA):$(LOCATION):FG_EILKOPN
 PRIO	LOW
 #-------------------------------------------------------
@@ -2029,7 +2029,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_HVOFF_MASK
 DESC	Magnet Off
 INPA	KLYS:$(AREA):$(LOCATION):FG_STATUS
-CALC	A & (1 << 8)
+CALC	(A & (1 << 8)) >> 8
 FLNK	KLYS:$(AREA):$(LOCATION):FG_HVOFF
 PRIO	LOW
 #-------------------------------------------------------
@@ -2050,7 +2050,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_MASK
 DESC	Magnet Off
 INPA	KLYS:$(AREA):$(LOCATION):FG_STATUS
-CALC	A & (1 << 9)
+CALC	(A & (1 << 9)) >> 9
 FLNK	KLYS:$(AREA):$(LOCATION):FG_TRIGDIS
 PRIO	LOW
 #-------------------------------------------------------
@@ -2121,7 +2121,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_MASK
 DESC	SLED Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 1)
+CALC	(A & (1 << 1)) >> 1
 FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2142,7 +2142,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_MASK
 DESC	SLED Motor Timeout
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 2)
+CALC	(A & (1 << 2)) >> 2
 FLNK	KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2163,7 +2163,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_MASK
 DESC	Mgnt Klix Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 3)
+CALC	(A & (1 << 3)) >> 3
 FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2184,7 +2184,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_MASK
 DESC	Mgnt Curr NOK Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 4)
+CALC	(A & (1 << 4)) >> 4
 FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2205,7 +2205,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_MASK
 DESC	Mgnt Curr Ilock Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 5)
+CALC	(A & (1 << 5)) >> 5
 FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2226,7 +2226,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_MASK
 DESC	Waveguide Vac BAD
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 6)
+CALC	(A & (1 << 6)) >> 6
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2247,7 +2247,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_MASK
 DESC	Waveguide Vac NOK
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 7)
+CALC	(A & (1 << 7)) >> 7
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2268,7 +2268,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_VACFLT_BP_MASK
 DESC	Klys Vacuum Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 8)
+CALC	(A & (1 << 8)) >> 8
 FLNK	KLYS:$(AREA):$(LOCATION):FG_VACFLT_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2289,7 +2289,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_MASK
 DESC	Waveguide Valve Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 9)
+CALC	(A & (1 << 9)) >> 9
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2310,7 +2310,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_MASK
 DESC	WG Thermo Couple Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 10)
+CALC	(A & (1 << 10)) >> 10
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2331,7 +2331,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_MASK
 DESC	Klys Flow Sw Open
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 11)
+CALC	(A & (1 << 11)) >> 11
 FLNK	KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2352,7 +2352,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_MASK
 DESC	Waveguide Flow Sw 2 Open
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 12)
+CALC	(A & (1 << 12)) >> 12
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2373,7 +2373,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_MASK
 DESC	Waveguide Flow Sw 1 Open
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 13)
+CALC	(A & (1 << 13)) >> 13
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2394,7 +2394,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_MASK
 DESC	Accelerator Flow Sw 2 Open
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 14)
+CALC	(A & (1 << 14)) >> 14
 FLNK	KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2415,7 +2415,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_MASK
 DESC	Accelerator Flow Sw 1 Open
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
-CALC	A & (1 << 15)
+CALC	(A & (1 << 15)) >> 15
 FLNK	KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2463,25 +2463,25 @@ DESC	Reflct Pwr Ower Thres
 INP	KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_MASK
 ZNAM	No
 ONAM	Yes
-FLNK	KLYS:$(AREA):$(LOCATION):FG_FGOT_BP_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# FG_FGOT_BP: Fwrd Pwr Ower Thres (Bit 1)
+# FG_FPOT_BP: Fwrd Pwr Ower Thres (Bit 1)
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_FGOT_BP_MASK
+name	KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_MASK
 DESC	Fwrd Pwr Ower Thres
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS1
-CALC	A & (1 << 1)
-FLNK	KLYS:$(AREA):$(LOCATION):FG_FGOT_BP
+CALC	(A & (1 << 1) >> 1)
+FLNK	KLYS:$(AREA):$(LOCATION):FG_FPOT_BP
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):FG_FGOT_BP
+name	KLYS:$(AREA):$(LOCATION):FG_FPOT_BP
 operation	record
 DESC	Fwrd Pwr Ower Thres
-INP	KLYS:$(AREA):$(LOCATION):FG_FGOT_BP_MASK
+INP	KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_MASK
 ZNAM	No
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_MASK
@@ -2494,7 +2494,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_MASK
 DESC	Beam Volt Over Thres
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS1
-CALC	A & (1 << 2)
+CALC	(A & (1 << 2)) >> 2
 FLNK	KLYS:$(AREA):$(LOCATION):FG_BVOT_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2515,7 +2515,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_MASK
 DESC	Beam Curr Over Thres
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS1
-CALC	A & (1 << 3)
+CALC	(A & (1 << 3)) >> 3
 FLNK	KLYS:$(AREA):$(LOCATION):FG_BCOT_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2536,7 +2536,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_MASK
 DESC	FCoil GCurr out of range
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS1
-CALC	A & (1 << 4)
+CALC	(A & (1 << 4)) >> 4
 FLNK	KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2547,25 +2547,25 @@ DESC	FCoil GCurr out of range
 INP	KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_MASK
 ZNAM	No
 ONAM	Yes
-FLNK	KLYS:$(AREA):$(LOCATION):FG_FGCURR_BP_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# FG_FGCURR_BP: FCoil Curr out of range (Bit 5)
+# FG_FCCURR_BP: FCoil Curr out of range (Bit 5)
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_FGCURR_BP_MASK
+name	KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_MASK
 DESC	FCoil Curr out of range
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS1
-CALC	A & (1 << 5)
-FLNK	KLYS:$(AREA):$(LOCATION):FG_FGCURR_BP
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):FG_FGCURR_BP
+name	KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP
 operation	record
 DESC	FCoil Curr out of range
-INP	KLYS:$(AREA):$(LOCATION):FG_FGCURR_BP_MASK
+INP	KLYS:$(AREA):$(LOCATION):FG_FCCURR_BP_MASK
 ZNAM	No
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_MASK
@@ -2578,7 +2578,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WVAC_BP_MASK
 DESC	Waveguide Vac out of range 
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS1
-CALC	A & (1 << 6)
+CALC	(A & (1 << 6)) >> 6
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WVAC_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2599,7 +2599,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_KVAC_BP_MASK
 DESC	Klys Vac out of range
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS1
-CALC	A & (1 << 7)
+CALC	(A & (1 << 7)) >> 7
 FLNK	KLYS:$(AREA):$(LOCATION):FG_KVAC_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2620,7 +2620,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_MASK
 DESC	Klys Temp Difference
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS1
-CALC	A & (1 << 8)
+CALC	(A & (1 << 8)) >> 8
 FLNK	KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2641,7 +2641,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_MASK
 DESC	-24V Battery Low
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS1
-CALC	A & (1 << 9)
+CALC	(A & (1 << 9)) >> 9
 FLNK	KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2662,7 +2662,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_MASK
 DESC	Beam Below Low Thres
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS1
-CALC	A & (1 << 10)
+CALC	(A & (1 << 10)) >> 10
 FLNK	KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP
 PRIO	LOW
 #-------------------------------------------------------
@@ -2720,7 +2720,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_SLED_MASK
 DESC	SLED Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 1)
+CALC	(A & (1 << 1)) >> 1
 FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED
 PRIO	LOW
 #-------------------------------------------------------
@@ -2741,7 +2741,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_MASK
 DESC	SLED Motor Timeout
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 2)
+CALC	(A & (1 << 2)) >> 2
 FLNK	KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR
 PRIO	LOW
 #-------------------------------------------------------
@@ -2762,7 +2762,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_MASK
 DESC	Mgnt Klix Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 3)
+CALC	(A & (1 << 3)) >> 3
 FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX
 PRIO	LOW
 #-------------------------------------------------------
@@ -2783,7 +2783,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_MASK
 DESC	Mgnt Curr NOK Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 4)
+CALC	(A & (1 << 4)) >> 4
 FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK
 PRIO	LOW
 #-------------------------------------------------------
@@ -2804,7 +2804,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_MASK
 DESC	Mgnt Curr Ilock Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 5)
+CALC	(A & (1 << 5)) >> 5
 FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTCILK
 PRIO	LOW
 #-------------------------------------------------------
@@ -2825,7 +2825,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WVACBAD_MASK
 DESC	Waveguide Vac BAD
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 6)
+CALC	(A & (1 << 6)) >> 6
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WVACBAD
 PRIO	LOW
 #-------------------------------------------------------
@@ -2846,7 +2846,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WVACNOK_MASK
 DESC	Waveguide Vac NOK
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 7)
+CALC	(A & (1 << 7)) >> 7
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WVACNOK
 PRIO	LOW
 #-------------------------------------------------------
@@ -2867,7 +2867,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_VACFLT_MASK
 DESC	Klys Vacuum Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 8)
+CALC	(A & (1 << 8)) >> 8
 FLNK	KLYS:$(AREA):$(LOCATION):FG_VACFLT
 PRIO	LOW
 #-------------------------------------------------------
@@ -2888,7 +2888,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WGVFLT_MASK
 DESC	Waveguide Valve Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 9)
+CALC	(A & (1 << 9)) >> 9
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WGVFLT
 PRIO	LOW
 #-------------------------------------------------------
@@ -2909,7 +2909,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_MASK
 DESC	WG Thermo Couple Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 10)
+CALC	(A & (1 << 10)) >> 10
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WGTCFLT
 PRIO	LOW
 #-------------------------------------------------------
@@ -2930,7 +2930,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_MASK
 DESC	Klys Flow Sw Open
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 11)
+CALC	(A & (1 << 11)) >> 11
 FLNK	KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN
 PRIO	LOW
 #-------------------------------------------------------
@@ -2951,7 +2951,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WGFLW2_MASK
 DESC	Waveguide Flow Sw 2 Open
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 12)
+CALC	(A & (1 << 12)) >> 12
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WGFLW2
 PRIO	LOW
 #-------------------------------------------------------
@@ -2972,7 +2972,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WGFLW1_MASK
 DESC	Waveguide Flow Sw 1 Open
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 13)
+CALC	(A & (1 << 13)) >> 13
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WGFLW1
 PRIO	LOW
 #-------------------------------------------------------
@@ -2993,7 +2993,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_MASK
 DESC	Accelerator Flow Sw 2 Open
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 14)
+CALC	(A & (1 << 14)) >> 14
 FLNK	KLYS:$(AREA):$(LOCATION):FG_ACCFLW2
 PRIO	LOW
 #-------------------------------------------------------
@@ -3014,7 +3014,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_MASK
 DESC	Accelerator Flow Sw 1 Open
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
-CALC	A & (1 << 15)
+CALC	(A & (1 << 15)) >> 15
 FLNK	KLYS:$(AREA):$(LOCATION):FG_ACCFLW1
 PRIO	LOW
 #-------------------------------------------------------
@@ -3035,7 +3035,7 @@ record	ai
 name	KLYS:$(AREA):$(LOCATION):FG_FAULT1
 operation	read
 task	0x49
-address	3
+address	5
 size	1
 DESC	Fault Generator Status
 DTYP	asynInt32
@@ -3062,25 +3062,25 @@ DESC	Reflct Pwr Ower Thres
 INP	KLYS:$(AREA):$(LOCATION):FG_RPOT_MASK
 ZNAM	No
 ONAM	Yes
-FLNK	KLYS:$(AREA):$(LOCATION):FG_FGOT_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_FPOT_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# FG_FGOT: Fwrd Pwr Ower Thres (Bit 1)
+# FG_FPOT: Fwrd Pwr Ower Thres (Bit 1)
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_FGOT_MASK
+name	KLYS:$(AREA):$(LOCATION):FG_FPOT_MASK
 DESC	Fwrd Pwr Ower Thres
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT1
-CALC	A & (1 << 1)
-FLNK	KLYS:$(AREA):$(LOCATION):FG_FGOT
+CALC	(A & (1 << 1)) >> 1
+FLNK	KLYS:$(AREA):$(LOCATION):FG_FPOT
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):FG_FGOT
+name	KLYS:$(AREA):$(LOCATION):FG_FPOT
 operation	record
 DESC	Fwrd Pwr Ower Thres
-INP	KLYS:$(AREA):$(LOCATION):FG_FGOT_MASK
+INP	KLYS:$(AREA):$(LOCATION):FG_FPOT_MASK
 ZNAM	No
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):FG_BVOT_MASK
@@ -3093,7 +3093,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_BVOT_MASK
 DESC	Beam Volt Over Thres
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT1
-CALC	A & (1 << 2)
+CALC	(A & (1 << 2)) >> 2
 FLNK	KLYS:$(AREA):$(LOCATION):FG_BVOT
 PRIO	LOW
 #-------------------------------------------------------
@@ -3114,7 +3114,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_BCOT_MASK
 DESC	Beam Curr Over Thres
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT1
-CALC	A & (1 << 3)
+CALC	(A & (1 << 3)) >> 3
 FLNK	KLYS:$(AREA):$(LOCATION):FG_BCOT
 PRIO	LOW
 #-------------------------------------------------------
@@ -3135,7 +3135,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_FCGCURR_MASK
 DESC	FCoil GCurr out of range
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT1
-CALC	A & (1 << 4)
+CALC	(A & (1 << 4)) >> 4
 FLNK	KLYS:$(AREA):$(LOCATION):FG_FCGCURR
 PRIO	LOW
 #-------------------------------------------------------
@@ -3146,25 +3146,25 @@ DESC	FCoil GCurr out of range
 INP	KLYS:$(AREA):$(LOCATION):FG_FCGCURR_MASK
 ZNAM	No
 ONAM	Yes
-FLNK	KLYS:$(AREA):$(LOCATION):FG_FGCURR_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_FCCURR_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# FG_FGCURR: FCoil Curr out of range (Bit 5)
+# FG_FCCURR: FCoil Curr out of range (Bit 5)
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_FGCURR_MASK
+name	KLYS:$(AREA):$(LOCATION):FG_FCCURR_MASK
 DESC	FCoil Curr out of range
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT1
-CALC	A & (1 << 5)
-FLNK	KLYS:$(AREA):$(LOCATION):FG_FGCURR
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):FG_FCCURR
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):FG_FGCURR
+name	KLYS:$(AREA):$(LOCATION):FG_FCCURR
 operation	record
 DESC	FCoil Curr out of range
-INP	KLYS:$(AREA):$(LOCATION):FG_FGCURR_MASK
+INP	KLYS:$(AREA):$(LOCATION):FG_FCCURR_MASK
 ZNAM	No
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WVAC_MASK
@@ -3177,7 +3177,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_WVAC_MASK
 DESC	Waveguide Vac out of range 
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT1
-CALC	A & (1 << 6)
+CALC	(A & (1 << 6)) >> 6
 FLNK	KLYS:$(AREA):$(LOCATION):FG_WVAC
 PRIO	LOW
 #-------------------------------------------------------
@@ -3198,7 +3198,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_KVAC_MASK
 DESC	Klys Vac out of range
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT1
-CALC	A & (1 << 7)
+CALC	(A & (1 << 7)) >> 7
 FLNK	KLYS:$(AREA):$(LOCATION):FG_KVAC
 PRIO	LOW
 #-------------------------------------------------------
@@ -3219,7 +3219,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_MASK
 DESC	Klys Temp Difference
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT1
-CALC	A & (1 << 8)
+CALC	(A & (1 << 8)) >> 8
 FLNK	KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF
 PRIO	LOW
 #-------------------------------------------------------
@@ -3240,7 +3240,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_24VLOW_MASK
 DESC	-24V Battery Low
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT1
-CALC	A & (1 << 9)
+CALC	(A & (1 << 9)) >> 9
 FLNK	KLYS:$(AREA):$(LOCATION):FG_24VLOW
 PRIO	LOW
 #-------------------------------------------------------
@@ -3261,7 +3261,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_MASK
 DESC	Beam Below Low Thres
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT1
-CALC	A & (1 << 10)
+CALC	(A & (1 << 10)) >> 10
 FLNK	KLYS:$(AREA):$(LOCATION):FG_BEAMLOW
 PRIO	LOW
 #-------------------------------------------------------

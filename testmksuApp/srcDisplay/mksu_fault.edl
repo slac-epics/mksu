@@ -1,0 +1,4233 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 471
+y 29
+w 450
+h 820
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-18.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 3
+textColor index 14
+ctlFgColor1 index 14
+ctlFgColor2 index 0
+ctlBgColor1 index 0
+ctlBgColor2 index 14
+topShadowColor index 0
+botShadowColor index 14
+endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 225
+w 412
+h 584
+lineColor index 14
+fillColor index 0
+lineWidth 2
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 244
+w 48
+h 555
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 48
+w 412
+h 156
+lineColor index 14
+fillColor index 0
+lineWidth 2
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 26
+y 40
+w 42
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " Status "
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 153
+y 15
+w 138
+h 21
+font "helvetica-bold-r-18.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Fault Generator"
+}
+autoSize
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 876
+y 871
+w 182
+h 100
+
+beginGroup
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 876
+y 876
+w 182
+h 95
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 885
+y 871
+w 58
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " RF Drive "
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 937
+y 949
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_ACTDRV"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 937
+y 929
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_DRV"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 937
+y 909
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_LDRV"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 937
+y 889
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_RDRV"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 885
+y 929
+w 44
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Current:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 895
+y 909
+w 34
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Local:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 885
+y 889
+w 44
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Remote:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 890
+y 949
+w 39
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Actual:"
+}
+autoSize
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 988
+y 887
+w 55
+h 18
+controlPv "KLYS:$(area):$(loca):RF_RDRV_SET"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+editable
+autoHeight
+motifWidget
+limitsFromDb
+nullColor index 0
+useHexPrefix
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 876
+y 871
+w 182
+h 100
+
+beginGroup
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 876
+y 876
+w 182
+h 95
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 885
+y 871
+w 58
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " RF Drive "
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 937
+y 949
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_ACTDRV"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 937
+y 929
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_DRV"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 937
+y 909
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_LDRV"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 937
+y 889
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_RDRV"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 885
+y 929
+w 44
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Current:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 895
+y 909
+w 34
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Local:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 885
+y 889
+w 44
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Remote:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 890
+y 949
+w 39
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Actual:"
+}
+autoSize
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 988
+y 887
+w 55
+h 18
+controlPv "KLYS:$(area):$(loca):RF_RDRV_SET"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+editable
+autoHeight
+motifWidget
+limitsFromDb
+nullColor index 0
+useHexPrefix
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1003
+y 806
+w 182
+h 100
+
+beginGroup
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1003
+y 811
+w 182
+h 95
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 1012
+y 806
+w 58
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " RF Drive "
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 1064
+y 884
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_ACTDRV"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 1064
+y 864
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_DRV"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 1064
+y 844
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_LDRV"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 1064
+y 824
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):RF_RDRV"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 1012
+y 864
+w 44
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Current:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 1022
+y 844
+w 34
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Local:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 1012
+y 824
+w 44
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Remote:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 1017
+y 884
+w 39
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Actual:"
+}
+autoSize
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 1115
+y 822
+w 55
+h 18
+controlPv "KLYS:$(area):$(loca):RF_RDRV_SET"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+editable
+autoHeight
+motifWidget
+limitsFromDb
+nullColor index 0
+useHexPrefix
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 158
+y 82
+w 39
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "RF Off:"
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 81
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_RFOFF"
+fgColor index 14
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 120
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_EILKOPN"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 100
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_MGNTOFF"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 88
+y 121
+w 109
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Ext. Interlock Open:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 132
+y 101
+w 65
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Magnet Off:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 101
+y 141
+w 96
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "High Voltage Off:"
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 140
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_HVOFF"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 102
+y 161
+w 95
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Trigger Disabled:"
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 160
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_TRIGDIS"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 241
+y 67
+w 159
+h 120
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 253
+y 59
+w 53
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " Latched "
+}
+autoSize
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 330
+y 79
+w 56
+h 99
+
+beginGroup
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 330
+y 158
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_TRIGDIS_CLR"
+pressValue "1"
+onLabel "Clear"
+offLabel "Clear"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 330
+y 138
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_HVOFF_CLR"
+pressValue "1"
+onLabel "Clear"
+offLabel "Clear"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 330
+y 118
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_EILKOPN_CLR"
+pressValue "1"
+onLabel "Clear"
+offLabel "Clear"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 330
+y 98
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_MGNTOFF_CLR"
+pressValue "1"
+onLabel "Clear"
+offLabel "Clear"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 330
+y 79
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_RFOFF_CLR"
+pressValue "1"
+onLabel "Clear"
+offLabel "Clear"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 265
+y 81
+w 25
+h 93
+
+beginGroup
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 265
+y 81
+w 25
+h 93
+
+beginGroup
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 160
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_TRIGDIS_L"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 140
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_HVOFF_L"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 120
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_EILKOPN_L"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 81
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_RFOFF_L"
+fgColor index 14
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 100
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_MGNTOFF_L"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 26
+y 217
+w 83
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " Faults/Bypass"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 117
+y 259
+w 80
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "SLED Not OK:"
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 258
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_SLEDNOK"
+fgColor index 14
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 297
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_SLEDMOTR"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 277
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_SLED"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 79
+y 298
+w 118
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "SLED Motor Timeout:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 130
+y 278
+w 67
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "SLED Fault:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 114
+y 318
+w 83
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Magnet Klixon:"
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 317
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_MGNTKLIX"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 76
+y 338
+w 121
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Mgnt Current Not OK:"
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 337
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_MGNTCNOK"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 252
+y 244
+w 168
+h 555
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 255
+y 236
+w 49
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " Bypass "
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 315
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_MGNTKLIX_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 315
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_MGNTKLIX_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 255
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_SLEDNOK_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 255
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_SLEDNOK_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 275
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_SLED_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 275
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_SLED_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 295
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_SLEDMOTR_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 295
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_SLEDMOTR_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 317
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_MGNTKLIX_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 297
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_SLEDMOTR_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 277
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_SLED_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 258
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_SLEDNOK_BP"
+fgColor index 14
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 335
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_MGNTCNOK_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 335
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_MGNTCNOK_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 337
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_MGNTCNOK_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 375
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WVACBAD_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 375
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WVACBAD_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 377
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WVACBAD_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 377
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WVACBAD"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 55
+y 378
+w 142
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Waveguide Vacuum Bad:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 395
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WVACNOK_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 395
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WVACNOK_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 397
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WVACNOK_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 397
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WVACNOK"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 36
+y 398
+w 161
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Waveguide Vacuum Not OK:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 415
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_KVACFLT_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 415
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_KVACFLT_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 417
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_VACFLT_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 417
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_VACFLT"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 67
+y 418
+w 130
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Klystron Vacuum Fault:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 435
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WGVFLT_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 435
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WGVFLT_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 437
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WGVFLT_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 437
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WGVFLT"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 62
+y 438
+w 135
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Waveguide Valve Fault:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 455
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WGTCFLT_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 455
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WGTCFLT_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 457
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WGTCFLT_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 457
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WGTCFLT"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 46
+y 458
+w 151
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Waveguite Thermo Couple:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 475
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_KLYSFSOPEN_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 475
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_KLYSFSOPEN_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 477
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_KLYSFSOPEN_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 477
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_KLYSFSOPEN"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 42
+y 478
+w 155
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Klystron Flow Switch Open:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 495
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WGFLW2_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 495
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WGFLW2_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 497
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WGFLW2_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 497
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WGFLW2"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 48
+y 498
+w 149
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Waveguide Flow Switch 2:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 515
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WGFLW1_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 515
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WGFLW1_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 517
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WGFLW1_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 517
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WGFLW1"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 48
+y 518
+w 149
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Waveguide Flow Switch 1:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 535
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_ACCFLW2_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 535
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_ACCFLW2_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 537
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_ACCFLW2_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 537
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_ACCFLW2"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 46
+y 538
+w 151
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Accelerator Flow Switch 2:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 555
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_ACCFLW1_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 555
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_ACCFLW1_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 557
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_ACCFLW1_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 557
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_ACCFLW1"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 46
+y 558
+w 151
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Accelerator Flow Switch 1:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 575
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_RPOT_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 575
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_RPOT_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 577
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_RPOT_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 577
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_RPOT"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 33
+y 578
+w 164
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Reflected Power Over Thres.:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 595
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_FPOT_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 595
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_FPOT_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 597
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_FPOT_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 597
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_FPOT"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 39
+y 598
+w 158
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Forward Power Over Thres.:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 615
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_BVOT_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 615
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_BVOT_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 617
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_BVOT_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 617
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_BVOT"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 46
+y 618
+w 151
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Beam Voltage Over Thres.:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 635
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_BCOT_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 635
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_BCOT_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 637
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_BCOT_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 637
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_BCOT"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 48
+y 638
+w 149
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Beam Current Over Thres.:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 655
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_FCGCURR_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 655
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_FCGCURR_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 657
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_FCGCURR_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 657
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_FCGCURR"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 62
+y 658
+w 135
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Focus Coil GND Range:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 675
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_FCCURR_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 675
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_FCCURR_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 677
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_FCCURR_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 677
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_FCCURR"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 48
+y 678
+w 149
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Focus Coil Current Range:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 695
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WVAC_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 695
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_WVAC_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 697
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WVAC_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 697
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_WVAC"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 41
+y 698
+w 156
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Waveguide Vacuum Range:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 715
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_KVAC_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 715
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_KVAC_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 717
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_KVAC_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 717
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_KVAC"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 59
+y 718
+w 138
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Klystron Vacuum Range:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 735
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_KTEMPDIFF_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 735
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_KTEMPDIFF_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 737
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_KTEMPDIFF_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 737
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_KTEMPDIFF"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 21
+y 738
+w 176
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Klystron Body Temp Difference:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 755
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_24VLOW_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 755
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_24VLOW_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 757
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_24VLOW_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 757
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_24VLOW"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 96
+y 758
+w 101
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "-24V Battery Low:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 775
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_BEAMLOW_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 775
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_BEAMLOW_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 777
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_BEAMLOW_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 777
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_BEAMLOW"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 39
+y 778
+w 158
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Beam Below Low Threshold:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 356
+y 355
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_MGNTCILK_BP_RESET"
+pressValue "1"
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 300
+y 355
+w 56
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):FG_MGNTCILK_BP_SET"
+pressValue "1"
+onLabel "Set"
+offLabel "Set"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 265
+y 357
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_MGNTCILK_BP"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 207
+y 357
+w 25
+h 14
+controlPv "KLYS:$(area):$(loca):FG_MGNTCILK"
+displayMode "decimal"
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 70
+y 358
+w 127
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Mgnt Current Interlock:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 203
+y 236
+w 36
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " Fault "
+}
+autoSize
+endObjectProperties
+
