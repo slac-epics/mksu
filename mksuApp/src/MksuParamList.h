@@ -1,11 +1,11 @@
-// Header file generated from MksuList.map on Sun, 22 Jan 2012 17:09:30 +0000
+// Header file generated from MksuList.map on Fri, 10 Feb 2012 01:30:54 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 357;
+const int MKSU_NUM_PARAMS = 364;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -33,6 +33,8 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x05, asynParamInt32, 5, 0, 1, "TWTH_FP_DES", -1},
   {0x05, asynParamInt32, 8, 0, 1, "TCNT_IN_DES", -1},
   {0x05, asynParamInt32, 9, 0, 1, "TCNT_OUT_DES", -1},
+  {0x05, asynParamInt32, 10, 0, 1, "RTRIGDIV_DES", -1},
+  {0x05, asynParamInt32, 13, 0, 1, "SELF_TDLY_DES", -1},
   {0x45, asynParamInt32, 0, 0, 1, "TDLY_WF", -1},
   {0x45, asynParamInt32, 1, 0, 1, "TDLY", -1},
   {0x45, asynParamInt32, 2, 0, 1, "TDLY_RP", -1},
@@ -43,6 +45,10 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x45, asynParamInt32, 7, 0, 1, "TDLY_ACT", -1},
   {0x45, asynParamInt32, 8, 0, 1, "TCNT_IN", -1},
   {0x45, asynParamInt32, 8, 0, 1, "TCNT_OUT", -1},
+  {0x45, asynParamInt32, 10, 0, 1, "RTRIGDIV", -1},
+  {0x45, asynParamInt32, 11, 0, 1, "LTRIGDIV", -1},
+  {0x45, asynParamInt32, 12, 0, 1, "TRIGDIV_ACT", -1},
+  {0x45, asynParamInt32, 12, 0, 1, "SELF_TDLY", -1},
   {0x27, asynParamInt16Array, 0, 0, 256, "RF_DRV_WF_SET", -1},
   {0x67, asynParamInt16Array, 0, 0, 256, "RF_DRV_WF", -1},
   {0x64, asynParamInt8Array, 0, 0, 8, "SYS_VERSION", -1},
@@ -55,13 +61,13 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x10, asynParamInt32, 0, 0, 1, "STATUS_TIN_OR_SET", -1},
   {0x10, asynParamInt32, 0, 0, 1, "STATUS_TDELTA_SET", -1},
   {0x10, asynParamInt32, 1, 0, 1, "TOFF_SET", -1},
+  {0x10, asynParamInt32, 1, 0, 1, "TDELTAMAX_SET", -1},
   {0x50, asynParamInt32, 0, 0, 1, "STATUS_TEMP", -1},
   {0x50, asynParamInt32, 1, 1, 1, "TOFF", -1},
-  {0x50, asynParamInt32, 2, 0, 1, "TOUT_RAW", -1},
-  {0x50, asynParamInt32, 3, 0, 1, "TIN_RAW", -1},
-  {0x50, asynParamInt32, 4, 0, 1, "TDIFF", -1},
-  {0x50, asynParamInt32, 5, 0, 1, "TOUT_CNTS", -1},
-  {0x50, asynParamInt32, 6, 0, 1, "TIN_CNTS", -1},
+  {0x50, asynParamInt32, 2, 0, 1, "TDELTAMAX", -1},
+  {0x50, asynParamInt32, 3, 0, 1, "TDELTA", -1},
+  {0x50, asynParamInt32, 4, 1, 1, "TOUT_CNTS", -1},
+  {0x50, asynParamInt32, 5, 1, 1, "TIN_CNTS", -1},
   {0x63, asynParamInt32, 0, 0, 1, "XTEMP_RAW", -1},
   {0x63, asynParamInt32, 1, 0, 1, "XV_INT_RAW", -1},
   {0x63, asynParamInt32, 2, 0, 1, "XV_AUX_RAW", -1},
@@ -230,6 +236,7 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_WG2_CLR_SET", -1},
   {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_ACC1_CLR_SET", -1},
   {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_ACC2_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_FLOW_CLR_SET", -1},
   {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_FLT_CLR_SET", -1},
   {0x0B, asynParamInt32, 3, 0, 1, "CTRL_WATR_TST_SET", -1},
   {0x0B, asynParamInt32, 3, 0, 1, "CTRL_WATR_WG1_TST_SET", -1},

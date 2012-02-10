@@ -172,6 +172,18 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_SET
 EGU	C * 100
 PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TDELTAMAX_SET
+operation	write
+task	0x10
+address	1
+size	1
+DESC	Delta Temp Max
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_SET
+EGU	C
+PRIO	LOW
 #=======================================================
 # KLYSTRON BODY TEMP BLOCK (READ)
 #=======================================================
@@ -281,11 +293,11 @@ name	KLYS:$(AREA):$(LOCATION):TDELTA_MASK
 DESC	Delta Temp Exceed
 INPA	KLYS:$(AREA):$(LOCATION):STATUS_TEMP
 CALC	(A & (1 << 4)) >> 4
-FLNK	KLYS:$(AREA):$(LOCATION):TDELTA
+FLNK	KLYS:$(AREA):$(LOCATION):TDELTAEXCD
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):TDELTA
+name	KLYS:$(AREA):$(LOCATION):TDELTAEXCD
 operation	record
 DESC	Delta Temp Exceed
 INP	KLYS:$(AREA):$(LOCATION):TDELTA_MASK
@@ -310,17 +322,44 @@ EGU	C
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):TOUT_RAW
+name	KLYS:$(AREA):$(LOCATION):TDELTAMAX
 operation	read 
 task	0x50
 address	2
 size	1
-DESC	Output Temperature
+DESC	Delta Temp Max
 DTYP	asynInt32
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT_RAW
-FLNK	KLYS:$(AREA):$(LOCATION):TOUT
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTAMAX
 EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TDELTA
+operation	read 
+task	0x50
+address	3
+size	1
+DESC	Delta Temperature
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTA
+EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TOUT_CNTS
+operation	read
+task	0x50
+address	4
+size	1
+conversion	1
+DESC	Output Temperature ADC cnts
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT_CNTS
+FLNK	KLYS:$(AREA):$(LOCATION):TOUT
+EGU	counts
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
@@ -328,23 +367,24 @@ name	KLYS:$(AREA):$(LOCATION):TOUT
 operation	record
 DESC	Output Temperature
 SCAN	$(SCAN)
-INPA	KLYS:$(AREA):$(LOCATION):TOUT_RAW
+INPA	KLYS:$(AREA):$(LOCATION):TOUT_CNTS
 CALC	((A & 255) - 3.6307)/0.0613
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):TIN_RAW
+name	KLYS:$(AREA):$(LOCATION):TIN_CNTS
 operation	read 
 task	0x50
-address	3
+address	5
 size	1
-DESC	Input Temperature (Raw)
+conversion	1
+DESC	Input Temperature ADC cnts
 DTYP	asynInt32
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN_RAW
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN_CNTS
 FLNK	KLYS:$(AREA):$(LOCATION):TIN
-EGU	C
+EGU	counts
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
@@ -352,47 +392,8 @@ name	KLYS:$(AREA):$(LOCATION):TIN
 operation	record
 DESC	Output Temperature
 SCAN	$(SCAN)
-INPA	KLYS:$(AREA):$(LOCATION):TIN_RAW
+INPA	KLYS:$(AREA):$(LOCATION):TIN_CNTS
 CALC	((A & 255) - 3.6307)/0.0613
 EGU	C
-PRIO	LOW
-#-------------------------------------------------------
-record	ai
-name	KLYS:$(AREA):$(LOCATION):TDIFF
-operation	read 
-task	0x50
-address	4
-size	1
-DESC	Temperature Difference
-DTYP	asynInt32
-SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDIFF
-EGU	C
-PRIO	LOW
-#-------------------------------------------------------
-record	ai
-name	KLYS:$(AREA):$(LOCATION):TOUT_CNTS
-operation	read 
-task	0x50
-address	5
-size	1
-DESC	Output Temperature ADC cnts
-DTYP	asynInt32
-SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT_CNTS
-EGU	counts
-PRIO	LOW
-#-------------------------------------------------------
-record	ai
-name	KLYS:$(AREA):$(LOCATION):TIN_CNTS
-operation	read 
-task	0x50
-address	6
-size	1
-DESC	Input Temperature ADC cnts
-DTYP	asynInt32
-SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN_CNTS
-EGU	counts
 PRIO	LOW
 #-------------------------------------------------------

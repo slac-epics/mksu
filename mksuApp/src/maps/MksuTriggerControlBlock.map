@@ -96,6 +96,28 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_OUT_DES
 EGU	1KHz Ticks
 PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):RTRIGDIV_DES
+operation	write
+task	0x05
+address	10
+size	1
+DESC	Remote Trig Divider
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RTRIGDIV_DES
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):SELF_TDLY_DES
+operation	write
+task	0x05
+address	13
+size	1
+DESC	Remote Trig Divider
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SELF_TDLY_DES
+PRIO	LOW
 #=======================================================
 # TRIGGER CONTROL BLOCK (READ)
 #=======================================================
@@ -307,5 +329,53 @@ DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN
 EGU	1KHz Ticks
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):RTRIGDIV
+operation	read 
+task	0x45
+address	10
+size	1
+DESC	Remote Trig Divider
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RTRIGDIV
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):LTRIGDIV
+operation	read 
+task	0x45
+address	11
+size	1
+DESC	Local Trig Divider
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))LTRIGDIV
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TRIGDIV_ACT
+operation	read 
+task	0x45
+address	12
+size	1
+DESC	Actual Trig Divider
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TRIGDIV_ACT
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):SELF_TDLY
+operation	read 
+task	0x45
+address	12
+size	1
+DESC	Actual Trig Divider
+DTYP	asynInt32
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SELF_TDLY
 PRIO	LOW
 #-------------------------------------------------------

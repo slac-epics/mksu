@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 709
-y 145
+x 95
+y 339
 w 550
 h 500
 font "helvetica-medium-r-18.0"
@@ -813,7 +813,7 @@ release 0
 x 16
 y 272
 w 241
-h 195
+h 218
 lineColor index 14
 fillColor index 0
 endObjectProperties
@@ -837,171 +837,6 @@ value {
 autoSize
 endObjectProperties
 
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 164
-y 441
-w 86
-h 20
-fgColor index 14
-onColor index 4
-offColor index 1
-topShadowColor index 1
-botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):TDELTA_CLR"
-pressValue "1"
-onLabel "Clear Status"
-offLabel "Clear Status"
-3d
-useEnumNumeric
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 164
-y 421
-w 86
-h 20
-fgColor index 14
-onColor index 4
-offColor index 1
-topShadowColor index 1
-botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):TOUT_OR_CLR"
-pressValue "1"
-onLabel "Clear Status"
-offLabel "Clear Status"
-3d
-useEnumNumeric
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 164
-y 401
-w 86
-h 20
-fgColor index 14
-onColor index 4
-offColor index 1
-topShadowColor index 1
-botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):TIN_OR_CLR"
-pressValue "1"
-onLabel "Clear Status"
-offLabel "Clear Status"
-3d
-useEnumNumeric
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 164
-y 381
-w 86
-h 20
-fgColor index 14
-onColor index 4
-offColor index 1
-topShadowColor index 1
-botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):TOUT_TMO_CLR"
-pressValue "1"
-onLabel "Clear Status"
-offLabel "Clear Status"
-3d
-useEnumNumeric
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 164
-y 361
-w 86
-h 20
-fgColor index 14
-onColor index 4
-offColor index 1
-topShadowColor index 1
-botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):TIN_TMO_CLR"
-pressValue "1"
-onLabel "Clear Status"
-offLabel "Clear Status"
-3d
-useEnumNumeric
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Text Control)
-object activeXTextDspClass
-beginObjectProperties
-major 4
-minor 5
-release 0
-x 180
-y 341
-w 54
-h 18
-controlPv "KLYS:$(area):$(loca):TOFF_SET"
-format "decimal"
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-editable
-autoHeight
-motifWidget
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "controls"
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 136
-y 344
-w 11
-h 14
-controlPv "KLYS:$(area):$(loca):TOFF.EGU"
-precision 2
-fgColor index 14
-fgAlarm
-bgColor index 3
-fill
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
 # (Text Update)
 object TextupdateClass
 beginObjectProperties
@@ -1012,7 +847,7 @@ x 136
 y 324
 w 11
 h 14
-controlPv "KLYS:$(area):$(loca):TDIFF.EGU"
+controlPv "KLYS:$(area):$(loca):TDELTA.EGU"
 precision 2
 fgColor index 14
 fgAlarm
@@ -1027,132 +862,11 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 103
-y 444
-w 45
+x 93
+y 324
+w 39
 h 14
 controlPv "KLYS:$(area):$(loca):TDELTA"
-displayMode "decimal"
-precision 2
-fgColor index 14
-fgAlarm
-bgColor index 3
-fill
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 103
-y 424
-w 45
-h 14
-controlPv "KLYS:$(area):$(loca):TOUT_OR"
-displayMode "decimal"
-precision 2
-fgColor index 14
-fgAlarm
-bgColor index 3
-fill
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 103
-y 404
-w 45
-h 14
-controlPv "KLYS:$(area):$(loca):TIN_OR"
-displayMode "decimal"
-precision 2
-fgColor index 14
-fgAlarm
-bgColor index 3
-fill
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 103
-y 384
-w 45
-h 14
-controlPv "KLYS:$(area):$(loca):TOUT_TMO"
-displayMode "decimal"
-precision 2
-fgColor index 14
-fgAlarm
-bgColor index 3
-fill
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 103
-y 364
-w 45
-h 14
-controlPv "KLYS:$(area):$(loca):TIN_TMO"
-displayMode "decimal"
-precision 2
-fgColor index 14
-fgAlarm
-bgColor index 3
-fill
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 93
-y 344
-w 39
-h 14
-controlPv "KLYS:$(area):$(loca):TOFF"
-displayMode "decimal"
-precision 2
-fgColor index 14
-fgAlarm
-bgColor index 3
-fill
-font "helvetica-medium-r-12.0"
-fontAlign "right"
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 93
-y 324
-w 39
-h 14
-controlPv "KLYS:$(area):$(loca):TDIFF"
 displayMode "decimal"
 precision 2
 fgColor index 14
@@ -1360,135 +1074,15 @@ major 4
 minor 1
 release 0
 x 23
-y 444
-w 78
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Delta Exceed:"
-}
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 23
-y 424
-w 72
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Output Over:"
-}
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 23
-y 404
-w 62
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Input Over:"
-}
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 23
-y 384
-w 72
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Output TMO:"
-}
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 23
-y 364
-w 62
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Input TMO:"
-}
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 23
 y 324
-w 60
+w 32
 h 14
 font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
-  "Difference:"
-}
-autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 23
-y 344
-w 35
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Offset:"
+  "Delta:"
 }
 autoSize
 endObjectProperties
@@ -1853,5 +1447,497 @@ numDsps 1
 displayFileName {
   0 "mksu_fault.edl"
 }
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 136
+y 364
+w 11
+h 14
+controlPv "KLYS:$(area):$(loca):TOFF.EGU"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 180
+y 361
+w 54
+h 18
+controlPv "KLYS:$(area):$(loca):TOFF_SET"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+editable
+autoHeight
+motifWidget
+limitsFromDb
+nullColor index 0
+useHexPrefix
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 93
+y 364
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):TOFF"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 23
+y 364
+w 35
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Offset:"
+}
+autoSize
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 164
+y 461
+w 86
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):TDELTA_CLR"
+pressValue "1"
+onLabel "Clear Status"
+offLabel "Clear Status"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 164
+y 441
+w 86
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):TOUT_OR_CLR"
+pressValue "1"
+onLabel "Clear Status"
+offLabel "Clear Status"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 164
+y 421
+w 86
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):TIN_OR_CLR"
+pressValue "1"
+onLabel "Clear Status"
+offLabel "Clear Status"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 164
+y 401
+w 86
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):TOUT_TMO_CLR"
+pressValue "1"
+onLabel "Clear Status"
+offLabel "Clear Status"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 164
+y 381
+w 86
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):TIN_TMO_CLR"
+pressValue "1"
+onLabel "Clear Status"
+offLabel "Clear Status"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 103
+y 464
+w 45
+h 14
+controlPv "KLYS:$(area):$(loca):TDELTAEXCD"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 103
+y 444
+w 45
+h 14
+controlPv "KLYS:$(area):$(loca):TOUT_OR"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 103
+y 424
+w 45
+h 14
+controlPv "KLYS:$(area):$(loca):TIN_OR"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 103
+y 404
+w 45
+h 14
+controlPv "KLYS:$(area):$(loca):TOUT_TMO"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 103
+y 384
+w 45
+h 14
+controlPv "KLYS:$(area):$(loca):TIN_TMO"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 23
+y 464
+w 78
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Delta Exceed:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 23
+y 444
+w 72
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Output Over:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 23
+y 424
+w 62
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Input Over:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 23
+y 404
+w 72
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Output TMO:"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 23
+y 384
+w 62
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Input TMO:"
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 136
+y 344
+w 11
+h 14
+controlPv "KLYS:$(area):$(loca):TOFF.EGU"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 180
+y 341
+w 54
+h 18
+controlPv "KLYS:$(area):$(loca):TDELTAMAX_SET"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+editable
+autoHeight
+motifWidget
+limitsFromDb
+nullColor index 0
+useHexPrefix
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 93
+y 344
+w 39
+h 14
+controlPv "KLYS:$(area):$(loca):TDELTAMAX"
+displayMode "decimal"
+precision 2
+fgColor index 14
+fgAlarm
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 23
+y 344
+w 60
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Delta Max:"
+}
+autoSize
 endObjectProperties
 

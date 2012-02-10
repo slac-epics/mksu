@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Sun, 22 Jan 2012 17:09:30 +0000
+# Database template file generated from MksuList.map on Fri, 10 Feb 2012 01:30:54 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -569,6 +569,20 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TCNT_OUT_DES") {
   field(EGU, "1KHz Ticks")
 }
 
+record(ao, "KLYS:$(AREA):$(LOCATION):RTRIGDIV_DES") {
+  field(DESC, "Remote Trig Divider")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RTRIGDIV_DES")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):SELF_TDLY_DES") {
+  field(DESC, "Remote Trig Divider")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SELF_TDLY_DES")
+}
+
 record(ai, "KLYS:$(AREA):$(LOCATION):TDLY_WF") {
   field(DESC, "Waveguide trig delay")
   field(DTYP, "asynInt32")
@@ -729,6 +743,38 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TCNT_OUT") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN")
   field(EGU, "1KHz Ticks")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):RTRIGDIV") {
+  field(DESC, "Remote Trig Divider")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RTRIGDIV")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):LTRIGDIV") {
+  field(DESC, "Local Trig Divider")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))LTRIGDIV")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TRIGDIV_ACT") {
+  field(DESC, "Actual Trig Divider")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TRIGDIV_ACT")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):SELF_TDLY") {
+  field(DESC, "Actual Trig Divider")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SELF_TDLY")
 }
 
 record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV_WF_SET") {
@@ -913,6 +959,14 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TOFF_SET") {
   field(EGU, "C * 100")
 }
 
+record(ao, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_SET") {
+  field(DESC, "Delta Temp Max")
+  field(DTYP, "asynInt32")
+  field(PRIO, "LOW")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_SET")
+  field(EGU, "C")
+}
+
 record(ai, "KLYS:$(AREA):$(LOCATION):STATUS_TEMP") {
   field(DESC, "Klystron Body Temp Status")
   field(DTYP, "asynInt32")
@@ -993,11 +1047,11 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TDELTA_MASK") {
   field(DESC, "Delta Temp Exceed")
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):STATUS_TEMP")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTA")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTAEXCD")
   field(CALC, "(A & (1 << 4)) >> 4")
 }
 
-record(bi, "KLYS:$(AREA):$(LOCATION):TDELTA") {
+record(bi, "KLYS:$(AREA):$(LOCATION):TDELTAEXCD") {
   field(DESC, "Delta Temp Exceed")
   field(ONAM, "Delta Exceeded")
   field(ZNAM, "Ok")
@@ -1014,50 +1068,21 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TOFF") {
   field(EGU, "C")
 }
 
-record(ai, "KLYS:$(AREA):$(LOCATION):TOUT_RAW") {
-  field(DESC, "Output Temperature")
+record(ai, "KLYS:$(AREA):$(LOCATION):TDELTAMAX") {
+  field(DESC, "Delta Temp Max")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT_RAW")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTAMAX")
   field(EGU, "C")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):TOUT")
 }
 
-record(calc, "KLYS:$(AREA):$(LOCATION):TOUT") {
-  field(DESC, "Output Temperature")
-  field(PRIO, "LOW")
-  field(SCAN, "$(SCAN)")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):TOUT_RAW")
-  field(EGU, "C")
-  field(CALC, "((A & 255) - 3.6307)/0.0613")
-}
-
-record(ai, "KLYS:$(AREA):$(LOCATION):TIN_RAW") {
-  field(DESC, "Input Temperature (Raw)")
+record(ai, "KLYS:$(AREA):$(LOCATION):TDELTA") {
+  field(DESC, "Delta Temperature")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN_RAW")
-  field(EGU, "C")
-  field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN")
-}
-
-record(calc, "KLYS:$(AREA):$(LOCATION):TIN") {
-  field(DESC, "Output Temperature")
-  field(PRIO, "LOW")
-  field(SCAN, "$(SCAN)")
-  field(INPA, "KLYS:$(AREA):$(LOCATION):TIN_RAW")
-  field(EGU, "C")
-  field(CALC, "((A & 255) - 3.6307)/0.0613")
-}
-
-record(ai, "KLYS:$(AREA):$(LOCATION):TDIFF") {
-  field(DESC, "Temperature Difference")
-  field(DTYP, "asynInt32")
-  field(PRIO, "LOW")
-  field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDIFF")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTA")
   field(EGU, "C")
 }
 
@@ -1068,6 +1093,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TOUT_CNTS") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOUT_CNTS")
   field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TOUT")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TOUT") {
+  field(DESC, "Output Temperature")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TOUT_CNTS")
+  field(EGU, "C")
+  field(CALC, "((A & 255) - 3.6307)/0.0613")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):TIN_CNTS") {
@@ -1077,6 +1112,16 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TIN_CNTS") {
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TIN_CNTS")
   field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TIN") {
+  field(DESC, "Output Temperature")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TIN_CNTS")
+  field(EGU, "C")
+  field(CALC, "((A & 255) - 3.6307)/0.0613")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):XTEMP_RAW") {
@@ -5009,6 +5054,29 @@ record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_ACC2_CLR_SET") {
   field(PRIO, "LOW")
 }
 
+record(bo, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_CLR") {
+  field(DESC, "Waveguide2 Latch Clear")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_CLR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_CLR_MASK") {
+  field(DESC, "Waveguide2 Latch Clear")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_CLR")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLOW_CLR_SET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLOW_CLR_SET") {
+  field(DESC, "Waterflow Status (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_CLR_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_FLOW_CLR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
 record(bo, "KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR") {
   field(DESC, "Waveguide2 Latch Clear")
   field(PRIO, "LOW")
@@ -5020,7 +5088,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR_MASK") {
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLT_CLR_SET")
-  field(CALC, "A << 5")
+  field(CALC, "A << 6")
 }
 
 record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLT_CLR_SET") {
@@ -5353,6 +5421,23 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_L") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_L_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_L_MASK") {
+  field(DESC, "Fault Latch")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_L")
+  field(CALC, "(A & (1 << 5)) >> 5")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_L") {
+  field(DESC, "Fault Latch")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_L_MASK")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK")
 }
 
@@ -5361,7 +5446,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK") {
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):WATR_STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L")
-  field(CALC, "(A & (1 << 5)) >> 5")
+  field(CALC, "(A & (1 << 6)) >> 6")
 }
 
 record(bi, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L") {

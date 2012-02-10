@@ -160,7 +160,38 @@ DOL	KLYS:$(AREA):$(LOCATION):WATR_ACC2_CLR_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# WATR_FLT_CLR: Fault Latch Clear (Bit 5)
+# WATR_FLOW_CLR: Flow Summary (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WATR_FLOW_CLR
+operation	record
+DESC	Waveguide2 Latch Clear
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_FLOW_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_FLOW_CLR_MASK
+DESC	Waveguide2 Latch Clear
+INPA	KLYS:$(AREA):$(LOCATION):WATR_FLOW_CLR
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLOW_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLOW_CLR_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Waterflow Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WATR_FLOW_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_FLOW_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_FLT_CLR: Fault Latch Clear (Bit 6)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR
@@ -174,7 +205,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR_MASK
 DESC	Waveguide2 Latch Clear
 INPA	KLYS:$(AREA):$(LOCATION):WATR_FLT_CLR
-CALC	A << 5
+CALC	A << 6
 FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WATR_FLT_CLR_SET
 PRIO	LOW
 #-------------------------------------------------------
@@ -633,17 +664,38 @@ DESC	Accelerator2 Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK
 ZNAM	No
 ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_FLOW_L_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# WATR_FLOW_L: Flow Summary (Bit 5)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WATR_FLOW_L_MASK
+DESC	Fault Latch
+INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):WATR_FLOW_L
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):WATR_FLOW_L
+operation	record
+DESC	Fault Latch
+INP	KLYS:$(AREA):$(LOCATION):WATR_FLOW_L_MASK
+ZNAM	No
+ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# WATR_FLT_L: Fault Latch (Bit 5)
+# WATR_FLT_L: Fault Latch (Bit 6)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK
 DESC	Fault Latch
 INPA	KLYS:$(AREA):$(LOCATION):WATR_STATUS
-CALC	(A & (1 << 5)) >> 5
+CALC	(A & (1 << 6)) >> 6
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_FLT_L
 PRIO	LOW
 #-------------------------------------------------------
