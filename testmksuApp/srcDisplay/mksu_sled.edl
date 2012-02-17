@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 931
-y 141
+x 706
+y 120
 w 445
 h 675
 font "helvetica-medium-r-18.0"
@@ -1162,117 +1162,6 @@ major 4
 minor 0
 release 0
 x 29
-y 145
-w 384
-h 48
-
-beginGroup
-
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 29
-y 150
-w 384
-h 43
-lineColor index 14
-fillColor index 0
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 126
-y 165
-w 46
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Timeout:"
-}
-autoSize
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 178
-y 164
-w 64
-h 14
-controlPv "KLYS:$(area):$(loca):SLED_TMO"
-fgColor index 14
-bgColor index 3
-fill
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 35
-y 162
-w 86
-h 20
-fgColor index 14
-onColor index 4
-offColor index 1
-topShadowColor index 1
-botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):RF_3O5_CLR"
-pressValue "1"
-onLabel "Clear Fault"
-offLabel "Clear Fault"
-3d
-useEnumNumeric
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 38
-y 145
-w 38
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 3
-value {
-  " Faults"
-}
-autoSize
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 29
 y 365
 w 384
 h 137
@@ -2253,5 +2142,99 @@ fgAlarm
 bgColor index 3
 fill
 font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 29
+y 150
+w 384
+h 43
+lineColor index 14
+fillColor index 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 126
+y 165
+w 46
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Timeout:"
+}
+autoSize
+endObjectProperties
+
+# (Text Update)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 178
+y 164
+w 64
+h 14
+controlPv "KLYS:$(area):$(loca):SLED_TMO"
+fgColor index 14
+bgColor index 3
+fill
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 35
+y 162
+w 86
+h 20
+fgColor index 14
+onColor index 4
+offColor index 1
+topShadowColor index 1
+botShadowColor index 11
+controlPv "KLYS:$(area):$(loca):SLED_TMO_CLR"
+pressValue "1"
+onLabel "Clear Fault"
+offLabel "Clear Fault"
+3d
+useEnumNumeric
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 38
+y 145
+w 38
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " Faults"
+}
+autoSize
 endObjectProperties
 

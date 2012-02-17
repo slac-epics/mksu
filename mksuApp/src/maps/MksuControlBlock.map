@@ -233,7 +233,38 @@ size	1
 DESC	MKSU Control (write)
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_SET
-DOL	KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK
+DOL	KLYS:$(AREA):$(LOCATION):SELFTRIG_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SELFTRIG_SET: Self Trigger Set bit (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SELFTRIG_SET
+operation	record
+DESC	Self Trigger (Set)
+FLNK	KLYS:$(AREA):$(LOCATION):SELFTRIG_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SELFTRIG_SET_MASK
+DESC	Self Trigger (Set)
+INPA	KLYS:$(AREA):$(LOCATION):SELFTRIG_SET
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_SET
+operation	write
+task	0x01
+address	1
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SELFTRIG_SET
+DOL	KLYS:$(AREA):$(LOCATION):SELFTRIG_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -277,14 +308,14 @@ PRIO	LOW
 record	bo
 name	KLYS:$(AREA):$(LOCATION):TREN_RSET
 operation	record
-DESC	Trigger Enable (Set)
+DESC	Trigger Enable (Reset)
 FLNK	KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK
-DESC	Triggen Enable (Set)
+DESC	Triggen Enable (Reset)
 INPA	KLYS:$(AREA):$(LOCATION):TREN_RSET
 CALC	A << 1
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET
@@ -308,14 +339,14 @@ PRIO	LOW
 record	bo
 name	KLYS:$(AREA):$(LOCATION):CFGD_RSET
 operation	record
-DESC	Configured (Set)
+DESC	Configured (Reset)
 FLNK	KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK
-DESC	Configured (Set)
+DESC	Configured (Reset)
 INPA	KLYS:$(AREA):$(LOCATION):CFGD_RSET
 CALC	A << 2
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET
@@ -339,14 +370,14 @@ PRIO	LOW
 record	bo
 name	KLYS:$(AREA):$(LOCATION):WFTR_RSET
 operation	record
-DESC	Arm Waveform Trig (Set)
+DESC	Arm Waveform Trig (Reset)
 FLNK	KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK
-DESC	Arm Waveform Trig (Set)
+DESC	Arm Waveform Trig (Reset)
 INPA	KLYS:$(AREA):$(LOCATION):WFTR_RSET
 CALC	A << 3
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET
@@ -370,14 +401,14 @@ PRIO	LOW
 record	bo
 name	KLYS:$(AREA):$(LOCATION):AVTR_RSET
 operation	record
-DESC	Arm Average Trig (Set)
+DESC	Arm Average Trig (Reset)
 FLNK	KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK
-DESC	Arm Average Trig (Set)
+DESC	Arm Average Trig (Reset)
 INPA	KLYS:$(AREA):$(LOCATION):AVTR_RSET
 CALC	A << 4
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET
@@ -392,7 +423,38 @@ size	1
 DESC	MKSU Control (write)
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_RSET
-DOL	KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK
+DOL	KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# SELFTRIG_RSET: Self Trigger bit (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET
+operation	record
+DESC	Self Trigger (Reset)
+FLNK	KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET_MASK
+DESC	Self Trigger (Reset)
+INPA	KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_RSET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_RSET
+operation	write
+task	0x01
+address	2
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SELFTRIG_RSET
+DOL	KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -415,10 +477,10 @@ ONVL	1
 TWVL	2
 THVL	3
 FRVL	4
-ONST	Maintenance
-TWST	Offline
-THST	Stand By
-FRST	Accelerate
+ONST	Accelerate
+TWST	Stand By
+THST	Offline
+FRST	Maintenance
 PRIO	LOW
 #-------------------------------------------------------
 # Modulator State Register (END)
@@ -513,7 +575,7 @@ PRIO	LOW
 # Duplicate (see Modulator State Register)
 #-------------------------------------------------------
 #-------------------------------------------------------
-# RATE1119: 119MHz or 125MHz Present (Bit 6)
+# RATE119: 119MHz or 125MHz Present (Bit 6)
 #-------------------------------------------------------
 record	calc
 operation	record
@@ -688,6 +750,26 @@ name	KLYS:$(AREA):$(LOCATION):AVTR
 operation	record
 DESC	Arm Waveform Trigger
 INP	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# SELFTRIG: Internal Trigger Status (Bit 5)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_MASK
+DESC	Arm Waveform Trigger
+INPA	KLYS:$(AREA):$(LOCATION):CTRL
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):SELFTRIG
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):SELFTRIG
+operation	record
+DESC	Arm Waveform Trigger
+INP	KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_MASK
 ZNAM	No
 ONAM	Yes
 PRIO	LOW

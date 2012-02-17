@@ -12,6 +12,10 @@
 #
 #
 
+mksu-R1-0-12:
+	* Changes to the Klystron Body Temperature conversion
+	* Addition of bits/registers.
+
 mksu-R1-0-11:
 	* Added panel for Fault Generator (missing the fault
 	  counter)

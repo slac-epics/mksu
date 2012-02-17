@@ -1,11 +1,11 @@
-// Header file generated from MksuList.map on Fri, 10 Feb 2012 01:30:54 +0000
+// Header file generated from MksuList.map on Thu, 16 Feb 2012 18:20:45 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 364;
+const int MKSU_NUM_PARAMS = 366;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -16,11 +16,13 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x01, asynParamInt32, 1, 0, 1, "CTRL_CFGD_SET", -1},
   {0x01, asynParamInt32, 1, 0, 1, "CTRL_WFTR_SET", -1},
   {0x01, asynParamInt32, 1, 0, 1, "CTRL_AVTR_SET", -1},
+  {0x01, asynParamInt32, 1, 0, 1, "CTRL_SELFTRIG_SET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_PERMIT_RSET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_TREN_RSET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_CFGD_RSET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_WFTR_RSET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_AVTR_RSET", -1},
+  {0x01, asynParamInt32, 2, 0, 1, "CTRL_SELFTRIG_RSET", -1},
   {0x01, asynParamInt32, 3, 0, 1, "MOD_SET", -1},
   {0x41, asynParamInt32, 0, 0, 1, "STATUS", -1},
   {0x41, asynParamInt32, 1, 0, 1, "CTRL", -1},
@@ -60,14 +62,14 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x10, asynParamInt32, 0, 0, 1, "STATUS_TOUT_OR_SET", -1},
   {0x10, asynParamInt32, 0, 0, 1, "STATUS_TIN_OR_SET", -1},
   {0x10, asynParamInt32, 0, 0, 1, "STATUS_TDELTA_SET", -1},
-  {0x10, asynParamInt32, 1, 0, 1, "TOFF_SET", -1},
-  {0x10, asynParamInt32, 1, 0, 1, "TDELTAMAX_SET", -1},
+  {0x10, asynParamInt32, 1, 0, 1, "TOFF_CNTS_SET", -1},
+  {0x10, asynParamInt32, 2, 0, 1, "TDELTAMAX_CNTS_SET", -1},
   {0x50, asynParamInt32, 0, 0, 1, "STATUS_TEMP", -1},
-  {0x50, asynParamInt32, 1, 1, 1, "TOFF", -1},
-  {0x50, asynParamInt32, 2, 0, 1, "TDELTAMAX", -1},
-  {0x50, asynParamInt32, 3, 0, 1, "TDELTA", -1},
-  {0x50, asynParamInt32, 4, 1, 1, "TOUT_CNTS", -1},
-  {0x50, asynParamInt32, 5, 1, 1, "TIN_CNTS", -1},
+  {0x50, asynParamInt32, 1, 1, 1, "TOFF_CNTS", -1},
+  {0x50, asynParamInt32, 2, 0, 1, "TDELTAMAX_CNTS", -1},
+  {0x50, asynParamInt32, 3, 1, 1, "TDELTA_CNTS", -1},
+  {0x50, asynParamInt32, 4, 0, 1, "TOUT_CNTS", -1},
+  {0x50, asynParamInt32, 5, 0, 1, "TIN_CNTS", -1},
   {0x63, asynParamInt32, 0, 0, 1, "XTEMP_RAW", -1},
   {0x63, asynParamInt32, 1, 0, 1, "XV_INT_RAW", -1},
   {0x63, asynParamInt32, 2, 0, 1, "XV_AUX_RAW", -1},

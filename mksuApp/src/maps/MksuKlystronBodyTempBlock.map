@@ -161,28 +161,79 @@ PRIO	LOW
 #-------------------------------------------------------
 # Status Register (END)
 #-------------------------------------------------------
+#-------------------------------------------------------
+# TOFF_SET Register & Records
+#
+# The user inputs the value in C and there the following
+# records convert it into counts.
+#-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TOFF_SET
-operation	write
-task	0x10
-address	1
-size	1
-DESC	Temperature Offset
-DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_SET
-EGU	C * 100
+operation	record
+DESC	Temp. Offset
+FLNK	KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET
+EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	calcout
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET
+DESC	Temp Offset (C)
+INPA	KLYS:$(AREA):$(LOCATION):TOFF_SET
+CALC	A*1048
+FLNK	KLYS:$(AREA):$(LOCATION):TOFF_CNTS_SET
+EGU	counts
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):TDELTAMAX_SET
+name	KLYS:$(AREA):$(LOCATION):TOFF_CNTS_SET
 operation	write
 task	0x10
 address	1
 size	1
+DESC	Temp Offset
+DTYP	asynInt32
+DOL	KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET
+OMSL	closed_loop
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_CNTS_SET
+EGU	counts
+PRIO	LOW
+#-------------------------------------------------------
+# TDELTAMAX_SET Register & Records
+#
+# The user inputs the value in C and there the following
+# records convert it into counts.
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TDELTAMAX_SET
+operation	record
+DESC	Delta Temp Max
+FLNK	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET
+EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	calcout
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET
+DESC	Delta Temp Max
+INPA	KLYS:$(AREA):$(LOCATION):TDELTAMAX_SET
+CALC	A*1048
+FLNK	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS_SET
+EGU	counts
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS_SET
+operation	write
+task	0x10
+address	2
+size	1
 DESC	Delta Temp Max
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_SET
-EGU	C
+DOL	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET
+OMSL	closed_loop
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTAMAX_CNTS_SET
+EGU	counts
 PRIO	LOW
 #=======================================================
 # KLYSTRON BODY TEMP BLOCK (READ)
@@ -308,7 +359,7 @@ FLNK	KLYS:$(AREA):$(LOCATION):FC_HI_MASK
 # Status Register (END)
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):TOFF
+name	KLYS:$(AREA):$(LOCATION):TOFF_CNTS
 operation	read 
 task	0x50
 address	1
@@ -317,12 +368,22 @@ size	1
 DESC	Temperature Offset
 DTYP	asynInt32
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_CNTS
+EGU	C
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+name	KLYS:$(AREA):$(LOCATION):TOFF
+operation	record
+DESC	Temperature Offset
+SCAN	$(SCAN)
+INPA	KLYS:$(AREA):$(LOCATION):TOFF_CNTS
+CALC	A/1048
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):TDELTAMAX
+name	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS
 operation	read 
 task	0x50
 address	2
@@ -330,20 +391,42 @@ size	1
 DESC	Delta Temp Max
 DTYP	asynInt32
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTAMAX
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTAMAX_CNTS
+FLNK	KLYS:$(AREA):$(LOCATION):TDELTAMAX
+EGU	counts
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+name	KLYS:$(AREA):$(LOCATION):TDELTAMAX
+operation	record
+DESC	Delta Temp Max
+SCAN	$(SCAN)
+INPA	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS
+CALC	A/1048
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):TDELTA
+name	KLYS:$(AREA):$(LOCATION):TDELTA_CNTS
 operation	read 
 task	0x50
 address	3
+conversion	1
 size	1
 DESC	Delta Temperature
 DTYP	asynInt32
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTA
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTA_CNTS
+EGU	counts
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+name	KLYS:$(AREA):$(LOCATION):TDELTA
+operation	record
+DESC	Delta Temperature
+SCAN	$(SCAN)
+INPA	KLYS:$(AREA):$(LOCATION):TDELTA_CNTS
+CALC	A/0.0625/0.00021*(9.53e-9)*(2.1/2.5)
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------
@@ -353,7 +436,6 @@ operation	read
 task	0x50
 address	4
 size	1
-conversion	1
 DESC	Output Temperature ADC cnts
 DTYP	asynInt32
 SCAN	$(SCAN)
@@ -368,7 +450,7 @@ operation	record
 DESC	Output Temperature
 SCAN	$(SCAN)
 INPA	KLYS:$(AREA):$(LOCATION):TOUT_CNTS
-CALC	((A & 255) - 3.6307)/0.0613
+CALC	(3.6307 - (A * 3.814e-5)) / 0.0613
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------
@@ -378,7 +460,6 @@ operation	read
 task	0x50
 address	5
 size	1
-conversion	1
 DESC	Input Temperature ADC cnts
 DTYP	asynInt32
 SCAN	$(SCAN)
@@ -393,7 +474,7 @@ operation	record
 DESC	Output Temperature
 SCAN	$(SCAN)
 INPA	KLYS:$(AREA):$(LOCATION):TIN_CNTS
-CALC	((A & 255) - 3.6307)/0.0613
+CALC	(3.6307 - (A * 3.814e-5)) / 0.0613
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------

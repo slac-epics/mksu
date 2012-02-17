@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Fri, 10 Feb 2012 01:30:54 +0000
+# Database template file generated from MksuList.map on Thu, 16 Feb 2012 18:20:45 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -154,8 +154,31 @@ record(calc, "KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK") {
 record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_SET") {
   field(DESC, "MKSU Control (write)")
   field(DTYP, "asynInt32")
-  field(DOL, "KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):SELFTRIG_SET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_SET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):SELFTRIG_SET") {
+  field(DESC, "Self Trigger (Set)")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):SELFTRIG_SET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):SELFTRIG_SET_MASK") {
+  field(DESC, "Self Trigger (Set)")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):SELFTRIG_SET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_SET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_SET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):SELFTRIG_SET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SELFTRIG_SET")
   field(OMSL, "closed_loop")
   field(PRIO, "LOW")
 }
@@ -184,13 +207,13 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_PERMIT_RSET") {
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):TREN_RSET") {
-  field(DESC, "Trigger Enable (Set)")
+  field(DESC, "Trigger Enable (Reset)")
   field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TREN_RSET_MASK") {
-  field(DESC, "Triggen Enable (Set)")
+  field(DESC, "Triggen Enable (Reset)")
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TREN_RSET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET")
@@ -207,13 +230,13 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_TREN_RSET") {
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):CFGD_RSET") {
-  field(DESC, "Configured (Set)")
+  field(DESC, "Configured (Reset)")
   field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):CFGD_RSET_MASK") {
-  field(DESC, "Configured (Set)")
+  field(DESC, "Configured (Reset)")
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):CFGD_RSET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET")
@@ -230,13 +253,13 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_CFGD_RSET") {
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):WFTR_RSET") {
-  field(DESC, "Arm Waveform Trig (Set)")
+  field(DESC, "Arm Waveform Trig (Reset)")
   field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):WFTR_RSET_MASK") {
-  field(DESC, "Arm Waveform Trig (Set)")
+  field(DESC, "Arm Waveform Trig (Reset)")
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):WFTR_RSET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET")
@@ -253,13 +276,13 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_WFTR_RSET") {
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):AVTR_RSET") {
-  field(DESC, "Arm Average Trig (Set)")
+  field(DESC, "Arm Average Trig (Reset)")
   field(PRIO, "LOW")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK")
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK") {
-  field(DESC, "Arm Average Trig (Set)")
+  field(DESC, "Arm Average Trig (Reset)")
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):AVTR_RSET")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET")
@@ -269,8 +292,31 @@ record(calc, "KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK") {
 record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET") {
   field(DESC, "MKSU Control (write)")
   field(DTYP, "asynInt32")
-  field(DOL, "KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_RSET")
+  field(OMSL, "closed_loop")
+  field(PRIO, "LOW")
+}
+
+record(bo, "KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET") {
+  field(DESC, "Self Trigger (Reset)")
+  field(PRIO, "LOW")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET_MASK") {
+  field(DESC, "Self Trigger (Reset)")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_RSET")
+  field(CALC, "A << 5")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_RSET") {
+  field(DESC, "MKSU Control (write)")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET_MASK")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SELFTRIG_RSET")
   field(OMSL, "closed_loop")
   field(PRIO, "LOW")
 }
@@ -278,16 +324,16 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_RSET") {
 record(mbbo, "KLYS:$(AREA):$(LOCATION):MOD_SET") {
   field(DESC, "Modulator State (Set)")
   field(DTYP, "asynInt32")
-  field(TWST, "Offline")
-  field(FRST, "Accelerate")
+  field(TWST, "Stand By")
+  field(FRST, "Maintenance")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD_SET")
   field(TWVL, "2")
   field(PRIO, "LOW")
-  field(THST, "Stand By")
+  field(THST, "Offline")
   field(ONVL, "1")
   field(THVL, "3")
   field(FRVL, "4")
-  field(ONST, "Maintenance")
+  field(ONST, "Accelerate")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):STATUS") {
@@ -487,6 +533,22 @@ record(bi, "KLYS:$(AREA):$(LOCATION):AVTR") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):CTRL_AVTR_MASK")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_MASK") {
+  field(DESC, "Arm Waveform Trigger")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):CTRL")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):SELFTRIG")
+  field(CALC, "(A & (1 << 5)) >> 5")
+}
+
+record(bi, "KLYS:$(AREA):$(LOCATION):SELFTRIG") {
+  field(DESC, "Arm Waveform Trigger")
+  field(PRIO, "LOW")
+  field(ONAM, "Yes")
+  field(ZNAM, "No")
+  field(INP, "KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_MASK")
 }
 
 record(mbbi, "KLYS:$(AREA):$(LOCATION):MOD") {
@@ -952,19 +1014,55 @@ record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_TDELTA_SET") {
 }
 
 record(ao, "KLYS:$(AREA):$(LOCATION):TOFF_SET") {
-  field(DESC, "Temperature Offset")
-  field(DTYP, "asynInt32")
+  field(DESC, "Temp. Offset")
   field(PRIO, "LOW")
-  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_SET")
-  field(EGU, "C * 100")
+  field(EGU, "C")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET")
+}
+
+record(calcout, "KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET") {
+  field(DESC, "Temp Offset (C)")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TOFF_SET")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TOFF_CNTS_SET")
+  field(CALC, "A*1048")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):TOFF_CNTS_SET") {
+  field(DESC, "Temp Offset")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_CNTS_SET")
+  field(OMSL, "closed_loop")
+  field(EGU, "counts")
+  field(PRIO, "LOW")
 }
 
 record(ao, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_SET") {
   field(DESC, "Delta Temp Max")
-  field(DTYP, "asynInt32")
   field(PRIO, "LOW")
-  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_SET")
   field(EGU, "C")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET")
+}
+
+record(calcout, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET") {
+  field(DESC, "Delta Temp Max")
+  field(PRIO, "LOW")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_SET")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS_SET")
+  field(CALC, "A*1048")
+}
+
+record(ao, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS_SET") {
+  field(DESC, "Delta Temp Max")
+  field(DTYP, "asynInt32")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET")
+  field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTAMAX_CNTS_SET")
+  field(OMSL, "closed_loop")
+  field(EGU, "counts")
+  field(PRIO, "LOW")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):STATUS_TEMP") {
@@ -1059,31 +1157,59 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TDELTAEXCD") {
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_HI_MASK")
 }
 
-record(ai, "KLYS:$(AREA):$(LOCATION):TOFF") {
+record(ai, "KLYS:$(AREA):$(LOCATION):TOFF_CNTS") {
   field(DESC, "Temperature Offset")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TOFF_CNTS")
   field(EGU, "C")
 }
 
-record(ai, "KLYS:$(AREA):$(LOCATION):TDELTAMAX") {
+record(calc, "KLYS:$(AREA):$(LOCATION):TOFF") {
+  field(DESC, "Temperature Offset")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TOFF_CNTS")
+  field(EGU, "C")
+  field(CALC, "A/1048")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS") {
   field(DESC, "Delta Temp Max")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTAMAX")
-  field(EGU, "C")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTAMAX_CNTS")
+  field(EGU, "counts")
+  field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTAMAX")
 }
 
-record(ai, "KLYS:$(AREA):$(LOCATION):TDELTA") {
+record(calc, "KLYS:$(AREA):$(LOCATION):TDELTAMAX") {
+  field(DESC, "Delta Temp Max")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS")
+  field(EGU, "C")
+  field(CALC, "A/1048")
+}
+
+record(ai, "KLYS:$(AREA):$(LOCATION):TDELTA_CNTS") {
   field(DESC, "Delta Temperature")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
-  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTA")
+  field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDELTA_CNTS")
+  field(EGU, "counts")
+}
+
+record(calc, "KLYS:$(AREA):$(LOCATION):TDELTA") {
+  field(DESC, "Delta Temperature")
+  field(PRIO, "LOW")
+  field(SCAN, "$(SCAN)")
+  field(INPA, "KLYS:$(AREA):$(LOCATION):TDELTA_CNTS")
   field(EGU, "C")
+  field(CALC, "A/0.0625/0.00021*(9.53e-9)*(2.1/2.5)")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):TOUT_CNTS") {
@@ -1102,7 +1228,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TOUT") {
   field(SCAN, "$(SCAN)")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TOUT_CNTS")
   field(EGU, "C")
-  field(CALC, "((A & 255) - 3.6307)/0.0613")
+  field(CALC, "(3.6307 - (A * 3.814e-5)) / 0.0613")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):TIN_CNTS") {
@@ -1121,7 +1247,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TIN") {
   field(SCAN, "$(SCAN)")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TIN_CNTS")
   field(EGU, "C")
-  field(CALC, "((A & 255) - 3.6307)/0.0613")
+  field(CALC, "(3.6307 - (A * 3.814e-5)) / 0.0613")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):XTEMP_RAW") {
