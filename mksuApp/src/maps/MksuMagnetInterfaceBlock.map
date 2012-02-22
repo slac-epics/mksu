@@ -12,34 +12,34 @@
 #-------------------------------------------------------
 # MGNT Test Set Register (BEGIN)
 #-------------------------------------------------------
-# MGNT_KLIX_TST_SET: Magnet Klixon Test (Bit 0)
+# MGNT_BRKR_TST_SET: Magnet Breaker Test (Bit 0)
 #-------------------------------------------------------
 record	bo
-name	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_SET
+name	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_SET
 operation	record
-DESC	Magnet Klixon Test
-FLNK	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_SET_MASK
+DESC	Magnet Breaker Test
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_SET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_SET_MASK
-DESC	Magnet Klixon Test
-INPA	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_SET
+name	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_SET_MASK
+DESC	Magnet Breaker Test
+INPA	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_SET
 CALC	A
-FLNK	KLYS:$(AREA):$(LOCATION):CTRL_MGNT_KLIX_TST_SET
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_MGNT_BRKR_TST_SET
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):CTRL_MGNT_KLIX_TST_SET
+name	KLYS:$(AREA):$(LOCATION):CTRL_MGNT_BRKR_TST_SET
 operation	write
 task	0x14
 address	3
 size	1
 DESC	MGNT Test (write)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNT_KLIX_TST_SET
-DOL	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_SET_MASK
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNT_BRKR_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -109,34 +109,34 @@ PRIO	LOW
 #-------------------------------------------------------
 # MGNT Test Reset Register (BEGIN)
 #-------------------------------------------------------
-# MGNT_KLIX_TST_RESET: Magnet Klixon Test (Bit 0)
+# MGNT_BRKR_TST_RESET: Magnet Breaker Test (Bit 0)
 #-------------------------------------------------------
 record	bo
-name	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_RESET
+name	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_RESET
 operation	record
-DESC	Magnet Klixon Test
-FLNK	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_RESET_MASK
+DESC	Magnet Breaker Test
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_RESET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_RESET_MASK
-DESC	Magnet Klixon Test
-INPA	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_RESET
+name	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_RESET_MASK
+DESC	Magnet Breaker Test
+INPA	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_RESET
 CALC	A
-FLNK	KLYS:$(AREA):$(LOCATION):CTRL_MGNT_KLIX_TST_RESET
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_MGNT_BRKR_TST_RESET
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):CTRL_MGNT_KLIX_TST_RESET
+name	KLYS:$(AREA):$(LOCATION):CTRL_MGNT_BRKR_TST_RESET
 operation	write
 task	0x14
 address	4
 size	1
 DESC	MGNT Test (write)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNT_KLIX_TST_RESET
-DOL	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_RESET_MASK
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNT_BRKR_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_RESET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -219,26 +219,26 @@ size	1
 DESC	Waveguide Vacuum Status
 DTYP	asynInt32
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MGNT_STATUS
-FLNK	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_MASK
 SCAN	$(SCAN)
 PRIO	LOW
 #-------------------------------------------------------
-# MGNT_KLIX: Magnet Klixon (Bit 0)
+# MGNT_BRKR: Magnet Breaker (Bit 0)
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_MASK
-DESC	Magnet Klixon
+name	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_MASK
+DESC	Magnet Breaker
 INPA	KLYS:$(AREA):$(LOCATION):MGNT_STATUS
 CALC	A & (1 << 0)
-FLNK	KLYS:$(AREA):$(LOCATION):MGNT_KLIX
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_BRKR
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):MGNT_KLIX
+name	KLYS:$(AREA):$(LOCATION):MGNT_BRKR
 operation	record
-DESC	Magnet Klixon
-INP	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_MASK
+DESC	Magnet Breaker
+INP	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_MASK
 ZNAM	No
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):MGNT_CURR_MASK
@@ -303,26 +303,26 @@ size	1
 DESC	MGNT Test Status
 DTYP	asynInt32
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MGNT_TEST
-FLNK	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_MASK
 SCAN	$(SCAN)
 PRIO	LOW
 #-------------------------------------------------------
-# MGNT_KLIX_TST: Magnet Klixon (Bit 0)
+# MGNT_BRKR_TST: Magnet Breaker (Bit 0)
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_MASK
-DESC	Magnet Klixon
+name	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_MASK
+DESC	Magnet Breaker
 INPA	KLYS:$(AREA):$(LOCATION):MGNT_TEST
 CALC	A & (1 << 0)
-FLNK	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST
+name	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST
 operation	record
-DESC	Magnet Klixon
-INP	KLYS:$(AREA):$(LOCATION):MGNT_KLIX_TST_MASK
+DESC	Magnet Breaker
+INP	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_TST_MASK
 ZNAM	No
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):MGNT_CURR_TST_MASK

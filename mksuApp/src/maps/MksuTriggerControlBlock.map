@@ -74,30 +74,6 @@ EGU	119MHz Ticks
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):TCNT_IN_DES
-operation	write
-task	0x05
-address	8
-size	1
-DESC	Input trigger des rate cnt
-DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN_DES
-EGU	1KHz Ticks
-PRIO	LOW
-#-------------------------------------------------------
-record	ao
-name	KLYS:$(AREA):$(LOCATION):TCNT_OUT_DES
-operation	write
-task	0x05
-address	9
-size	1
-DESC	Output trigger des rate cnt
-DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_OUT_DES
-EGU	1KHz Ticks
-PRIO	LOW
-#-------------------------------------------------------
-record	ao
 name	KLYS:$(AREA):$(LOCATION):RTRIGDIV_DES
 operation	write
 task	0x05

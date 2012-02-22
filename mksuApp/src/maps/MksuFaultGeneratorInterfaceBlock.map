@@ -268,33 +268,33 @@ DOL	KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# FG_MGNTKLIX_BP_SET: Magnet Klixon Fault (Bit 3)
+# FG_MGNTBRKR_BP_SET: Magnet Breaker Fault (Bit 3)
 #-------------------------------------------------------
 record	bo
-name	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_SET
+name	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_SET
 operation	record
-DESC	Magnet Klixon Fault bit
-FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_SET_MASK
+DESC	Magnet Breaker Fault bit
+FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_SET_MASK
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_SET_MASK
-DESC	Magnet Klixon Fault bit
-INPA	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_SET
+name	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_SET_MASK
+DESC	Magnet Breaker Fault bit
+INPA	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_SET
 CALC	A << 3
-FLNK	KLYS:$(AREA):$(LOCATION):CTRL_MGNTKLIX_BP_SET
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_MGNTBRKR_BP_SET
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):CTRL_MGNTKLIX_BP_SET
+name	KLYS:$(AREA):$(LOCATION):CTRL_MGNTBRKR_BP_SET
 operation	write
 task	0x09
 address	2
 size	1
 DESC	FG Control (write)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNTKLIX_BP_SET
-DOL	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_SET_MASK
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNTBRKR_BP_SET
+DOL	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -1098,33 +1098,33 @@ DOL	KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_RESET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# FG_MGNTKLIX_BP_RESET: Magnet Klixon Fault (Bit 3)
+# FG_MGNTBRKR_BP_RESET: Magnet Breaker Fault (Bit 3)
 #-------------------------------------------------------
 record	bo
-name	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_RESET
+name	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_RESET
 operation	record
-DESC	Magnet Klixon Fault bit
-FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_RESET_MASK
+DESC	Magnet Breaker Fault bit
+FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_RESET_MASK
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_RESET_MASK
-DESC	Magnet Klixon Fault bit
-INPA	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_RESET
+name	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_RESET_MASK
+DESC	Magnet Breaker Fault bit
+INPA	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_RESET
 CALC	A << 3
-FLNK	KLYS:$(AREA):$(LOCATION):CTRL_MGNTKLIX_BP_RESET
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_MGNTBRKR_BP_RESET
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):CTRL_MGNTKLIX_BP_RESET
+name	KLYS:$(AREA):$(LOCATION):CTRL_MGNTBRKR_BP_RESET
 operation	write
 task	0x09
 address	4
 size	1
 DESC	FG Control (write)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNTKLIX_BP_RESET
-DOL	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_RESET_MASK
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_MGNTBRKR_BP_RESET
+DOL	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_RESET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -2153,25 +2153,25 @@ DESC	SLED Motor Timeout
 INP	KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_MASK
 ZNAM	No
 ONAM	Yes
-FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# FG_MGNTKLIX_BP: Mgnt Klix Fault (Bit 3)
+# FG_MGNTBRKR_BP: Mgnt Breaker Fault (Bit 3)
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_MASK
-DESC	Mgnt Klix Fault
+name	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_MASK
+DESC	Mgnt Breaker Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
 CALC	(A & (1 << 3)) >> 3
-FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP
+FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP
+name	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP
 operation	record
-DESC	Mgnt Klix Fault
-INP	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_BP_MASK
+DESC	Mgnt Breaker Fault
+INP	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_MASK
 ZNAM	No
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_BP_MASK
@@ -2752,25 +2752,25 @@ DESC	SLED Motor Timeout
 INP	KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_MASK
 ZNAM	No
 ONAM	Yes
-FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# FG_MGNTKLIX: Mgnt Klix Fault (Bit 3)
+# FG_MGNTBRKR: Mgnt Breaker Fault (Bit 3)
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_MASK
-DESC	Mgnt Klix Fault
+name	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_MASK
+DESC	Mgnt Breaker Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
 CALC	(A & (1 << 3)) >> 3
-FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX
+FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX
+name	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR
 operation	record
-DESC	Mgnt Klix Fault
-INP	KLYS:$(AREA):$(LOCATION):FG_MGNTKLIX_MASK
+DESC	Mgnt Breaker Fault
+INP	KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_MASK
 ZNAM	No
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):FG_MGNTCNOK_MASK

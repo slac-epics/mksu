@@ -255,22 +255,10 @@ PRIO	LOW
 # Status Register (END)
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):KVAC_HI_SET
-operation	write
-task	0x03
-address	1
-size	1
-DESC	Klystron Vacuum High Set
-DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI_SET
-EGU	Torr
-PRIO	LOW
-#-------------------------------------------------------
-record	ao
 name	KLYS:$(AREA):$(LOCATION):KVAC_LO_SET
 operation	write
 task	0x03
-address	2
+address	1
 size	1
 DESC	Klystron Vacuum Low Set
 DTYP	asynInt32
@@ -279,14 +267,14 @@ EGU	Torr
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):WVAC_HI_SET
+name	KLYS:$(AREA):$(LOCATION):KVAC_HI_SET
 operation	write
 task	0x03
-address	3
+address	2
 size	1
-DESC	Waveguide Vacuum High Set
+DESC	Klystron Vacuum High Set
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_HI_SET
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI_SET
 EGU	Torr
 PRIO	LOW
 #-------------------------------------------------------
@@ -294,7 +282,7 @@ record	ao
 name	KLYS:$(AREA):$(LOCATION):WVAC_LO_SET
 operation	write
 task	0x03
-address	4
+address	3
 size	1
 DESC	Waveguide Vacuum Low Set
 DTYP	asynInt32
@@ -303,14 +291,14 @@ EGU	Torr
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):FC_HI_SET
+name	KLYS:$(AREA):$(LOCATION):WVAC_HI_SET
 operation	write
 task	0x03
-address	5
+address	4
 size	1
-DESC	Focus Coil Current High Set
+DESC	Waveguide Vacuum High Set
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_HI_SET
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_HI_SET
 EGU	Torr
 PRIO	LOW
 #-------------------------------------------------------
@@ -318,7 +306,7 @@ record	ao
 name	KLYS:$(AREA):$(LOCATION):FC_LO_SET
 operation	write
 task	0x03
-address	6
+address	5
 size	1
 DESC	Focus Coil Current Low Set
 DTYP	asynInt32
@@ -327,14 +315,14 @@ EGU	Torr
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):FCG_HI_SET
+name	KLYS:$(AREA):$(LOCATION):FC_HI_SET
 operation	write
 task	0x03
-address	7
+address	6
 size	1
-DESC	Focus Coil Gnd Cur High Set
+DESC	Focus Coil Current High Set
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_HI_SET
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_HI_SET
 EGU	Torr
 PRIO	LOW
 #-------------------------------------------------------
@@ -342,11 +330,23 @@ record	ao
 name	KLYS:$(AREA):$(LOCATION):FCG_LO_SET
 operation	write
 task	0x03
-address	8
+address	7
 size	1
 DESC	Focus Coil Gnd Cur Low Set
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_LO_SET
+EGU	Torr
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FCG_HI_SET
+operation	write
+task	0x03
+address	8
+size	1
+DESC	Focus Coil Gnd Cur High Set
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_HI_SET
 EGU	Torr
 PRIO	LOW
 #=======================================================
@@ -534,25 +534,10 @@ PRIO	LOW
 # Status Register (END)
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):KVAC_HI
-operation	read 
-task	0x43
-address	1
-conversion	1
-size	1
-DESC	Klystron Vacuum High Limit
-DTYP	asynInt32
-FLNK	KLYS:$(AREA):$(LOCATION):KVAC_LO
-SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI
-EGU	Torr
-PRIO	LOW
-#-------------------------------------------------------
-record	ai
 name	KLYS:$(AREA):$(LOCATION):KVAC_LO
 operation	read 
 task	0x43
-address	2
+address	1
 conversion	1
 size	1
 DESC	Klystron Vacuum Low Limit
@@ -564,17 +549,17 @@ EGU	Torr
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):WVAC_HI
+name	KLYS:$(AREA):$(LOCATION):KVAC_HI
 operation	read 
 task	0x43
-address	3
+address	2
 conversion	1
 size	1
-DESC	Waveguide Vacuum High Limit
+DESC	Klystron Vacuum High Limit
 DTYP	asynInt32
-FLNK	KLYS:$(AREA):$(LOCATION):WVAC_LO
+FLNK	KLYS:$(AREA):$(LOCATION):KVAC_LO
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_HI
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI
 EGU	Torr
 PRIO	LOW
 #-------------------------------------------------------
@@ -582,7 +567,7 @@ record	ai
 name	KLYS:$(AREA):$(LOCATION):WVAC_LO
 operation	read 
 task	0x43
-address	4
+address	3
 conversion	1
 size	1
 DESC	Waveguide Vacuum Low Limit
@@ -594,25 +579,25 @@ FLNK	KLYS:$(AREA):$(LOCATION):FC_HI
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):FC_HI
+name	KLYS:$(AREA):$(LOCATION):WVAC_HI
 operation	read 
 task	0x43
-address	5
+address	4
 conversion	1
 size	1
-DESC	Focus Coil Cur High Limit
+DESC	Waveguide Vacuum High Limit
 DTYP	asynInt32
-FLNK	KLYS:$(AREA):$(LOCATION):FC_LO
+FLNK	KLYS:$(AREA):$(LOCATION):WVAC_LO
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_HI
-EGU	amps
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_HI
+EGU	Torr
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
 name	KLYS:$(AREA):$(LOCATION):FC_LO
 operation	read 
 task	0x43
-address	6
+address	5
 conversion	1
 size	1
 DESC	Focus Coil Cur Low Limit
@@ -624,17 +609,17 @@ FLNK	KLYS:$(AREA):$(LOCATION):FCG_HI
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
-name	KLYS:$(AREA):$(LOCATION):FCG_HI
+name	KLYS:$(AREA):$(LOCATION):FC_HI
 operation	read 
 task	0x43
-address	7
+address	6
 conversion	1
 size	1
-DESC	Focus Coil Gnd Cur Hi Limit
+DESC	Focus Coil Cur High Limit
 DTYP	asynInt32
-FLNK	KLYS:$(AREA):$(LOCATION):FCG_LO
+FLNK	KLYS:$(AREA):$(LOCATION):FC_LO
 SCAN	$(SCAN)
-INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_HI
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_HI
 EGU	amps
 PRIO	LOW
 #-------------------------------------------------------
@@ -642,7 +627,7 @@ record	ai
 name	KLYS:$(AREA):$(LOCATION):FCG_LO
 operation	read 
 task	0x43
-address	8
+address	7
 conversion	1
 size	1
 DESC	Focus Coil Gnd Cur Low Limit
@@ -651,6 +636,21 @@ SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_LO
 EGU	amps
 FLNK	KLYS:$(AREA):$(LOCATION):KVAC_AVG
+PRIO	LOW
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):FCG_HI
+operation	read 
+task	0x43
+address	8
+conversion	1
+size	1
+DESC	Focus Coil Gnd Cur Hi Limit
+DTYP	asynInt32
+FLNK	KLYS:$(AREA):$(LOCATION):FCG_LO
+SCAN	$(SCAN)
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_HI
+EGU	amps
 PRIO	LOW
 #-------------------------------------------------------
 record	ai

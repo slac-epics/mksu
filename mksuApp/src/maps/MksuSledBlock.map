@@ -771,28 +771,7 @@ DESC	SLED Motor On
 INP	KLYS:$(AREA):$(LOCATION):SLED_MVNG_MASK
 ZNAM	Off
 ONAM	On
-FLNK	KLYS:$(AREA):$(LOCATION):SLED_MOD_ON_MASK
-PRIO	LOW
-#-------------------------------------------------------
-# SLED_MOD_ON: SLED Motor moving (Bit 7)
-#-------------------------------------------------------
-record	calc
-operation	record
-name	KLYS:$(AREA):$(LOCATION):SLED_MOD_ON_MASK
-DESC	SLED Modulator On
-INPA	KLYS:$(AREA):$(LOCATION):SLED_STATUS
-CALC	(A & (1 << 7)) >> 7
-FLNK	KLYS:$(AREA):$(LOCATION):SLED_MOD_ON
-PRIO	LOW
-#-------------------------------------------------------
-record	bi
-name	KLYS:$(AREA):$(LOCATION):SLED_MOD_ON
-operation	record
-DESC	SLED Modulator On
-INP	KLYS:$(AREA):$(LOCATION):SLED_MOD_ON_MASK
-ZNAM	Off
-ONAM	On
-FLNK	KLYS:$(AREA):$(LOCATION):SM_NTND_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_NTND_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # SM_NTND: SLED Motor not tuned (Bit 8)
