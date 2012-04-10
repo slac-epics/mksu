@@ -1,7 +1,5 @@
 # Makefile
 TOP = ../..
-ifdef EPICS_HOST_ARCH
-
 include $(TOP)/configure/CONFIG
 #----------------------------------------
 #  ADD MACRO DEFINITIONS AFTER THIS LINE
@@ -35,9 +33,9 @@ include $(TOP)/configure/RULES
 #----------------------------------------
 #  ADD RULES AFTER THIS LINE
 
-else
+#autogen the header files and database template:
+all:
+	./generate.py MksuList.map MksuParam ../Db/mksu.template
+#
 
-include $(TOP)/config/CONFIG_APP
-include $(TOP)/config/RULES_ARCHS
 
-endif
