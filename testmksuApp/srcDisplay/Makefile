@@ -9,7 +9,6 @@ include $(TOP)/configure/CONFIG
 # You can override the default installation path.
 #INSTALL_LOCATION=
 
-EDLS += test_db.edl
 
 # Install images to be used by EDM (Gif and Png are supported)
 # PNG is better and preferred.
