@@ -11,6 +11,9 @@
 #==============================================================
 #
 #
+mksu-R1-0-14:
+           10-Apr-2012:  Ernesto
+           Build against EPICS R3-14-12 and get rid of old style config directory
 
 mksu-R1-0-13:
 	* Changes to register based on Qiao's comments
