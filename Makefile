@@ -5,7 +5,7 @@ ifdef EPICS_HOST_ARCH
 include $(TOP)/configure/CONFIG
 DIRS := $(DIRS) $(filter-out $(DIRS), configure)
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard mksuApp))
-DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard testmksuApp))
+#DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard testmksuApp))
 #DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *App))
 #DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *app))
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *iocBoot))
