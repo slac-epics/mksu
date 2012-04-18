@@ -11,7 +11,7 @@
 #==============================================================
 #
 #
-mksu-R1-0-15:
+mksu-R1-0-16:
 	18-Apr-2012: L.Piccoli
 	* Modified MksuComm to return asynError if MKSU is not connected,
 	  so PVs become INVALID.
