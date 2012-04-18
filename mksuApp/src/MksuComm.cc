@@ -2,6 +2,8 @@
 #include <iostream>
 #include <sstream>
 
+#include <alarm.h>
+
 #include "MksuComm.h"
 #include "Log.h"
 
@@ -56,6 +58,7 @@ void MksuComm::createBlockMap(MksuParam *params, int numParams) {
 	block.header = reinterpret_cast<MksuUdpHeader *>(block.memory);
 	block.data = reinterpret_cast<unsigned short *>(block.header + 1);
 	block.time = time(0);
+	block.status = NO_ALARM;
 	_blockMap.insert(std::pair<int, MksuBlock>(blockId, block));
       }
     }
@@ -307,7 +310,8 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
   return true;
 }
 
-void MksuComm::refresh() {
+int MksuComm::refresh() {
+  return NO_ALARM;
 }
 
 /**
@@ -315,14 +319,19 @@ void MksuComm::refresh() {
  * to the MKSU and the block is refreshed with the MKSU response.
  *
  * @param blockId id of the block to be updated (greater than 0x40)
- * @ author L.Piccoli
+ * @return -1 if the blockId is invalid, NO_ALARM if the refresh was
+ * successful, COMM_ALARM if there is a failure communicating to
+ * the MKSU, or UDF_ALARM if the response from the MKSU does not
+ * match the request.
+ * 
+ * @author L.Piccoli
  */
-void MksuComm::refresh(int blockId) {
+int MksuComm::refresh(int blockId) {
   time_t now = time(0);
 
   MksuBlock *block = getBlock(blockId);
   if (block == NULL) {
-    return;
+    return -1;
   }
   Log::getInstance() << Log::flagComm << Log::dpInfo;
   Log::getInstance() << "MksuComm::refresh(blockId="
@@ -333,14 +342,15 @@ void MksuComm::refresh(int blockId) {
   // This is a special block, used only to generate the
   // plot trace lines for the Fast ADC waveforms!
   if (blockId == MKSU_FAST_ADC_WF_PLOT_BLOCK) {
-    refreshPlotBlock(block);
+    int status = refreshPlotBlock(block);
     block->time = now;
-    return;
+    return status;
   }
 
-  // Reflesh block only every couple seconds
+  // Reflesh block only every couple seconds, return the status
+  // of the previous reflesh
   if (block->time <= now - 4) {
-    return;
+    return block->status;
   }
   else {
     Log::getInstance() << Log::flagComm << Log::dpDebug;
@@ -383,7 +393,8 @@ void MksuComm::refresh(int blockId) {
 		       << ": expected taskId of " << _commandCounter
 		       << " got " << _writeResponseHeader.taskId
 		       << " instead." << Log::dp;
-    return;
+    block->status = UDF_ALARM;
+    return UDF_ALARM;
   }
 
   _commandCounter++;
@@ -393,7 +404,8 @@ void MksuComm::refresh(int blockId) {
     Log::getInstance() << "ERROR: MksuComm::refresh(blockId="
 		       << blockId << "): communication failed (status="
 		       << (int) status << ")" << Log::dp;
-    return;
+    block->status = COMM_ALARM;
+    return COMM_ALARM;
   }
 				       
   Log::getInstance() << Log::flagComm << Log::dpInfo;
@@ -404,8 +416,10 @@ void MksuComm::refresh(int blockId) {
 		     << Log::dp;
 
   block->time = now;
+  block->status = NO_ALARM;
 
   printBlock(blockId);
+  return NO_ALARM;
 }
 
 void MksuComm::printBlock(int blockId) {
@@ -444,14 +458,21 @@ void MksuComm::report(std::ostringstream &details) {
   details << std::endl;
 }
 
-void MksuComm::refreshPlotBlock(MksuBlock *block) {
+int MksuComm::refreshPlotBlock(MksuBlock *block) {
   MksuBlock *sourceBlock = getBlock(0x44);
+
   if (block == NULL) {
-    return;
+    return -1;
+  }
+
+  if (sourceBlock->status != NO_ALARM) {
+    return sourceBlock->status;
   }
 
   for (int i = 0; i < 4 * 4; i++) {
     block->data[i * 2] = sourceBlock->data[i+1];
     block->data[i * 2 + 1] = sourceBlock->data[i+1];
   }
+
+  return NO_ALARM;
 }

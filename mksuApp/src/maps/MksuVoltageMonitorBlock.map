@@ -22,7 +22,7 @@ name	KLYS:$(AREA):$(LOCATION):MK_N24
 DESC	MKSU -24V Reading
 INPA	KLYS:$(AREA):$(LOCATION):MK_N24_RAW
 EGU	V
-CALC	A * -0.0257
+CALC	A * 0.0257
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
@@ -46,7 +46,7 @@ name	KLYS:$(AREA):$(LOCATION):MK_N15
 DESC	MKSU -15V Reading
 INPA	KLYS:$(AREA):$(LOCATION):MK_N15_RAW
 EGU	V
-CALC	A * -.0158
+CALC	A * .0158
 PRIO	LOW
 #-------------------------------------------------------
 record	ai
@@ -70,7 +70,7 @@ name	KLYS:$(AREA):$(LOCATION):MK_N5
 DESC	MKSU -5V Reading
 INPA	KLYS:$(AREA):$(LOCATION):MK_N5_RAW
 EGU	V
-CALC	A * -.00511
+CALC	A * .00511
 PRIO	LOW
 #-------------------------------------------------------
 record	ai

@@ -11,6 +11,12 @@
 #==============================================================
 #
 #
+mksu-R1-0-15:
+	18-Apr-2012: L.Piccoli
+	* Modified MksuComm to return asynError if MKSU is not connected,
+	  so PVs become INVALID.
+	* Fixed negative signs of -5V, -15V and -24V MKSU readings.
+
 mksu-R1-0-14:
            10-Apr-2012:  Ernesto
            Build against EPICS R3-14-12 and get rid of old style config directory

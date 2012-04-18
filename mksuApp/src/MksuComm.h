@@ -29,6 +29,7 @@ typedef struct MksuBlock {
   MksuUdpHeader *header;
   unsigned short *data;
   time_t time; // Last update time
+  int status; // Communication status (NO_ALARM/UDF_ALARM/COMM_ALARM)
 } MksuBlock;
 
 typedef std::map<int, MksuBlock> BlockMap;
@@ -63,8 +64,8 @@ public:
   bool write(int blockId, long address, epicsInt32 value);
   bool write(int blockId, long address, epicsInt16 *value, int size);
 
-  void refresh();
-  void refresh(int blockId);
+  int refresh();
+  int refresh(int blockId);
 
   void report(std::ostringstream &details);
 
@@ -72,7 +73,7 @@ public:
   void createBlockMap(MksuParam *params, int numParams);
   MksuBlock *getBlock(int blockId);
   void printBlock(int blockId);
-  void refreshPlotBlock(MksuBlock *block);
+  int refreshPlotBlock(MksuBlock *block);
 
   /** MKSU module number (set in hardware) */
   char _moduleNumber;

@@ -8,6 +8,8 @@
 #include <epicsTypes.h>
 #include <epicsExport.h>
 #include <drvSup.h>
+#include <dbCommon.h>
+#include <alarm.h>
 
 MksuDriver::MksuDriver(const char *portName, const char *mksuPortName) :
   asynPortDriver(portName, 1, MKSU_NUM_PARAMS,
@@ -69,7 +71,9 @@ asynStatus MksuDriver::readInt8Array(asynUser *pasynUser, epicsInt8 *value,
     return asynError;
   }
 
-  _comm->refresh(param->blockId);
+  if (_comm->refresh(param->blockId) != NO_ALARM) {
+    return asynError;
+  }
 
   if (_comm->read(param->blockId, param->address, value, param->size)) {
     *nIn = param->size;
@@ -105,7 +109,9 @@ asynStatus MksuDriver::readInt16Array(asynUser *pasynUser, epicsInt16 *value,
     return asynError;
   }
 
-  _comm->refresh(param->blockId);
+  if (_comm->refresh(param->blockId) != NO_ALARM) {
+    return asynError;
+  }
 
   if (_comm->read(param->blockId, param->address, value, param->size)) {
     *nIn = param->size;
@@ -165,7 +171,9 @@ asynStatus MksuDriver::readInt32(asynUser *pasynUser, epicsInt32 *value) {
     return asynError;
   }
 
-  _comm->refresh(param->blockId);
+  if (_comm->refresh(param->blockId) != NO_ALARM) {
+    return asynError;
+  }
 
   if (_comm->read(param->blockId, param->address, *value)) {
     // Convert from unsigned int16 to signed int16
