@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 706
-y 120
+x 709
+y 149
 w 445
 h 675
 font "helvetica-medium-r-18.0"
@@ -2065,45 +2065,6 @@ value {
   "Tune State:"
 }
 autoSize
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 29
-y 123
-w 91
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Modulator State:"
-}
-autoSize
-endObjectProperties
-
-# (Text Update)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 122
-y 122
-w 73
-h 14
-controlPv "KLYS:$(area):$(loca):SLED_MOD_ON"
-displayMode "decimal"
-fgColor index 14
-fgAlarm
-bgColor index 3
-fill
-font "helvetica-medium-r-12.0"
 endObjectProperties
 
 # (Text Update)

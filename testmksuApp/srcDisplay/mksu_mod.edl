@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 345
-y 301
+x 1323
+y 99
 w 445
 h 500
 font "helvetica-medium-r-18.0"
@@ -20,6 +20,20 @@ ctlBgColor2 index 14
 topShadowColor index 0
 botShadowColor index 14
 endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 35
+y 368
+w 378
+h 101
+lineColor index 14
+fillColor index 0
+endObjectProperties
 
 # (Rectangle)
 object activeRectangleClass
@@ -2134,18 +2148,24 @@ useEnumNumeric
 font "helvetica-medium-r-12.0"
 endObjectProperties
 
-# (Group)
-object activeGroupClass
+# (Static Text)
+object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
+minor 1
 release 0
-x 105
-y 380
-w 259
-h 80
-
-beginGroup
+x 47
+y 360
+w 54
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 3
+value {
+  " Controls "
+}
+autoSize
+endObjectProperties
 
 # (Static Text)
 object activeXTextClass
@@ -2309,30 +2329,6 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 308
-y 380
-w 56
-h 20
-fgColor index 14
-onColor index 4
-offColor index 1
-topShadowColor index 1
-botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):MOD_CPWR_RESET"
-pressValue "1"
-onLabel "Reset"
-offLabel "Reset"
-3d
-useEnumNumeric
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 0
-release 0
 x 252
 y 380
 w 56
@@ -2346,30 +2342,6 @@ controlPv "KLYS:$(area):$(loca):MOD_CPWR_SET"
 pressValue "1"
 onLabel "Set"
 offLabel "Set"
-3d
-useEnumNumeric
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 308
-y 400
-w 56
-h 20
-fgColor index 14
-onColor index 4
-offColor index 1
-topShadowColor index 1
-botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):MOD_HVON_RESET"
-pressValue "1"
-onLabel "Reset"
-offLabel "Reset"
 3d
 useEnumNumeric
 font "helvetica-medium-r-12.0"
@@ -2405,30 +2377,6 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 308
-y 420
-w 56
-h 20
-fgColor index 14
-onColor index 4
-offColor index 1
-topShadowColor index 1
-botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):MOD_HVOFF_RESET"
-pressValue "1"
-onLabel "Reset"
-offLabel "Reset"
-3d
-useEnumNumeric
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 0
-release 0
 x 252
 y 420
 w 56
@@ -2442,30 +2390,6 @@ controlPv "KLYS:$(area):$(loca):MOD_HVOFF_SET"
 pressValue "1"
 onLabel "Set"
 offLabel "Set"
-3d
-useEnumNumeric
-font "helvetica-medium-r-12.0"
-endObjectProperties
-
-# (Message Button)
-object activeMessageButtonClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 308
-y 440
-w 56
-h 20
-fgColor index 14
-onColor index 4
-offColor index 1
-topShadowColor index 1
-botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):MOD_FLTRST_RESET"
-pressValue "1"
-onLabel "Reset"
-offLabel "Reset"
 3d
 useEnumNumeric
 font "helvetica-medium-r-12.0"
@@ -2493,42 +2417,5 @@ offLabel "Set"
 3d
 useEnumNumeric
 font "helvetica-medium-r-12.0"
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 35
-y 368
-w 378
-h 101
-lineColor index 14
-fillColor index 0
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 47
-y 360
-w 54
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 3
-value {
-  " Controls "
-}
-autoSize
 endObjectProperties
 

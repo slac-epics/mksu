@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1250
-y 684
+x 867
+y 496
 w 445
 h 160
 font "helvetica-medium-r-18.0"
@@ -789,16 +789,16 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 122
+x 113
 y 83
-w 83
+w 92
 h 14
 font "helvetica-medium-r-12.0"
 fgColor index 14
 bgColor index 0
 useDisplayBg
 value {
-  "Magnet Klixon:"
+  "Magnet Breaker:"
 }
 autoSize
 endObjectProperties
@@ -813,7 +813,7 @@ x 208
 y 82
 w 25
 h 14
-controlPv "KLYS:$(area):$(loca):MGNT_KLIX"
+controlPv "KLYS:$(area):$(loca):MGNT_BRKR"
 fgColor index 14
 bgColor index 3
 fill
@@ -946,7 +946,7 @@ onColor index 4
 offColor index 1
 topShadowColor index 1
 botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):MGNT_KLIX_TST_SET"
+controlPv "KLYS:$(area):$(loca):MGNT_BRKR_TST_SET"
 pressValue "1"
 onLabel "Set"
 offLabel "Set"
@@ -970,7 +970,7 @@ onColor index 4
 offColor index 1
 topShadowColor index 1
 botShadowColor index 11
-controlPv "KLYS:$(area):$(loca):MGNT_KLIX_TST_RESET"
+controlPv "KLYS:$(area):$(loca):MGNT_BRKR_TST_RESET"
 pressValue "1"
 onLabel "Reset"
 offLabel "Reset"
@@ -989,7 +989,7 @@ x 368
 y 82
 w 25
 h 14
-controlPv "KLYS:$(area):$(loca):MGNT_KLIX_TST"
+controlPv "KLYS:$(area):$(loca):MGNT_BRKR_TST"
 fgColor index 14
 bgColor index 3
 fill

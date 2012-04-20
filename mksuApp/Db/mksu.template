@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Wed, 18 Apr 2012 23:28:08 +0000
+# Database template file generated from MksuList.map on Thu, 19 Apr 2012 19:26:20 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -1565,7 +1565,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MGNT_CURR_MASK") {
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):MGNT_STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MGNT_CURR")
-  field(CALC, "A & (1 << 1)")
+  field(CALC, "(A & (1 << 1)) >> 1")
 }
 
 record(bi, "KLYS:$(AREA):$(LOCATION):MGNT_CURR") {
@@ -1581,7 +1581,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MGNT_CILK_MASK") {
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):MGNT_STATUS")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MGNT_CILK")
-  field(CALC, "A & (2 << 2)")
+  field(CALC, "(A & (1 << 2)) >> 2")
 }
 
 record(bi, "KLYS:$(AREA):$(LOCATION):MGNT_CILK") {

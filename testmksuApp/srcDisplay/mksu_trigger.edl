@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 837
-y 243
+x 1451
+y 59
 w 435
 h 365
 font "helvetica-medium-r-18.0"
@@ -902,224 +902,6 @@ value {
   " MKSU Xilinx Monitor "
 }
 autoSize
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 20
-y 235
-w 367
-h 14
-
-beginGroup
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 5
-release 0
-x 294
-y 235
-w 93
-h 14
-controlPv "KLYS:$(area):$(loca):TCNT_OUT_DES.EGU"
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Text Control)
-object activeXTextDspClass
-beginObjectProperties
-major 4
-minor 5
-release 0
-x 248
-y 235
-w 44
-h 14
-controlPv "KLYS:$(area):$(loca):TCNT_OUT_DES"
-format "decimal"
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-editable
-autoHeight
-motifWidget
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "controls"
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 5
-release 0
-x 171
-y 235
-w 45
-h 14
-controlPv "KLYS:$(area):$(loca):TCNT_OUT"
-format "decimal"
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 20
-y 235
-w 120
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Output Trigger Count:"
-}
-autoSize
-endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 20
-y 215
-w 367
-h 14
-
-beginGroup
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 5
-release 0
-x 294
-y 215
-w 93
-h 14
-controlPv "KLYS:$(area):$(loca):TCNT_IN_DES.EGU"
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Text Control)
-object activeXTextDspClass
-beginObjectProperties
-major 4
-minor 5
-release 0
-x 248
-y 215
-w 44
-h 14
-controlPv "KLYS:$(area):$(loca):TCNT_IN_DES"
-format "decimal"
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-editable
-autoHeight
-motifWidget
-limitsFromDb
-nullColor index 0
-useHexPrefix
-newPos
-objType "controls"
-endObjectProperties
-
-# (Text Monitor)
-object activeXTextDspClass:noedit
-beginObjectProperties
-major 4
-minor 5
-release 0
-x 171
-y 215
-w 45
-h 14
-controlPv "KLYS:$(area):$(loca):TCNT_IN"
-format "decimal"
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-autoHeight
-nullColor index 0
-useHexPrefix
-newPos
-objType "monitors"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 20
-y 215
-w 110
-h 14
-font "helvetica-medium-r-12.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Input Trigger Count:"
-}
-autoSize
-endObjectProperties
-
-endGroup
-
 endObjectProperties
 
 # (Group)
@@ -2385,6 +2167,92 @@ bgColor index 0
 useDisplayBg
 value {
   "Self Trigger Delay:"
+}
+autoSize
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 171
+y 215
+w 45
+h 14
+controlPv "KLYS:$(area):$(loca):TCNT_IN"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+nullColor index 0
+useHexPrefix
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 20
+y 215
+w 110
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Input Trigger Count:"
+}
+autoSize
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 5
+release 0
+x 171
+y 235
+w 45
+h 14
+controlPv "KLYS:$(area):$(loca):TCNT_OUT"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+autoHeight
+nullColor index 0
+useHexPrefix
+newPos
+objType "monitors"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 20
+y 235
+w 120
+h 14
+font "helvetica-medium-r-12.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Output Trigger Count:"
 }
 autoSize
 endObjectProperties

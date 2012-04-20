@@ -11,6 +11,11 @@
 #==============================================================
 #
 #
+mksu-R1-0-17:
+	19-Apr-2012: L.Piccoli
+	* Fixed white PVs on several EDM screens (forgot to update those
+ 	  after firmware changes.
+
 mksu-R1-0-16:
 	18-Apr-2012: L.Piccoli
 	* Modified MksuComm to return asynError if MKSU is not connected,

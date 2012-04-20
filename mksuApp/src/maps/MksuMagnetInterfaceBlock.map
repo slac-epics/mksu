@@ -251,7 +251,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):MGNT_CURR_MASK
 DESC	Magnet Current
 INPA	KLYS:$(AREA):$(LOCATION):MGNT_STATUS
-CALC	A & (1 << 1)
+CALC	(A & (1 << 1)) >> 1
 FLNK	KLYS:$(AREA):$(LOCATION):MGNT_CURR
 PRIO	LOW
 #-------------------------------------------------------
@@ -271,7 +271,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):MGNT_CILK_MASK
 DESC	Magnet Curr Interlock
 INPA	KLYS:$(AREA):$(LOCATION):MGNT_STATUS
-CALC	A & (2 << 2)
+CALC	(A & (1 << 2)) >> 2
 FLNK	KLYS:$(AREA):$(LOCATION):MGNT_CILK
 PRIO	LOW
 #-------------------------------------------------------
