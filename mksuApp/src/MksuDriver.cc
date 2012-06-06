@@ -179,6 +179,8 @@ asynStatus MksuDriver::readInt32(asynUser *pasynUser, epicsInt32 *value) {
     // Convert from unsigned int16 to signed int16
     if (param->conversion != 0) {
       short int sint16 = *value;
+      // TODO: should set the value read back to the paramter library using setIntegerParam()
+      // The address of the location to be written is read using getIntegerParam()
       *value = sint16;
     }
     return asynSuccess;
@@ -209,6 +211,7 @@ asynStatus MksuDriver::writeInt32(asynUser *pasynUser, epicsInt32 value) {
   }
 
   if (_comm->write(param->blockId, param->address, value)) {
+    // TODO: It seems one has to write the value into the paramLibrary with setIntegerParam()
     return asynSuccess;
   }
   else {
