@@ -1,0 +1,466 @@
+#=======================================================
+#
+# TANKPUMP INTERFACE BLOCK (WRITE)
+#
+#=======================================================
+#-------------------------------------------------------
+# TANKPUMP Test Set Register (BEGIN)
+#-------------------------------------------------------
+# PUMPII_SET: TANKPUMP Pump II set (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):PUMPII_SET
+operation	record
+DESC	TANKPUMP Pump II set
+FLNK	KLYS:$(AREA):$(LOCATION):PUMPII_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):PUMPII_SET_MASK
+DESC	TANKPUMP Pump II set
+INPA	KLYS:$(AREA):$(LOCATION):PUMPII_SET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_PUMPII_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_PUMPII_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	TANKPUMP Pump II Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_PUMPII_SET
+DOL	KLYS:$(AREA):$(LOCATION):PUMPII_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# UNUSED_SET: TANKPUMP Upper detuned set (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):UNUSED_SET
+operation	record
+DESC	TANKPUMP Upper detuned set
+FLNK	KLYS:$(AREA):$(LOCATION):UNUSED_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):UNUSED_SET_MASK
+DESC	TANKPUMP Upper tuned set
+INPA	KLYS:$(AREA):$(LOCATION):UNUSED_SET
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_UNUSED_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_UNUSED_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	TANKPUMP Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_UNUSED_SET
+DOL	KLYS:$(AREA):$(LOCATION):UNUSED_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANK_HI_SET: TANKPUMP Lower tuned set (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANK_HI_SET
+operation	record
+DESC	TANKPUMP Lower tuned set
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANK_HI_SET_MASK
+DESC	TANKPUMP Lower tuned set
+INPA	KLYS:$(AREA):$(LOCATION):TANK_HI_SET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANK_HI_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANK_HI_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	TANKPUMP Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANK_HI_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANK_HI_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANK_LO_SET: TANKPUMP Lower detuned set (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANK_LO_SET
+operation	record
+DESC	TANKPUMP Lower detuned set
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANK_LO_SET_MASK
+DESC	TANKPUMP Lower detuned set
+INPA	KLYS:$(AREA):$(LOCATION):TANK_LO_SET
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANK_LO_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANK_LO_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	TANKPUMP Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANK_LO_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANK_LO_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Test Set Register (END)
+#-------------------------------------------------------
+# TANKPUMP Test Reset Register (BEGIN)
+#-------------------------------------------------------
+# PUMPII_RESET: TANKPUMP Upper tuned reset (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):PUMPII_RESET
+operation	record
+DESC	TANKPUMP Upper tuned set
+FLNK	KLYS:$(AREA):$(LOCATION):PUMPII_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):PUMPII_RESET_MASK
+DESC	TANKPUMP Upper tuned set
+INPA	KLYS:$(AREA):$(LOCATION):PUMPII_RESET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_PUMPII_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_PUMPII_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	TANKPUMP Test Reset (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_PUMPII_RESET
+DOL	KLYS:$(AREA):$(LOCATION):PUMPII_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# UNUSED_RESET: TANKPUMP Upper detuned reset (Bit 3)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):UNUSED_RESET
+operation	record
+DESC	TANKPUMP Upper detuned set
+FLNK	KLYS:$(AREA):$(LOCATION):UNUSED_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):UNUSED_RESET_MASK
+DESC	TANKPUMP Upper tuned set
+INPA	KLYS:$(AREA):$(LOCATION):UNUSED_RESET
+CALC	A << 3
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_UNUSED_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_UNUSED_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	TANKPUMP Test Reset (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_UNUSED_RESET
+DOL	KLYS:$(AREA):$(LOCATION):UNUSED_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANK_HI_RESET: TANKPUMP Lower tuned reset (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANK_HI_RESET
+operation	record
+DESC	TANKPUMP Lower tuned set
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANK_HI_RESET_MASK
+DESC	TANKPUMP Lower tuned set
+INPA	KLYS:$(AREA):$(LOCATION):TANK_HI_RESET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANK_HI_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANK_HI_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	TANKPUMP Test Reset (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANK_HI_RESET
+DOL	KLYS:$(AREA):$(LOCATION):TANK_HI_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANK_LO_RESET: TANKPUMP Lower detuned reset (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANK_LO_RESET
+operation	record
+DESC	TANKPUMP Lower detuned set
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANK_LO_RESET_MASK
+DESC	TANKPUMP Lower detuned set
+INPA	KLYS:$(AREA):$(LOCATION):TANK_LO_RESET
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANK_LO_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANK_LO_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	TANKPUMP Test Reset (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANK_LO_RESET
+DOL	KLYS:$(AREA):$(LOCATION):TANK_LO_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Test Reset Register (END)
+#=======================================================
+#
+# TANKPUMP INTERFACE BLOCK (READ)
+#
+#=======================================================
+# TANKPUMP Status Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
+operation	read
+task	0x48
+address	0
+size	1
+DESC	MKSU Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TANKPUMP_STATUS
+FLNK	KLYS:$(AREA):$(LOCATION):PUMPII_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# PUMPII: TANKPUMP Upper tuned (Bit 10)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):PUMPII_MASK
+DESC	TANKPUMP Upper tuned
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
+CALC	(A & (1 << 10)) >> 10
+FLNK	KLYS:$(AREA):$(LOCATION):PUMPII
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):PUMPII
+operation	record
+DESC	TANKPUMP Upper tuned
+INP	KLYS:$(AREA):$(LOCATION):PUMPII_MASK
+ZNAM	Not tuned
+ONAM	Tuned
+FLNK	KLYS:$(AREA):$(LOCATION):UNUSED_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# UNUSED: TANKPUMP Upper tuned (Bit 11)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):UNUSED_MASK
+DESC	TANKPUMP Upper detuned
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
+CALC	(A & (1 << 11)) >> 11
+FLNK	KLYS:$(AREA):$(LOCATION):UNUSED
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):UNUSED
+operation	record
+DESC	TANKPUMP Upper detuned
+INP	KLYS:$(AREA):$(LOCATION):UNUSED_MASK
+ZNAM	Not detuned
+ONAM	Detuned
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TANK_HI: TANKPUMP Lower tuned (Bit 12)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANK_HI_MASK
+DESC	TANKPUMP Lower tuned
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
+CALC	(A & (1 << 12)) >> 12
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANK_HI
+operation	record
+DESC	TANKPUMP Lower tuned
+INP	KLYS:$(AREA):$(LOCATION):TANK_HI_MASK
+ZNAM	Not tuned
+ONAM	Tuned
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TANK_LO: TANKPUMP Lower tuned (Bit 13)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANK_LO_MASK
+DESC	TANKPUMP Lower detuned
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
+CALC	(A & (1 << 13)) >> 13
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANK_LO
+operation	record
+DESC	TANKPUMP Lower detuned
+INP	KLYS:$(AREA):$(LOCATION):TANK_LO_MASK
+ZNAM	Not detuned
+ONAM	Detuned
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Status Register (END)
+#=======================================================
+# TANKPUMP Test Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
+operation	read
+task	0x48
+address	2
+size	1
+DESC	TANKPUMP Test Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TANKPUMP_TEST
+FLNK	KLYS:$(AREA):$(LOCATION):PUMPII_TST_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# PUMPII_TST: TANKPUMP Upper not tuned (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):PUMPII_TST_MASK
+DESC	TANKPUMP Upper not tuned
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):PUMPII_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):PUMPII_TST
+operation	record
+DESC	TANKPUMP Upper not tuned
+INP	KLYS:$(AREA):$(LOCATION):PUMPII_TST_MASK
+ZNAM	Tuned
+ONAM	Not tuned
+FLNK	KLYS:$(AREA):$(LOCATION):TEST_UNUSED3_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TST_UNUSED3: TANKPUMP Upper not detuned (Bit 3)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TEST_UNUSED3_TST_MASK
+DESC	TANKPUMP Upper not detuned
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
+CALC	(A & (1 << 3)) >> 3
+FLNK	KLYS:$(AREA):$(LOCATION):TST_UNUSED3
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TST_UNUSED3
+operation	record
+DESC	TANKPUMP Upper not detuned
+INP	KLYS:$(AREA):$(LOCATION):TEST_UNUSED3_TST_MASK
+ZNAM	Tuned
+ONAM	Not detuned
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TANK_HI_TST: TANKPUMP Lower not tuned (Bit 4)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANK_HI_TST_MASK
+DESC	TANKPUMP Lower not tuned
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
+CALC	(A & (1 << 4)) >> 4
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANK_HI_TST
+operation	record
+DESC	TANKPUMP Lower not tuned
+INP	KLYS:$(AREA):$(LOCATION):TANK_HI_TST_MASK
+ZNAM	Tuned
+ONAM	Not tuned
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TANK_LO_TST_DTND: TANKPUMP Lower not detuned (Bit 5)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANK_LO_TST_MASK
+DESC	TANKPUMP Lower not detuned
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO_TST_DTND
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANK_LO_TST_DTND
+operation	record
+DESC	TANKPUMP Lower not detuned
+INP	KLYS:$(AREA):$(LOCATION):TANK_LO_TST_MASK
+ZNAM	Detuned
+ONAM	Not detuned
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Test Register (END)
+#-------------------------------------------------------
