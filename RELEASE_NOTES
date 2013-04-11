@@ -11,9 +11,6 @@
 #==============================================================
 #
 #
-
-mksu-R1-0-18:  Building against asyn-R4-20_1-1
-
 mksu-R1-0-17:
 	19-Apr-2012: L.Piccoli
 	* Fixed white PVs on several EDM screens (forgot to update those

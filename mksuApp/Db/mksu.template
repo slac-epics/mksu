@@ -554,8 +554,8 @@ record(bi, "KLYS:$(AREA):$(LOCATION):SELFTRIG") {
 record(mbbi, "KLYS:$(AREA):$(LOCATION):MOD") {
   field(DESC, "Modulator State (Read)")
   field(DTYP, "asynInt32")
-  field(TWST, "Offline")
-  field(FRST, "Accelerate")
+  field(TWST, "Stand By")
+  field(FRST, "Maintenance")
   field(FRVL, "4")
   field(SCAN, "$(SCAN)")
   field(INP, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))MOD")
@@ -563,8 +563,8 @@ record(mbbi, "KLYS:$(AREA):$(LOCATION):MOD") {
   field(PRIO, "LOW")
   field(ONVL, "1")
   field(THVL, "3")
-  field(THST, "Stand By")
-  field(ONST, "Maintenance")
+  field(THST, "Offline")
+  field(ONST, "Accelerate")
 }
 
 record(ao, "KLYS:$(AREA):$(LOCATION):WF_TDLY_DES") {
