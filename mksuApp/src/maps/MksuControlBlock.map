@@ -539,10 +539,10 @@ ONVL	1
 TWVL	2
 THVL	3
 FRVL	4
-ONST	Maintenance
-TWST	Offline
-THST	Stand By
-FRST	Accelerate
+ONST	Accelerate
+TWST	Stand By
+THST	Offline
+FRST	Maintenance
 PRIO	LOW
 #-------------------------------------------------------
 # Modulator State Register (END)
@@ -875,10 +875,10 @@ ONVL	1
 TWVL	2
 THVL	3
 FRVL	4
-ONST	Maintenance
-TWST	Offline
-THST	Stand By
-FRST	Accelerate
+ONST	Accelerate
+TWST	Stand By
+THST	Offline
+FRST	Maintenance
 PRIO	LOW
 SCAN	$(SCAN)
 #-------------------------------------------------------

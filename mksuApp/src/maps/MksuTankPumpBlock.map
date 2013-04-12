@@ -37,19 +37,19 @@ DOL	KLYS:$(AREA):$(LOCATION):PUMPII_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# UNUSED_SET: TANKPUMP Upper detuned set (Bit 3)
+# UNUSED_SET: TANKPUMP Unused set (Bit 3)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):UNUSED_SET
 operation	record
-DESC	TANKPUMP Upper detuned set
+DESC	TANKPUMP Unused set
 FLNK	KLYS:$(AREA):$(LOCATION):UNUSED_SET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):UNUSED_SET_MASK
-DESC	TANKPUMP Upper tuned set
+DESC	TANKPUMP Unused set
 INPA	KLYS:$(AREA):$(LOCATION):UNUSED_SET
 CALC	A << 3
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_UNUSED_SET
@@ -68,19 +68,19 @@ DOL	KLYS:$(AREA):$(LOCATION):UNUSED_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# TANK_HI_SET: TANKPUMP Lower tuned set (Bit 4)
+# TANK_HI_SET: TANKPUMP Tank Hi set (Bit 4)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):TANK_HI_SET
 operation	record
-DESC	TANKPUMP Lower tuned set
+DESC	TANKPUMP Tank Hi set
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI_SET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):TANK_HI_SET_MASK
-DESC	TANKPUMP Lower tuned set
+DESC	TANKPUMP Tank Hi set
 INPA	KLYS:$(AREA):$(LOCATION):TANK_HI_SET
 CALC	A << 4
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANK_HI_SET
@@ -99,19 +99,19 @@ DOL	KLYS:$(AREA):$(LOCATION):TANK_HI_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# TANK_LO_SET: TANKPUMP Lower detuned set (Bit 5)
+# TANK_LO_SET: TANKPUMP Tank Lo set (Bit 5)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):TANK_LO_SET
 operation	record
-DESC	TANKPUMP Lower detuned set
+DESC	TANKPUMP Tank Lo set
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO_SET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):TANK_LO_SET_MASK
-DESC	TANKPUMP Lower detuned set
+DESC	TANKPUMP Tank Lo set
 INPA	KLYS:$(AREA):$(LOCATION):TANK_LO_SET
 CALC	A << 5
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANK_LO_SET
@@ -134,19 +134,19 @@ PRIO	LOW
 #-------------------------------------------------------
 # TANKPUMP Test Reset Register (BEGIN)
 #-------------------------------------------------------
-# PUMPII_RESET: TANKPUMP Upper tuned reset (Bit 2)
+# PUMPII_RESET: TANKPUMP Pump II reset (Bit 2)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):PUMPII_RESET
 operation	record
-DESC	TANKPUMP Upper tuned set
+DESC	TANKPUMP Pump II set
 FLNK	KLYS:$(AREA):$(LOCATION):PUMPII_RESET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):PUMPII_RESET_MASK
-DESC	TANKPUMP Upper tuned set
+DESC	TANKPUMP Pump II set
 INPA	KLYS:$(AREA):$(LOCATION):PUMPII_RESET
 CALC	A << 2
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_PUMPII_RESET
@@ -165,19 +165,19 @@ DOL	KLYS:$(AREA):$(LOCATION):PUMPII_RESET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# UNUSED_RESET: TANKPUMP Upper detuned reset (Bit 3)
+# UNUSED_RESET: TANKPUMP Unused reset (Bit 3)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):UNUSED_RESET
 operation	record
-DESC	TANKPUMP Upper detuned set
+DESC	TANKPUMP Unused set
 FLNK	KLYS:$(AREA):$(LOCATION):UNUSED_RESET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):UNUSED_RESET_MASK
-DESC	TANKPUMP Upper tuned set
+DESC	TANKPUMP Unused set
 INPA	KLYS:$(AREA):$(LOCATION):UNUSED_RESET
 CALC	A << 3
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_UNUSED_RESET
@@ -196,19 +196,19 @@ DOL	KLYS:$(AREA):$(LOCATION):UNUSED_RESET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# TANK_HI_RESET: TANKPUMP Lower tuned reset (Bit 4)
+# TANK_HI_RESET: TANKPUMP Tank Hi reset (Bit 4)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):TANK_HI_RESET
 operation	record
-DESC	TANKPUMP Lower tuned set
+DESC	TANKPUMP Tank Hi set
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI_RESET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):TANK_HI_RESET_MASK
-DESC	TANKPUMP Lower tuned set
+DESC	TANKPUMP Tank Hi set
 INPA	KLYS:$(AREA):$(LOCATION):TANK_HI_RESET
 CALC	A << 4
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANK_HI_RESET
@@ -227,19 +227,19 @@ DOL	KLYS:$(AREA):$(LOCATION):TANK_HI_RESET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# TANK_LO_RESET: TANKPUMP Lower detuned reset (Bit 5)
+# TANK_LO_RESET: TANKPUMP Tank Lo reset (Bit 5)
 #-------------------------------------------------------
 record	bo
 name	KLYS:$(AREA):$(LOCATION):TANK_LO_RESET
 operation	record
-DESC	TANKPUMP Lower detuned set
+DESC	TANKPUMP Tank Lo set
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO_RESET_MASK
 PRIO	LOW
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):TANK_LO_RESET_MASK
-DESC	TANKPUMP Lower detuned set
+DESC	TANKPUMP Tank Lo set
 INPA	KLYS:$(AREA):$(LOCATION):TANK_LO_RESET
 CALC	A << 5
 FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANK_LO_RESET
@@ -279,12 +279,12 @@ FLNK	KLYS:$(AREA):$(LOCATION):PUMPII_MASK
 SCAN	$(SCAN)
 PRIO	LOW
 #-------------------------------------------------------
-# PUMPII: TANKPUMP Upper tuned (Bit 10)
+# PUMPII: TANKPUMP Pump II (Bit 10)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):PUMPII_MASK
-DESC	TANKPUMP Upper tuned
+DESC	TANKPUMP Pump II
 INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
 CALC	(A & (1 << 10)) >> 10
 FLNK	KLYS:$(AREA):$(LOCATION):PUMPII
@@ -293,19 +293,19 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):PUMPII
 operation	record
-DESC	TANKPUMP Upper tuned
+DESC	TANKPUMP Pump II
 INP	KLYS:$(AREA):$(LOCATION):PUMPII_MASK
-ZNAM	Not tuned
-ONAM	Tuned
+ZNAM	Not Ok
+ONAM	Ok
 FLNK	KLYS:$(AREA):$(LOCATION):UNUSED_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# UNUSED: TANKPUMP Upper tuned (Bit 11)
+# UNUSED: TANKPUMP Unused (Bit 11)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):UNUSED_MASK
-DESC	TANKPUMP Upper detuned
+DESC	TANKPUMP Unused
 INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
 CALC	(A & (1 << 11)) >> 11
 FLNK	KLYS:$(AREA):$(LOCATION):UNUSED
@@ -314,19 +314,19 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):UNUSED
 operation	record
-DESC	TANKPUMP Upper detuned
+DESC	TANKPUMP Unused
 INP	KLYS:$(AREA):$(LOCATION):UNUSED_MASK
-ZNAM	Not detuned
-ONAM	Detuned
+ZNAM	Not Ok
+ONAM	Ok
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# TANK_HI: TANKPUMP Lower tuned (Bit 12)
+# TANK_HI: TANKPUMP Tank Hi (Bit 12)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):TANK_HI_MASK
-DESC	TANKPUMP Lower tuned
+DESC	TANKPUMP Tank Hi
 INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
 CALC	(A & (1 << 12)) >> 12
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI
@@ -335,19 +335,19 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):TANK_HI
 operation	record
-DESC	TANKPUMP Lower tuned
+DESC	TANKPUMP Tank Hi
 INP	KLYS:$(AREA):$(LOCATION):TANK_HI_MASK
-ZNAM	Not tuned
-ONAM	Tuned
+ZNAM	Not Ok
+ONAM	Ok
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# TANK_LO: TANKPUMP Lower tuned (Bit 13)
+# TANK_LO: TANKPUMP Tank Lo (Bit 13)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):TANK_LO_MASK
-DESC	TANKPUMP Lower detuned
+DESC	TANKPUMP Tank Lo
 INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
 CALC	(A & (1 << 13)) >> 13
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO
@@ -356,10 +356,10 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):TANK_LO
 operation	record
-DESC	TANKPUMP Lower detuned
+DESC	TANKPUMP Tank Lo
 INP	KLYS:$(AREA):$(LOCATION):TANK_LO_MASK
-ZNAM	Not detuned
-ONAM	Detuned
+ZNAM	Not Ok
+ONAM	Ok
 PRIO	LOW
 #-------------------------------------------------------
 # TANKPUMP Status Register (END)
@@ -379,12 +379,12 @@ FLNK	KLYS:$(AREA):$(LOCATION):PUMPII_TST_MASK
 SCAN	$(SCAN)
 PRIO	LOW
 #-------------------------------------------------------
-# PUMPII_TST: TANKPUMP Upper not tuned (Bit 2)
+# PUMPII_TST: TANKPUMP Pump II (Bit 2)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):PUMPII_TST_MASK
-DESC	TANKPUMP Upper not tuned
+DESC	TANKPUMP Pump II
 INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
 CALC	(A & (1 << 2)) >> 2
 FLNK	KLYS:$(AREA):$(LOCATION):PUMPII_TST
@@ -393,19 +393,19 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):PUMPII_TST
 operation	record
-DESC	TANKPUMP Upper not tuned
+DESC	TANKPUMP Pump II
 INP	KLYS:$(AREA):$(LOCATION):PUMPII_TST_MASK
-ZNAM	Tuned
-ONAM	Not tuned
+ZNAM	Ok
+ONAM	Not Ok
 FLNK	KLYS:$(AREA):$(LOCATION):TEST_UNUSED3_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# TST_UNUSED3: TANKPUMP Upper not detuned (Bit 3)
+# TST_UNUSED3: TANKPUMP Unused (Bit 3)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):TEST_UNUSED3_TST_MASK
-DESC	TANKPUMP Upper not detuned
+DESC	TANKPUMP Unused
 INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
 CALC	(A & (1 << 3)) >> 3
 FLNK	KLYS:$(AREA):$(LOCATION):TST_UNUSED3
@@ -414,19 +414,19 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):TST_UNUSED3
 operation	record
-DESC	TANKPUMP Upper not detuned
+DESC	TANKPUMP Unused
 INP	KLYS:$(AREA):$(LOCATION):TEST_UNUSED3_TST_MASK
-ZNAM	Tuned
-ONAM	Not detuned
+ZNAM	Ok
+ONAM	Not Ok
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# TANK_HI_TST: TANKPUMP Lower not tuned (Bit 4)
+# TANK_HI_TST: TANKPUMP Tank Hi (Bit 4)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):TANK_HI_TST_MASK
-DESC	TANKPUMP Lower not tuned
+DESC	TANKPUMP Tank Hi
 INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
 CALC	(A & (1 << 4)) >> 4
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_HI_TST
@@ -435,19 +435,19 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):TANK_HI_TST
 operation	record
-DESC	TANKPUMP Lower not tuned
+DESC	TANKPUMP Tank Hi
 INP	KLYS:$(AREA):$(LOCATION):TANK_HI_TST_MASK
-ZNAM	Tuned
-ONAM	Not tuned
+ZNAM	Ok
+ONAM	Not Ok
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# TANK_LO_TST_DTND: TANKPUMP Lower not detuned (Bit 5)
+# TANK_LO_TST_DTND: TANKPUMP Tank Lo (Bit 5)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):TANK_LO_TST_MASK
-DESC	TANKPUMP Lower not detuned
+DESC	TANKPUMP Tank Lo
 INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
 CALC	(A & (1 << 5)) >> 5
 FLNK	KLYS:$(AREA):$(LOCATION):TANK_LO_TST_DTND
@@ -456,10 +456,10 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):TANK_LO_TST_DTND
 operation	record
-DESC	TANKPUMP Lower not detuned
+DESC	TANKPUMP Tank Lo
 INP	KLYS:$(AREA):$(LOCATION):TANK_LO_TST_MASK
-ZNAM	Detuned
-ONAM	Not detuned
+ZNAM	Ok
+ONAM	Not Ok
 PRIO	LOW
 #-------------------------------------------------------
 # TANKPUMP Test Register (END)
