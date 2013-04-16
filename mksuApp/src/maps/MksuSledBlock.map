@@ -771,7 +771,7 @@ DESC	SLED Motor On
 INP	KLYS:$(AREA):$(LOCATION):SLED_MVNG_MASK
 ZNAM	Off
 ONAM	On
-FLNK	KLYS:$(AREA):$(LOCATION):SM_NTND_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):SLED_NTND_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # SM_NTND: SLED Motor not tuned (Bit 8)

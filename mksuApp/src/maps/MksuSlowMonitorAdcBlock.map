@@ -62,7 +62,7 @@ size	1
 DESC	Clear Klys Vac High
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_KVAC_HI_SET
-DOL	KLYS:$(AREA):$(LOCATION):KVAC_HI_CLR_MASK
+DOL	KLYS:$(AREA):$(LOCATION):KLYS_HI_CLR_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------

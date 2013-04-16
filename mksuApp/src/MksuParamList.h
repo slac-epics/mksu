@@ -1,11 +1,11 @@
-// Header file generated from MksuList.map on Fri, 12 Apr 2013 00:58:16 +0000
+// Header file generated from MksuList.map on Tue, 16 Apr 2013 16:57:23 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 350;
+const int MKSU_NUM_PARAMS = 360;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -17,14 +17,12 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x01, asynParamInt32, 1, 0, 1, "CTRL_WFTR_SET", -1},
   {0x01, asynParamInt32, 1, 0, 1, "CTRL_AVTR_SET", -1},
   {0x01, asynParamInt32, 1, 0, 1, "CTRL_SELFTRIG_SET", -1},
-  {0x01, asynParamInt32, 1, 0, 1, "CTRL_ACCLSEL_SET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_PERMIT_RSET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_TREN_RSET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_CFGD_RSET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_WFTR_RSET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_AVTR_RSET", -1},
   {0x01, asynParamInt32, 2, 0, 1, "CTRL_SELFTRIG_RSET", -1},
-  {0x01, asynParamInt32, 2, 0, 1, "CTRL_ACCLSEL_RSET", -1},
   {0x01, asynParamInt32, 3, 0, 1, "MOD_SET", -1},
   {0x41, asynParamInt32, 0, 0, 1, "STATUS", -1},
   {0x41, asynParamInt32, 1, 0, 1, "CTRL", -1},
@@ -176,16 +174,28 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x46, asynParamInt32, 3, 1, 1, "RF_LDRV", -1},
   {0x46, asynParamInt32, 4, 1, 1, "RF_DRV", -1},
   {0x46, asynParamInt32, 5, 1, 1, "RF_ACTDRV", -1},
-  {0x08, asynParamInt32, 3, 0, 1, "CTRL_PUMPII_SET", -1},
-  {0x08, asynParamInt32, 3, 0, 1, "CTRL_UNUSED_SET", -1},
-  {0x08, asynParamInt32, 3, 0, 1, "CTRL_TANK_HI_SET", -1},
-  {0x08, asynParamInt32, 3, 0, 1, "CTRL_TANK_LO_SET", -1},
-  {0x08, asynParamInt32, 4, 0, 1, "CTRL_PUMPII_RESET", -1},
-  {0x08, asynParamInt32, 4, 0, 1, "CTRL_UNUSED_RESET", -1},
-  {0x08, asynParamInt32, 4, 0, 1, "CTRL_TANK_HI_RESET", -1},
-  {0x08, asynParamInt32, 4, 0, 1, "CTRL_TANK_LO_RESET", -1},
-  {0x48, asynParamInt32, 0, 0, 1, "TANKPUMP_STATUS", -1},
-  {0x48, asynParamInt32, 2, 0, 1, "TANKPUMP_TEST", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_SLED_TMO_SET", -1},
+  {0x08, asynParamInt32, 1, 0, 1, "CTRL_SLED_ENABLE", -1},
+  {0x08, asynParamInt32, 1, 0, 1, "CTRL_TN_SET", -1},
+  {0x08, asynParamInt32, 1, 0, 1, "CTRL_DTN_SET", -1},
+  {0x08, asynParamInt32, 2, 0, 1, "CTRL_SLED_DISABLE", -1},
+  {0x08, asynParamInt32, 2, 0, 1, "CTRL_TN_RESET", -1},
+  {0x08, asynParamInt32, 2, 0, 1, "CTRL_DTN_RESET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SM_NTND_SET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SM_NDTND_SET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SU_TND_SET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SU_DTND_SET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SL_TND_SET", -1},
+  {0x08, asynParamInt32, 3, 0, 1, "CTRL_SL_DTND_SET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SM_NTND_RESET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SM_NDTND_RESET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SU_TND_RESET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SU_DTND_RESET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SL_TND_RESET", -1},
+  {0x08, asynParamInt32, 4, 0, 1, "CTRL_SL_DTND_RESET", -1},
+  {0x48, asynParamInt32, 0, 0, 1, "SLED_STATUS", -1},
+  {0x48, asynParamInt32, 1, 0, 1, "SLED_CTRL", -1},
+  {0x48, asynParamInt32, 2, 0, 1, "SLED_TEST", -1},
   {0x0A, asynParamInt32, 1, 0, 1, "CTRL_MOD_CPWR_SET", -1},
   {0x0A, asynParamInt32, 1, 0, 1, "CTRL_HVON_SET", -1},
   {0x0A, asynParamInt32, 1, 0, 1, "CTRL_HVOFF_SET", -1},
@@ -300,7 +310,7 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x09, asynParamInt32, 0, 0, 1, "STATUS_FG_TRIGDIS_CLR_SET", -1},
   {0x09, asynParamInt32, 1, 0, 1, "FG_CNT_CLR", -1},
   {0x09, asynParamInt32, 2, 0, 1, "CTRL_FG_SLEDNOK_BP_SET", -1},
-  {0x09, asynParamInt32, 2, 0, 1, "CTRL_TANKPUMP_BP_SET", -1},
+  {0x09, asynParamInt32, 2, 0, 1, "CTRL_SLED_BP_SET", -1},
   {0x09, asynParamInt32, 2, 0, 1, "CTRL_SLEDMOTR_BP_SET", -1},
   {0x09, asynParamInt32, 2, 0, 1, "CTRL_MGNTBRKR_BP_SET", -1},
   {0x09, asynParamInt32, 2, 0, 1, "CTRL_MGNTCNOK_BP_SET", -1},
@@ -327,7 +337,7 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_24VLOW_BP_SET", -1},
   {0x09, asynParamInt32, 3, 0, 1, "CTRL_FG_BEAMLOW_BP_SET", -1},
   {0x09, asynParamInt32, 4, 0, 1, "CTRL_FG_SLEDNOK_BP_RESET", -1},
-  {0x09, asynParamInt32, 4, 0, 1, "CTRL_TANKPUMP_BP_RESET", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "CTRL_SLED_BP_RESET", -1},
   {0x09, asynParamInt32, 4, 0, 1, "CTRL_SLEDMOTR_BP_RESET", -1},
   {0x09, asynParamInt32, 4, 0, 1, "CTRL_MGNTBRKR_BP_RESET", -1},
   {0x09, asynParamInt32, 4, 0, 1, "CTRL_MGNTCNOK_BP_RESET", -1},
