@@ -1,5 +1,109 @@
-# Document changes in the RF software and tag the versions in CVS
+#==============================================================
+#
+#  Name: RELEASE_NOTES
+#
+#  Rem:  This file contains the release notes for mksu as
+#        pertains to the LCLS release format and procedures.
+#
+#
+#  Auth: 28-Nov-2011, L. Piccoli         (LPICCOLI)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
+#==============================================================
+#
+#
+mksu-R1-0-17:
+	19-Apr-2012: L.Piccoli
+	* Fixed white PVs on several EDM screens (forgot to update those
+ 	  after firmware changes.
 
-RF-R1-0-0:  Initial import of RF Software module: This initial module
-           only contains support for the new MKSU:  aka MKSU II
-           MKSU = Modulator Klystron Support Unit
+mksu-R1-0-16:
+	18-Apr-2012: L.Piccoli
+	* Modified MksuComm to return asynError if MKSU is not connected,
+	  so PVs become INVALID.
+	* Fixed negative signs of -5V, -15V and -24V MKSU readings.
+
+mksu-R1-0-14:
+           10-Apr-2012:  Ernesto
+           Build against EPICS R3-14-12 and get rid of old style config directory
+
+mksu-R1-0-13:
+	* Changes to register based on Qiao's comments
+
+mksu-R1-0-12:
+	* Changes to the Klystron Body Temperature conversion
+	* Addition of bits/registers.
+
+mksu-R1-0-11:
+	* Added panel for Fault Generator (missing the fault
+	  counter)
+
+mksu-R1-0-10:
+	* Maps for Focus Coil, Magnet, Ion Pump and Fault Generator
+	* Panels for Focus Coil, Magnet, Ion Pump. Still missing
+	  panels for Fault Generator
+
+	* Command to generate databases:
+	 cd mksuApp/src/; ../../tools/generate.py MksuList.map MksuParam
+
+mksu-R1-0-9:
+	* Maps for the Waterflow, Modulator and Legacy Modulator
+	  added
+	* Panels for Waterflow and Modulator added
+
+mksu-R1-0-8:
+	* More maps and edm screens added
+
+mksu-R1-0-7:
+	* Addition of Fast ADC average waveform maps and
+	  panel
+	* Fixed addresses for the voltage block (inverted
+	  addresses)
+
+mksu-R1-0-6:
+	* Addidion of Fast ADC Waveform maps
+	* Addition of Fast ADC edl panel: waveform plots
+	  display the wrong scale, as if the data is of
+	  unsigned shorts.
+
+mksu-R1-0-5:
+	* Addition of map file for the Fast ADC control Block.
+	  Missing EDM panel for Fast ADC controls.
+
+mksu-R1-0-4:
+	* Changed generate.py script to take a file containing
+	  list of map file names.
+	* Source map files are now organized by FPGA block
+	  and reside under mksuApp/src/maps/*.map
+	* Added support to convert 16bit value into a signed
+	  short int (add "convert 1" to the register entry
+	  in the map file). If field is not present no
+	  conversion happens. Conversion occurs in the 
+	  MksuDriver::readInt32() method (if conversion
+	  field is non zero).
+	* Added all current PVs to the mksu_main.edl panel
+
+mksu-R1-0-3:
+	* Initial edm panels added
+	* Added control for individual bits
+
+mksu-R1-0-2:
+	* Got Int16Array working (read/write)
+	* Bits of status control are read/write via several
+	  linked records. A CALC record is used to shift
+	  bits left or right to match the actual MKSU masks.
+	  This may not be the best way to implement these,
+	  but it works.
+	* Renamed a few PVs in the MksuRegister.map file
+	* Added 'operation record' to the generator.py, now
+	  records with that operation are created in the
+	  template file, but not in the c++ header file.
+	  This allows auxiliary records to be added without
+	  having to define another template file.
+	* TODO: make the generate.py script check everything
+	  that is possible to check!
+
+mksu-R1-0-1:
+	* Got Int8Array working
+	* PVs defined to read system info (block 0x64 work)x
+
+mksu-R1-0-0: Initial realease - pretty empty!
