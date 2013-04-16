@@ -208,33 +208,33 @@ DOL	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# FG_SLED_BP_SET: SLED Fault (Bit 1)
+# FG_TANKPUMP_BP_SET: TANKPUMP Fault (Bit 1)
 #-------------------------------------------------------
 record	bo
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_SET
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_SET
 operation	record
-DESC	SLED Fault bit
-FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_SET_MASK
+DESC	TANKPUMP Fault bit
+FLNK	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_SET_MASK
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_SET_MASK
-DESC	SLED Fault bit
-INPA	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_SET
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_SET_MASK
+DESC	TANKPUMP Fault bit
+INPA	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_SET
 CALC	A << 1
-FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SLED_BP_SET
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_BP_SET
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):CTRL_SLED_BP_SET
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_BP_SET
 operation	write
 task	0x09
 address	2
 size	1
 DESC	FG Control (write)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLED_BP_SET
-DOL	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_SET_MASK
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_BP_SET
+DOL	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -1038,33 +1038,33 @@ DOL	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_RESET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
-# FG_SLED_BP_RESET: SLED Fault (Bit 1)
+# FG_TANKPUMP_BP_RESET: TANKPUMP Fault (Bit 1)
 #-------------------------------------------------------
 record	bo
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_RESET
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_RESET
 operation	record
-DESC	SLED Fault bit
-FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_RESET_MASK
+DESC	TANKPUMP Fault bit
+FLNK	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_RESET_MASK
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_RESET_MASK
-DESC	SLED Fault bit
-INPA	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_RESET
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_RESET_MASK
+DESC	TANKPUMP Fault bit
+INPA	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_RESET
 CALC	A << 1
-FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SLED_BP_RESET
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_BP_RESET
 PRIO	LOW
 #-------------------------------------------------------
 record	ao
-name	KLYS:$(AREA):$(LOCATION):CTRL_SLED_BP_RESET
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_BP_RESET
 operation	write
 task	0x09
 address	4
 size	1
 DESC	FG Control (write)
 DTYP	asynInt32
-OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SLED_BP_RESET
-DOL	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_RESET_MASK
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_BP_RESET
+DOL	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_RESET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -2111,25 +2111,25 @@ DESC	SLED not Ok
 INP	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_BP_MASK
 ZNAM	No
 ONAM	Yes
-FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# FG_SLED_BP: SLED Fault (Bit 1)
+# FG_TANKPUMP_BP: TANKPUMP Fault (Bit 1)
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_MASK
-DESC	SLED Fault
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_MASK
+DESC	TANKPUMP Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
 CALC	(A & (1 << 1)) >> 1
-FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED_BP
+FLNK	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_BP
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP
 operation	record
-DESC	SLED Fault
-INP	KLYS:$(AREA):$(LOCATION):FG_SLED_BP_MASK
+DESC	TANKPUMP Fault
+INP	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_BP_MASK
 ZNAM	No
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_BP_MASK
@@ -2710,25 +2710,25 @@ DESC	SLED not Ok
 INP	KLYS:$(AREA):$(LOCATION):FG_SLEDNOK_MASK
 ZNAM	No
 ONAM	Yes
-FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_MASK
 PRIO	LOW
 #-------------------------------------------------------
-# FG_SLED: SLED Fault (Bit 1)
+# FG_TANKPUMP: TANKPUMP Fault (Bit 1)
 #-------------------------------------------------------
 record	calc
 operation	record
-name	KLYS:$(AREA):$(LOCATION):FG_SLED_MASK
-DESC	SLED Fault
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_MASK
+DESC	TANKPUMP Fault
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
 CALC	(A & (1 << 1)) >> 1
-FLNK	KLYS:$(AREA):$(LOCATION):FG_SLED
+FLNK	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP
 PRIO	LOW
 #-------------------------------------------------------
 record	bi
-name	KLYS:$(AREA):$(LOCATION):FG_SLED
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP
 operation	record
-DESC	SLED Fault
-INP	KLYS:$(AREA):$(LOCATION):FG_SLED_MASK
+DESC	TANKPUMP Fault
+INP	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_MASK
 ZNAM	No
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):FG_SLEDMOTR_MASK

@@ -62,7 +62,7 @@ size	1
 DESC	Input Temp Timeout Clear
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TIN_TMO_SET
-DOL	KLYS:$(AREA):$(LOCATION):KLYS_HI_CLR_MASK
+DOL	KLYS:$(AREA):$(LOCATION):TIN_TMO_CLR_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
