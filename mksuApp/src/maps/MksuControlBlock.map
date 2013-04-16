@@ -233,7 +233,7 @@ size	1
 DESC	MKSU Control (write)
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_SET
-DOL	KLYS:$(AREA):$(LOCATION):SELFTRIG_SET_MASK
+DOL	KLYS:$(AREA):$(LOCATION):AVTR_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -265,6 +265,37 @@ DESC	MKSU Control (write)
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SELFTRIG_SET
 DOL	KLYS:$(AREA):$(LOCATION):SELFTRIG_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# ACCLSEL_SET: Acclerate Select Set bit (Bit 6)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):ACCLSEL_SET
+operation	record
+DESC	Acclerate Select (Set)
+FLNK	KLYS:$(AREA):$(LOCATION):ACCLSEL_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):ACCLSEL_SET_MASK
+DESC	Acclerate Select (Set)
+INPA	KLYS:$(AREA):$(LOCATION):ACCLSEL_SET
+CALC	A << 6
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_ACCLSEL_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_ACCLSEL_SET
+operation	write
+task	0x01
+address	1
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_ACCLSEL_SET
+DOL	KLYS:$(AREA):$(LOCATION):ACCLSEL_SET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -423,7 +454,7 @@ size	1
 DESC	MKSU Control (write)
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_AVTR_RSET
-DOL	KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET_MASK
+DOL	KLYS:$(AREA):$(LOCATION):AVTR_RSET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -455,6 +486,37 @@ DESC	MKSU Control (write)
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_SELFTRIG_RSET
 DOL	KLYS:$(AREA):$(LOCATION):SELFTRIG_RSET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# ACCLSEL_RSET: Accelerate Select bit (Bit 6)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):ACCLSEL_RSET
+operation	record
+DESC	Accelerate Select (Reset)
+FLNK	KLYS:$(AREA):$(LOCATION):ACCLSEL_RSET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):ACCLSEL_RSET_MASK
+DESC	Accelerate Select (Reset)
+INPA	KLYS:$(AREA):$(LOCATION):ACCLSEL_RSET
+CALC	A << 6
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_ACCLSEL_RSET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_ACCLSEL_RSET
+operation	write
+task	0x01
+address	2
+size	1
+DESC	MKSU Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_ACCLSEL_RSET
+DOL	KLYS:$(AREA):$(LOCATION):ACCLSEL_RSET_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -674,6 +736,7 @@ DESC	Clkc PLL Not Lckd Latch
 INP	KLYS:$(AREA):$(LOCATION):CLCKDL_MASK
 ZNAM	Not Latch
 ONAM	Latch
+FLNK	KLYS:$(AREA):$(LOCATION):FCLCKDL_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # FCLCKDL: FAST ADC Data Clock PLL Not Locked Latch (Bit 11)
@@ -750,6 +813,7 @@ name	KLYS:$(AREA):$(LOCATION):AVTR
 operation	record
 DESC	Arm Waveform Trigger
 INP	KLYS:$(AREA):$(LOCATION):CTRL_AVTR_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_MASK
 ZNAM	No
 ONAM	Yes
 PRIO	LOW
@@ -759,7 +823,7 @@ PRIO	LOW
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_MASK
-DESC	Arm Waveform Trigger
+DESC	Internal Trigger Status
 INPA	KLYS:$(AREA):$(LOCATION):CTRL
 CALC	(A & (1 << 5)) >> 5
 FLNK	KLYS:$(AREA):$(LOCATION):SELFTRIG
@@ -768,10 +832,31 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):SELFTRIG
 operation	record
-DESC	Arm Waveform Trigger
+DESC	Internal Trigger Status
 INP	KLYS:$(AREA):$(LOCATION):CTRL_SELFTRIG_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_ACCLSEL_MASK
 ZNAM	No
 ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# ACCLSEL: Accelerate Select Status (Bit 6)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):CTRL_ACCLSEL_MASK
+DESC	Accelerate Select
+INPA	KLYS:$(AREA):$(LOCATION):CTRL
+CALC	(A & (1 << 6)) >> 6
+FLNK	KLYS:$(AREA):$(LOCATION):ACCLSEL
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):ACCLSEL
+operation	record
+DESC	Accelerate Select
+INP	KLYS:$(AREA):$(LOCATION):CTRL_ACCLSEL_MASK
+ZNAM	Standby Trigger
+ONAM	Accelerate Trigger
 PRIO	LOW
 #-------------------------------------------------------
 # Control Register (END)
@@ -793,10 +878,10 @@ ONVL	1
 TWVL	2
 THVL	3
 FRVL	4
-ONST	Maintenance
-TWST	Offline
-THST	Stand By
-FRST	Accelerate
+ONST	Accelerate
+TWST	Stand By
+THST	Offline
+FRST	Maintenance
 PRIO	LOW
 SCAN	$(SCAN)
 #-------------------------------------------------------
