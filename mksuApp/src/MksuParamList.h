@@ -1,4 +1,4 @@
-// Header file generated from MksuList.map on Tue, 16 Apr 2013 17:47:18 +0000
+// Header file generated from MksuList.map on Wed, 17 Apr 2013 18:15:35 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
@@ -217,13 +217,13 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x4A, asynParamInt32, 0, 0, 1, "MOD_STATUS", -1},
   {0x4A, asynParamInt32, 1, 0, 1, "MOD_CTRL", -1},
   {0x4A, asynParamInt32, 2, 0, 1, "MOD_TEST", -1},
-  {0x0B, asynParamInt32, 0, 0, 1, "STATUS_WATR_CLR_SET", -1},
-  {0x0B, asynParamInt32, 0, 0, 1, "STATUS_WATR_WG1_CLR_SET", -1},
-  {0x0B, asynParamInt32, 0, 0, 1, "STATUS_WATR_WG2_CLR_SET", -1},
-  {0x0B, asynParamInt32, 0, 0, 1, "STATUS_WATR_ACC1_CLR_SET", -1},
-  {0x0B, asynParamInt32, 0, 0, 1, "STATUS_WATR_ACC2_CLR_SET", -1},
-  {0x0B, asynParamInt32, 0, 0, 1, "STATUS_WATR_FLOW_CLR_SET", -1},
-  {0x0B, asynParamInt32, 0, 0, 1, "STATUS_WATR_FLT_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_WG1_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_WG2_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_ACC1_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_ACC2_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_FLOW_CLR_SET", -1},
+  {0x08, asynParamInt32, 0, 0, 1, "STATUS_WATR_FLT_CLR_SET", -1},
   {0x0B, asynParamInt32, 3, 0, 1, "CTRL_WATR_TST_SET", -1},
   {0x0B, asynParamInt32, 3, 0, 1, "CTRL_WATR_WG1_TST_SET", -1},
   {0x0B, asynParamInt32, 3, 0, 1, "CTRL_WATR_WG2_TST_SET", -1},
