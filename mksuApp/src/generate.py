@@ -1,4 +1,4 @@
-#!/afs/slac/g/lcls/package/python/current/bin/python
+#!/usr/bin/env python
 import sys
 import copy
 import fileinput
