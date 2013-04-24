@@ -5,7 +5,137 @@
 #=======================================================
 # MGNT Status Register (BEGIN)
 #-------------------------------------------------------
-# No bit to be written
+# MGNT_BRKR_CLR: Magnet Breaker Clear (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_CLR
+operation	record
+DESC	Magnet Breaker
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_CLR_MASK
+DESC	Magnet Breaker
+INPA	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_CLR
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_MGNT_BRKR_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_MGNT_BRKR_CLR_SET
+operation	write
+task	0x14
+address	0
+size	1
+DESC	Magnet Breaker (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_MGNT_BRKR_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):MGNT_BRKR_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# MGNT_CURR_CLR: Magnet Current OK (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):MGNT_CURR_CLR
+operation	record
+DESC	Magnet Current OK Clear
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_CURR_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):MGNT_CURR_CLR_MASK
+DESC	Magnet Current OK Clear
+INPA	KLYS:$(AREA):$(LOCATION):MGNT_CURR_CLR
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_MGNT_CURR_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_MGNT_CURR_CLR_SET
+operation	write
+task	0x14
+address	0
+size	1
+DESC	Magnet Current OK (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_MGNT_CURR_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_MGNT_CURR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# MGNT_CILK_CLR: Magnet Current Interlock (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):MGNT_CILK_CLR
+operation	record
+DESC	Magnet Current Interlock Clear
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_CILK_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):MGNT_CILK_CLR_MASK
+DESC	Magnet Current Interlock Clear
+INPA	KLYS:$(AREA):$(LOCATION):MGNT_CILK_CLR
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_MGNT_CILK_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_MGNT_CILK_CLR_SET
+operation	write
+task	0x14
+address	0
+size	1
+DESC	Magnet Current Interlock (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_MGNT_CILK_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_MGNT_CILK_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# MGNT Status Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_MGNT_CLR
+operation	write
+task	0x14
+address	0
+size	1
+DESC	MGNT Status Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_MGNT_CLR
+PRIO	LOW
+#-------------------------------------------------------
+# MGNT TST Set Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_MGNT_TST_SET_CLR
+operation	write
+task	0x14
+address	3
+size	1
+DESC	MGNT TST Set Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_MGNT_TST_SET_CLR
+PRIO	LOW
+#-------------------------------------------------------
+# MGNT TST Reset Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_MGNT_TST_RESET_CLR
+operation	write
+task	0x14
+address	4
+size	1
+DESC	MGNT TST Reset Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_MGNT_TST_RESET_CLR
+PRIO	LOW
 #-------------------------------------------------------
 # MGNT Status Register (END)
 #-------------------------------------------------------
@@ -262,6 +392,7 @@ DESC	Magnet Current
 INP	KLYS:$(AREA):$(LOCATION):MGNT_CURR_MASK
 ZNAM	No
 ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_CILK_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # MGNT_CILK: Magnet Curr Interlock (Bit 2)
@@ -346,6 +477,7 @@ DESC	Magnet Current
 INP	KLYS:$(AREA):$(LOCATION):MGNT_CURR_TST_MASK
 ZNAM	No
 ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):MGNT_CILK_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # MGNT_CILK_TST: Magnet Curr Interlock (Bit 2)

@@ -5,10 +5,108 @@
 #=======================================================
 # WGV Status Register (BEGIN)
 #-------------------------------------------------------
-# No bit to be written
+# WGV_OK_CLR: Wave Guide Vacuum OK Clear (Bit 0)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WGV_OK_CLR
+operation	record
+DESC	Wave Guide Vacuum OK
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_OK_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WGV_OK_CLR_MASK
+DESC	Wave Guide Vacuum OK
+INPA	KLYS:$(AREA):$(LOCATION):WGV_OK_CLR
+CALC	A
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WGV_OK_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WGV_OK_CLR_SET
+operation	write
+task	0x13
+address	0
+size	1
+DESC	Wave Guide Vacuum OK (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WGV_OK_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WGV_OK_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WGV_BAD_CLR: Wave Guide Vacuum Bad (Bit 1)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):WGV_BAD_CLR
+operation	record
+DESC	Wave Guide Vacuum Bad Clear
+FLNK	KLYS:$(AREA):$(LOCATION):WGV_BAD_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):WGV_BAD_CLR_MASK
+DESC	Wave Guide Vacuum Bad Clear
+INPA	KLYS:$(AREA):$(LOCATION):WGV_BAD_CLR
+CALC	A << 1
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_WGV_BAD_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_WGV_BAD_CLR_SET
+operation	write
+task	0x13
+address	0
+size	1
+DESC	Wave Guide Vacuum Bad (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WGV_BAD_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):WATR_WGV_BAD_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# WGV Status Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_WGV_CLR
+operation	write
+task	0x13
+address	0
+size	1
+DESC	WGV Status Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_WGV_CLR
+PRIO	LOW
+#-------------------------------------------------------
+# WGV TST Set Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_WGV_TST_SET_CLR
+operation	write
+task	0x13
+address	3
+size	1
+DESC	WGV TST Set Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_WGV_TST_SET_CLR
+PRIO	LOW
+#-------------------------------------------------------
+# WGV TST Reset Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_WGV_TST_RESET_CLR
+operation	write
+task	0x13
+address	4
+size	1
+DESC	WGV TST Reset Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_WGV_TST_RESET_CLR
+PRIO	LOW
 #-------------------------------------------------------
 # WGV Status Register (END)
-#-------------------------------------------------------
 #-------------------------------------------------------
 # WGV Test Set Register (BEGIN)
 #-------------------------------------------------------
