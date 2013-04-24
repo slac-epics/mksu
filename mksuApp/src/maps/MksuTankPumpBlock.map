@@ -1,0 +1,798 @@
+#=======================================================
+#
+# TANK and PUMP INTERFACE BLOCK (WRITE)
+#
+#=======================================================
+# TANKPUMP Status Register (BEGIN)
+#-------------------------------------------------------
+# TANKPUMP_PUMPII_CLR:PUMPII Clear (Bit 10)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CLR
+operation	record
+DESC	PUMPII Clear
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CLR_MASK
+DESC	PUMPII Clear
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CLR
+CALC	A << 10
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_TANKPUMP_PUMPII_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_TANKPUMP_PUMPII_CLR_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Tank n Pump Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TANKPUMP_PUMPII_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKHI_CLR: TANKHI Clear (Bit 12)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CLR
+operation	record
+DESC	TANKHI Clear
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CLR_MASK
+DESC	TANKHI Clear
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CLR
+CALC	A << 12
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_TANKPUMP_TANKHI_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_TANKPUMP_TANKHI_CLR_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Tank n Pump Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TANKPUMP_TANKHI_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKLO_CLR: TANKLO Clear (Bit 13)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CLR
+operation	record
+DESC	TANKLO Clear
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CLR_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CLR_MASK
+DESC	TANKLO Clear
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CLR
+CALC	A << 13
+FLNK	KLYS:$(AREA):$(LOCATION):STATUS_TANKPUMP_TANKLO_CLR_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_TANKPUMP_TANKLO_CLR_SET
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Tank n Pump Status (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TANKPUMP_TANKLO_CLR_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CLR_MASK
+OMSL	closed_loop
+PRIO	LOW
+#------------------------------------------------------
+# TANKPUMP Status Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_CLR
+operation	write
+task	0x08
+address	0
+size	1
+DESC	Tank n Pump Status Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_TANKPUMP_CLR
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP CTRL Set Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_CTRL_SET_CLR
+operation	write
+task	0x08
+address	1
+size	1
+DESC	TANKPUMP CTRL Set Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_TANKPUMP_CTRL_SET_CLR
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP TST Reset Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_CTRL_RESET_CLR
+operation	write
+task	0x08
+address	2
+size	1
+DESC	TANKPUMP CTRL Reset Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_TANKPUMP_CTRL_RESET_CLR
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP TST Set Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_TST_SET_CLR
+operation	write
+task	0x08
+address	3
+size	1
+DESC	TANKPUMP TST Set Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_TANKPUMP_TST_SET_CLR
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP TST Reset Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):FG_TANKPUMP_TST_RESET_CLR
+operation	write
+task	0x08
+address	4
+size	1
+DESC	TANKPUMP TST Reset Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FG_TANKPUMP_TST_RESET_CLR
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Status Register (END)
+#-------------------------------------------------------
+#-------------------------------------------------------
+# TANKPUMP Test Set Register (BEGIN)
+#-------------------------------------------------------
+# TANKPUMP_PUMPII_TST_SET: PUMPII Set (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_SET
+operation	record
+DESC	PUMPII
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_SET_MASK
+DESC	PUMPII
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_SET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_PUMPII_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_PUMPII_TST_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	TANKPUMP Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_PUMPII_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKHI_TST_SET: Tank Hi (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_SET
+operation	record
+DESC	Tank Hi
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_SET_MASK
+DESC	Tank Hi
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_SET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKHI_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKHI_TST_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	TANKPUMP Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_TANKHI_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKLO_TST_SET: Tank Lo (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_SET
+operation	record
+DESC	Tank Lo
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_SET_MASK
+DESC	Tank Lo
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_SET
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKLO_TST_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKLO_TST_SET
+operation	write
+task	0x08
+address	3
+size	1
+DESC	TANKPUMP Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_TANKLO_TST_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Test Set Register (END)
+#-------------------------------------------------------
+# TANKPUMP Test Reset Register (BEGIN)
+#-------------------------------------------------------
+# TANKPUMP_PUMPII_TST_RESET: PUMPII Set (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_RESET
+operation	record
+DESC	PUMPII
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_RESET_MASK
+DESC	PUMPII
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_RESET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_PUMPII_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_PUMPII_TST_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	TANKPUMP Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_PUMPII_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKHI_TST_RESET: Tank Hi (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_RESET
+operation	record
+DESC	Tank Hi
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_RESET_MASK
+DESC	Tank Hi
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_RESET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKHI_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKHI_TST_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	TANKPUMP Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_TANKHI_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKLO_TST_RESET: Tank Lo (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_RESET
+operation	record
+DESC	Tank Lo
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_RESET_MASK
+DESC	Tank Lo
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_RESET
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKLO_TST_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKLO_TST_RESET
+operation	write
+task	0x08
+address	4
+size	1
+DESC	TANKPUMP Test (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_TANKLO_TST_RESET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Test Reset Register (END)
+#=======================================================
+#-------------------------------------------------------
+# TANKPUMP Control Set Register (BEGIN)
+#-------------------------------------------------------
+# TANKPUMP_PUMPII_CTRL_SET: PUMPII Set (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_SET
+operation	record
+DESC	PUMPII
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_SET_MASK
+DESC	PUMPII
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_SET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_PUMPII_CTRL_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_PUMPII_CTRL_SET
+operation	write
+task	0x08
+address	1
+size	1
+DESC	TANKPUMP Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_PUMPII_CTRL_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKHI_CTRL_SET: Tank Hi (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_SET
+operation	record
+DESC	Tank Hi
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_SET_MASK
+DESC	Tank Hi
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_SET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKHI_CTRL_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKHI_CTRL_SET
+operation	write
+task	0x08
+address	1
+size	1
+DESC	TANKPUMP Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_TANKHI_CTRL_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKLO_CTRL_SET: Tank Lo (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_SET
+operation	record
+DESC	Tank Lo
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_SET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_SET_MASK
+DESC	Tank Lo
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_SET
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKLO_CTRL_SET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKLO_CTRL_SET
+operation	write
+task	0x08
+address	1
+size	1
+DESC	TANKPUMP Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_TANKLO_CTRL_SET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_SET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Control Set Register (END)
+#-------------------------------------------------------
+# TANKPUMP Control Reset Register (BEGIN)
+#-------------------------------------------------------
+# TANKPUMP_PUMPII_CTRL_RESET: PUMPII Set (Bit 2)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_RESET
+operation	record
+DESC	PUMPII
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_RESET_MASK
+DESC	PUMPII
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_RESET
+CALC	A << 2
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_PUMPII_CTRL_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_PUMPII_CTRL_RESET
+operation	write
+task	0x08
+address	2
+size	1
+DESC	TANKPUMP Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_PUMPII_CTRL_RESET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKHI_CTRL_RESET: Tank Hi (Bit 4)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_RESET
+operation	record
+DESC	Tank Hi
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_RESET_MASK
+DESC	Tank Hi
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_RESET
+CALC	A << 4
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKHI_CTRL_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKHI_CTRL_RESET
+operation	write
+task	0x08
+address	2
+size	1
+DESC	TANKPUMP Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_TANKHI_CTRL_RESET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKLO_CTRL_RESET: Tank Lo (Bit 5)
+#-------------------------------------------------------
+record	bo
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_RESET
+operation	record
+DESC	Tank Lo
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_RESET_MASK
+PRIO	LOW
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_RESET_MASK
+DESC	Tank Lo
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_RESET
+CALC	A << 5
+FLNK	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKLO_CTRL_RESET
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):CTRL_TANKPUMP_TANKLO_CTRL_RESET
+operation	write
+task	0x08
+address	2
+size	1
+DESC	TANKPUMP Control (write)
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))CTRL_TANKPUMP_TANKLO_CTRL_RESET
+DOL	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_RESET_MASK
+OMSL	closed_loop
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Control Reset Register (END)
+#=======================================================
+#
+# TANKPUMP INTERFACE BLOCK (READ)
+#
+#=======================================================
+# TANKPUMP Status Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
+operation	read
+task	0x48
+address	0
+size	1
+DESC	MKSU Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TANKPUMP_STATUS
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_PUMPII:PUMPII (Bit 10)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_MASK
+DESC	PUMPII 
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
+CALC	(A & (1 << 10)) >> 10
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII
+operation	record
+DESC	PUMPII 
+INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKHI: Tank Hi  (Bit 12)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_MASK
+DESC	Tank Hi 
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
+CALC	(A & (1 << 12)) >> 12
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI
+operation	record
+DESC	Tank Hi 
+INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKLO: Tank Lo  (Bit 13)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_MASK
+DESC	Tank Lo
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_STATUS
+CALC	(A & (1 << 13)) >> 13
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO
+operation	record
+DESC	Tank Lo
+INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Status Register (END)
+#=======================================================
+# TANKPUMP Control Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_CONTROL
+operation	read
+task	0x48
+address	1
+size	1
+DESC	TANKPUMP Test Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TANKPUMP_CONTROL
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_PUMPII_CTRL: PUMPII (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_MASK
+DESC	PUMPII Control
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_CONTROL
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL
+operation	record
+DESC	PUMPII
+INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_CTRL_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKHI_CTRL: Tank Hi (Bit 4)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_MASK
+DESC	Tank Hi
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_CONTROL
+CALC	(A & (1 << 4)) >> 4
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL
+operation	record
+DESC	Tank Hi Control
+INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKLO_CTRL: Tank Lo (Bit 5)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_MASK
+DESC	Tank Lo
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_CONTROL
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL
+operation	record
+DESC	Tank Lo Control
+INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Control Register (END)
+#-------------------------------------------------------
+# TANKPUMP Test Register (BEGIN)
+#-------------------------------------------------------
+record	ai
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
+operation	read
+task	0x48
+address	2
+size	1
+DESC	TANKPUMP Test Status
+DTYP	asynInt32
+INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TANKPUMP_TEST
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_MASK
+SCAN	$(SCAN)
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_PUMPII_TST: PUMPII (Bit 2)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_MASK
+DESC	PUMPII
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
+CALC	(A & (1 << 2)) >> 2
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST
+operation	record
+DESC	PUMPII
+INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_PUMPII_TST_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKHI_TST: Tank Hi (Bit 4)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_MASK
+DESC	Tank Hi
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
+CALC	(A & (1 << 4)) >> 4
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST
+operation	record
+DESC	Tank Hi
+INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_MASK
+ZNAM	No
+ONAM	Yes
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_MASK
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP_TANKLO_TST: Tank Lo (Bit 5)
+#-------------------------------------------------------
+record	calc
+operation	record
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_MASK
+DESC	Tank Lo
+INPA	KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST
+CALC	(A & (1 << 5)) >> 5
+FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST
+PRIO	LOW
+#-------------------------------------------------------
+record	bi
+name	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST
+operation	record
+DESC	Tank Lo
+INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_MASK
+ZNAM	No
+ONAM	Yes
+PRIO	LOW
+#-------------------------------------------------------
+# TANKPUMP Test Register (END)
+#-------------------------------------------------------
