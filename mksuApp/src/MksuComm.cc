@@ -12,7 +12,8 @@ MksuComm::MksuComm(std::string mksuPortName, MksuParam *params, int numParams) :
   _mksuPortName(mksuPortName),
   _sock(NULL),
   _commandCounter(0),
-  _writeResponse(reinterpret_cast<char *>(&_writeResponseHeader)) {
+  _writeResponse(reinterpret_cast<char *>(&_writeResponseHeader)),
+  _mutex(NULL) {
   if (pasynOctetSyncIO->connect(_mksuPortName.c_str(),
 				0, &_sock, NULL) != asynSuccess) {
     Log::getInstance() << Log::flagComm << Log::dpError;
@@ -28,10 +29,15 @@ MksuComm::MksuComm(std::string mksuPortName, MksuParam *params, int numParams) :
   _command = new char[MKSU_MAX_COMMAND_SIZE];
   _commandHeader = reinterpret_cast<MksuUdpHeader *>(_command);
   _commandData = reinterpret_cast<unsigned short *>(_commandHeader + 1);
+
+  //  _mutex = new epicsMutex();
 }
 
 MksuComm::~MksuComm() {
   delete [] _command;
+  if (_mutex != NULL) {
+    delete _mutex;
+  }
 }
 
 /**
@@ -147,8 +153,11 @@ bool MksuComm::read(int blockId, long address, epicsInt8 *value, int size) {
  * @author L.Piccoli
  */
 bool MksuComm::read(int blockId, long address, epicsInt16 *value, int size) {
+  if (_mutex!=NULL) _mutex->lock();
+
   MksuBlock *block = getBlock(blockId);
   if (block == NULL) {
+    if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
 
@@ -160,6 +169,7 @@ bool MksuComm::read(int blockId, long address, epicsInt16 *value, int size) {
     memcpy(value, &block->data[address], size * sizeof(epicsInt16));
   }
   
+  if (_mutex!=NULL) _mutex->unlock();
   return true;
 }
 
@@ -175,6 +185,7 @@ bool MksuComm::read(int blockId, long address, epicsInt16 *value, int size) {
  * @author L.Piccoli
  */
 bool MksuComm::write(int blockId, long address, epicsInt32 value) {
+  if (_mutex!=NULL) _mutex->lock();
   Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address
@@ -208,6 +219,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 		       << ": expected taskId of " << _commandCounter
 		       << " got " << _writeResponseHeader.taskId
 		       << " instead." << Log::dp;
+    if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
 
@@ -220,6 +232,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 		     << "value=" << value << ")"
 		     << ": communication failed (status="
 		     << (int) status << ")" << Log::dp;
+    if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
 				       
@@ -231,6 +244,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 		     << ", eomReason=" << (int) eomReason
 		     << Log::dp;
 
+  if (_mutex!=NULL) _mutex->unlock();
   return true;
 }
 
@@ -247,6 +261,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
  * @author L.Piccoli
  */
 bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
+  if (_mutex!=NULL) _mutex->lock();
   Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address
@@ -281,6 +296,7 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
 		       << ": expected taskId of " << _commandCounter
 		       << " got " << _writeResponseHeader.taskId
 		       << " instead." << Log::dp;
+    if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
 
@@ -294,6 +310,7 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
 		       << ", size=" << size << ")"
 		       << ": communication failed (status="
 		       << (int) status << ")" << Log::dp;
+    if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
 				       
@@ -306,7 +323,7 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
 		     << ", responseLen=" << (int) responseLen
 		     << ", eomReason=" << (int) eomReason
 		     << Log::dp;
-
+  if (_mutex!=NULL) _mutex->unlock();
   return true;
 }
 
@@ -327,10 +344,12 @@ int MksuComm::refresh() {
  * @author L.Piccoli
  */
 int MksuComm::refresh(int blockId) {
+  if (_mutex!=NULL) _mutex->lock();
   time_t now = time(0);
 
   MksuBlock *block = getBlock(blockId);
   if (block == NULL) {
+    if (_mutex!=NULL) _mutex->unlock();
     return -1;
   }
   Log::getInstance() << Log::flagComm << Log::dpInfo;
@@ -344,12 +363,14 @@ int MksuComm::refresh(int blockId) {
   if (blockId == MKSU_FAST_ADC_WF_PLOT_BLOCK) {
     int status = refreshPlotBlock(block);
     block->time = now;
+    if (_mutex!=NULL) _mutex->unlock();
     return status;
   }
 
   // Reflesh block only every couple seconds, return the status
   // of the previous reflesh
   if (block->time <= now - 4) {
+    if (_mutex!=NULL) _mutex->unlock();
     return block->status;
   }
   else {
@@ -394,6 +415,7 @@ int MksuComm::refresh(int blockId) {
 		       << " got " << _writeResponseHeader.taskId
 		       << " instead." << Log::dp;
     block->status = UDF_ALARM;
+    if (_mutex!=NULL) _mutex->unlock();
     return UDF_ALARM;
   }
 
@@ -405,6 +427,7 @@ int MksuComm::refresh(int blockId) {
 		       << blockId << "): communication failed (status="
 		       << (int) status << ")" << Log::dp;
     block->status = COMM_ALARM;
+    if (_mutex!=NULL) _mutex->unlock();
     return COMM_ALARM;
   }
 				       
@@ -419,6 +442,7 @@ int MksuComm::refresh(int blockId) {
   block->status = NO_ALARM;
 
   printBlock(blockId);
+  if (_mutex!=NULL) _mutex->unlock();
   return NO_ALARM;
 }
 

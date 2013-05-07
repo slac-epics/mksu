@@ -4,6 +4,7 @@
 #include <time.h>
 #include <asynPortDriver.h>
 #include <asynOctetSyncIO.h>
+#include <epicsMutex.h>
 #include "MksuParam.h"
 
 #ifndef MKSUCOMM_H
@@ -102,6 +103,9 @@ public:
   /** Memory block to receive response of write commands */
   MksuUdpHeader _writeResponseHeader;
   char *_writeResponse;
+
+  /** Mutex for controlling communication with MKSU */
+  epicsMutex *_mutex;
 };
 
 #endif
