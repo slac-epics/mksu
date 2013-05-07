@@ -30,7 +30,7 @@ MksuComm::MksuComm(std::string mksuPortName, MksuParam *params, int numParams) :
   _commandHeader = reinterpret_cast<MksuUdpHeader *>(_command);
   _commandData = reinterpret_cast<unsigned short *>(_commandHeader + 1);
 
-  //  _mutex = new epicsMutex();
+  _mutex = new epicsMutex();
 }
 
 MksuComm::~MksuComm() {
