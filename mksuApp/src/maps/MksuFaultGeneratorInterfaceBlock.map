@@ -2109,7 +2109,7 @@ DESC	Trigger Disabled Latched
 INP	KLYS:$(AREA):$(LOCATION):FG_TRIGDIS_L_MASK
 ZNAM	Not Latched
 ONAM	Latched
-FLNK	KLYS:$(AREA):$(LOCATION):FG_FPTRIGEN_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_FPTRIGEN_L_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # FG_FPTRIGEN_L: Front Panel Trigger Enabled Latched (Bit 5)
@@ -2130,7 +2130,7 @@ DESC	FP Trigger Enabled Latched
 INP	KLYS:$(AREA):$(LOCATION):FG_FPTRIGEN_L_MASK
 ZNAM	Not Latched
 ONAM	Latched
-FLNK	KLYS:$(AREA):$(LOCATION):FG_BCLOW_MASK
+FLNK	KLYS:$(AREA):$(LOCATION):FG_BCLOW_L_MASK
 PRIO	LOW
 #-------------------------------------------------------
 # FG_BCLOW_L:Beam Current Low 10 sec Latched (Bit 6)
