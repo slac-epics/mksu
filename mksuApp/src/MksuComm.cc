@@ -1,7 +1,7 @@
 #include <string.h> // memcpy
 #include <iostream>
 #include <sstream>
-
+#include <epicsThread.h>
 #include <alarm.h>
 
 #include "MksuComm.h"
@@ -13,7 +13,9 @@ MksuComm::MksuComm(std::string mksuPortName, MksuParam *params, int numParams) :
   _sock(NULL),
   _commandCounter(0),
   _writeResponse(reinterpret_cast<char *>(&_writeResponseHeader)),
-  _mutex(NULL) {
+  _mutex(NULL),
+  _badTaskIdCounter(0),
+  _reconnectCounter(0) {
   if (pasynOctetSyncIO->connect(_mksuPortName.c_str(),
 				0, &_sock, NULL) != asynSuccess) {
     Log::getInstance() << Log::flagComm << Log::dpError;
@@ -38,6 +40,28 @@ MksuComm::~MksuComm() {
   if (_mutex != NULL) {
     delete _mutex;
   }
+}
+
+void MksuComm::reconnect() {
+  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << "MksuComm::reconnect()" << Log::dp;
+
+  if (pasynOctetSyncIO->disconnect(_sock) != asynSuccess) {
+    Log::getInstance() << Log::flagComm << Log::dpError;
+    Log::getInstance() << "MksuComm::reconnect()"
+		       << " Failed to disconnect" << Log::dp;
+    _sock = NULL;
+  }
+
+  if (pasynOctetSyncIO->connect(_mksuPortName.c_str(),
+				0, &_sock, NULL) != asynSuccess) {
+    Log::getInstance() << Log::flagComm << Log::dpError; 
+    Log::getInstance() << "MksuComm::reconnect()"
+		       << " Failed to connect" << Log::dp;
+    _sock = NULL;
+  }
+
+  _reconnectCounter++;
 }
 
 /**
@@ -211,6 +235,18 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 				       _writeResponse, sizeof(MksuUdpHeader), 1, /* time out */
 				       &numSent, &responseLen, &eomReason);
 
+  if (status != asynSuccess) {
+    Log::getInstance() << Log::flagCommWrite << Log::dpError;
+    Log::getInstance() << "MksuComm::write(blockId="
+		     << blockId << ", address=" << address 
+		     << "value=" << value << ")"
+		     << ": communication failed (status="
+		     << (int) status << ")" << Log::dp;
+    reconnect();
+    if (_mutex!=NULL) _mutex->unlock();
+    return false;
+  }
+				       
   if (_writeResponseHeader.taskId != _commandCounter) {
     Log::getInstance() << Log::flagCommWrite << Log::dpError;
     Log::getInstance() << "MksuComm::write(blockId="
@@ -219,23 +255,14 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 		       << ": expected taskId of " << _commandCounter
 		       << " got " << _writeResponseHeader.taskId
 		       << " instead." << Log::dp;
+    _badTaskIdCounter++;
+    reconnect();
     if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
 
   _commandCounter++;
 
-  if (status != asynSuccess) {
-    Log::getInstance() << Log::flagCommWrite << Log::dpError;
-    Log::getInstance() << "MksuComm::write(blockId="
-		     << blockId << ", address=" << address 
-		     << "value=" << value << ")"
-		     << ": communication failed (status="
-		     << (int) status << ")" << Log::dp;
-    if (_mutex!=NULL) _mutex->unlock();
-    return false;
-  }
-				       
   Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address 
@@ -287,6 +314,19 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
 				       _writeResponse, sizeof(MksuUdpHeader), 1, /* time out */
 				       &numSent, &responseLen, &eomReason);
 
+  if (status != asynSuccess) {
+    Log::getInstance() << Log::flagCommWrite << Log::dpError;
+    Log::getInstance() << "MksuComm::write(blockId="
+		       << blockId << ", address=" << address
+		       << ", value[0]=" << value[0]
+		       << ", size=" << size << ")"
+		       << ": communication failed (status="
+		       << (int) status << ")" << Log::dp;
+    reconnect();
+    if (_mutex!=NULL) _mutex->unlock();
+    return false;
+  }
+				       
   if (_writeResponseHeader.taskId != _commandCounter) {
     Log::getInstance() << Log::flagCommWrite << Log::dpError;
     Log::getInstance() << "MksuComm::write(blockId="
@@ -296,24 +336,14 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
 		       << ": expected taskId of " << _commandCounter
 		       << " got " << _writeResponseHeader.taskId
 		       << " instead." << Log::dp;
+    _badTaskIdCounter++;
+    reconnect();
     if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
 
   _commandCounter++;
 
-  if (status != asynSuccess) {
-    Log::getInstance() << Log::flagCommWrite << Log::dpError;
-    Log::getInstance() << "MksuComm::write(blockId="
-		       << blockId << ", address=" << address
-		       << ", value[0]=" << value[0]
-		       << ", size=" << size << ")"
-		       << ": communication failed (status="
-		       << (int) status << ")" << Log::dp;
-    if (_mutex!=NULL) _mutex->unlock();
-    return false;
-  }
-				       
   Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address
@@ -396,6 +426,7 @@ int MksuComm::refresh(int blockId) {
   if (blockId == MKSU_FAST_ADC_WF_BLOCK ||
       blockId == MKSU_FAST_ADC_WF_BLOCK + block->address) {
     _commandHeader->address = block->address;
+    _commandHeader->messageType = MKSU_FAST_ADC_WF_BLOCK;
   }
 
   asynStatus status;
@@ -403,23 +434,26 @@ int MksuComm::refresh(int blockId) {
   size_t responseLen;
   int eomReason;
   
-  status = pasynOctetSyncIO->writeRead(_sock, _command, sizeof(MksuUdpHeader),
-				       receiveMessage, receiveSize, 1, /* time out */
-				       &numSent, &responseLen, &eomReason);
-
-  if (block->header->taskId != _commandCounter) {
-    Log::getInstance() << Log::flagComm << Log::dpError;
-    Log::getInstance() << "MksuComm::reflesh(blockId="
-		       << blockId << ")"
-		       << ": expected taskId of " << _commandCounter
-		       << " got " << _writeResponseHeader.taskId
-		       << " instead." << Log::dp;
-    block->status = UDF_ALARM;
-    if (_mutex!=NULL) _mutex->unlock();
-    return UDF_ALARM;
+  int tentative = 0;
+  int sleepTime = 0;
+  status = asynError;
+  while (tentative < 10 && status != asynSuccess) {
+    status = pasynOctetSyncIO->writeRead(_sock, _command, sizeof(MksuUdpHeader),
+					 receiveMessage, receiveSize, 1, /* time out */
+					 &numSent, &responseLen, &eomReason);
+    if (tentative > 0) {
+      Log::getInstance() << Log::flagComm << Log::dpError;
+      Log::getInstance() << "ERROR: MksuComm::refresh(blockId="
+			 << blockId << "): communication failed (status="
+			 << (int) status << ") retrying." << Log::dp;
+    }
+    if (status != asynSuccess) {
+      pasynOctetSyncIO->flush(_sock);
+      epicsThreadSleep(sleepTime);
+    }
+    tentative++;
+    sleepTime++;
   }
-
-  _commandCounter++;
 
   if (status != asynSuccess) {
     Log::getInstance() << Log::flagComm << Log::dpError;
@@ -427,15 +461,43 @@ int MksuComm::refresh(int blockId) {
 		       << blockId << "): communication failed (status="
 		       << (int) status << ")" << Log::dp;
     block->status = COMM_ALARM;
+    reconnect();
     if (_mutex!=NULL) _mutex->unlock();
     return COMM_ALARM;
   }
 				       
+  if (block->header->taskId != _commandCounter) {
+    Log::getInstance() << Log::flagComm << Log::dpError;
+    Log::getInstance() << "MksuComm::reflesh(blockId="
+		       << blockId << ")"
+		       << ": expected taskId of " << _commandCounter
+		       << " got " << _writeResponseHeader.taskId
+		       << " instead." << Log::dp;
+    Log::getInstance() << "MksuComm::refresh(blockId="
+		       << blockId << "), address="
+		       << _commandHeader->address
+		       << ", numSent=" << (int) numSent
+		       << ", responseLen=" << (int) responseLen
+		       << ", eomReason=" << (int) eomReason
+		       << ", status=" << (int) status
+		       << Log::dp;
+    block->status = UDF_ALARM;
+    _badTaskIdCounter++;
+    reconnect();
+    if (_mutex!=NULL) _mutex->unlock();
+    return UDF_ALARM;
+  }
+
+  _commandCounter++;
+
   Log::getInstance() << Log::flagComm << Log::dpInfo;
   Log::getInstance() << "MksuComm::refresh(blockId="
-		     << blockId << "), numSent=" << (int) numSent
+		     << blockId << "), address="
+		     << _commandHeader->address
+		     << ", numSent=" << (int) numSent
 		     << ", responseLen=" << (int) responseLen
 		     << ", eomReason=" << (int) eomReason
+		     << ", status=" << (int) status
 		     << Log::dp;
 
   block->time = now;
@@ -479,6 +541,9 @@ void MksuComm::report(std::ostringstream &details) {
 	    << now - (it->second).time << " seconds ago."
 	    << std::endl;
   }
+  details << std::endl;
+  details << "Reconnect Counter: " << _reconnectCounter << std::endl;
+  details << "Bad taskId Counter: " << _badTaskIdCounter << std::endl;
   details << std::endl;
 }
 

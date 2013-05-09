@@ -75,6 +75,7 @@ public:
   MksuBlock *getBlock(int blockId);
   void printBlock(int blockId);
   int refreshPlotBlock(MksuBlock *block);
+  void reconnect();
 
   /** MKSU module number (set in hardware) */
   char _moduleNumber;
@@ -106,6 +107,12 @@ public:
 
   /** Mutex for controlling communication with MKSU */
   epicsMutex *_mutex;
+
+  /** Counts the number of times MKSU responded with an unexpected taskId */
+  long _badTaskIdCounter;
+
+  /** Counts the number of times reconnect was called */
+  long _reconnectCounter;
 };
 
 #endif

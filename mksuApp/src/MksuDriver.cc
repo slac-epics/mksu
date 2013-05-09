@@ -255,35 +255,37 @@ void MksuDriver::report(FILE *fp, int reportDetails) {
 
   std::ostringstream details;
 
-  details << "\n================== MKSU Parameters ====================\n";
+  if (reportDetails > 2) {
+    details << "\n================== MKSU Parameters ====================\n";
   
-  details << "Name:\t\t\tblockId\taddress\tsize\tid\n";
-
-  for (ParamMap::iterator it = _paramMap.begin();
-       it != _paramMap.end(); it++) {
-    MksuParam *param = (*it).second;
-    details << param->name.c_str() << ":\t";
-    if (param->name.length() < 15) {
-      details << "\t";
-      if (param->name.length() < 7) {
+    details << "Name:\t\t\tblockId\taddress\tsize\tid\n";
+    
+    for (ParamMap::iterator it = _paramMap.begin();
+	 it != _paramMap.end(); it++) {
+      MksuParam *param = (*it).second;
+      details << param->name.c_str() << ":\t";
+      if (param->name.length() < 15) {
 	details << "\t";
+	if (param->name.length() < 7) {
+	  details << "\t";
+	}
       }
-    }
-
-    details << param->blockId << "\t"
-	    << param->address << "\t"
-	    << param->size << "\t"
-	    << param->id << "\t";
-    if (param->size == 1 && param->blockId > 0x40) {
-      epicsInt32 value = -1;
-      if (_comm->read(param->blockId, param->address, value)) {
-	details << " latest read: " << value;
+      
+      details << param->blockId << "\t"
+	      << param->address << "\t"
+	      << param->size << "\t"
+	      << param->id << "\t";
+      if (param->size == 1 && param->blockId > 0x40) {
+	epicsInt32 value = -1;
+	if (_comm->read(param->blockId, param->address, value)) {
+	  details << " latest read: " << value;
+	}
       }
+      details << std::endl;
     }
+    
     details << std::endl;
   }
-
-  details << std::endl;
   _comm->report(details);
 
   Log::getInstance() << Log::flagGeneral << Log::dpInfo << details.str().c_str() << Log::dp;
