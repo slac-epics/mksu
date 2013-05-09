@@ -44,7 +44,7 @@ MksuComm::~MksuComm() {
 }
 
 void MksuComm::reconnect() {
-  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << Log::flagComm << Log::dpInfo << Log::showtime;
   Log::getInstance() << "MksuComm::reconnect()" << Log::dp;
   /*
   if (pasynOctetSyncIO->disconnect(_sock) != asynSuccess) {
@@ -106,7 +106,7 @@ void MksuComm::createBlockMap(MksuParam *params, int numParams) {
 MksuBlock *MksuComm::getBlock(int blockId) {
   BlockMap::iterator it = _blockMap.find(blockId);
   if (it == _blockMap.end()) {
-    Log::getInstance() << Log::flagComm << Log::dpError;
+    Log::getInstance() << Log::flagComm << Log::dpError << Log::showtime;
     Log::getInstance() << "ERROR: MksuComm::getBlock(blockId="
 		       << blockId << "): invalid blockId." << Log::dp;
     return NULL;
@@ -127,7 +127,7 @@ MksuBlock *MksuComm::getBlock(int blockId) {
  * @author L.Piccoli
  */
 bool MksuComm::read(int blockId, long address, epicsInt32 &value) {
-  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << Log::flagComm << Log::dpInfo << Log::showtime;
   Log::getInstance() << "MksuComm::read(blockId="
 		     << blockId << ", address=" << address
 		     << ")" << Log::dp;
@@ -211,7 +211,7 @@ bool MksuComm::read(int blockId, long address, epicsInt16 *value, int size) {
  */
 bool MksuComm::write(int blockId, long address, epicsInt32 value) {
   if (_mutex!=NULL) _mutex->lock();
-  Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
+  Log::getInstance() << Log::flagCommWrite << Log::dpInfo << Log::showtime;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address
 		     << ", value=" << value
@@ -237,7 +237,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 				       &numSent, &responseLen, &eomReason);
 
   if (status != asynSuccess) {
-    Log::getInstance() << Log::flagCommWrite << Log::dpError;
+    Log::getInstance() << Log::flagCommWrite << Log::dpError << Log::showtime;
     Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address 
 		     << "value=" << value << ")"
@@ -249,7 +249,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
   }
 				       
   if (_writeResponseHeader.taskId != _commandCounter) {
-    Log::getInstance() << Log::flagCommWrite << Log::dpError;
+    Log::getInstance() << Log::flagCommWrite << Log::dpError << Log::showtime;
     Log::getInstance() << "MksuComm::write(blockId="
 		       << blockId << ", address=" << address 
 		       << "value=" << value << ")"
@@ -264,7 +264,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 
   _commandCounter++;
 
-  Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
+  Log::getInstance() << Log::flagCommWrite << Log::dpInfo << Log::showtime;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address 
 		     << ", value=" << value << "), numSent=" << (int) numSent
@@ -290,7 +290,7 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
  */
 bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
   if (_mutex!=NULL) _mutex->lock();
-  Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
+  Log::getInstance() << Log::flagCommWrite << Log::dpInfo << Log::showtime;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address
 		     << ", value[0]=" << value[0]
@@ -316,7 +316,7 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
 				       &numSent, &responseLen, &eomReason);
 
   if (status != asynSuccess) {
-    Log::getInstance() << Log::flagCommWrite << Log::dpError;
+    Log::getInstance() << Log::flagCommWrite << Log::dpError << Log::showtime;
     Log::getInstance() << "MksuComm::write(blockId="
 		       << blockId << ", address=" << address
 		       << ", value[0]=" << value[0]
@@ -329,7 +329,7 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
   }
 				       
   if (_writeResponseHeader.taskId != _commandCounter) {
-    Log::getInstance() << Log::flagCommWrite << Log::dpError;
+    Log::getInstance() << Log::flagCommWrite << Log::dpError << Log::showtime;
     Log::getInstance() << "MksuComm::write(blockId="
 		       << blockId << ", address=" << address
 		       << ", value[0]=" << value[0]
@@ -345,7 +345,7 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
 
   _commandCounter++;
 
-  Log::getInstance() << Log::flagCommWrite << Log::dpInfo;
+  Log::getInstance() << Log::flagCommWrite << Log::dpInfo << Log::showtime;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address
 		     << ", value[0]=" << value[0]
@@ -383,7 +383,7 @@ int MksuComm::refresh(int blockId) {
     if (_mutex!=NULL) _mutex->unlock();
     return -1;
   }
-  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << Log::flagComm << Log::dpInfo << Log::showtime;
   Log::getInstance() << "MksuComm::refresh(blockId="
 		     << blockId << "): last refreshed "
 		     << now - block->time << " seconds ago."
@@ -401,7 +401,7 @@ int MksuComm::refresh(int blockId) {
    // Reflesh block only every couple seconds, return the status
    // of the previous refresh
    if (now - block->time <= 2) {
-    Log::getInstance() << Log::flagComm << Log::dpInfo;
+    Log::getInstance() << Log::flagComm << Log::dpInfo << Log::showtime;
     Log::getInstance() << "MksuComm::refresh(blockId="
 		       << blockId << "): not updating (now="
 		       << now << ", block time" << block->time << ")"
@@ -410,7 +410,7 @@ int MksuComm::refresh(int blockId) {
     return block->status;
   }
   else {
-    Log::getInstance() << Log::flagComm << Log::dpDebug;
+    Log::getInstance() << Log::flagComm << Log::dpDebug << Log::showtime;
     Log::getInstance() << "MksuComm::refresh(blockId="
 		       << blockId << "): refresh after 2 seconds." << Log::dp;
   }
@@ -448,11 +448,11 @@ int MksuComm::refresh(int blockId) {
 					 receiveMessage, receiveSize, 1, /* time out */
 					 &numSent, &responseLen, &eomReason);
     if (tentative > 0) {
-      Log::getInstance() << Log::flagComm << Log::dpError;
+      Log::getInstance() << Log::flagComm << Log::dpError << Log::showtime;
       Log::getInstance() << "ERROR: MksuComm::refresh(blockId="
 			 << blockId << "): communication failed (status="
 			 << (int) status << ", errno=" << errno << ") retrying." << Log::dp;
-      Log::getInstance() << "MksuComm::refresh(blockId="
+      Log::getInstance() << Log::showtime << "MksuComm::refresh(blockId="
 			 << blockId << "), address="
 			 << _commandHeader->address
 			 << ", numSent=" << (int) numSent
@@ -470,7 +470,7 @@ int MksuComm::refresh(int blockId) {
   }
 
   if (status != asynSuccess) {
-    Log::getInstance() << Log::flagComm << Log::dpError;
+    Log::getInstance() << Log::flagComm << Log::dpError << Log::showtime;
     Log::getInstance() << "ERROR: MksuComm::refresh(blockId="
 		       << blockId << "): communication failed (status="
 		       << (int) status << ")" << Log::dp;
@@ -481,13 +481,13 @@ int MksuComm::refresh(int blockId) {
   }
 				       
   if (block->header->taskId != _commandCounter) {
-    Log::getInstance() << Log::flagComm << Log::dpError;
+    Log::getInstance() << Log::flagComm << Log::dpError << Log::showtime;
     Log::getInstance() << "MksuComm::reflesh(blockId="
 		       << blockId << ")"
 		       << ": expected taskId of " << _commandCounter
 		       << " got " << _writeResponseHeader.taskId
 		       << " instead." << Log::dp;
-    Log::getInstance() << "MksuComm::refresh(blockId="
+    Log::getInstance() << Log::showtime << "MksuComm::refresh(blockId="
 		       << blockId << "), address="
 		       << _commandHeader->address
 		       << ", numSent=" << (int) numSent
@@ -504,7 +504,7 @@ int MksuComm::refresh(int blockId) {
 
   _commandCounter++;
 
-  Log::getInstance() << Log::flagComm << Log::dpInfo;
+  Log::getInstance() << Log::flagComm << Log::dpInfo << Log::showtime;
   Log::getInstance() << "MksuComm::refresh(blockId="
 		     << blockId << "), address="
 		     << _commandHeader->address

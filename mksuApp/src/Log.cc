@@ -75,6 +75,11 @@ Log &Log::operator<<(LogOperatorType const operation) {
     debugPrint();
     clear();
     break;
+  case showtime:
+    epicsTimeGetCurrent(&_timestamp);
+    epicsTimeToStrftime(_timeString, sizeof(_timeString), "[%H:%M:%S] ", &_timestamp);
+    _message << _timeString;
+    break;
   default:
     return *this;
   }

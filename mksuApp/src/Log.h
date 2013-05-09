@@ -11,6 +11,7 @@
 #include "debugPrint.h"
 #include <string>
 #include <sstream>
+#include <epicsTime.h>
 
 /**
  * This class is a wrapper for the errlogPrintfNoConsole().
@@ -31,16 +32,13 @@ public:
      * Possible Log operations. These must be added at the end of a sequence
      * of << operators:
      * o cout: output using std::cout
-     * o flush: message is sent to Log only
-     * o flushpv: message is written to the STATUSSTR PV besides going to the Log
-     * o flushpvnoalarm: message is written to the STATUSSTR PV besides going to the Log, no alarm set
-     * o flushpvonly: message is written to STATUSSTR PV only
-     * o flushpvonlynoalarm: message is written to STATUSSTR PV only, no alarm set
-     * o clearpv: erase status message in STATUSSTR PV
+     * o dp: debug print
+     * o showtime: print time stamp (time of day)
      */
     enum LogOperatorType {
         cout,
 	dp,
+	showtime,
     };
 
     enum LogDebugPrintLevel {
@@ -108,6 +106,12 @@ private:
 
     /** System wide Log instance */
     static Log _instance;
+
+    /** Timestamp used to stamp messages */
+    epicsTimeStamp _timestamp;
+
+    /** String that holds the converted epicsTimeStamp */
+    char _timeString[256];
 };
 
 #endif
