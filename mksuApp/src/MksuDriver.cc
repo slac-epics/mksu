@@ -68,10 +68,17 @@ asynStatus MksuDriver::readInt8Array(asynUser *pasynUser, epicsInt8 *value,
   // First find the parameter in the _paramMap using the reason (key) field
   MksuParam *param = getParam(pasynUser->reason);
   if (param == NULL) {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::readInt8Array(...) "
+		       << " NULL param for reason " << (int) pasynUser->reason << Log::dp;
     return asynError;
   }
 
-  if (_comm->refresh(param->blockId) != NO_ALARM) {
+  int status = _comm->refresh(param->blockId);
+  if (status != NO_ALARM) {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::readInt8Array(...) "
+		       << " MksuComm::refresh() returned " << status << Log::dp;
     return asynError;
   }
 
@@ -80,7 +87,10 @@ asynStatus MksuDriver::readInt8Array(asynUser *pasynUser, epicsInt8 *value,
     return asynSuccess;
   }
   else {
-    return asynError;
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::readInt8Array(...) "
+		       << " MksuComm::read() returned false." << Log::dp; 
+   return asynError;
   }
 }
 
@@ -106,10 +116,17 @@ asynStatus MksuDriver::readInt16Array(asynUser *pasynUser, epicsInt16 *value,
   // First find the parameter in the _paramMap using the reason (key) field
   MksuParam *param = getParam(pasynUser->reason);
   if (param == NULL) {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::readInt16Array(...) "
+		       << " NULL param for reason " << (int) pasynUser->reason << Log::dp;
     return asynError;
   }
 
-  if (_comm->refresh(param->blockId) != NO_ALARM) {
+  int status = _comm->refresh(param->blockId);
+  if (status != NO_ALARM) {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::readInt16Array(...) "
+		       << " MksuComm::refresh() returned " << status << Log::dp;
     return asynError;
   }
 
@@ -144,6 +161,9 @@ asynStatus MksuDriver::readInt16Array(asynUser *pasynUser, epicsInt16 *value,
     return asynSuccess;
   }
   else {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::readInt16Array(...) "
+		       << " MksuComm::read() returned false." << Log::dp;
     return asynError;
   }
 }
@@ -168,10 +188,17 @@ asynStatus MksuDriver::readInt32(asynUser *pasynUser, epicsInt32 *value) {
   // First find the parameter in the _paramMap using the reason (key) field
   MksuParam *param = getParam(pasynUser->reason);
   if (param == NULL) {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::readInt32(...) "
+		       << " NULL param for reason " << (int) pasynUser->reason << Log::dp;
     return asynError;
   }
 
-  if (_comm->refresh(param->blockId) != NO_ALARM) {
+  int status = _comm->refresh(param->blockId);
+  if (status != NO_ALARM) {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::readInt32Array(...) "
+		       << " MksuComm::refresh() returned " << status << Log::dp;
     return asynError;
   }
 
@@ -186,6 +213,9 @@ asynStatus MksuDriver::readInt32(asynUser *pasynUser, epicsInt32 *value) {
     return asynSuccess;
   }
   else {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::readInt32(...) "
+		       << " MksuComm::read() returned false." << Log::dp;
     return asynError;
   }
 }
@@ -207,6 +237,9 @@ asynStatus MksuDriver::writeInt32(asynUser *pasynUser, epicsInt32 value) {
   // First find the parameter in the _paramMap using the reason (key) field
   MksuParam *param = getParam(pasynUser->reason);
   if (param == NULL) {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::writeInt32(...) "
+		       << " NULL param for reason " << (int) pasynUser->reason << Log::dp;
     return asynError;
   }
 
@@ -215,6 +248,9 @@ asynStatus MksuDriver::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     return asynSuccess;
   }
   else {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::writeInt32(...) "
+		       << " MksuComm::write() returned false." << Log::dp;
     return asynError;
   }
 }
@@ -237,7 +273,10 @@ asynStatus MksuDriver::writeInt16Array(asynUser *pasynUser, epicsInt16 *value,
 
   // First find the parameter in the _paramMap using the reason (key) field
   MksuParam *param = getParam(pasynUser->reason);
-  if (param == NULL) {
+  if (param == NULL) { 
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::writeInt16Array(...) "
+		       << " NULL param for reason " << (int) pasynUser->reason << Log::dp;
     return asynError;
   }
 
@@ -245,6 +284,9 @@ asynStatus MksuDriver::writeInt16Array(asynUser *pasynUser, epicsInt16 *value,
     return asynSuccess;
   }
   else {
+    Log::getInstance() << Log::flagAsyn << Log::dpError;
+    Log::getInstance() << "ERROR: MksuDriver::writeInt16Array(...) "
+		       << " MksuComm::write() returned false." << Log::dp;
     return asynError;
   }
 }

@@ -3,6 +3,7 @@
 #include <sstream>
 #include <epicsThread.h>
 #include <alarm.h>
+#include <errno.h>
 
 #include "MksuComm.h"
 #include "Log.h"
@@ -45,7 +46,7 @@ MksuComm::~MksuComm() {
 void MksuComm::reconnect() {
   Log::getInstance() << Log::flagComm << Log::dpInfo;
   Log::getInstance() << "MksuComm::reconnect()" << Log::dp;
-
+  /*
   if (pasynOctetSyncIO->disconnect(_sock) != asynSuccess) {
     Log::getInstance() << Log::flagComm << Log::dpError;
     Log::getInstance() << "MksuComm::reconnect()"
@@ -60,7 +61,7 @@ void MksuComm::reconnect() {
 		       << " Failed to connect" << Log::dp;
     _sock = NULL;
   }
-
+  */
   _reconnectCounter++;
 }
 
@@ -397,9 +398,14 @@ int MksuComm::refresh(int blockId) {
     return status;
   }
 
-  // Reflesh block only every couple seconds, return the status
-  // of the previous reflesh
-  if (block->time <= now - 4) {
+   // Reflesh block only every couple seconds, return the status
+   // of the previous refresh
+   if (now - block->time <= 2) {
+    Log::getInstance() << Log::flagComm << Log::dpInfo;
+    Log::getInstance() << "MksuComm::refresh(blockId="
+		       << blockId << "): not updating (now="
+		       << now << ", block time" << block->time << ")"
+		       << Log::dp;
     if (_mutex!=NULL) _mutex->unlock();
     return block->status;
   }
@@ -445,7 +451,15 @@ int MksuComm::refresh(int blockId) {
       Log::getInstance() << Log::flagComm << Log::dpError;
       Log::getInstance() << "ERROR: MksuComm::refresh(blockId="
 			 << blockId << "): communication failed (status="
-			 << (int) status << ") retrying." << Log::dp;
+			 << (int) status << ", errno=" << errno << ") retrying." << Log::dp;
+      Log::getInstance() << "MksuComm::refresh(blockId="
+			 << blockId << "), address="
+			 << _commandHeader->address
+			 << ", numSent=" << (int) numSent
+			 << ", responseLen=" << (int) responseLen
+			 << ", eomReason=" << (int) eomReason
+			 << ", status=" << (int) status
+			 << Log::dp;
     }
     if (status != asynSuccess) {
       pasynOctetSyncIO->flush(_sock);
