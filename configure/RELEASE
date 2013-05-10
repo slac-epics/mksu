@@ -28,12 +28,16 @@ BASE_MODULE_VERSION=$(EPICS_BASE_VER)
 # =============================================================
 
 ASYN_MODULE_VERSION=asyn-R4-18-lcls2
+#ASYN_MODULE_VERSION=asyn_test
+
 MISCUTILS_MODULE_VERSION=miscUtils-R2-2-2
 
 # ============================================================
 # Support module locations
 # ============================================================
 ASYN=$(EPICS_MODULES)/asyn/$(ASYN_MODULE_VERSION)
+#ASYN=/usr/local/lcls/epics/iocTop/LLRF6/$(ASYN_MODULE_VERSION)/MAIN_TRUNK
+
 MISCUTILS=$(EPICS_MODULES)/miscUtils/$(MISCUTILS_MODULE_VERSION)
 
 # =================================================================

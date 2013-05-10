@@ -63,6 +63,7 @@ public:
   bool read(int blockId, long address, epicsInt8 *value, int size);
   bool read(int blockId, long address, epicsInt16 *value, int size);
   bool write(int blockId, long address, epicsInt32 value);
+  bool writeNoLock(int blockId, long address, epicsInt32 value);
   bool write(int blockId, long address, epicsInt16 *value, int size);
 
   int refresh();
@@ -75,7 +76,8 @@ public:
   MksuBlock *getBlock(int blockId);
   void printBlock(int blockId);
   int refreshPlotBlock(MksuBlock *block);
-  void reconnect();
+
+  bool armWaveforms();
 
   /** MKSU module number (set in hardware) */
   char _moduleNumber;
@@ -110,9 +112,6 @@ public:
 
   /** Counts the number of times MKSU responded with an unexpected taskId */
   long _badTaskIdCounter;
-
-  /** Counts the number of times reconnect was called */
-  long _reconnectCounter;
 };
 
 #endif

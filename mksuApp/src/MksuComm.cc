@@ -15,8 +15,7 @@ MksuComm::MksuComm(std::string mksuPortName, MksuParam *params, int numParams) :
   _commandCounter(0),
   _writeResponse(reinterpret_cast<char *>(&_writeResponseHeader)),
   _mutex(NULL),
-  _badTaskIdCounter(0),
-  _reconnectCounter(0) {
+  _badTaskIdCounter(0) {
   if (pasynOctetSyncIO->connect(_mksuPortName.c_str(),
 				0, &_sock, NULL) != asynSuccess) {
     Log::getInstance() << Log::flagComm << Log::dpError;
@@ -41,28 +40,6 @@ MksuComm::~MksuComm() {
   if (_mutex != NULL) {
     delete _mutex;
   }
-}
-
-void MksuComm::reconnect() {
-  Log::getInstance() << Log::flagComm << Log::dpInfo << Log::showtime;
-  Log::getInstance() << "MksuComm::reconnect()" << Log::dp;
-  /*
-  if (pasynOctetSyncIO->disconnect(_sock) != asynSuccess) {
-    Log::getInstance() << Log::flagComm << Log::dpError;
-    Log::getInstance() << "MksuComm::reconnect()"
-		       << " Failed to disconnect" << Log::dp;
-    _sock = NULL;
-  }
-
-  if (pasynOctetSyncIO->connect(_mksuPortName.c_str(),
-				0, &_sock, NULL) != asynSuccess) {
-    Log::getInstance() << Log::flagComm << Log::dpError; 
-    Log::getInstance() << "MksuComm::reconnect()"
-		       << " Failed to connect" << Log::dp;
-    _sock = NULL;
-  }
-  */
-  _reconnectCounter++;
 }
 
 /**
@@ -198,6 +175,10 @@ bool MksuComm::read(int blockId, long address, epicsInt16 *value, int size) {
   return true;
 }
 
+bool MksuComm::armWaveforms() {
+  return writeNoLock(1, 1, 8);
+}
+
 /**
  * Sends a write command to the MKSU, the specified value is writen
  * to the given block at the given address.
@@ -211,6 +192,23 @@ bool MksuComm::read(int blockId, long address, epicsInt16 *value, int size) {
  */
 bool MksuComm::write(int blockId, long address, epicsInt32 value) {
   if (_mutex!=NULL) _mutex->lock();
+  bool returnVal = writeNoLock(blockId, address, value);
+  if (_mutex!=NULL) _mutex->unlock();
+  return returnVal;
+}
+  
+/**
+ * Sends a write command to the MKSU, the specified value is writen
+ * to the given block at the given address.
+ *
+ * @param blockId the MKSU memory block
+ * @param address location of the value to be read
+ * @param value data to be written out
+ * @return true if block and value were found, false if blockId is
+ * not valid (TODO: check address)
+ * @author L.Piccoli
+ */
+bool MksuComm::writeNoLock(int blockId, long address, epicsInt32 value) {
   Log::getInstance() << Log::flagCommWrite << Log::dpInfo << Log::showtime;
   Log::getInstance() << "MksuComm::write(blockId="
 		     << blockId << ", address=" << address
@@ -243,8 +241,6 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 		     << "value=" << value << ")"
 		     << ": communication failed (status="
 		     << (int) status << ")" << Log::dp;
-    reconnect();
-    if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
 				       
@@ -257,8 +253,6 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 		       << " got " << _writeResponseHeader.taskId
 		       << " instead." << Log::dp;
     _badTaskIdCounter++;
-    reconnect();
-    if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
 
@@ -272,7 +266,6 @@ bool MksuComm::write(int blockId, long address, epicsInt32 value) {
 		     << ", eomReason=" << (int) eomReason
 		     << Log::dp;
 
-  if (_mutex!=NULL) _mutex->unlock();
   return true;
 }
 
@@ -323,7 +316,6 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
 		       << ", size=" << size << ")"
 		       << ": communication failed (status="
 		       << (int) status << ")" << Log::dp;
-    reconnect();
     if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
@@ -338,7 +330,6 @@ bool MksuComm::write(int blockId, long address, epicsInt16 *value, int size) {
 		       << " got " << _writeResponseHeader.taskId
 		       << " instead." << Log::dp;
     _badTaskIdCounter++;
-    reconnect();
     if (_mutex!=NULL) _mutex->unlock();
     return false;
   }
@@ -400,23 +391,33 @@ int MksuComm::refresh(int blockId) {
 
    // Reflesh block only every couple seconds, return the status
    // of the previous refresh
-   if (now - block->time <= 2) {
-    Log::getInstance() << Log::flagComm << Log::dpInfo << Log::showtime;
-    Log::getInstance() << "MksuComm::refresh(blockId="
-		       << blockId << "): not updating (now="
-		       << now << ", block time" << block->time << ")"
-		       << Log::dp;
-    if (_mutex!=NULL) _mutex->unlock();
-    return block->status;
-  }
-  else {
-    Log::getInstance() << Log::flagComm << Log::dpDebug << Log::showtime;
-    Log::getInstance() << "MksuComm::refresh(blockId="
-		       << blockId << "): refresh after 2 seconds." << Log::dp;
+  if (blockId != MKSU_FAST_ADC_WF_BLOCK &&
+      blockId != MKSU_FAST_ADC_WF_BLOCK + block->address) {
+    if (now - block->time <= 2) {
+      Log::getInstance() << Log::flagComm << Log::dpInfo << Log::showtime;
+      Log::getInstance() << "MksuComm::refresh(blockId="
+			 << blockId << "): not updating (now="
+			 << now << ", block time" << block->time << ")"
+			 << Log::dp;
+      if (_mutex!=NULL) _mutex->unlock();
+      return block->status;
+    }
+    else {
+      Log::getInstance() << Log::flagComm << Log::dpDebug << Log::showtime;
+      Log::getInstance() << "MksuComm::refresh(blockId="
+			 << blockId << "): refresh after 2 seconds." << Log::dp;
+    }
   }
 
   char *receiveMessage = reinterpret_cast<char *>(block->memory);
   int receiveSize = block->size;
+
+  // If a waveform is being refleshed first we MUST ARM IT,
+  // otherwise old data will be read over and over
+  if (blockId == MKSU_FAST_ADC_WF_BLOCK ||
+      blockId == MKSU_FAST_ADC_WF_BLOCK + block->address) {
+    armWaveforms();
+  }
 
   _commandHeader->messageVersion = 0x01;
   _commandHeader->modulatorNumber = _moduleNumber;
@@ -475,7 +476,6 @@ int MksuComm::refresh(int blockId) {
 		       << blockId << "): communication failed (status="
 		       << (int) status << ")" << Log::dp;
     block->status = COMM_ALARM;
-    reconnect();
     if (_mutex!=NULL) _mutex->unlock();
     return COMM_ALARM;
   }
@@ -497,7 +497,6 @@ int MksuComm::refresh(int blockId) {
 		       << Log::dp;
     block->status = UDF_ALARM;
     _badTaskIdCounter++;
-    reconnect();
     if (_mutex!=NULL) _mutex->unlock();
     return UDF_ALARM;
   }
@@ -556,7 +555,6 @@ void MksuComm::report(std::ostringstream &details) {
 	    << std::endl;
   }
   details << std::endl;
-  details << "Reconnect Counter: " << _reconnectCounter << std::endl;
   details << "Bad taskId Counter: " << _badTaskIdCounter << std::endl;
   details << std::endl;
 }
