@@ -180,7 +180,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET
 DESC	Temp Offset (C)
 INPA	KLYS:$(AREA):$(LOCATION):TOFF_SET
-CALC	A*1048
+CALC	A*1638.4
 FLNK	KLYS:$(AREA):$(LOCATION):TOFF_CNTS_SET
 EGU	counts
 PRIO	LOW
@@ -217,7 +217,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET
 DESC	Delta Temp Max
 INPA	KLYS:$(AREA):$(LOCATION):TDELTAMAX_SET
-CALC	A*1048
+CALC	A*1638.4
 FLNK	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS_SET
 EGU	counts
 PRIO	LOW
@@ -378,7 +378,7 @@ operation	record
 DESC	Temperature Offset
 SCAN	$(SCAN)
 INPA	KLYS:$(AREA):$(LOCATION):TOFF_CNTS
-CALC	A/1048
+CALC	A/1638.4
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------
@@ -402,7 +402,7 @@ operation	record
 DESC	Delta Temp Max
 SCAN	$(SCAN)
 INPA	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS
-CALC	A/1048
+CALC	A/1638.4
 EGU	C
 PRIO	LOW
 #-------------------------------------------------------

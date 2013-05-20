@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Fri, 10 May 2013 19:02:14 +0000
+# Database template file generated from MksuList.map on Mon, 20 May 2013 19:11:33 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -1075,7 +1075,7 @@ record(calcout, "KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET") {
   field(INPA, "KLYS:$(AREA):$(LOCATION):TOFF_SET")
   field(EGU, "counts")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TOFF_CNTS_SET")
-  field(CALC, "A*1048")
+  field(CALC, "A*1638.4")
 }
 
 record(ao, "KLYS:$(AREA):$(LOCATION):TOFF_CNTS_SET") {
@@ -1101,7 +1101,7 @@ record(calcout, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET") {
   field(INPA, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_SET")
   field(EGU, "counts")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS_SET")
-  field(CALC, "A*1048")
+  field(CALC, "A*1638.4")
 }
 
 record(ao, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS_SET") {
@@ -1221,7 +1221,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TOFF") {
   field(SCAN, "$(SCAN)")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TOFF_CNTS")
   field(EGU, "C")
-  field(CALC, "A/1048")
+  field(CALC, "A/1638.4")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS") {
@@ -1240,7 +1240,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TDELTAMAX") {
   field(SCAN, "$(SCAN)")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CNTS")
   field(EGU, "C")
-  field(CALC, "A/1048")
+  field(CALC, "A/1638.4")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):TDELTA_CNTS") {
