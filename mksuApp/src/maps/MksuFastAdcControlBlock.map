@@ -1211,7 +1211,7 @@ task	0x44
 address	21
 conversion	1
 size	1
-DESC	Average Forward Power
+DESC	Average Reflected Power
 DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG

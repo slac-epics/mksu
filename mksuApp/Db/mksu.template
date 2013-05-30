@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Mon, 20 May 2013 19:11:33 +0000
+# Database template file generated from MksuList.map on Thu, 30 May 2013 21:04:35 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -2649,7 +2649,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):FP_AVG") {
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):RP_AVG") {
-  field(DESC, "Average Forward Power")
+  field(DESC, "Average Reflected Power")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
