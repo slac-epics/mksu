@@ -15,20 +15,14 @@ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 # =============================================================
 EPICS_MODULES=$(MODULES_SITE_TOP)
 
-
-
 # ==============================================================
 # Define the cvs module version of EPICS BASE that you will use
 # =============================================================
 BASE_MODULE_VERSION=$(EPICS_BASE_VER)
 
-
 # Define the version of modules needed by
 # IOC apps or other Support apps - this section for development
 # =============================================================
-
-ASYN_MODULE_VERSION=asyn-R4-18-lcls2
-#ASYN_MODULE_VERSION=asyn_test
 
 MISCUTILS_MODULE_VERSION=miscUtils-R2-2-2
 
@@ -36,8 +30,6 @@ MISCUTILS_MODULE_VERSION=miscUtils-R2-2-2
 # Support module locations
 # ============================================================
 ASYN=$(EPICS_MODULES)/asyn/$(ASYN_MODULE_VERSION)
-#ASYN=/usr/local/lcls/epics/iocTop/LLRF6/$(ASYN_MODULE_VERSION)/MAIN_TRUNK
-
 MISCUTILS=$(EPICS_MODULES)/miscUtils/$(MISCUTILS_MODULE_VERSION)
 
 # =================================================================

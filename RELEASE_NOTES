@@ -7,10 +7,15 @@
 #
 #
 #  Auth: 28-Nov-2011, L. Piccoli         (LPICCOLI)
+#  Mod:  05-Jun-2013, S.Condamoor        (SCONDAM)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #==============================================================
 #
 #
+mksu-R1-0-18:
+	05-Jun-2013: S.Condamoor
+	* Several fixes resulting from testing in lab.
+
 mksu-R1-0-17:
 	19-Apr-2012: L.Piccoli
 	* Fixed white PVs on several EDM screens (forgot to update those
