@@ -12,9 +12,12 @@
 #==============================================================
 #
 #
-mksu-R1-0-18:
+mksu-R1-0-19:
 	05-Jun-2013: S.Condamoor
+	* 
 	* Several fixes resulting from testing in lab.
+	
+mksu-R1-0-18:  Building against asyn-R4-20_1-1	
 
 mksu-R1-0-17:
 	19-Apr-2012: L.Piccoli
