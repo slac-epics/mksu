@@ -1110,7 +1110,7 @@ record	waveform
 name	KLYS:$(AREA):$(LOCATION):RP_STA_PLOT
 operation	read
 task	0x70
-address	26
+address	28
 conversion	1
 size	2
 DESC	RP AVG STA (plot only)
@@ -1138,7 +1138,7 @@ record	waveform
 name	KLYS:$(AREA):$(LOCATION):RP_END_PLOT
 operation	read
 task	0x70
-address	28
+address	30
 conversion	1
 size	2
 DESC	RP AVG END (plot only)

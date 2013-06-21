@@ -1,4 +1,4 @@
-// Header file generated from MksuList.map on Thu, 30 May 2013 21:04:35 +0000
+// Header file generated from MksuList.map on Fri, 21 Jun 2013 21:00:31 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
@@ -149,9 +149,9 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x44, asynParamInt32, 14, 1, 1, "RP_HI", -1},
   {0x70, asynParamInt16Array, 26, 1, 2, "RP_HI_PLOT", -1},
   {0x44, asynParamInt32, 15, 0, 1, "RP_AVG_STA", -1},
-  {0x70, asynParamInt16Array, 26, 1, 2, "RP_STA_PLOT", -1},
+  {0x70, asynParamInt16Array, 28, 1, 2, "RP_STA_PLOT", -1},
   {0x44, asynParamInt32, 16, 0, 1, "RP_AVG_END", -1},
-  {0x70, asynParamInt16Array, 28, 1, 2, "RP_END_PLOT", -1},
+  {0x70, asynParamInt16Array, 30, 1, 2, "RP_END_PLOT", -1},
   {0x44, asynParamInt32, 17, 0, 1, "WF_CNT", -1},
   {0x44, asynParamInt32, 18, 1, 1, "BV_AVG", -1},
   {0x44, asynParamInt32, 19, 1, 1, "BC_AVG", -1},
