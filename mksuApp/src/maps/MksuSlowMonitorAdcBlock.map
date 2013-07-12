@@ -255,6 +255,17 @@ PRIO	LOW
 # Status Register (END)
 #-------------------------------------------------------
 record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_SLOW_CLR
+operation	write
+task	0x03
+address	0
+size	1
+DESC	Slow Mon Status Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_SLOW_CLR
+PRIO	LOW
+#-------------------------------------------------------
+record	ao
 name	KLYS:$(AREA):$(LOCATION):KVAC_LO_SET
 operation	write
 task	0x03

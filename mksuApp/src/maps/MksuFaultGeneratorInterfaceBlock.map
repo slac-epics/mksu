@@ -282,7 +282,7 @@ record	ao
 name	KLYS:$(AREA):$(LOCATION):FG_BYPASS0_RESET_CLR
 operation	write
 task	0x09
-address	3
+address	4
 size	1
 DESC	Bypass Reset Register 0 Clear
 DTYP	asynInt32
@@ -295,7 +295,7 @@ record	ao
 name	KLYS:$(AREA):$(LOCATION):FG_BYPASS1_RESET_CLR
 operation	write
 task	0x09
-address	4
+address	5
 size	1
 DESC	Bypass Reset Register 1 Clear
 DTYP	asynInt32
@@ -308,7 +308,7 @@ record	ao
 name	KLYS:$(AREA):$(LOCATION):FG_FAULT0_RESET_CLR
 operation	write
 task	0x09
-address	5
+address	6
 size	1
 DESC	Fault Reset Register 0 Clear
 DTYP	asynInt32
@@ -321,7 +321,7 @@ record	ao
 name	KLYS:$(AREA):$(LOCATION):FG_FAULT1_RESET_CLR
 operation	write
 task	0x09
-address	6
+address	7
 size	1
 DESC	Fault Reset Register 1 Clear
 DTYP	asynInt32

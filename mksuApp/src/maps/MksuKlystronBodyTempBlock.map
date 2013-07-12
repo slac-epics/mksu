@@ -158,6 +158,20 @@ OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TDELTA_SET
 DOL	KLYS:$(AREA):$(LOCATION):TDELTA_CLR_MASK
 OMSL	closed_loop
 PRIO	LOW
+#------------------------------------------------------
+# KLystron Body Temp Status Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_TEMP_CLR
+operation	write
+task	0x10
+address	0
+size	1
+DESC	Kly Body Temp Status Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_TEMP_CLR
+PRIO	LOW
+#-------------------------------------------------------
 #-------------------------------------------------------
 # Status Register (END)
 #-------------------------------------------------------

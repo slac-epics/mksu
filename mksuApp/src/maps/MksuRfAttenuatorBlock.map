@@ -66,6 +66,19 @@ OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_RF_BC_LO_SET
 DOL	KLYS:$(AREA):$(LOCATION):RF_BC_LO_CLR_MASK
 OMSL	closed_loop
 PRIO	LOW
+#------------------------------------------------------
+# RFATTN Status Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):RF_STATUS_CLR
+operation	write
+task	0x06
+address	0
+size	1
+DESC	RF Attn Status Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_STATUS_CLR
+PRIO	LOW
 #-------------------------------------------------------
 # RF Status Register (END)
 #-------------------------------------------------------

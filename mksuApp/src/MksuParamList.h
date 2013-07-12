@@ -1,11 +1,11 @@
-// Header file generated from MksuList.map on Fri, 21 Jun 2013 21:00:31 +0000
+// Header file generated from MksuList.map on Fri, 12 Jul 2013 18:08:38 +0000
 
 #include <MksuParam.h>
 #ifndef MKSUPARAMLIST_H
 #define MKSUPARAMLIST_H
 
 // Number of records found in the input file
-const int MKSU_NUM_PARAMS = 418;
+const int MKSU_NUM_PARAMS = 422;
 
 // Information extracted from the input file
 MksuParam MksuParams[MKSU_NUM_PARAMS] = {
@@ -62,6 +62,7 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x10, asynParamInt32, 0, 0, 1, "STATUS_TOUT_OR_SET", -1},
   {0x10, asynParamInt32, 0, 0, 1, "STATUS_TIN_OR_SET", -1},
   {0x10, asynParamInt32, 0, 0, 1, "STATUS_TDELTA_SET", -1},
+  {0x10, asynParamInt32, 0, 0, 1, "STATUS_TEMP_CLR", -1},
   {0x10, asynParamInt32, 1, 0, 1, "TOFF_CNTS_SET", -1},
   {0x10, asynParamInt32, 2, 0, 1, "TDELTAMAX_CNTS_SET", -1},
   {0x50, asynParamInt32, 0, 0, 1, "STATUS_TEMP", -1},
@@ -102,6 +103,7 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x04, asynParamInt32, 0, 0, 1, "STATUS_RP_LO_SET", -1},
   {0x04, asynParamInt32, 0, 0, 1, "STATUS_RP_HI_SET", -1},
   {0x04, asynParamInt32, 0, 0, 1, "STATUS_BC_LO10S_SET", -1},
+  {0x04, asynParamInt32, 0, 0, 1, "STATUS_FADC_CLR", -1},
   {0x04, asynParamInt32, 1, 0, 1, "BV_LO_SET", -1},
   {0x04, asynParamInt32, 2, 0, 1, "BV_HI_SET", -1},
   {0x04, asynParamInt32, 3, 0, 1, "BV_AVG_STA_SET", -1},
@@ -171,6 +173,7 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x61, asynParamInt16Array, 3584, 1, 512, "RP_AVG_WF", -1},
   {0x06, asynParamInt32, 0, 0, 1, "STATUS_RF_3O5_SET", -1},
   {0x06, asynParamInt32, 0, 0, 1, "STATUS_RF_BC_LO_SET", -1},
+  {0x06, asynParamInt32, 0, 0, 1, "RF_STATUS_CLR", -1},
   {0x06, asynParamInt32, 1, 0, 1, "CTRL_RF_RAMP_SLOW", -1},
   {0x06, asynParamInt32, 1, 0, 1, "CTRL_BYPASS_SET", -1},
   {0x06, asynParamInt32, 2, 0, 1, "CTRL_RF_RAMP_NORM", -1},
@@ -294,6 +297,7 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x03, asynParamInt32, 0, 0, 1, "STATUS_FC_HI_SET", -1},
   {0x03, asynParamInt32, 0, 0, 1, "STATUS_FCG_LO_SET", -1},
   {0x03, asynParamInt32, 0, 0, 1, "STATUS_FCG_HI_SET", -1},
+  {0x03, asynParamInt32, 0, 0, 1, "STATUS_SLOW_CLR", -1},
   {0x03, asynParamInt32, 1, 0, 1, "KVAC_LO_SET", -1},
   {0x03, asynParamInt32, 2, 0, 1, "KVAC_HI_SET", -1},
   {0x03, asynParamInt32, 3, 0, 1, "WVAC_LO_SET", -1},
@@ -336,10 +340,10 @@ MksuParam MksuParams[MKSU_NUM_PARAMS] = {
   {0x09, asynParamInt32, 1, 0, 1, "FG_CNT_CLR", -1},
   {0x09, asynParamInt32, 2, 0, 1, "FG_BYPASS0_SET_CLR", -1},
   {0x09, asynParamInt32, 3, 0, 1, "FG_BYPASS1_SET_CLR", -1},
-  {0x09, asynParamInt32, 3, 0, 1, "FG_BYPASS0_RESET_CLR", -1},
-  {0x09, asynParamInt32, 4, 0, 1, "FG_BYPASS1_RESET_CLR", -1},
-  {0x09, asynParamInt32, 5, 0, 1, "FG_FAULT0_RESET_CLR", -1},
-  {0x09, asynParamInt32, 6, 0, 1, "FG_FAULT1_RESET_CLR", -1},
+  {0x09, asynParamInt32, 4, 0, 1, "FG_BYPASS0_RESET_CLR", -1},
+  {0x09, asynParamInt32, 5, 0, 1, "FG_BYPASS1_RESET_CLR", -1},
+  {0x09, asynParamInt32, 6, 0, 1, "FG_FAULT0_RESET_CLR", -1},
+  {0x09, asynParamInt32, 7, 0, 1, "FG_FAULT1_RESET_CLR", -1},
   {0x09, asynParamInt32, 2, 0, 1, "CTRL_FG_PUMPII_BP_SET", -1},
   {0x09, asynParamInt32, 2, 0, 1, "CTRL_TANKHI_BP_SET", -1},
   {0x09, asynParamInt32, 2, 0, 1, "CTRL_TANKLO_BP_SET", -1},

@@ -285,6 +285,20 @@ PRIO	LOW
 #-------------------------------------------------------
 # Status Register (END)
 #-------------------------------------------------------
+#------------------------------------------------------
+# Mksu Fast ADC Status Register Clear
+#-------------------------------------------------------
+record	ao
+name	KLYS:$(AREA):$(LOCATION):STATUS_FADC_CLR
+operation	write
+task	0x04
+address	0
+size	1
+DESC	Mksu FADC Status Reg Clear
+DTYP	asynInt32
+OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_FADC_CLR
+PRIO	LOW
+#-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):BV_LO_SET
 operation	write
