@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Fri, 12 Jul 2013 18:08:38 +0000
+# Database template file generated from MksuList.map on Wed, 17 Jul 2013 18:21:21 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -1508,7 +1508,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MGNT_CURR_CLR_MASK") {
 record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_MGNT_CURR_CLR_SET") {
   field(DESC, "Magnet Current OK (write)")
   field(DTYP, "asynInt32")
-  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_MGNT_CURR_MASK")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MGNT_CURR_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_MGNT_CURR_CLR_SET")
   field(OMSL, "closed_loop")
   field(PRIO, "LOW")
@@ -1531,7 +1531,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MGNT_CILK_CLR_MASK") {
 record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_MGNT_CILK_CLR_SET") {
   field(DESC, "Magnet Current Interlock (write)")
   field(DTYP, "asynInt32")
-  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_MGNT_CILK_MASK")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):MGNT_CILK_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_MGNT_CILK_CLR_SET")
   field(OMSL, "closed_loop")
   field(PRIO, "LOW")
@@ -6106,7 +6106,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):WGV_BAD_CLR_MASK") {
 record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_WGV_BAD_CLR_SET") {
   field(DESC, "Wave Guide Vacuum Bad (write)")
   field(DTYP, "asynInt32")
-  field(DOL, "KLYS:$(AREA):$(LOCATION):WATR_WGV_BAD_MASK")
+  field(DOL, "KLYS:$(AREA):$(LOCATION):WGV_BAD_MASK")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WGV_BAD_CLR_SET")
   field(OMSL, "closed_loop")
   field(PRIO, "LOW")
