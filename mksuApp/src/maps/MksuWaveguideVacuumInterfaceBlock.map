@@ -63,7 +63,7 @@ size	1
 DESC	Wave Guide Vacuum Bad (write)
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_WGV_BAD_CLR_SET
-DOL	KLYS:$(AREA):$(LOCATION):WATR_WGV_BAD_MASK
+DOL	KLYS:$(AREA):$(LOCATION):WGV_BAD_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------

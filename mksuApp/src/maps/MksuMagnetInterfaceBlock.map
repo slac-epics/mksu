@@ -63,7 +63,7 @@ size	1
 DESC	Magnet Current OK (write)
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_MGNT_CURR_CLR_SET
-DOL	KLYS:$(AREA):$(LOCATION):WATR_MGNT_CURR_MASK
+DOL	KLYS:$(AREA):$(LOCATION):MGNT_CURR_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
@@ -94,7 +94,7 @@ size	1
 DESC	Magnet Current Interlock (write)
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_MGNT_CILK_CLR_SET
-DOL	KLYS:$(AREA):$(LOCATION):WATR_MGNT_CILK_MASK
+DOL	KLYS:$(AREA):$(LOCATION):MGNT_CILK_MASK
 OMSL	closed_loop
 PRIO	LOW
 #-------------------------------------------------------
