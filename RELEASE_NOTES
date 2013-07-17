@@ -12,6 +12,13 @@
 #==============================================================
 #
 #
+mksu-R1-0-21:
+	17-Jul-2013: S.Condamoor
+	* 
+	* Added Fault counters and auto-reset for all fault counter status registers.
+	* This is needed since the MKSUII Firmware was upgraded to version 5.30 whcih
+	*    automatically clears the faults but latches the fault statuses so they can be read.
+	
 mksu-R1-0-20:
 	24-Jun-2013: S.Condamoor
 	* 
