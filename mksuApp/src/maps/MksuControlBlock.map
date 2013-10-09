@@ -746,7 +746,7 @@ operation	record
 name	KLYS:$(AREA):$(LOCATION):FCLCKDL_MASK
 DESC	FADC PLL Not Lckd Latch
 INPA	KLYS:$(AREA):$(LOCATION):STATUS
-CALC	(A & (1 << 10)) >> 10
+CALC	(A & (1 << 11)) >> 11
 FLNK	KLYS:$(AREA):$(LOCATION):FCLCKDL
 PRIO	LOW
 #-------------------------------------------------------

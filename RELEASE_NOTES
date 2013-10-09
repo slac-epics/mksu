@@ -12,6 +12,10 @@
 #==============================================================
 #
 #
+mksu-R1-0-22:
+	09-Oct-2013: S.Condamoor
+	* Status bit KLYS:DMP1:1:FCLCKDL typo fixed
+	
 mksu-R1-0-21:
 	17-Jul-2013: S.Condamoor
 	* 
