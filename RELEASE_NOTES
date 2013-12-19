@@ -12,6 +12,11 @@
 #==============================================================
 #
 #
+
+mksu-R1-0-23:
+        19-Oct-2013: Ernesto
+        * Build against asyn-R4-21_1-0
+
 mksu-R1-0-22:
 	09-Oct-2013: S.Condamoor
 	* Status bit KLYS:DMP1:1:FCLCKDL typo fixed
