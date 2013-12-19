@@ -24,7 +24,7 @@ BASE_MODULE_VERSION=$(EPICS_BASE_VER)
 # IOC apps or other Support apps - this section for development
 # =============================================================
 
-ASYN_MODULE_VERSION=asyn-R4-18-lcls2
+ASYN_MODULE_VERSION=asyn-R4-21_1-0
 MISCUTILS_MODULE_VERSION=miscUtils-R2-2-2
 
 # ============================================================
