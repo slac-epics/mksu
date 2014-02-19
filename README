@@ -1,0 +1,27 @@
+Procedure to build the mksu module:
+(1) eco -m mksu
+(2) cd mksu/MAIN_TRUNK
+(3) make
+(4) cd mksuApp/src
+(5) make all
+
+"cvs -n update" should look like this:
+lcls-zelazny bash:~/mksu/MAIN_TRUNK>cvs -n update
+cvs update: Updating .
+cvs update: Updating configure
+cvs update: Updating iocBoot
+cvs update: Updating iocBoot/iocMksu
+cvs update: Updating mksuApp
+cvs update: Updating mksuApp/Db
+M mksuApp/Db/mksu.template
+cvs update: Updating mksuApp/src
+M mksuApp/src/MksuParam.h
+M mksuApp/src/MksuParamList.h
+cvs update: Updating mksuApp/src/maps
+cvs update: Updating testmksuApp
+cvs update: Updating testmksuApp/Db
+cvs update: Updating testmksuApp/src
+cvs update: Updating testmksuApp/srcDisplay
+lcls-zelazny bash:~/mksu/MAIN_TRUNK>
+
+
