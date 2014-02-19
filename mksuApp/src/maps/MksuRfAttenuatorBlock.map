@@ -224,6 +224,7 @@ DESC	Remote RF Drive (Set)
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_RDRV_SET
 PRIO	LOW
+info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #=======================================================
 #
 # RF ATTENUATOR BLOCK (READ)

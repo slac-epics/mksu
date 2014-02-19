@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Tue, 08 Oct 2013 23:27:34 +0000
+# Database template file generated from MksuList.map on Wed, 19 Feb 2014 23:28:39 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -2945,6 +2945,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_BYPASS_RESET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):RF_RDRV_SET") {
   field(DESC, "Remote RF Drive (Set)")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RF_RDRV_SET")
 }

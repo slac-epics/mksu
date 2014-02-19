@@ -207,7 +207,9 @@ class DbTemplateGenerator:
             fd.write("  field(" + Entry.DTYP + ", \"" + value + "\")\n")
                 
         for (name, value) in record._fields.items():
-            if (name != Entry.RECORD and
+            if (name == "info"):
+                fd.write("  " + name + value + "\n")
+            elif (name != Entry.RECORD and
                 name != Entry.NAME and
                 name != Entry.OPERATION and
                 name != Entry.TASK and
