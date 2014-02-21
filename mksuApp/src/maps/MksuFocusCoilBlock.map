@@ -15,6 +15,7 @@ DESC	Focus Coil DAC Set
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_DAC_SET
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #=======================================================
 #
 # FOCUS COIL BLOCK (READ)

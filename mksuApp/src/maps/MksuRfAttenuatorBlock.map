@@ -263,6 +263,7 @@ DESC	3 out of 5 seconds fault
 INP	KLYS:$(AREA):$(LOCATION):RF_3O5_MASK
 ZNAM	Ok
 ONAM	Fault
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):RF_BC_LO_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -284,6 +285,7 @@ DESC	Beam Current Low Fault
 INP	KLYS:$(AREA):$(LOCATION):RF_BC_LO_MASK
 ZNAM	Ok
 ONAM	Fault
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):RF_RAMPING_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -363,6 +365,7 @@ DESC	RF Ramp Rate State
 INP	KLYS:$(AREA):$(LOCATION):RF_CTRL_RATE_MASK
 ZNAM	Normal
 ONAM	Slow
+OSV	MINOR
 FLNK	KLYS:$(AREA):$(LOCATION):RF_CTRL_BYPASS_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -385,6 +388,7 @@ DESC	RF Bypass State
 INP	KLYS:$(AREA):$(LOCATION):RF_CTRL_BYPASS_MASK
 ZNAM	Bypass Off
 ONAM	Bypass On
+OSV	MINOR
 PRIO	LOW
 #-------------------------------------------------------
 # RF Control Register (END)

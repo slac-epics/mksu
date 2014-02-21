@@ -127,6 +127,7 @@ operation	record
 DESC	X axis range for plots
 FTVL	LONG
 NELM	2
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	waveform
 name	KLYS:$(AREA):$(LOCATION):Y_RANGE
@@ -134,4 +135,5 @@ operation	record
 DESC	Y axis range for plots
 FTVL	LONG
 NELM	2
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------

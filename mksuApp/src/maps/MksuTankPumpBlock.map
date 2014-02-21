@@ -692,6 +692,7 @@ DESC	Tank Hi Control
 INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -713,6 +714,7 @@ DESC	Tank Lo Control
 INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 PRIO	LOW
 #-------------------------------------------------------
 # TANKPUMP Control Register (END)
@@ -771,6 +773,7 @@ DESC	Tank Hi
 INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -792,6 +795,7 @@ DESC	Tank Lo
 INP	KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 PRIO	LOW
 #-------------------------------------------------------
 # TANKPUMP Test Register (END)

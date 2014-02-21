@@ -12,6 +12,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TDLY_DES
 EGU	119MHz Ticks
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TDLY_DES
@@ -24,6 +25,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_DES
 EGU	119MHz Ticks
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TDLY_RP_DES
@@ -36,6 +38,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_RP_DES
 EGU	119MHz Ticks
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TWTH_RP_DES
@@ -48,6 +51,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_RP_DES
 EGU	119MHz Ticks
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TDLY_FP_DES
@@ -60,6 +64,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_FP_DES
 EGU	119MHz Ticks
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):TWTH_FP_DES
@@ -72,6 +77,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_FP_DES
 EGU	119MHz Ticks
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):RTRIGDIV_DES
@@ -83,6 +89,7 @@ DESC	Remote Trig Divider
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RTRIGDIV_DES
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):SELF_TDLY_DES
@@ -94,6 +101,7 @@ DESC	Remote Trig Divider
 DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SELF_TDLY_DES
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #=======================================================
 # TRIGGER CONTROL BLOCK (READ)
 #=======================================================

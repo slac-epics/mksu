@@ -188,6 +188,7 @@ DESC	Temp. Offset
 FLNK	KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET
 EGU	C
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	calcout
 operation	record
@@ -225,6 +226,7 @@ DESC	Delta Temp Max
 FLNK	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET
 EGU	C
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	calcout
 operation	record
@@ -285,6 +287,7 @@ DESC	Output Temp Timeout
 INP	KLYS:$(AREA):$(LOCATION):TOUT_TMO_MASK
 ZNAM	Ok
 ONAM	Timeout
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):TIN_TMO_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -306,6 +309,7 @@ DESC	Input Temp Timeout
 INP	KLYS:$(AREA):$(LOCATION):TIN_TMO_MASK
 ZNAM	Ok
 ONAM	Timeout
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):TOUT_OR_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -327,6 +331,7 @@ DESC	Output Temp Over Range
 INP	KLYS:$(AREA):$(LOCATION):TOUT_OR_MASK
 ZNAM	Ok
 ONAM	Over Range
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):TIN_OR_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -347,6 +352,7 @@ DESC	Input Temp Over Range
 INP	KLYS:$(AREA):$(LOCATION):TIN_OR_MASK
 ZNAM	Ok
 ONAM	Over Range
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):TDELTA_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -368,6 +374,7 @@ DESC	Delta Temp Exceed
 INP	KLYS:$(AREA):$(LOCATION):TDELTA_MASK
 ZNAM	Ok
 ONAM	Delta Exceeded
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):FC_HI_MASK
 #-------------------------------------------------------
 # Status Register (END)

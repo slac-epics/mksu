@@ -276,6 +276,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_LO_SET
 EGU	Torr
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):KVAC_HI_SET
@@ -288,6 +289,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI_SET
 EGU	Torr
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):WVAC_LO_SET
@@ -300,6 +302,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_LO_SET
 EGU	Torr
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):WVAC_HI_SET
@@ -312,6 +315,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_HI_SET
 EGU	Torr
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):FC_LO_SET
@@ -324,6 +328,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_LO_SET
 EGU	Torr
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):FC_HI_SET
@@ -336,6 +341,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_HI_SET
 EGU	Torr
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):FCG_LO_SET
@@ -348,6 +354,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_LO_SET
 EGU	Torr
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao
 name	KLYS:$(AREA):$(LOCATION):FCG_HI_SET
@@ -360,6 +367,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_HI_SET
 EGU	Torr
 PRIO	LOW
+info	(autosaveFields, "VAL")
 #=======================================================
 # SLOW MONITOR ADC (READ)
 #=======================================================

@@ -16,6 +16,8 @@
 mksu-R1-2-0:
         19-Feb-2014: Mike Zelazny
         * Support "info" fields in "maps" files
+        * Add autosaveFields info fields ro map files
+        * Add alarm severities to map files
 
 mksu-R1-0-23:
         19-Oct-2013: Ernesto

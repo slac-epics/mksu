@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Wed, 19 Feb 2014 23:28:39 +0000
+# Database template file generated from MksuList.map on Fri, 21 Feb 2014 18:23:36 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -401,6 +401,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):PERMIT_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):PERMIT") {
   field(DESC, "Permit Status")
+  field(ZSV, "MAJOR")
   field(PRIO, "LOW")
   field(ONAM, "Permit")
   field(ZNAM, "No Permit")
@@ -418,6 +419,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):TREN_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):TREN") {
   field(DESC, "Trigger Enable Status")
+  field(ZSV, "MAJOR")
   field(PRIO, "LOW")
   field(ONAM, "Enabled")
   field(ZNAM, "Not Enabled")
@@ -435,6 +437,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):CFGD_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):CFGD") {
   field(DESC, "Configured Status")
+  field(ZSV, "MAJOR")
   field(PRIO, "LOW")
   field(ONAM, "Configured")
   field(ZNAM, "Not Configured")
@@ -468,6 +471,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):CLCKD_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):CLCKD") {
   field(DESC, "Sys Clck PLL Lckd")
+  field(ZSV, "MAJOR")
   field(ONAM, "Locked")
   field(ZNAM, "Not Locked")
   field(INP, "KLYS:$(AREA):$(LOCATION):CLCKD_MASK")
@@ -500,6 +504,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):FCLCKD_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):FCLCKD") {
   field(DESC, "FADC Clck PLL Lckd")
+  field(ZSV, "MAJOR")
   field(PRIO, "LOW")
   field(ONAM, "Locked")
   field(ZNAM, "Not Locked")
@@ -635,6 +640,7 @@ record(mbbi, "KLYS:$(AREA):$(LOCATION):MOD") {
 record(ao, "KLYS:$(AREA):$(LOCATION):WF_TDLY_DES") {
   field(DESC, "Waveform des trigger delay")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_TDLY_DES")
   field(EGU, "119MHz Ticks")
@@ -643,6 +649,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):WF_TDLY_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_DES") {
   field(DESC, "Remote mod des trig delay")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_DES")
   field(EGU, "119MHz Ticks")
@@ -651,6 +658,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_RP_DES") {
   field(DESC, "Rear panel des trig delay")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_RP_DES")
   field(EGU, "119MHz Ticks")
@@ -659,6 +667,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_RP_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TWTH_RP_DES") {
   field(DESC, "Rear panel des trig width")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_RP_DES")
   field(EGU, "119MHz Ticks")
@@ -667,6 +676,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TWTH_RP_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_FP_DES") {
   field(DESC, "Front panel des trig delay")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TDLY_FP_DES")
   field(EGU, "119MHz Ticks")
@@ -675,6 +685,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TDLY_FP_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):TWTH_FP_DES") {
   field(DESC, "Front panel des trig width")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TWTH_FP_DES")
   field(EGU, "119MHz Ticks")
@@ -683,6 +694,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TWTH_FP_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):RTRIGDIV_DES") {
   field(DESC, "Remote Trig Divider")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RTRIGDIV_DES")
 }
@@ -690,6 +702,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):RTRIGDIV_DES") {
 record(ao, "KLYS:$(AREA):$(LOCATION):SELF_TDLY_DES") {
   field(DESC, "Remote Trig Divider")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))SELF_TDLY_DES")
 }
@@ -1071,6 +1084,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_TEMP_CLR") {
 
 record(ao, "KLYS:$(AREA):$(LOCATION):TOFF_SET") {
   field(DESC, "Temp. Offset")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(EGU, "C")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET")
@@ -1097,6 +1111,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):TOFF_CNTS_SET") {
 
 record(ao, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_SET") {
   field(DESC, "Delta Temp Max")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(EGU, "C")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET")
@@ -1144,6 +1159,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TOUT_TMO") {
   field(ONAM, "Timeout")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):TOUT_TMO_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN_TMO_MASK")
 }
 
@@ -1161,6 +1177,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TIN_TMO") {
   field(ONAM, "Timeout")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):TIN_TMO_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TOUT_OR_MASK")
 }
 
@@ -1178,6 +1195,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TOUT_OR") {
   field(ONAM, "Over Range")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):TOUT_OR_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TIN_OR_MASK")
 }
 
@@ -1194,6 +1212,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TIN_OR") {
   field(ONAM, "Over Range")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):TIN_OR_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TDELTA_MASK")
 }
 
@@ -1210,6 +1229,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TDELTAEXCD") {
   field(ONAM, "Delta Exceeded")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):TDELTA_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FC_HI_MASK")
 }
 
@@ -2031,6 +2051,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_FADC_CLR") {
 record(ao, "KLYS:$(AREA):$(LOCATION):BV_LO_SET") {
   field(DESC, "Beam Volt Low Limit")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_LO_SET")
   field(EGU, "ADC counts")
@@ -2039,6 +2060,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):BV_LO_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):BV_HI_SET") {
   field(DESC, "Beam Volt High Limit")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_HI_SET")
   field(EGU, "ADC counts")
@@ -2047,6 +2069,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):BV_HI_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):BV_AVG_STA_SET") {
   field(DESC, "Beam Volt Avg Win Start")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_STA_SET")
   field(EGU, "60MHz ticks")
@@ -2055,6 +2078,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):BV_AVG_STA_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):BV_AVG_END_SET") {
   field(DESC, "Beam Volt Avg Win Ent")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_END_SET")
   field(EGU, "60MHz ticks")
@@ -2063,6 +2087,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):BV_AVG_END_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):BC_LO_SET") {
   field(DESC, "Beam Curr Low Limit")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_LO_SET")
   field(EGU, "ADC counts")
@@ -2071,6 +2096,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):BC_LO_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):BC_HI_SET") {
   field(DESC, "Beam Curr High Limit")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_HI_SET")
   field(EGU, "ADC counts")
@@ -2079,6 +2105,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):BC_HI_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):BC_AVG_STA_SET") {
   field(DESC, "Beam Curr Avg Win Start")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_STA_SET")
   field(EGU, "60MHz ticks")
@@ -2087,6 +2114,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):BC_AVG_STA_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):BC_AVG_END_SET") {
   field(DESC, "Beam Curr Avg Win Ent")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_END_SET")
   field(EGU, "60MHz ticks")
@@ -2095,6 +2123,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):BC_AVG_END_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):FP_LO_SET") {
   field(DESC, "Forward Power Low Limit")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_LO_SET")
   field(EGU, "ADC counts")
@@ -2103,6 +2132,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):FP_LO_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):FP_HI_SET") {
   field(DESC, "Forward Power High Limit")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_HI_SET")
   field(EGU, "ADC counts")
@@ -2111,6 +2141,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):FP_HI_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):FP_AVG_STA_SET") {
   field(DESC, "Forward Power Avg Win Start")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_STA_SET")
   field(EGU, "60MHz ticks")
@@ -2119,6 +2150,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):FP_AVG_STA_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):FP_AVG_END_SET") {
   field(DESC, "Forward Power Avg Win Ent")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_END_SET")
   field(EGU, "60MHz ticks")
@@ -2127,6 +2159,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):FP_AVG_END_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):RP_LO_SET") {
   field(DESC, "Reflected Power Low Limit")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_LO_SET")
   field(EGU, "ADC counts")
@@ -2135,6 +2168,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):RP_LO_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):RP_HI_SET") {
   field(DESC, "Reflected Power High Limit")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_HI_SET")
   field(EGU, "ADC counts")
@@ -2143,6 +2177,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):RP_HI_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):RP_AVG_STA_SET") {
   field(DESC, "Reflctd Pwr Avg Win Start")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_STA_SET")
   field(EGU, "60MHz ticks")
@@ -2151,6 +2186,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):RP_AVG_STA_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):RP_AVG_END_SET") {
   field(DESC, "Reflctd Pwr Avg Win End")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_END_SET")
   field(EGU, "60MHz ticks")
@@ -2159,6 +2195,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):RP_AVG_END_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):WF_CNT_SET") {
   field(DESC, "Avg Waveform Samples")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_CNT_SET")
   field(EGU, "samples")
@@ -2187,6 +2224,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):BV_LO_BIT") {
   field(ONAM, "Low")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):BV_LO_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):BV_HI_MASK")
 }
 
@@ -2221,6 +2259,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):BC_LO_BIT") {
   field(ONAM, "Low")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):BC_LO_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):BC_HI_MASK")
 }
 
@@ -2237,6 +2276,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):BC_HI_BIT") {
   field(ONAM, "High")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):BC_HI_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FP_LO_MASK")
 }
 
@@ -2253,6 +2293,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FP_LO_BIT") {
   field(ONAM, "Low")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):FP_LO_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FP_HI_MASK")
 }
 
@@ -2286,6 +2327,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):RP_LO_BIT") {
   field(ONAM, "Low")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):RP_LO_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):RP_HI_MASK")
 }
 
@@ -2789,12 +2831,14 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):RP_AVG_WF") {
 
 record(waveform, "KLYS:$(AREA):$(LOCATION):X_RANGE") {
   field(DESC, "X axis range for plots")
+  info(autosaveFields, "VAL")
   field(FTVL, "LONG")
   field(NELM, "2")
 }
 
 record(waveform, "KLYS:$(AREA):$(LOCATION):Y_RANGE") {
   field(DESC, "Y axis range for plots")
+  info(autosaveFields, "VAL")
   field(FTVL, "LONG")
   field(NELM, "2")
 }
@@ -2973,6 +3017,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):RF_3O5") {
   field(ONAM, "Fault")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):RF_3O5_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):RF_BC_LO_MASK")
 }
 
@@ -2990,6 +3035,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):RF_BC_LO") {
   field(ONAM, "Fault")
   field(ZNAM, "Ok")
   field(INP, "KLYS:$(AREA):$(LOCATION):RF_BC_LO_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):RF_RAMPING_MASK")
 }
 
@@ -3032,6 +3078,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):RF_RAMP_RATE") {
   field(ONAM, "Slow")
   field(ZNAM, "Normal")
   field(INP, "KLYS:$(AREA):$(LOCATION):RF_CTRL_RATE_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):RF_CTRL_BYPASS_MASK")
 }
 
@@ -3049,6 +3096,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):RF_BYPASS") {
   field(ONAM, "Bypass On")
   field(ZNAM, "Bypass Off")
   field(INP, "KLYS:$(AREA):$(LOCATION):RF_CTRL_BYPASS_MASK")
+  field(OSV, "MINOR")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):RF_RDRV") {
@@ -3562,6 +3610,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_CTRL_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_MASK")
 }
 
@@ -3579,6 +3628,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_CTRL_MASK")
+  field(OSV, "MAJOR")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TEST") {
@@ -3621,6 +3671,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKHI_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_MASK")
 }
 
@@ -3638,6 +3689,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):TANKPUMP_TANKLO_TST_MASK")
+  field(OSV, "MAJOR")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):MOD_CPWR_SET") {
@@ -4300,6 +4352,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT") {
   field(DESC, "High Voltage On")
+  field(ZSV, "MAJOR")
   field(PRIO, "LOW")
   field(ONAM, "Yes")
   field(ZNAM, "No")
@@ -4321,6 +4374,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_FLK") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_FLK_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EILK_MASK")
 }
 
@@ -4338,6 +4392,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_EILK") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_EILK_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_MASK")
 }
 
@@ -4355,6 +4410,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVOC") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_MASK")
 }
 
@@ -4372,6 +4428,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_EOLC") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_MASK")
 }
 
@@ -4389,6 +4446,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_TTOC") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_MASK")
 }
 
@@ -4423,6 +4481,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_MASK")
 }
 
@@ -4436,6 +4495,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):MOD_ILKC") {
   field(DESC, "Interlock Complete")
+  field(ZSV, "MAJOR")
   field(PRIO, "LOW")
   field(ONAM, "Yes")
   field(ZNAM, "No")
@@ -4457,6 +4517,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_MASK")
 }
 
@@ -4474,6 +4535,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_VVS_MASK")
 }
 
@@ -4491,6 +4553,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_VVS") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_VVS_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CTRLPWR_ON_MASK")
 }
 
@@ -4508,6 +4571,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_CTRLPWR_ON") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_CTRLPWR_ON_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HV_OFF_MASK")
 }
 
@@ -4559,6 +4623,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_FLT_RESET") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_FLT_RESET_MASK")
+  field(OSV, "MAJOR")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):MOD_CTRL") {
@@ -4601,6 +4666,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVON") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVON_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_MASK")
 }
 
@@ -4618,6 +4684,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_MASK")
 }
 
@@ -4660,6 +4727,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_MASK")
 }
 
@@ -4677,6 +4745,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_MASK")
 }
 
@@ -4694,6 +4763,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_MASK")
 }
 
@@ -4711,6 +4781,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_MASK")
 }
 
@@ -4728,6 +4799,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_MASK")
 }
 
@@ -4745,6 +4817,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_MASK")
 }
 
@@ -4762,6 +4835,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_MASK")
 }
 
@@ -4779,6 +4853,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_MASK")
 }
 
@@ -4796,6 +4871,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_MASK")
 }
 
@@ -4813,6 +4889,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_MASK")
 }
 
@@ -4830,6 +4907,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_MASK")
 }
 
@@ -4847,6 +4925,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_MASK")
+  field(OSV, "MAJOR")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):WATR_KLY_CLR") {
@@ -5399,6 +5478,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_KLY_L") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_KLY_L_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_L_MASK")
 }
 
@@ -5416,6 +5496,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG1_L") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG1_L_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_L_MASK")
 }
 
@@ -5433,6 +5514,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG2_L") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG2_L_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_L_MASK")
 }
 
@@ -5450,6 +5532,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_L") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_L_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK")
 }
 
@@ -5467,6 +5550,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_L") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_L_MASK")
 }
 
@@ -5484,6 +5568,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_L") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_FLOW_L_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK")
 }
 
@@ -5501,6 +5586,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_KLY_DB_MASK")
 }
 
@@ -5518,6 +5604,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_KLY_DB") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_KLY_DB_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_DB_MASK")
 }
 
@@ -5535,6 +5622,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG1_DB") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG1_DB_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_DB_MASK")
 }
 
@@ -5569,6 +5657,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB_MASK")
 }
 
@@ -5586,6 +5675,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB_MASK")
+  field(OSV, "MAJOR")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):WATR_TEST") {
@@ -5611,6 +5701,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_KLY_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_KLY_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_MASK")
 }
 
@@ -5628,6 +5719,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_MASK")
 }
 
@@ -5645,6 +5737,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_MASK")
 }
 
@@ -5662,6 +5755,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_MASK")
 }
 
@@ -5679,6 +5773,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_MASK")
+  field(OSV, "MAJOR")
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):LMOD_AVAIL_TST_SET") {
@@ -5876,6 +5971,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):LMOD_WGTC_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):LMOD_ON_MASK")
 }
 
@@ -6249,6 +6345,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WGV_OK") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WGV_OK_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_BAD_MASK")
 }
 
@@ -6291,6 +6388,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):WGV_OK_TST_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_MASK")
 }
 
@@ -6504,6 +6602,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):STATUS_SLOW_CLR") {
 record(ao, "KLYS:$(AREA):$(LOCATION):KVAC_LO_SET") {
   field(DESC, "Klystron Vacuum Low Set")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_LO_SET")
   field(EGU, "Torr")
@@ -6512,6 +6611,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):KVAC_LO_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):KVAC_HI_SET") {
   field(DESC, "Klystron Vacuum High Set")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI_SET")
   field(EGU, "Torr")
@@ -6520,6 +6620,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):KVAC_HI_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):WVAC_LO_SET") {
   field(DESC, "Waveguide Vacuum Low Set")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_LO_SET")
   field(EGU, "Torr")
@@ -6528,6 +6629,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):WVAC_LO_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):WVAC_HI_SET") {
   field(DESC, "Waveguide Vacuum High Set")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WVAC_HI_SET")
   field(EGU, "Torr")
@@ -6536,6 +6638,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):WVAC_HI_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):FC_LO_SET") {
   field(DESC, "Focus Coil Current Low Set")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_LO_SET")
   field(EGU, "Torr")
@@ -6544,6 +6647,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):FC_LO_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):FC_HI_SET") {
   field(DESC, "Focus Coil Current High Set")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_HI_SET")
   field(EGU, "Torr")
@@ -6552,6 +6656,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):FC_HI_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):FCG_LO_SET") {
   field(DESC, "Focus Coil Gnd Cur Low Set")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_LO_SET")
   field(EGU, "Torr")
@@ -6560,6 +6665,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):FCG_LO_SET") {
 record(ao, "KLYS:$(AREA):$(LOCATION):FCG_HI_SET") {
   field(DESC, "Focus Coil Gnd Cur High Set")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FCG_HI_SET")
   field(EGU, "Torr")
@@ -6973,6 +7079,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MK_P24") {
 record(ao, "KLYS:$(AREA):$(LOCATION):FC_DAC_SET") {
   field(DESC, "Focus Coil DAC Set")
   field(DTYP, "asynInt32")
+  info(autosaveFields, "VAL")
   field(PRIO, "LOW")
   field(OUT, "@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FC_DAC_SET")
 }
@@ -8691,6 +8798,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TANKHI_BP_MASK")
 }
 
@@ -8708,6 +8816,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_TANKHI_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_TANKHI_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TANKLO_BP_MASK")
 }
 
@@ -8725,6 +8834,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_TANKLO_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_TANKLO_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_BP_MASK")
 }
 
@@ -8776,6 +8886,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_BP_MASK")
 }
 
@@ -8810,6 +8921,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_BP_MASK")
 }
 
@@ -8827,6 +8939,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_BP_MASK")
 }
 
@@ -8861,6 +8974,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_MASK")
 }
 
@@ -8878,6 +8992,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_MASK")
 }
 
@@ -8895,6 +9010,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_MASK")
 }
 
@@ -8912,6 +9028,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_MASK")
 }
 
@@ -8929,6 +9046,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_MASK")
 }
 
@@ -8946,6 +9064,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_BP_MASK")
+  field(OSV, "MINOR")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):FG_BYPASS1") {
@@ -8971,6 +9090,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_RPOT_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_MASK")
 }
 
@@ -8988,6 +9108,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_FPOT_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_MASK")
 }
 
@@ -9005,6 +9126,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_BVOT_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_MASK")
 }
 
@@ -9022,6 +9144,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_BCOT_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_BP_MASK")
 }
 
@@ -9107,6 +9230,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_MASK")
 }
 
@@ -9124,6 +9248,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_BP_MASK")
+  field(OSV, "MINOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_BP_MASK")
 }
 
@@ -9166,6 +9291,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_PUMPII") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_PUMPII_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TANKHI_MASK")
 }
 
@@ -9183,6 +9309,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_TANKHI") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_TANKHI_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_TANKLO_MASK")
 }
 
@@ -9200,6 +9327,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_TANKLO") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_TANKLO_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_MGNTBRKR_MASK")
 }
 
@@ -9251,6 +9379,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_MGNTCILK_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WVACBAD_MASK")
 }
 
@@ -9285,6 +9414,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_WVACNOK_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_MASK")
 }
 
@@ -9302,6 +9432,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_VACFLT") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_VACFLT_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGVFLT_MASK")
 }
 
@@ -9336,6 +9467,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGTCFLT_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_MASK")
 }
 
@@ -9353,6 +9485,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_KLYSFSOPEN_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_MASK")
 }
 
@@ -9370,6 +9503,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGFLW2_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_MASK")
 }
 
@@ -9387,6 +9521,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_WGFLW1_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_MASK")
 }
 
@@ -9404,6 +9539,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW2_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_MASK")
 }
 
@@ -9421,6 +9557,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_ACCFLW1_MASK")
+  field(OSV, "MAJOR")
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):FG_FAULT1") {
@@ -9446,6 +9583,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_RPOT") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_RPOT_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FPOT_MASK")
 }
 
@@ -9463,6 +9601,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_FPOT") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_FPOT_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BVOT_MASK")
 }
 
@@ -9480,6 +9619,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_BVOT") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_BVOT_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BCOT_MASK")
 }
 
@@ -9497,6 +9637,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_BCOT") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_BCOT_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_FCGCURR_MASK")
 }
 
@@ -9582,6 +9723,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_KTEMPDIFF_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_MASK")
 }
 
@@ -9599,6 +9741,7 @@ record(bi, "KLYS:$(AREA):$(LOCATION):FG_24VLOW") {
   field(ONAM, "Yes")
   field(ZNAM, "No")
   field(INP, "KLYS:$(AREA):$(LOCATION):FG_24VLOW_MASK")
+  field(OSV, "MAJOR")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_BEAMLOW_MASK")
 }
 

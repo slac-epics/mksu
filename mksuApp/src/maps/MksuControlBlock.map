@@ -587,6 +587,7 @@ operation	record
 DESC	Permit Status
 INP	KLYS:$(AREA):$(LOCATION):PERMIT_MASK
 ZNAM	No Permit
+ZSV	MAJOR
 ONAM	Permit
 FLNK	KLYS:$(AREA):$(LOCATION):TREN_MASK
 PRIO	LOW
@@ -608,6 +609,7 @@ operation	record
 DESC	Trigger Enable Status
 INP	KLYS:$(AREA):$(LOCATION):TREN_MASK
 ZNAM	Not Enabled
+ZSV	MAJOR
 ONAM	Enabled
 FLNK	KLYS:$(AREA):$(LOCATION):CFGD_MASK
 PRIO	LOW
@@ -629,6 +631,7 @@ operation	record
 DESC	Configured Status
 INP	KLYS:$(AREA):$(LOCATION):CFGD_MASK
 ZNAM	Not Configured
+ZSV	MAJOR
 ONAM	Configured
 FLNK	KLYS:$(AREA):$(LOCATION):RATE119_MASK
 PRIO	LOW
@@ -674,6 +677,7 @@ operation	record
 DESC	Sys Clck PLL Lckd
 INP	KLYS:$(AREA):$(LOCATION):CLCKD_MASK
 ZNAM	Not Locked
+ZSV	MAJOR
 ONAM	Locked
 FLNK	KLYS:$(AREA):$(LOCATION):LOCAL_MASK
 #-------------------------------------------------------
@@ -714,6 +718,7 @@ operation	record
 DESC	FADC Clck PLL Lckd
 INP	KLYS:$(AREA):$(LOCATION):FCLCKD_MASK
 ZNAM	Not Locked
+ZSV	MAJOR
 ONAM	Locked
 FLNK	KLYS:$(AREA):$(LOCATION):CLCKDL_MASK
 PRIO	LOW

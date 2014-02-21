@@ -283,6 +283,7 @@ DESC	WG Thermal Couple Latch
 INP	KLYS:$(AREA):$(LOCATION):LMOD_WGTC_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):LMOD_ON_MASK
 PRIO	LOW
 #-------------------------------------------------------

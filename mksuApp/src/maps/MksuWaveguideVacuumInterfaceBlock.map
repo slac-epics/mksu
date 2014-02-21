@@ -277,6 +277,7 @@ DESC	Waveguide Vacuum Ok Monitor
 INP	KLYS:$(AREA):$(LOCATION):WGV_OK_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WGV_BAD_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -341,6 +342,7 @@ DESC	Waveguide Vacuum Ok Monitor
 INP	KLYS:$(AREA):$(LOCATION):WGV_OK_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WGV_BAD_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------

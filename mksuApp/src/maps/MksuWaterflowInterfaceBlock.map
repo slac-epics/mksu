@@ -774,6 +774,7 @@ DESC	Klys Waterflow Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_KLY_L_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_L_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -795,6 +796,7 @@ DESC	Waveguide1 Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_WG1_L_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_L_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -816,6 +818,7 @@ DESC	Waveguide2 Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_WG2_L_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_L_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -837,6 +840,7 @@ DESC	Accelerator1 Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_ACC1_L_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -858,6 +862,7 @@ DESC	Accelerator2 Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_ACC2_L_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_FLOW_L_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -879,6 +884,7 @@ DESC	Fault Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_FLOW_L_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -900,6 +906,7 @@ DESC	Fault Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_FLT_L_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_KLY_DB_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -921,6 +928,7 @@ DESC	Klys Waterflow Debounced
 INP	KLYS:$(AREA):$(LOCATION):WATR_KLY_DB_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_DB_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -942,6 +950,7 @@ DESC	Waveguide1 Debounced
 INP	KLYS:$(AREA):$(LOCATION):WATR_WG1_DB_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_DB_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -984,6 +993,7 @@ DESC	Accelerator1 Debounced
 INP	KLYS:$(AREA):$(LOCATION):WATR_ACC1_DB_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1005,6 +1015,7 @@ DESC	Accelerator2 Debounced
 INP	KLYS:$(AREA):$(LOCATION):WATR_ACC2_DB_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 PRIO	LOW
 #-------------------------------------------------------
 # WATR Status Register (END)
@@ -1048,6 +1059,7 @@ DESC	Klystron Waterflow
 INP	KLYS:$(AREA):$(LOCATION):WATR_KLY_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1069,6 +1081,7 @@ DESC	Waveguide1 Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_WG1_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1090,6 +1103,7 @@ DESC	Waveguide2 Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_WG2_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1111,6 +1125,7 @@ DESC	Accelerator1 Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_ACC1_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1132,6 +1147,7 @@ DESC	Accelerator2 Latch
 INP	KLYS:$(AREA):$(LOCATION):WATR_ACC2_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 PRIO	LOW
 #-------------------------------------------------------
 # WATR Test Register (END)

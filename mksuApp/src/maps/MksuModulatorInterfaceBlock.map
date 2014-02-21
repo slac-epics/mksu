@@ -927,6 +927,7 @@ operation	record
 DESC	High Voltage On
 INP	KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT_MASK
 ZNAM	No
+ZSV	MAJOR
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_FLK_MASK
 PRIO	LOW
@@ -949,6 +950,7 @@ DESC	Fault Lock Out (FLK)
 INP	KLYS:$(AREA):$(LOCATION):MOD_FLK_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_EILK_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -970,6 +972,7 @@ DESC	External Interlock
 INP	KLYS:$(AREA):$(LOCATION):MOD_EILK_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_HVOC_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -991,6 +994,7 @@ DESC	High Voltage Over Curr
 INP	KLYS:$(AREA):$(LOCATION):MOD_HVOC_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_EOLC_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1012,6 +1016,7 @@ DESC	End of Line Clipper (EOLC)
 INP	KLYS:$(AREA):$(LOCATION):MOD_EOLC_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_TTOC_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1033,6 +1038,7 @@ DESC	Thyratron Over Curr
 INP	KLYS:$(AREA):$(LOCATION):MOD_TTOC_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_HVRDY_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1075,6 +1081,7 @@ DESC	Modulator Available
 INP	KLYS:$(AREA):$(LOCATION):MOD_AVAIL_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_ILKC_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1095,6 +1102,7 @@ operation	record
 DESC	Interlock Complete
 INP	KLYS:$(AREA):$(LOCATION):MOD_ILKC_MASK
 ZNAM	No
+ZSV	MAJOR
 ONAM	Yes
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_MASK
 PRIO	LOW
@@ -1117,6 +1125,7 @@ DESC	Control Power Fault
 INP	KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1138,6 +1147,7 @@ DESC	Klys Filament TDLY
 INP	KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_VVS_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1159,6 +1169,7 @@ DESC	VVS Power On
 INP	KLYS:$(AREA):$(LOCATION):MOD_VVS_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_CTRLPWR_ON_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1180,6 +1191,7 @@ DESC	Control Power On CMD
 INP	KLYS:$(AREA):$(LOCATION):MOD_CTRLPWR_ON_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_HV_OFF_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1243,6 +1255,7 @@ DESC	Fault Reset
 INP	KLYS:$(AREA):$(LOCATION):MOD_FLT_RESET_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 PRIO	LOW
 #-------------------------------------------------------
 # MOD Status Register (END)
@@ -1301,6 +1314,7 @@ DESC	High Volt On
 INP	KLYS:$(AREA):$(LOCATION):MOD_HVON_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_HVOFF_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1322,6 +1336,7 @@ DESC	High Volt Off
 INP	KLYS:$(AREA):$(LOCATION):MOD_HVOFF_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_FLTRST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1380,6 +1395,7 @@ DESC	High Voltage On
 INP	KLYS:$(AREA):$(LOCATION):MOD_HVON_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1401,6 +1417,7 @@ DESC	Fault Lock Out (FLK)
 INP	KLYS:$(AREA):$(LOCATION):MOD_FLK_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1422,6 +1439,7 @@ DESC	External Interlock
 INP	KLYS:$(AREA):$(LOCATION):MOD_EILK_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1443,6 +1461,7 @@ DESC	High Voltage Over Curr
 INP	KLYS:$(AREA):$(LOCATION):MOD_HVOC_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1464,6 +1483,7 @@ DESC	End of Line Clipper (EOLC)
 INP	KLYS:$(AREA):$(LOCATION):MOD_EOLC_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1485,6 +1505,7 @@ DESC	Thyratron Over Curr
 INP	KLYS:$(AREA):$(LOCATION):MOD_TTOC_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1506,6 +1527,7 @@ DESC	High Voltage Ready
 INP	KLYS:$(AREA):$(LOCATION):MOD_HVRDY_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1527,6 +1549,7 @@ DESC	Modulator Available
 INP	KLYS:$(AREA):$(LOCATION):MOD_AVAIL_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1548,6 +1571,7 @@ DESC	Interlock Complete
 INP	KLYS:$(AREA):$(LOCATION):MOD_ILKC_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1569,6 +1593,7 @@ DESC	Control Power Faul
 INP	KLYS:$(AREA):$(LOCATION):MOD_CTRL_PFLT_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1590,6 +1615,7 @@ DESC	Klys Filament TDLY
 INP	KLYS:$(AREA):$(LOCATION):MOD_KFTDLY_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_MASK
 PRIO	LOW
 #-------------------------------------------------------
@@ -1611,6 +1637,7 @@ DESC	VVS Power On
 INP	KLYS:$(AREA):$(LOCATION):MOD_VVS_TST_MASK
 ZNAM	No
 ONAM	Yes
+OSV	MAJOR
 PRIO	LOW
 #-------------------------------------------------------
 # MOD Test Register (END)
