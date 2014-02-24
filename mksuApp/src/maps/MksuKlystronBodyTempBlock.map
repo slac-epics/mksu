@@ -188,6 +188,7 @@ DESC	Temp. Offset
 FLNK	KLYS:$(AREA):$(LOCATION):TOFF_CALC_SET
 EGU	C
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	calcout
@@ -226,6 +227,7 @@ DESC	Delta Temp Max
 FLNK	KLYS:$(AREA):$(LOCATION):TDELTAMAX_CALC_SET
 EGU	C
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	calcout

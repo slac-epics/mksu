@@ -310,6 +310,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_LO_SET
 EGU	ADC counts
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -323,6 +324,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_HI_SET
 EGU	ADC counts
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -336,6 +338,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_STA_SET
 EGU	60MHz ticks
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -349,6 +352,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BV_AVG_END_SET
 EGU	60MHz ticks
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -362,6 +366,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_LO_SET
 EGU	ADC counts
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -375,6 +380,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_HI_SET
 EGU	ADC counts
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -388,6 +394,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_STA_SET
 EGU	60MHz ticks
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -401,6 +408,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))BC_AVG_END_SET
 EGU	60MHz ticks
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -414,6 +422,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_LO_SET
 EGU	ADC counts
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -427,6 +436,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_HI_SET
 EGU	ADC counts
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -440,6 +450,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_STA_SET
 EGU	60MHz ticks
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -453,6 +464,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))FP_AVG_END_SET
 EGU	60MHz ticks
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -466,6 +478,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_LO_SET
 EGU	ADC counts
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -479,6 +492,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_HI_SET
 EGU	ADC counts
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -492,6 +506,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_STA_SET
 EGU	60MHz ticks
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -505,6 +520,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))RP_AVG_END_SET
 EGU	60MHz ticks
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL DRVH DRVL HOPR LOPR")
 #-------------------------------------------------------
 record	ao
@@ -518,6 +534,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))WF_CNT_SET
 EGU	samples
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL")
 #=======================================================
 # FAST ADC CONTROL (READ)

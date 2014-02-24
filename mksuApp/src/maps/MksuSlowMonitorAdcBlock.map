@@ -34,6 +34,7 @@ OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))STATUS_KVAC_LO_SET
 DOL	KLYS:$(AREA):$(LOCATION):KVAC_LO_CLR_MASK
 OMSL	closed_loop
 PRIO	LOW
+PINI	YES
 #-------------------------------------------------------
 # KVAC_HI_CLR: Clear Klys Vac High (Bit 1)
 #-------------------------------------------------------
@@ -289,6 +290,7 @@ DTYP	asynInt32
 OUT	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))KVAC_HI_SET
 EGU	Torr
 PRIO	LOW
+PINI	YES
 info	(autosaveFields, "VAL")
 #-------------------------------------------------------
 record	ao

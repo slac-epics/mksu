@@ -12,11 +12,14 @@
 #==============================================================
 #
 #
+mksu-R1-2-1:
+        24-Feb-2014: Mike Zelazny
+        * Add PINIs as per Shantha
 
 mksu-R1-2-0:
         19-Feb-2014: Mike Zelazny
         * Support "info" fields in "maps" files
-        * Add autosaveFields info fields ro map files
+        * Add autosaveFields info fields to map files
         * Add alarm severities to map files
 
 mksu-R1-0-23:
