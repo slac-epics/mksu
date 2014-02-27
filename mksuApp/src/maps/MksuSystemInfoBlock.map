@@ -7,7 +7,7 @@ operation	read
 task	0x64
 address	0
 size	8
-DESC	Firmware version
+DESC	Firmware version:
 DTYP	asynInt8Array
 FTVL	UCHAR
 NELM	8
@@ -21,7 +21,7 @@ operation	read
 task	0x64
 address	4
 size	6
-DESC	System ID
+DESC	System ID:
 DTYP	asynInt8Array
 FTVL	UCHAR
 NELM	6
@@ -35,7 +35,7 @@ operation	read
 task	0x64
 address	7
 size	4
-DESC	System sub type
+DESC	System sub type:
 DTYP	asynInt8Array
 FTVL	UCHAR
 NELM	4
@@ -49,7 +49,7 @@ operation	read
 task	0x64
 address	9
 size	8
-DESC	System date
+DESC	System date:
 DTYP	asynInt8Array
 FTVL	UCHAR
 NELM	8

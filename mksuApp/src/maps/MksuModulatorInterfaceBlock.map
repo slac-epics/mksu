@@ -47,7 +47,7 @@ PRIO	LOW
 record	bo
 name	KLYS:$(AREA):$(LOCATION):MOD_HVON_SET
 operation	record
-DESC	High Voltage On bit
+DESC	High Voltage On:
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_HVON_SET_MASK
 #-------------------------------------------------------
 record	calc
@@ -77,7 +77,7 @@ PRIO	LOW
 record	bo
 name	KLYS:$(AREA):$(LOCATION):MOD_HVOFF_SET
 operation	record
-DESC	High Voltage Off bit
+DESC	High Voltage Off:
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_HVOFF_SET_MASK
 #-------------------------------------------------------
 record	calc
@@ -107,7 +107,7 @@ PRIO	LOW
 record	bo
 name	KLYS:$(AREA):$(LOCATION):MOD_FLTRST_SET
 operation	record
-DESC	Fault Reset bit
+DESC	Modulator Reset:
 FLNK	KLYS:$(AREA):$(LOCATION):MOD_FLTRST_SET_MASK
 #-------------------------------------------------------
 record	calc
@@ -924,7 +924,7 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT
 operation	record
-DESC	High Voltage On
+DESC	High Voltage Status:
 INP	KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT_MASK
 ZNAM	No
 ZSV	MAJOR

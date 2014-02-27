@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Mon, 24 Feb 2014 23:51:28 +0000
+# Database template file generated from MksuList.map on Wed, 26 Feb 2014 17:13:54 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -921,7 +921,7 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):RF_DRV_WF") {
 }
 
 record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_VERSION") {
-  field(DESC, "Firmware version")
+  field(DESC, "Firmware version:")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
   field(PRIO, "LOW")
@@ -931,7 +931,7 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_VERSION") {
 }
 
 record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_ID") {
-  field(DESC, "System ID")
+  field(DESC, "System ID:")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
   field(PRIO, "LOW")
@@ -941,7 +941,7 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_ID") {
 }
 
 record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_SUB_TYPE") {
-  field(DESC, "System sub type")
+  field(DESC, "System sub type:")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
   field(PRIO, "LOW")
@@ -951,7 +951,7 @@ record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_SUB_TYPE") {
 }
 
 record(waveform, "KLYS:$(AREA):$(LOCATION):SYS_DATE") {
-  field(DESC, "System date")
+  field(DESC, "System date:")
   field(DTYP, "asynInt8ArrayIn")
   field(FTVL, "UCHAR")
   field(PRIO, "LOW")
@@ -1282,7 +1282,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TDELTA_CNTS") {
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):TDELTA") {
-  field(DESC, "Delta Temperature")
+  field(DESC, "Delta Temperature:")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
   field(INPA, "KLYS:$(AREA):$(LOCATION):TDELTA_CNTS")
@@ -3136,7 +3136,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):RF_LDRV") {
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):RF_DRV") {
-  field(DESC, "RF Current Drive")
+  field(DESC, "RF Attenuator:")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
@@ -3736,7 +3736,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_MOD_CPWR_SET") {
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVON_SET") {
-  field(DESC, "High Voltage On bit")
+  field(DESC, "High Voltage On:")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVON_SET_MASK")
 }
 
@@ -3758,7 +3758,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_HVON_SET") {
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_SET") {
-  field(DESC, "High Voltage Off bit")
+  field(DESC, "High Voltage Off:")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_HVOFF_SET_MASK")
 }
 
@@ -3780,7 +3780,7 @@ record(ao, "KLYS:$(AREA):$(LOCATION):CTRL_HVOFF_SET") {
 }
 
 record(bo, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_SET") {
-  field(DESC, "Fault Reset bit")
+  field(DESC, "Modulator Reset:")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):MOD_FLTRST_SET_MASK")
 }
 
@@ -4371,7 +4371,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT_MASK") {
 }
 
 record(bi, "KLYS:$(AREA):$(LOCATION):MOD_HVON_STAT") {
-  field(DESC, "High Voltage On")
+  field(DESC, "High Voltage Status:")
   field(ZSV, "MAJOR")
   field(PRIO, "LOW")
   field(ONAM, "Yes")

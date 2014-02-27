@@ -2329,12 +2329,12 @@ FLNK	KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP_MASK
 SCAN	$(SCAN)
 PRIO	LOW
 #-------------------------------------------------------
-# FG_PUMPII_BP: SLED not Ok (Bit 0)
+# FG_PUMPII_BP: Second Pump (Bit 0)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP_MASK
-DESC	SLED not Ok
+DESC	Second Pump
 INPA	KLYS:$(AREA):$(LOCATION):FG_BYPASS0
 CALC	A & (1 << 0)
 FLNK	KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP
@@ -2343,7 +2343,7 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP
 operation	record
-DESC	SLED not Ok
+DESC	Second Pump
 INP	KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP_MASK
 ZNAM	No
 ONAM	Yes
@@ -2946,12 +2946,12 @@ FLNK	KLYS:$(AREA):$(LOCATION):FG_PUMPII_MASK
 SCAN	$(SCAN)
 PRIO	LOW
 #-------------------------------------------------------
-# FG_PUMPII: SLED not Ok (Bit 0)
+# FG_PUMPII: Second Pump (Bit 0)
 #-------------------------------------------------------
 record	calc
 operation	record
 name	KLYS:$(AREA):$(LOCATION):FG_PUMPII_MASK
-DESC	SLED not Ok
+DESC	Second Pump
 INPA	KLYS:$(AREA):$(LOCATION):FG_FAULT0
 CALC	A & (1 << 0)
 FLNK	KLYS:$(AREA):$(LOCATION):FG_PUMPII
@@ -2960,7 +2960,7 @@ PRIO	LOW
 record	bi
 name	KLYS:$(AREA):$(LOCATION):FG_PUMPII
 operation	record
-DESC	SLED not Ok
+DESC	Second Pump
 INP	KLYS:$(AREA):$(LOCATION):FG_PUMPII_MASK
 ZNAM	No
 ONAM	Yes

@@ -446,7 +446,7 @@ PRIO	LOW
 record	calc
 name	KLYS:$(AREA):$(LOCATION):TDELTA
 operation	record
-DESC	Delta Temperature
+DESC	Delta Temperature:
 SCAN	$(SCAN)
 INPA	KLYS:$(AREA):$(LOCATION):TDELTA_CNTS
 CALC	A/0.0625/0.00021*(9.53e-9)*(2.1/2.5)

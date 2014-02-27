@@ -12,6 +12,10 @@
 #==============================================================
 #
 #
+mksu-R1-2-2:
+        26-Feb-2014: Mike Zelazny
+        * Add/change DESCs and EGUs for API PVs
+
 mksu-R1-2-1:
         24-Feb-2014: Mike Zelazny
         * Add PINIs as per Shantha
