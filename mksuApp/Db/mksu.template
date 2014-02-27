@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Wed, 26 Feb 2014 17:13:54 +0000
+# Database template file generated from MksuList.map on Thu, 27 Feb 2014 17:54:48 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -8807,7 +8807,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0") {
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP_MASK") {
-  field(DESC, "SLED not Ok")
+  field(DESC, "Second Pump")
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):FG_BYPASS0")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP")
@@ -8815,7 +8815,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP_MASK") {
 }
 
 record(bi, "KLYS:$(AREA):$(LOCATION):FG_PUMPII_BP") {
-  field(DESC, "SLED not Ok")
+  field(DESC, "Second Pump")
   field(PRIO, "LOW")
   field(ONAM, "Yes")
   field(ZNAM, "No")
@@ -9300,7 +9300,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):FG_FAULT0") {
 }
 
 record(calc, "KLYS:$(AREA):$(LOCATION):FG_PUMPII_MASK") {
-  field(DESC, "SLED not Ok")
+  field(DESC, "Second Pump")
   field(PRIO, "LOW")
   field(INPA, "KLYS:$(AREA):$(LOCATION):FG_FAULT0")
   field(FLNK, "KLYS:$(AREA):$(LOCATION):FG_PUMPII")
@@ -9308,7 +9308,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):FG_PUMPII_MASK") {
 }
 
 record(bi, "KLYS:$(AREA):$(LOCATION):FG_PUMPII") {
-  field(DESC, "SLED not Ok")
+  field(DESC, "Second Pump")
   field(PRIO, "LOW")
   field(ONAM, "Yes")
   field(ZNAM, "No")
