@@ -308,7 +308,7 @@ operation	read
 task	0x45
 address	8
 size	1
-DESC	Input trigger rate count
+DESC	Output trigger rate count
 DTYP	asynInt32
 SCAN	$(SCAN)
 INP	@asyn($(PORT) $(CHANNEL) $(TIMEOUT))TCNT_IN

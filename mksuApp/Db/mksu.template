@@ -1,4 +1,4 @@
-# Database template file generated from MksuList.map on Thu, 27 Feb 2014 17:54:48 +0000
+# Database template file generated from MksuList.map on Mon, 03 Mar 2014 18:30:46 +0000
 
 record(bo, "KLYS:$(AREA):$(LOCATION):FADC_CLR") {
   field(DESC, "Clear FADC Latch")
@@ -861,7 +861,7 @@ record(ai, "KLYS:$(AREA):$(LOCATION):TCNT_IN") {
 }
 
 record(ai, "KLYS:$(AREA):$(LOCATION):TCNT_OUT") {
-  field(DESC, "Input trigger rate count")
+  field(DESC, "Output trigger rate count")
   field(DTYP, "asynInt32")
   field(PRIO, "LOW")
   field(SCAN, "$(SCAN)")
