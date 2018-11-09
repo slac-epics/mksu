@@ -378,7 +378,7 @@ int MksuComm::refresh(int blockId) {
   Log::getInstance() << "MksuComm::refresh(blockId="
 		     << blockId << "): last refreshed "
 		     << now - block->time << " seconds ago."
-		     << " Block address " << (int) block << Log::dp;
+		     << " Block address " << (long int) block << Log::dp;
 
   // This is a special block, used only to generate the
   // plot trace lines for the Fast ADC waveforms!
