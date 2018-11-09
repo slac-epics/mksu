@@ -12,6 +12,12 @@
 #==============================================================
 #
 #
+R1.3.0:
+	08-Nov-2017: H. Slepicka
+	* First version with the Git Workflow.
+	* Upgrade to Asyn R4.31-0.1.0
+	* Upgrade to R2.2.5
+
 mksu-R1-2-3:
         27-Nov-2017: K. Luchini
          * upgrade from ASYN_MODULE_VERSION=asyn-R4-21_1-0
