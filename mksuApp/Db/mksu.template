@@ -504,7 +504,7 @@ record(calc, "KLYS:$(AREA):$(LOCATION):FCLCKD_MASK") {
 
 record(bi, "KLYS:$(AREA):$(LOCATION):FCLCKD") {
   field(DESC, "FADC Clck PLL Lckd")
-  field(ZSV, "MAJOR")
+  field(ZSV, "MINOR")
   field(PRIO, "LOW")
   field(ONAM, "Locked")
   field(ZNAM, "Not Locked")

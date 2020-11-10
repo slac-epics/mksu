@@ -12,6 +12,10 @@
 #==============================================================
 #
 #
+R1.3.2: scondam
+    CATER #147536: Per Ops, change PV KLYS:DMPH:1:FCLCKD alarm state from 
+	     MAJOR (red alarm) to MINOR (yellow warning)
+		 
 R1.3.1: scondam
     Build with asyn R4.32-1.0.0
    
