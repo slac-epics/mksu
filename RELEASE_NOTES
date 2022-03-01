@@ -12,6 +12,9 @@
 #==============================================================
 #
 #
+R1.3.3: egumtow
+    Build with asyn asyn/R4.39-1.0.1
+
 R1.3.2: scondam
     CATER #147536: Per Ops, change PV KLYS:DMPH:1:FCLCKD alarm state from 
 	     MAJOR (red alarm) to MINOR (yellow warning)
